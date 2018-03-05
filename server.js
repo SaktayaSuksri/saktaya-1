@@ -5,10 +5,10 @@ var logger = require('morgan');
 // var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
- 
+
 var  passport = require('passport');
 var flash = require('connect-flash');
-  
+
 var config = require('./config/config'); //Server configuration file
 var bodyParser = require('body-parser');
 var session = require('express-session');
@@ -29,20 +29,19 @@ sessionStore.on('error', function(error) {
 
 var app = express();
 
- 
 
 mongoose.connect(config.dbUrl, function(err){
-	if (err) { 
+	if (err) {
     console.log("********************************!!! WARNING plzzz !!!*********************************");
-    console.log("                          Can't connect to Database.");
+    console.log("                          Can't connect to Database.!!");
     console.log("             Please Start database first than restarting this program.");
     console.log("**************************************************************************************");
 
-    
-    console.log(err) }
-});  
 
-//require('./passport')(passport); //Set authentification
+    console.log(err) }
+});
+
+//require('./passport')(passport); //Set authentification .
 require('./config/passport')(passport); // pass passport for configuration
 require('./routes/index.js')(app, passport); //Set routes load our routes and pass in our app and fully configured passpo
 
@@ -108,7 +107,7 @@ app.use(logger('dev'));// log every request to the console
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 */
-//for limit file 
+//for limit file
 
 app.use(bodyParser.json({ limit: '300mb' }));
 app.use(bodyParser.urlencoded({ limit: '300mb', extended: true }));
@@ -122,12 +121,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Required for passport
 const cookieMaxAge = 1000 * 60 * 150000;  // 15 mins.
-app.use(session({ 
+app.use(session({
     secret: config.sessionSecret,   // session secret
-    cookie: { 
-        path: '/', 
-        httpOnly: true, 
-        secure: false, 
+    cookie: {
+        path: '/',
+        httpOnly: true,
+        secure: false,
         maxAge: cookieMaxAge
     },
     store: sessionStore,
