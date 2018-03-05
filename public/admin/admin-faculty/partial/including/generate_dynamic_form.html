@@ -1,0 +1,67 @@
+
+   
+     
+     <!--
+          <input type="text" ng-model="column.dataFormat" name="" placeholder="Data Format" required>
+          <input type="text" ng-model="column.excludedChar" name="" placeholder="Exculded Characters">
+           <input type="text" ng-model="column.maxLength" name="" placeholder="Max Length">
+     
+           <input type="checkbox" ng-model="column.isKeyRequired"> Is Required
+        -->   
+    
+     <form name="setupNewGrid">
+            <fieldset  ng-repeat="column in columns">
+                    
+   
+                <div class="card">
+                    
+                <div class="row">
+                        <div class="col-md-3">
+                        <div class="form-group label-floating is-empty">
+                                <label class="control-label"></label>
+                                <input type="text" name="columnName"  ng-model="column.title" class="form-control" placeholder="Title" required>
+                            <span class="material-input"></span></div>
+                        </div>
+                    <div class="col-md-2">
+                            <div class="form-group">
+                                    
+                                    <select ng-model="column.type.view"   class="form-control" name="data_type" required >
+                                            <option value="">Answer Type</option> 
+                                            <option ng-repeat="type in dataType"  value="{{type.dataTypeName}}" ng-model="dataType.id">{{type.dataTypeName}}</option> 
+                                           </select> 
+                                </div>
+
+                              
+
+                    </div>
+                    <div class="col-md-4">
+                            <div class="form-group">
+                                    <label for="exampleTextarea">คำอธิบายเพิ่มเติม</label>
+                                    <textarea ng-model="column.detail"  class="form-control" id="exampleTextarea" rows="3"></textarea>
+                                  </div>
+                    </div>
+                    <div class="col-md-1">
+                   
+                            <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox"  ng-model="column.isKeyRequired" name="optionsCheckboxes"><span class="checkbox-material"></span> is required
+                                    </label>
+                                </div>
+                </div>
+                                <div class="col-md-2">
+                       
+                                        <button class="btn btn-just-icon btn-round btn-youtube" ng-click="removeColumn($index)">
+                                        <i class="material-icons">clear</i>
+                                        </button>
+                            </div>
+                </div>
+            </div>
+              
+          
+        
+    </fieldset>
+    <button class="btn " ng-click="addNewColumn()">Add Column</button>
+   <button class="btn "  ng-click="setupNewGrid">Validate</button>
+    </form>   
+
+    <div class="msg">{{columns}}</div>

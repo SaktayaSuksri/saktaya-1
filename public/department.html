@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" href="../assets/img/apple-icon.png">
+    <link rel="icon" href="../assets/img/favicon.png">
+    <title>
+        Demo Department
+    </title>
+    <!--     Fonts and icons     -->
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="../assets/css/material-kit.css?v=2.0.0">
+    <!-- Documentation extras -->
+    <!-- CSS Just for demo purpose, don't include it in your project -->
+    <link href="../assets/assets-for-demo/demo.css" rel="stylesheet" />
+    <link href="../assets/assets-for-demo/vertical-nav.css" rel="stylesheet" />
+
+    <!--   Core JS Files   -->
+    <script src="../assets/js/core/jquery.min.js"></script>
+    <script src="../assets/js/core/popper.min.js"></script>
+    <script src="../assets/js/bootstrap-material-design.js"></script>
+    <!--  Plugin for Date Time Picker and Full Calendar Plugin-->
+    <script src="../assets/js/plugins/moment.min.js"></script>
+    <!--	Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->
+    <script src="../assets/js/plugins/bootstrap-selectpicker.js"></script>
+    <!--	Plugin for Tags, full documentation here: http://xoxco.com/projects/code/tagsinput/  -->
+    <script src="../assets/js/plugins/bootstrap-tagsinput.js"></script>
+    <!--	Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput -->
+    <script src="../assets/js/plugins/jasny-bootstrap.min.js"></script>
+    <!--	Plugin for Small Gallery in Product Page -->
+    <script src="../assets/js/plugins/jquery.flexisel.js"></script>
+    <!--	Plugin for the Datepicker, full documentation here: https://github.com/Eonasdan/bootstrap-datetimepicker -->
+    <script src="../assets/js/plugins/bootstrap-datetimepicker.min.js"></script>
+    <!--	Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
+    <script src="../assets/js/plugins/nouislider.min.js"></script>
+    <!-- Material Kit Core initialisations of plugins and Bootstrap Material Design Library -->
+    <script src="../assets/js/material-kit.js?v=2.0.0"></script>
+    <!-- Fixed Sidebar Nav - js With initialisations For Demo Purpose, Don't Include it in your project -->
+    <script src="../assets/assets-for-demo/js/material-kit-demo.js"></script>
+    <!-- Plugins for presentation and navigation  -->
+    <script src="../assets/assets-for-demo/js/modernizr.js"></script>
+    <script src="../assets/assets-for-demo/js/vertical-nav.js"></script>
+
+    <!--  Google Maps Plugin    -->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBH5J3FSM0kzJdRvOyTLUTCEJbrQha1cYg"></script>
+
+
+    <!-- Angular -->
+    <!--angular-->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-route.min.js"></script>
+    <script src="../department_js/app.js"></script>
+    <script src="../department_js/ui-bootstrap-tpls-2.5.0.min.js"></script>
+    <link href="../department_css/department_app.css" rel="stylesheet" />
+</head>
+<style>
+
+.footerai {
+    background-color: orange;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 100px;
+    width: 100%;
+    overflow:hidden;
+}
+</style>
+<body class="about-us " ng-app ="department_app">
+  <nav class="navbar      navbar-default fixed-top  navbar-expand-lg" style="background-color:#ffffffcf !important" color-on-scroll="100" id="sectionsNav" ng-controller = "navCtrl">
+      <div class="container-fluid">
+          <div class="navbar-translate">
+              
+              <img class=" mr-0 mr-md-2 navbar-absolute-logo" src="http://www.comsci.science.kmitl.ac.th/cs/images/logo.png" width="80%" height="auto">
+              <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                  <span class="navbar-toggler-icon"></span>
+                  <span class="navbar-toggler-icon"></span>
+              </button>
+          </div>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item" >
+                        <a href="#" class="btn btn-rose btn-raised btn-round " style="background-color:#ec6f2a">
+                            <i class="material-icons">apps</i> หน้าแรก
+                        </a>
+                    </li>
+                    <!-- ng-click = "gotoEnroll();" -->
+                    <li class="dropdown nav-item">
+                        <a href="#!enroll" class="nav-link">
+                            <i class="material-icons">view_day</i> สมัครเข้าศึกษา
+                        </a>
+                    </li>
+                    <li class="dropdown nav-item">
+                        <a href="#!course" class="nav-link" >
+                            <i class="material-icons">view_carousel</i> หลักสูตร
+                        </a>
+                    </li>
+                    <li class="dropdown nav-item">
+                        <a href="#!scollarship" class="nav-link">
+                            <i class="material-icons">view_day</i> ทุนการศึกษา
+                        </a>
+                    </li>
+                 
+                    <li class="dropdown nav-item">
+                        <a href="#!professor" class="nav-link" >
+                            <i class="material-icons">view_carousel</i> คณาจารย์และบุคคลากร
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div ng-view>
+
+    </div>
+
+   
+
+</body>
+
+</html>

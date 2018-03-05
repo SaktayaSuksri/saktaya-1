@@ -1,0 +1,275 @@
+<div ng-controller="utility" ng-init="init()">
+        <div class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card">
+                                <form id="RegisterValidation" action="" method="" novalidate="novalidate">
+                                    <div class="card-header card-header-icon" data-background-color="purple">
+                                    
+                                                            <h4 class="card-title">   <i class="material-icons">mail_outline</i> Category
+                                                                
+                                                            </h4>
+                                                  
+                                             
+                                     
+                                    </div>
+                                    <div class="card-content">
+                                            <button ng-click="modal_create_catagory()" class="btn btn-white btn-round btn-just-icon" style="position: absolute; right: 0;"> 
+                                                    <i class="material-icons">add</i>
+                                                </button>
+                                               
+                                        
+                                                
+                                            <div class="section" style="overflow-x:auto;">
+                                                    <table ng-table="catagory_table" class="table table-striped table-bordered table-condensed table-hover"  width="100%" show-filter="true" >
+                                                      <tr ng-repeat="item in $data" ng-form="rowForm" demo-tracked-table-row="row" >
+                                                       
+                                                            <td title="'_id'"  filter="{ _id: 'text'}" sortable="'_id'"   width="10%" >
+                                                                    
+        
+                                                                  {{ item._id }}
+        
+        
+                                                                    </td>
+
+                                                       <td title="'resourceName'"  filter="{ resourceName: 'text'}" sortable="'resourceName'"  >
+                                                            
+
+                                                          {{ item.resourceName }}
+
+
+                                                            </td>
+                                                            <td class="" width="20%"> 
+                                                                    <button type="button" ng-click="modal_update_catagory(item)" rel="tooltip" title="Edit Task" class="btn btn-primary btn-simple btn-xs">
+                                                                        <i class="material-icons">edit</i>
+                                                                    </button>
+                                                                    <button type="button" ng-click="delete_catagory(item)" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
+                                                                        <i class="material-icons">close</i>
+                                                                    </button>
+                                                                </td>
+                                                         
+                                                    </tr>
+                                                    </table>
+                                            </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>   
+                        <div class="col-md-6">
+                                <div class="card">
+                                    <form id="RegisterValidation" action="" method="" novalidate="novalidate">
+                                        <div class="card-header card-header-icon" data-background-color="purple">
+                                        
+                                                                <h4 class="card-title">   <i class="material-icons">mail_outline</i> Tag
+                                                                    
+                                                                </h4>
+                                                      
+                                                 
+                                         
+                                        </div>
+                                        <div class="card-content">
+                                                <button ng-click="modal_create_tag()" class="btn btn-white btn-round btn-just-icon" style="position: absolute; right: 0;"> 
+                                                        <i class="material-icons">add</i>
+                                                    </button>
+                                                   
+                                            
+    
+                                                <div class="section" style="overflow-x:auto;">
+                                                        <table ng-table="tag_table" class="table table-striped table-bordered table-condensed table-hover"  width="100%" show-filter="true" >
+                                                          <tr ng-repeat="item in $data" >
+                                                                <td title="'_id'"  filter="{ _id: 'text'}" sortable="'_id'" width="10%"  >
+                                                                        
+            
+                                                                      {{ item._id }}
+            
+            
+                                                                        </td>
+
+                                                           <td title="'tagName'"  filter="{ tagName: 'text'}" sortable="'tagName'">
+                                                                {{item.tagName}}
+                                                                </td>
+
+                                                                <td class="" width="20%"> 
+                                                                        <button type="button" ng-click="modal_update_tag(item)" rel="tooltip" title="Edit Task" class="btn btn-primary btn-simple btn-xs">
+                                                                                <i class="material-icons">edit</i>
+                                                                            </button>
+                                                                            <button type="button" ng-click="delete_tag(item)" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
+                                                                                <i class="material-icons">close</i>
+                                                                            </button>
+                                                                    </td>
+                                                        </tr>
+                                                        </table>
+                                                </div>
+                                        </div>
+                                    </form>
+                                </div>
+                        </div>
+           
+                  
+                    </div>
+                </div>
+            </div>
+
+
+  
+<!-- modal wit controller  -->
+
+
+<div id="modal_create_catagory" class="modal fade" tabindex="-1"  aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+              <h3 class="modal-title ">Create Catagory</h3>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <!-- Modal body -->
+            <div class="modal-body">
+               <div class="container-fluid">
+
+        
+                            <form>
+
+                                <div class="form-group label-floating is-empty">
+                                    <label class="control-label">Catagory name</label>
+                                    <input name="resourceName" ng-model="create_catagory_resourceName" type="text" class="form-control">
+                                <span class="material-input"></span></div>
+                      
+                             
+                                <button ng-click="create_catagory()" class="btn btn-fill btn-rose">Submit</button>
+
+                            </form>
+                  
+
+
+               </div>
+            </div>
+    
+            <!-- Modal footer -->
+            <!-- <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div> -->
+          </div>
+        </div>
+      </div>
+      <div id="modal_update_catagory" class="modal fade" tabindex="-1"  aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                  <h3 class="modal-title ">Update Catagory</h3>
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body">
+                   <div class="container-fluid">
+    
+            
+                                <form>
+    
+                                    <div class="form-group label-floating is-empty">
+                                        <label class="control-label">Update name</label>
+                                        <input name="resourceName" ng-model="modal_update_catagory_resourceName" type="text" class="form-control">
+                                    <span class="material-input"></span></div>
+                          
+                                 
+                                    <button ng-click="update_catagory()" class="btn btn-fill btn-rose">Submit</button>
+    
+                                </form>
+                      
+    
+    
+                   </div>
+                </div>
+        
+                <!-- Modal footer -->
+                <!-- <div class="modal-footer">
+                  <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div> -->
+              </div>
+            </div>
+          </div>
+    
+
+
+      
+
+          <div id="modal_create_tag" class="modal fade" tabindex="-1"  aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                  <div class="modal-content">
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                      <h3 class="modal-title ">Create tag</h3>
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                       <div class="container-fluid">
+        
+                
+                                    <form>
+        
+                                        <div class="form-group label-floating is-empty">
+                                            <label class="control-label">tag name</label>
+                                            <input name="resourceName" ng-model="create_tag_resourceName" type="text" class="form-control">
+                                        <span class="material-input"></span></div>
+                              
+                                     
+                                        <button ng-click="create_tag()" class="btn btn-fill btn-rose">Submit</button>
+        
+                                    </form>
+                          
+        
+        
+                       </div>
+                    </div>
+            
+                    <!-- Modal footer -->
+                    <!-- <div class="modal-footer">
+                      <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div> -->
+                  </div>
+                </div>
+              </div>
+              <div id="modal_update_tag" class="modal fade" tabindex="-1"  aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                      <div class="modal-content">
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                          <h3 class="modal-title ">Update tag</h3>
+                          <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                           <div class="container-fluid">
+            
+                    
+                                        <form>
+            
+                                            <div class="form-group label-floating is-empty">
+                                                <label class="control-label">Update name</label>
+                                                <input name="resourceName" ng-model="modal_update_tag_resourceName" type="text" class="form-control">
+                                            <span class="material-input"></span></div>
+                                  
+                                         
+                                            <button ng-click="update_tag()" class="btn btn-fill btn-rose">Submit</button>
+            
+                                        </form>
+                              
+            
+            
+                           </div>
+                        </div>
+                
+                        <!-- Modal footer -->
+                        <!-- <div class="modal-footer">
+                          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                        </div> -->
+                      </div>
+                    </div>
+                  </div>
+            
+    </div>  <!-- wth controller-->
+    
+    
