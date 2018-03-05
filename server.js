@@ -34,7 +34,7 @@ var app = express();
 mongoose.connect(config.dbUrl, function(err){
 	if (err) { 
     console.log("********************************!!! WARNING plzzz !!!*********************************");
-    console.log("                          Can't connect to Database.");
+    console.log("                          Can't connect to Database. naka e dok");
     console.log("             Please Start database first than restarting this program.");
     console.log("**************************************************************************************");
 
