@@ -31,6 +31,9 @@ angular.module('api_service', [])
                                                         get_news : function (data) {
                                                             return $http.post('/api/getNews/',data);
                                                         },
+                                                        get_news_fromID : function (data) {
+                                                            return $http.post('/api/getNewsfromID/',data);
+                                                        }, 
                                                         update_news : function (data) {
                                                             return $http.post('/api/editNews/',data);
                                                         },
