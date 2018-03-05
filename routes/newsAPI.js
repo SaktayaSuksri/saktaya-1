@@ -332,11 +332,11 @@ router.post('/getNewsfromID/', function (request, response) {
     var thisResourceType;
 
     var requiredData = [];
-    requiredData.push(request.body.personelD);
+    requiredData.push(request.body.newsID);
     var requiredReady = Validate.requiredData_Check(requiredData)
 
     var objectIdData = [];
-    objectIdData.push(request.body.personelD);
+    objectIdData.push(request.body.newsID);
     var objectIdReady = Validate.objectIDData_Check(objectIdData)
 
     var obj = new Object();

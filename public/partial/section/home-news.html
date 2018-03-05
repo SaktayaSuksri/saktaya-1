@@ -1,5 +1,5 @@
 
-                <div class="">
+                <div class="" ng-controller="news" ng-init="init()">
                         <div class="row justify-content-md-center">
                         
                                 <div class="col-12 col-md-auto">
@@ -19,107 +19,47 @@
                                     <div class="tab-content tab-space">
                                         <div class="tab-pane active" id="pill1">
                                             <div class="container">
-                                                <div class="row">
-                                                        <div class="col-md-4">
-                                                            <div class="card card-blog">
+                                            <div class="row">
+                                                        <div class="col-md-4"  ng-repeat="item in news_list | limitTo:3:0">
+                                                            <div class="card card-blog" ng-click="news_detail(item._id)" ui-sref="news_detail">
                                                                 <div class="card-header card-header-image">
                                                                     <a href="#pablo">
-                                                                        <img src="http://www.science.kmitl.ac.th/wp-content/themes/personalTheme/images/news/001_2.jpg" alt="">
+                                                                        <img ng-src="{{item.topicPicture}}" alt="{{item.topicShort}}">
                                                                     </a>
                                                                 <div class="colored-shadow" style="background-image: url(&quot;http://www.science.kmitl.ac.th/wp-content/themes/personalTheme/images/news/001_2.jpg&quot;); opacity: 1;"></div></div>
                                                                 <div class="card-body">
-                                                                    <h4 class="card-category text-warning">ระบบยูเอวีสำรวจและวางแผนการเก็บเกี่ยวผลผลิตปาล์มน้ำมัน</h4>
+                                                                    <h4 class="card-category text-warning">{{item.topicShort}}</h4>
                                                                     <h6 class="card-title">
-                                                                        <a href="#pablo">รศ.อนุพงศ์ สรงประภา และผู้ช่วยวิจัย นาย นฤชา อมรดิษฐ์ นักศึกษาปริญญาโทฟิสิกส์ ผลงาน "ระบบยูเอวีสำรวจและวางแผนการเก็บเกี่ยวผลผลิตปาล์มน้ำมัน" ได้รับการตัดสินให้เป็น 1 ใน 6 โครงการสุดท้าย การประกวด UAV STARTUP 2017</a>
+                                                                        <a href="#pablo">{{item.detailShort}}</a>
                                                                     </h6>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="col-md-4">
-                                                            <div class="card card-blog">
-                                                                <div class="card-header card-header-image">
-                                                                    <a href="#pablo">
-                                                                        <img src="http://www.science.kmitl.ac.th/wp-content/themes/personalTheme/images/news/002.jpg" alt="">
-                                                                    </a>
-                                                                <div class="colored-shadow" style="background-image: url(&quot;http://www.science.kmitl.ac.th/wp-content/themes/personalTheme/images/news/002.jpg&quot;); opacity: 1;"></div></div>
-                                                                <div class="card-body">
-                                                                    <h4 class="card-category text-rose">กิจกรรมแข่งขันทดสอบความรู้ โครงการ KMITL Pre-TCAS 2018 รอบสุดท้ายี</h4>
-                                                                    <h6 class="card-title">
-                                                                        <a href="#pablo">กิจกรรมแข่งขันทดสอบความรู้ โครงการ KMITL Pre-TCAS 2018 ซึ่งเป็น ความร่วมมือระหว่าง สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง และ บริษัท เคพีเอ็น อะคาเดมี จำกัด โดยมี usierra คณะวิทยาศาสตร์ และ คณะศิลปศาสตร์ ร่วมจัดกิจกรรม ณ สำนักหอสมุดกลาง สจล ในวันที่ 20 มกราคม 2561</a>
-                                                                    </h6>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-4">
-                                                            <div class="card card-blog">
-                                                                <div class="card-header card-header-image">
-                                                                    <a href="#pablo">
-                                                                        <img src="http://www.science.kmitl.ac.th/wp-content/uploads/2018/01/Edit2.jpg" alt="">
-                                                                    </a>
-                                                                <div class="colored-shadow" style="background-image: url(&quot;http://www.science.kmitl.ac.th/wp-content/uploads/2018/01/Edit2.jpg&quot;); opacity: 1;"></div></div>
-                                                                <div class="card-body ">
-                                                                    <h4 class="card-category text-info">รางวัลครูผู้สอนดีเด่น ประจําปี 2561</h4>
-                                                                    <h6 class="card-title">
-                                                                        <a href="#pablo">ผศ.สิริลักษณ์ อนันต์สถิตย์สิน ภาควิชาวิทยาการคอมพิวเตอร์ คณะวิทยาศาสตร์ ได้รับรางวัลครูผู้สอนดีเด่น ประจําปี 2561 จากคณะครุศาสตร์อุตสาหกรรมและเทคโนโลยี สจล.</a>
-                                                                    </h6>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                     
+                                                      
                                                     </div>
-
 
                                                 
                                                     <div class="row">
-                                                            <div class="col-md-4">
-                                                                    <div class="card card-blog">
-                                                                        <div class="card-header card-header-image">
-                                                                            <a href="#pablo">
-                                                                                <img src="http://www.science.kmitl.ac.th/wp-content/themes/personalTheme/images/news/002.jpg" alt="">
-                                                                            </a>
-                                                                        <div class="colored-shadow" style="background-image: url(&quot;http://www.science.kmitl.ac.th/wp-content/themes/personalTheme/images/news/002.jpg&quot;); opacity: 1;"></div></div>
-                                                                        <div class="card-body">
-                                                                            <h4 class="card-category text-rose">กิจกรรมแข่งขันทดสอบความรู้ โครงการ KMITL Pre-TCAS 2018 รอบสุดท้ายี</h4>
-                                                                            <h6 class="card-title">
-                                                                                <a href="#pablo">กิจกรรมแข่งขันทดสอบความรู้ โครงการ KMITL Pre-TCAS 2018 ซึ่งเป็น ความร่วมมือระหว่าง สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง และ บริษัท เคพีเอ็น อะคาเดมี จำกัด โดยมี usierra คณะวิทยาศาสตร์ และ คณะศิลปศาสตร์ ร่วมจัดกิจกรรม ณ สำนักหอสมุดกลาง สจล ในวันที่ 20 มกราคม 2561</a>
-                                                                            </h6>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            <div class="col-md-4">
-                                                                <div class="card card-blog">
-                                                                    <div class="card-header card-header-image">
-                                                                        <a href="#pablo">
-                                                                            <img src="http://www.science.kmitl.ac.th/wp-content/themes/personalTheme/images/news/001_2.jpg" alt="">
-                                                                        </a>
-                                                                    <div class="colored-shadow" style="background-image: url(&quot;http://www.science.kmitl.ac.th/wp-content/themes/personalTheme/images/news/001_2.jpg&quot;); opacity: 1;"></div></div>
-                                                                    <div class="card-body">
-                                                                        <h4 class="card-category text-warning">ระบบยูเอวีสำรวจและวางแผนการเก็บเกี่ยวผลผลิตปาล์มน้ำมัน</h4>
-                                                                        <h6 class="card-title">
-                                                                            <a href="#pablo">รศ.อนุพงศ์ สรงประภา และผู้ช่วยวิจัย นาย นฤชา อมรดิษฐ์ นักศึกษาปริญญาโทฟิสิกส์ ผลงาน "ระบบยูเอวีสำรวจและวางแผนการเก็บเกี่ยวผลผลิตปาล์มน้ำมัน" ได้รับการตัดสินให้เป็น 1 ใน 6 โครงการสุดท้าย การประกวด UAV STARTUP 2017</a>
-                                                                        </h6>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        
-                                                            <div class="col-md-4">
-                                                                <div class="card card-blog">
-                                                                    <div class="card-header card-header-image">
-                                                                        <a href="#pablo">
-                                                                            <img src="http://www.science.kmitl.ac.th/wp-content/uploads/2018/01/Edit2.jpg" alt="">
-                                                                        </a>
-                                                                    <div class="colored-shadow" style="background-image: url(&quot;http://www.science.kmitl.ac.th/wp-content/uploads/2018/01/Edit2.jpg&quot;); opacity: 1;"></div></div>
-                                                                    <div class="card-body ">
-                                                                        <h4 class="card-category text-info">รางวัลครูผู้สอนดีเด่น ประจําปี 2561</h4>
-                                                                        <h6 class="card-title">
-                                                                            <a href="#pablo">ผศ.สิริลักษณ์ อนันต์สถิตย์สิน ภาควิชาวิทยาการคอมพิวเตอร์ คณะวิทยาศาสตร์ ได้รับรางวัลครูผู้สอนดีเด่น ประจําปี 2561 จากคณะครุศาสตร์อุตสาหกรรมและเทคโนโลยี สจล.</a>
-                                                                        </h6>
-                                                                    </div>
+                                                        <div class="col-md-4"  ng-repeat="item in news_list | limitTo:3:4">
+                                                            <div class="card card-blog" ng-click="news_detail(item._id)">
+                                                                <div class="card-header card-header-image">
+                                                                    <a href="#pablo">
+                                                                        <img ng-src="{{item.topicPicture}}" alt="{{item.topicShort}}">
+                                                                    </a>
+                                                                <div class="colored-shadow" style="background-image: url(&quot;http://www.science.kmitl.ac.th/wp-content/themes/personalTheme/images/news/001_2.jpg&quot;); opacity: 1;"></div></div>
+                                                                <div class="card-body">
+                                                                    <h4 class="card-category text-warning">{{item.topicShort}}</h4>
+                                                                    <h6 class="card-title">
+                                                                        <a href="#pablo">{{item.detailShort}}</a>
+                                                                    </h6>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        </div>
+                                                      
+                                                    </div>
+                                                      
                                         </div>
+                                    </div>
                                         <div class="tab-pane  " id="pill2">
                                                  
                                                                     

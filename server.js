@@ -34,10 +34,14 @@ mongoose.connect(config.dbUrl, function(err){
 	if (err) {
     console.log("********************************!!! WARNING plzzz !!!*********************************");
 <<<<<<< HEAD
+<<<<<<< HEAD
     console.log("                          Can't connect to Database. naka e dok");
 =======
     console.log("                          Can't connect to Database.!!");
 >>>>>>> d56459db1c23c067f606fc843e17bfb1d4ad27e8
+=======
+    console.log("                          Can't connect to Database.!!");
+>>>>>>> 9b0b36074e9b6b455af2e034398eb2dd97edec35
     console.log("             Please Start database first than restarting this program.");
     console.log("**************************************************************************************");
 
