@@ -25,37 +25,37 @@ angular.module('app').config(function($stateProvider, $urlRouterProvider) {
             })
 
             .state('news', {
-                url: 'news',
+                url: '/news',
                 templateUrl : "http://localhost:2001/partial/news.html"
             })
 
 
             .state('history', {
-                url: 'history',
+                url: '/history',
                 templateUrl : "http://localhost:2001/partial/history.html"
             })
 
             .state('resolution', {
-                url: 'resolution',
+                url: '/resolution',
                 templateUrl : "http://localhost:2001/partial/resolution.html"
             })
             .state('structure', {
-                url: 'structure',
+                url: '/structure',
                 templateUrl : "http://localhost:2001/partial/structure.html"
             })
 
             .state('yearly-report', {
-                url: 'yearly-report',
+                url: '/yearly-report',
                 templateUrl : "http://localhost:2001/partial/yearly-report.html"
             })
 
             .state('graduate', {
-                url: 'graduate',
+                url: '/graduate',
                 templateUrl : "http://localhost:2001/partial/graduate.html"
             })
 
             .state('news_detail', {
-                url: 'news_detail',
+                url: '/news_detail',
                 templateUrl : "http://localhost:2001/partial/news_detail.html"
             })
 
