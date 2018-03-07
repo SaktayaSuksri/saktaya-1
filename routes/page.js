@@ -3,7 +3,8 @@ var router = express.Router();
 
 // ObjectId type for mongodb documents
 var ObjectId = require('mongodb').ObjectId;
-
+var querystring = require('querystring');
+var request = require('request');
 var Link = require('../model/link_model');
 
 // Middleware for all routes
@@ -19,6 +20,54 @@ router.get('/page', function(req, res) {
 
     console.log("test")
     res.render('template_front.ejs'); 
+});
+
+
+router.get('/news_each/:news_id', function(req, res) {
+   
+
+    console.log("---"+req.params.news_id)
+    console.log("testststs");
+
+  var form = {  newsID : req.params.news_id ,readCount :false};
+  var formData = querystring.stringify(form);
+  console.log("To new : news_each   = " +formData);
+  var contentLength = formData.length;
+  request({
+    header : {
+      'User-Agent':       'Super Agent/0.0.1',
+      'Content-Type':     'application/x-www-form-urlencoded'
+  },
+    uri: 'http://localhost:2001/api/getNewsfromID/',
+    form: formData,
+    method: 'POST'
+  }, function (err, res2, body) {
+    //it works!
+    if(err){
+        console.log("[ERROR] = "+err);
+    }
+    else{      
+        console.log(body);
+        body = JSON.parse(body);
+
+        if(body.code != "999999")
+        {
+            res.send(body); 
+        }
+        else{
+
+          res.render('news_each.ejs',{data:body.message}); 
+        }
+
+  
+       // body = JSON.parse(body);
+    
+     
+      }
+  });
+
+
+    
 });
 
 router.get('/', function(req, res) {

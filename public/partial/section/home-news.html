@@ -21,7 +21,8 @@
                                             <div class="container">
                                             <div class="row">
                                                         <div class="col-md-4"  ng-repeat="item in news_list | limitTo:3:0">
-                                                            <div class="card card-blog" data-toggle="modal" ng-click = "news_detail_href(item._id)" >
+                                                           
+                                                            <div class="card card-blog" data-toggle="modal"  >
                                                                 <div class="card-header card-header-image">
                                                                     <a href="#pablo">
                                                                         <img ng-src="{{item.topicPicture}}" alt="{{item.topicShort}}">
@@ -33,7 +34,9 @@
                                                                         <a href="#pablo">{{item.detailShort}}</a>
                                                                     </h6>
                                                                 </div>
+                                                                <a ng-href="http://localhost:2001/news_each/{{item._id}}" >อ่านต่อ </a>
                                                             </div>
+                                                            
                                                         </div>
                                                       
                                                     </div>
