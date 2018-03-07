@@ -21,7 +21,7 @@
                                             <div class="container">
                                             <div class="row">
                                                         <div class="col-md-4"  ng-repeat="item in news_list | limitTo:3:0">
-                                                            <div class="card card-blog" ng-click="news_detail(item._id)" ui-sref="news_detail">
+                                                            <div class="card card-blog" data-toggle="modal" ng-click = "news_detail_href(item._id)" >
                                                                 <div class="card-header card-header-image">
                                                                     <a href="#pablo">
                                                                         <img ng-src="{{item.topicPicture}}" alt="{{item.topicShort}}">
@@ -79,6 +79,54 @@
                                                             </div>
                                         </div>
                                 
+                                        
+                                        <div id="myModal" class="modal fade" tabindex="-1"  aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-lg">
+                                              <div class="modal-content">
+                                                <!-- Modal Header -->
+                                                <div class="modal-header">
+
+                                                  <h3 class="modal-title ">{{modal_news.topicFull}}</h3>
+                                                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                </div>
+                                                <!-- Modal Header -->
+                                                <div class="modal-header " style="padding-top: 0px;">
+                                                  <h4 class="modal-title ">{{modal_news.topicShort}}</h4>
+                                                </div>
+                                                <!-- Modal body -->
+                                                <div class="modal-body">
+                                                  <div class="container">
+                                                    <div class="row">
+                                            
+                                        
+                                                        <div class="col-md-12 ml-auto mr-auto ">
+                                                                <div class="">
+                                                                        <div ng-bind-html="trustAsHtml(modal_news.detailFull)"></div>
+                                        
+                                                                    </div>
+                                                          
+                                                      </div>
+                                                    </div>
+                                                    
+                                        
+                                                  </div>
+                                                </div>
                                       
+                                                <!-- Modal footer -->
+                                            <div class="modal-footer">
+                                                <p><b>วันที่โพส : </b>{{modal_news.datetimePost}}</p>
+                                                <p><b>ผู้แต่ง : </b>{{modal_news.author}}</p>
+                                                <p><b>จำนวนการอ่าน : </b>{{modal_news.readCount}}</p>
+
+                                                <p>
+                                                        {{modal_news.resourceName}}
+                                                        {{modal_news.departmentName}}
+                                                </p>
+                                                  <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                                </div> 
+                                              </div>
+                                            </div>
+                                          </div>
+
                     </div>
                 

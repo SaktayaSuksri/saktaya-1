@@ -57,8 +57,8 @@
 }
 </style>
 <body class="landing-page " ng-app="app" ng-controller="global" ng-init="showtranparent = true" > 
-
-    <nav class="navbar   navbar-color-on-scroll  navbar-transparent fixed-top   navbar-expand-lg   bg-warning"  color-on-scroll="100"  >
+        
+    <nav class="navbar   fixed-top   navbar-expand-lg   bg-warning"    >
       
         <div class="container-fluid">
             <div class="navbar-translate">
@@ -85,7 +85,7 @@
                             <i class="material-icons">view_day</i> หลักสูตร
                         </a>
                         <div class="dropdown-menu dropdown-menu-right dropdown-with-icons">
-                            <a href="/page#/course-tee" class="dropdown-item">
+                            <a ui-sref="course-tee" class="dropdown-item">
                                 <i class="material-icons">dns</i> ปริญญาตรี
                             </a>
                             <a ui-sref="course-tor"class="dropdown-item">
@@ -102,21 +102,21 @@
                             <i class="material-icons">view_carousel</i> เกี่ยวกับคณะ
                         </a>
                         <div class="dropdown-menu dropdown-menu-right dropdown-with-icons">
-                            <a href="" class="dropdown-item">
-                                <i class="material-icons">account_balance</i> ประวัติความเป็นมา
-                            </a>
-                            <a href="" class="dropdown-item">
-                                <i class="material-icons">art_track</i> ปรัชญา-ปณิธาน-วิสัยทัศน์-พันธกิจ
-                            </a>
-                     
-                      
-                            <a href="" class="dropdown-item">
-                                <i class="material-icons">view_day</i>  โครงสร้างองค์กร
-                            </a>
-                   
-                            <a href="" class="dropdown-item">
-                                <i class="material-icons">store</i> รายงานประจำปี
-                            </a>
+                                <a href="" class="dropdown-item">
+                                        <i class="material-icons">account_balance</i> ประวัติความเป็นมา
+                                    </a>
+                                    <a href="" class="dropdown-item">
+                                        <i class="material-icons">art_track</i> ปรัชญา-ปณิธาน-วิสัยทัศน์-พันธกิจ
+                                    </a>
+                             
+                              
+                                    <a href="" class="dropdown-item">
+                                        <i class="material-icons">view_day</i>  โครงสร้างองค์กร
+                                    </a>
+                           
+                                    <a href="" class="dropdown-item">
+                                        <i class="material-icons">store</i> รายงานประจำปี
+                                    </a>
                            
                         </div>
                     </li>
@@ -257,8 +257,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular-sanitize.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.min.js"></script>
 
-<script src="./js/service.js" type="text/javascript"></script>
-<script src="./js/mainCtrl_home.js" type="text/javascript"></script>
+<script src="http://localhost:2001/js/service.js" type="text/javascript"></script>
+<script src="http://localhost:2001/js/mainCtrl_front.js" type="text/javascript"></script>
     
 <script src="../bower_components/angular-youtube-api-factory/dist/angular-youtube-api-factory.min.js"></script>
 

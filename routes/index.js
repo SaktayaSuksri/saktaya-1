@@ -8,6 +8,12 @@ module.exports = function (app, passport) {
             user: req.user
         }); 
     });
+    app.get('/page', function(req, res) {
+
+        console.log("test")
+        res.render('../public/template_front.ejs'); 
+    });
+
 
     // =====================================
     // LOGIN ===============================

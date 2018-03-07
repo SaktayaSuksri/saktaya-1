@@ -64,14 +64,14 @@ var formAPI = require('./routes/formAPI');
 var linkAPI = require('./routes/linkAPI');
 var userAPI =  require('./routes/userAPI');
 var formInstanceAPI = require('./routes/formInstanceAPI');
-
+var page = require('./routes/page');
 
 
 
 // configuration ===============================================================
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, 'public'));
 // set up our express application
 
 
@@ -79,6 +79,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs'); // set up ejs for templating
 
 
+        
 // Add headers
 app.use(function (req, res, next) {
 
@@ -145,6 +146,7 @@ app.use(flash()); // use connect-flash for flash messages stored in session
 // REGISTER OUR ROUTES -------------------------------
 // all of our routes will be prefixed with /api
 
+app.use('/', page);
 app.use('/api', resourceTypeAPI);
 app.use('/api', newsAPI);
 app.use('/api', departmentAPI);

@@ -2,73 +2,17 @@ angular.module('app', ['jtt_youtube','ui.router',"api_service", 'ngSanitize'])
 
 
 angular.module('app').config(function($stateProvider, $urlRouterProvider) {
-    $urlRouterProvider.otherwise('/course-tee');
+    $urlRouterProvider.otherwise('/home');
     
         $stateProvider
     
-       
-
-            .state('course-tee', {
-                url: '/course-tee',
-                templateUrl : "http://localhost:2001/partial/course-tee.html"
+            // HOME STATES AND NESTED VIEWS ========================================
+            .state('home', {
+                url: '/home',
+                templateUrl : "./partial/home.html"
             })
 
-            .state('course-tor', {
-                url: '/course-tor',
-                templateUrl : "http://localhost:2001/partial/course-tor.html"
-            })
-
-            
-            .state('course-aek', {
-                url: '/course-aek',
-                templateUrl : "http://localhost:2001/partial/course-aek.html"
-            })
-
-            .state('news', {
-                url: 'news',
-                templateUrl : "http://localhost:2001/partial/news.html"
-            })
-
-            
-            .state('history', {
-                url: 'history',
-                templateUrl : "http://localhost:2001/partial/history.html"
-            })
-
-            .state('resolution', {
-                url: 'resolution',
-                templateUrl : "http://localhost:2001/partial/resolution.html"
-            })
-            .state('structure', {
-                url: 'structure',
-                templateUrl : "http://localhost:2001/partial/structure.html"
-            })
-
-            .state('yearly-report', {
-                url: 'yearly-report',
-                templateUrl : "http://localhost:2001/partial/yearly-report.html"
-            })
-
-            .state('graduate', {
-                url: 'graduate',
-                templateUrl : "http://localhost:2001/partial/graduate.html"
-            })
-
-            .state('news_detail', {
-                url: 'news_detail',
-                templateUrl : "http://localhost:2001/partial/news_detail.html"
-            })
-
-            .state('link_management', {
-                url: '/link_management',
-                templateUrl : "http://localhost:2001/partial/link_management.html"
-            })
-
-                // nested list with custom controller
-       
-
-
-      
+        
 
      
 

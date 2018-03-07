@@ -1,6 +1,15 @@
 angular.module('app', ['ui.router',"xeditable","ngTable","api_service",'ngQuill', 'ngSanitize'])
 angular.module('app').config(['ngQuillConfigProvider', function (ngQuillConfigProvider) {
-    ngQuillConfigProvider.set();
+ 
+  ngQuillConfigProvider.set( {
+      theme: 'snow',
+      modules: {
+        imageResize: {
+          displaySize: true
+        }
+      }
+    
+      });
 
     
 }]);
