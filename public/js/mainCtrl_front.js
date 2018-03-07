@@ -60,6 +60,10 @@ angular.module('app').config(function($stateProvider, $urlRouterProvider) {
                 templateUrl : "http://localhost:2001/partial/news_container.html"
             })
 
+            .state('docs_container', {
+                url: '/docs_container',
+                templateUrl : "http://localhost:2001/partial/docs_container.html"
+            })
 
             .state('link_management', {
                 url: '/link_management',
@@ -114,6 +118,11 @@ angular.module('app').controller('global', function ($scope,$http,api_manage){
 
 });
 
+angular.module('app').controller('docs_container', function ($scope,$http,api_manage,global_service){
+    
+
+$scope.docs_list=[{data:1},{data:1},{data:1},{data:1},{data:1}]
+});
 angular.module('app').controller('news_container', function ($scope,$http,api_manage,global_service){
     
 
