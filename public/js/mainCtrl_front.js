@@ -3,10 +3,10 @@ angular.module('app', ['jtt_youtube','ui.router',"api_service", 'ngSanitize'])
 
 angular.module('app').config(function($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/course-tee');
-    
+
         $stateProvider
-    
-       
+
+
 
             .state('course-tee', {
                 url: '/course-tee',
@@ -18,7 +18,7 @@ angular.module('app').config(function($stateProvider, $urlRouterProvider) {
                 templateUrl : "http://localhost:2001/partial/course-tor.html"
             })
 
-            
+
             .state('course-aek', {
                 url: '/course-aek',
                 templateUrl : "http://localhost:2001/partial/course-aek.html"
@@ -29,7 +29,7 @@ angular.module('app').config(function($stateProvider, $urlRouterProvider) {
                 templateUrl : "http://localhost:2001/partial/news.html"
             })
 
-            
+
             .state('history', {
                 url: 'history',
                 templateUrl : "http://localhost:2001/partial/history.html"
@@ -64,13 +64,27 @@ angular.module('app').config(function($stateProvider, $urlRouterProvider) {
                 templateUrl : "http://localhost:2001/partial/link_management.html"
             })
 
+            .state('about_timeline', {
+                url: '/about_timeline',
+                templateUrl : "http://localhost:2001/partial/about_timeline.html"
+            })
+
+            .state('about_vision', {
+                url: '/about_vision',
+                templateUrl : "http://localhost:2001/partial/about_vision.html"
+            })
+
+            .state('about_organizational_structure', {
+                url: '/about_organizational_structure',
+                templateUrl : "http://localhost:2001/partial/about_organizational_structure.html"
+            })
+
+            .state('about_year_reports', {
+                url: '/about_year_reports',
+                templateUrl : "http://localhost:2001/partial/about_year_reports.html"
+            })
                 // nested list with custom controller
-       
 
-
-      
-
-     
 
 });
 
@@ -78,7 +92,7 @@ angular.module('app').config(function($stateProvider, $urlRouterProvider) {
 angular.module('app')
 
     // super simple service
-    // each function returns a promise object 
+    // each function returns a promise object
     .factory('global_service', ['$rootScope', '$http', function ($rootScope, $http){
         var buf_id ;
     return {
@@ -95,15 +109,15 @@ angular.module('app')
     }]);
 angular.module('app').controller('global', function ($scope,$http,api_manage){
 alert();
-    
+
 });
 
 
 angular.module('app').controller('news_detail', function ($scope,$http,api_manage,global_service){
-   
-  
-    
-   
+
+
+
+
     });
 
 angular.module('app').controller('youtube_box', function ($scope, $filter, $q,$http, youtubeFactory){
@@ -128,37 +142,37 @@ angular.module('app').controller('news', function ($sce,$scope, $filter, $q,$htt
         };
 
     $scope.init = function(){
-        
+
             //  quill_title  quill_detail      quill_title_yo  quill_detail_yo
-           
-      
+
+
             $scope.get_news();
-        
-      
+
+
         }
-    
+
         $scope.news_detail_href= function(id){
 
 
             $scope.init_news_modal(id);
             $('#myModal').modal('show');
-            
 
-  
-         
+
+
+
         }
 
-        
+
 $scope.init_news_modal = function(id){
     alert("new detail = "+id)
-    
+
         let dataObj = {
-            
-            
+
+
             newsID : id,
             readCount:"true",
-       
-                
+
+
               }
                 api_manage.get_news_fromID(dataObj)
                 .success(function(data, status, headers, config) {
@@ -174,29 +188,29 @@ $scope.init_news_modal = function(id){
                     $scope.modal_news  = data.message;
                     console.log('$scope.news_list  =  '+ JSON.stringify($scope.news_list))
                 //    $scope.news_table= new NgTableParams({count: 10 ,  sorting: { resourceName: "desc" }  }, { counts: [10,20, 100], dataset: $scope.news_list });
-                   
+
                   }
-                
+
                 })
                 .error(function(data, status, headers, config) {
                     alert( "failure message: " + JSON.stringify({data: data}) +"ไม่สามารถติดต่อเซิฟเวอร์ได้ ติดต่อแอดมิน");
                     console.log(status+headers);
-                });	
+                });
 
 }
 
 $scope.get_news = function(){
-    
+
     let dataObj = {
-  
-  
+
+
       resourceId : "0",
       departmentId:"0",
       tagId:"0",
       limit:6,
       isPosted:"false",
       isPreview:"true"
-      
+
     }
       api_manage.get_news(dataObj)
       .success(function(data, status, headers, config) {
@@ -212,14 +226,14 @@ $scope.get_news = function(){
           $scope.news_list  = data.message;
           console.log('$scope.news_list  =  '+ JSON.stringify($scope.news_list))
         //  $scope.news_table= new NgTableParams({count: 10 ,  sorting: { resourceName: "desc" }  }, { counts: [10,20, 100], dataset: $scope.news_list });
-         
+
         }
-      
+
       })
       .error(function(data, status, headers, config) {
           alert( "failure message: " + JSON.stringify({data: data}) +"ไม่สามารถติดต่อเซิฟเวอร์ได้ ติดต่อแอดมิน");
           console.log(status+headers);
-      });	
+      });
     }
 
 
