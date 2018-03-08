@@ -22,3 +22,8 @@
     height:300px;
     overflow-y: scroll;
   }
+
+.info-title {
+      color: #ff9800;
+      margin: 1.75rem 0 0.875rem;
+  }
