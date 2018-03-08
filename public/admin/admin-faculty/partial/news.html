@@ -268,16 +268,20 @@
                                         <label for="about">เนื้อหา</label>
 
 
-                                        <ng-quill-editor ng-model="quill_detail" on-editor-created="editorCreated(editor)" on-content-changed="contentChanged(editor, html, text)" toolbar-enries="bold italic underline"></ng-quill-editor>
-
-
-                                    </div>
-
-
-
+                                     <!--   <ng-quill-editor ng-model="quill_detail" on-editor-created="editorCreated(editor)" on-content-changed="contentChanged(editor, html, text)" toolbar-enries="bold italic underline"></ng-quill-editor>
+                                     -->
+                           
+                           
+                                    
+                               
+                                   
+                                    <div text-angular="text-angular" name="quill_detail" ng-model="quill_detail" style="width:100%;height:100%;" ></div>
+                               
+                            </div>
                                     <div class="row">
                                         <button class="btn btn-primary" ng-click="update_news()" type="submit">Save</button>
                                     </div>
+
                                 </form>
                             </div>
 
@@ -293,8 +297,9 @@
 
 
                             <div class="">
-                                <div ng-bind-html="trustAsHtml(quill_detail)"></div>
-
+                             <!--   <div ng-bind-html="trustAsHtml(quill_detail)"></div>
+                             -->
+                             <div ta-bind="text" ng-model="quill_detail" ta-readonly='disabled'></div>
                             </div>
                         </div>
                     </div>

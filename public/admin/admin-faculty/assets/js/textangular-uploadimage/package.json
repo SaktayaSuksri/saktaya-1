@@ -1,0 +1,57 @@
+{
+  "_from": "textangular-uploadimage",
+  "_id": "textangular-uploadimage@0.0.4",
+  "_inBundle": false,
+  "_integrity": "sha512-PxbDGytoskGWztaVt2u9k0TVIpHHyhiNjmHhiaj/P9g5MDNxftP4pXZOWtnjnxGpSWdUgIybeOl58xJ/tV05+w==",
+  "_location": "/textangular-uploadimage",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "textangular-uploadimage",
+    "name": "textangular-uploadimage",
+    "escapedName": "textangular-uploadimage",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/textangular-uploadimage/-/textangular-uploadimage-0.0.4.tgz",
+  "_shasum": "9354623a16ae33410a44b3de17908cf14f8173b0",
+  "_spec": "textangular-uploadimage",
+  "_where": "D:\\sandbox\\git\\sciweb\\science_KMITL_web\\saktaya-1",
+  "author": {
+    "name": "Dmitry Demenchuk @mrded",
+    "url": "dmitry@demenchuk.me"
+  },
+  "bugs": {
+    "url": "https://github.com/mrded/textAngular-uploadImage/issues"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "textangular": "^1.5.x"
+  },
+  "deprecated": false,
+  "description": "textAngular plugin allows you to upload images",
+  "homepage": "https://github.com/mrded/textAngular-uploadImage#readme",
+  "keywords": [
+    "AngularJS",
+    "text editor",
+    "WYSIWYG",
+    "plugin",
+    "image",
+    "picture",
+    "upload"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "name": "textangular-uploadimage",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mrded/textAngular-uploadImage.git"
+  },
+  "version": "0.0.4"
+}

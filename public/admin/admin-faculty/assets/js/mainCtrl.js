@@ -1,18 +1,59 @@
-angular.module('app', ['ui.router',"xeditable","ngTable","api_service",'ngQuill', 'ngSanitize'])
-angular.module('app').config(['ngQuillConfigProvider', function (ngQuillConfigProvider) {
- 
-  ngQuillConfigProvider.set( {
-      theme: 'snow',
-      modules: {
-        imageResize: {
-          displaySize: true
-        }
-      }
-    
-      });
+angular.module('app', ['ui.router',"xeditable","ngTable","api_service", 'ngSanitize','textAngular'])
 
-    
+
+
+angular.module('app').config(function($provide){
+$provide.decorator('taOptions', ['taRegisterTool', '$delegate', function(taRegisterTool, taOptions){
+  // $delegate is the taOptions we are decorating
+  // register the tool with textAngular
+
+  taRegisterTool('backgroundColor', {
+    display: "<button colorpicker class='btn btn-default ng-scope' title='Background Color' type='button' colorpicker-close-on-select colorpicker-position='bottom' ng-model='backgroundColor' style='background-color: {{backgroundColor}}'><i class='fa fa-paint-brush'></i></button>",
+    action: function (deferred) {
+      var self = this;
+      this.$editor().wrapSelection('backgroundColor', this.backgroundColor);
+      if (typeof self.listener == 'undefined') {
+        self.listener = self.$watch('backgroundColor', function (newValue) {
+          self.$editor().wrapSelection('backColor', newValue);
+        });
+      }
+      self.$on('colorpicker-selected', function () {
+        deferred.resolve();
+      });
+      self.$on('colorpicker-closed', function () {
+        deferred.resolve();
+      });
+      return;
+    }
+  });
+  taOptions.toolbar[1].unshift('backgroundColor');
+
+  taRegisterTool('fontColor', {
+    display: "<button colorpicker type='button' class='btn btn-default ng-scope'  title='Font Color'  colorpicker-close-on-select colorpicker-position='bottom' ng-model='fontColor' style='color: {{fontColor}}'><i class='fa fa-font '></i></button>",
+    action: function (deferred) {
+      var self = this;
+      if (typeof self.listener == 'undefined') {
+        self.listener = self.$watch('fontColor', function (newValue) {
+          self.$editor().wrapSelection('foreColor', newValue);
+        });
+      }
+      self.$on('colorpicker-selected', function () {
+        deferred.resolve();
+      });
+      self.$on('colorpicker-closed', function () {
+        deferred.resolve();
+      });
+      return false;
+    }
+  });
+  taOptions.toolbar[1].unshift('fontColor');
+
+  taOptions.setup.textEditorSetup=function($element) {
+    $element.attr('ui-codemirror', '');
+  };
+  return taOptions;
 }]);
+});
 
 angular.module('app').config(function($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/home');
@@ -641,7 +682,6 @@ angular.module('app').controller('person', function ($scope,NgTableParams, $filt
   });
   
 
-
 angular.module('app').controller('news', function ($scope,$sce,NgTableParams, $filter, $q,$http,api_manage){
   $scope.trustAsHtml = function(string) {
 console.log("str = "+string)
@@ -671,6 +711,9 @@ console.log("str = "+string)
     $scope.quill_detail = '';
     $scope.quill_title_yo = '';
     $scope.quill_detail_yo = '';
+
+
+  
 }
 
 $scope.reload_table = function(item){
@@ -696,16 +739,16 @@ $scope.get_news = function(){
     api_manage.get_news(dataObj)
     .success(function(data, status, headers, config) {
         //$scope.message = data;
-        console.log("-----------"+ JSON.stringify(data));
+      //  console.log("-----------"+ JSON.stringify(data));
         if(data.code != "999999")
         {
           alert(data.message);
         }
         else
         {
-        console.log(data);
+      //  console.log(data);
         $scope.news_list  = data.message;
-        console.log('$scope.news_list  =  '+ JSON.stringify($scope.news_list))
+      //  console.log('$scope.news_list  =  '+ JSON.stringify($scope.news_list))
         $scope.news_table= new NgTableParams({count: 10 ,  sorting: { resourceName: "desc" }  }, { counts: [10,20, 100], dataset: $scope.news_list });
        
       }
