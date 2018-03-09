@@ -7,39 +7,191 @@
                   <div class="container-fluid">
                     <!-- <div class="col-lg-6 col-md-12"> -->
                             <h3>
-                                <small> Vertical tabs</small>
+                                <small>หลักสูตรปริญญาตรี</small>
                             </h3>
                             <div class="row">
                                 <div class="col-md-2">
-                                    <ul class="nav nav-pills nav-pills-rose flex-column">
+                                    <ul class="nav nav-pills nav-pills-warning flex-column">
                                         <li class="nav-item">
-                                            <a class="nav-link active" href="" data-toggle="tab">Profile</a>
+                                            <a class="nav-link active" data-toggle="tab" ng-click="clickMenu(1)">ภาพรวมหลักสูตร</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="" data-toggle="tab">Settings</a>
+                                            <a class="nav-link" data-toggle="tab" ng-click="clickMenu(2)">โครงสร้างหลักสูตร</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="" data-toggle="tab">Options</a>
+                                            <a class="nav-link" data-toggle="tab" ng-click="clickMenu(3)">แผนการศึกษา</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" data-toggle="tab" ng-click="clickMenu(4)">รายละเอียดอื่นๆ</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" data-toggle="tab" ng-click="clickMenu(5)">ดาวน์โหลดหลักสูตร</a>
                                         </li>
                                     </ul>
                                 </div>
-                        
+
                                 <div class="col-md-10">
                                     <div class="tab-content">
-                                        <div class="tab-pane active" id="tab1">
+                                        <div class="" ng-show = "tab == '1'">
                                             <div class="container">
-                                            Collaboratively administrate empowered markets via plug-and-play networks. Dynamically procrastinate B2C users after installed base benefits.C users after installed base benefits.C users after installed base benefits.C users after installed base benefits.C users after installed base benefits.C users after installed base benefits.
+                                              <div class="row">
+                                                <div class="col-md-10 ml-auto mr-auto">
+                                                  <h2 class="title">ภาพรวมสาขาวิภาควิชาวิทยาการคอมพิวเตอร์</h2>
+                                                </div>
+                                              </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="" ng-show = "tab == '2'">
+                                          <div class="alert" style="background-color: #717171; padding: 4px 15px; color: #fff;">
+                                            <div class="container">
+                                                <h4>จำนวนหน่วยกิตรวมตลอดหลักสูตร <span style="float: right;">รวม 136 หน่วยกิต</span></h4>
+                                            </div>
+                                        </div>
+                                        <div class="container" >
+                                          <div class="row">
+                                          <div class="col" style="padding: 0px;">
+                                            <div style="background-color: #dedede; padding: 10px 10px; text-align: center;"><b>โครงสร้างหลักสูตร</b></div>
+                                            <div style="padding: 10px; background-color: #f9f9f9;"><b>1.&nbsp; หมวดวิชาศึกษาทั่วไป <span style="float: right;">30 &nbsp; หน่วยกิต</span></b></div>
+
+                                            <div class="list-group" id="list-tab" role="tablist" style="padding: 0px;">
+                                               <a class="list-group-item list-group-item-action" data-toggle="list" ng-click="clickList('social')">
+                                                 <div class="col-1" style="margin : 0px;"> 1.1 </div>
+                                                 <div class="col-8"> กลุ่มวิชาสังคมศาสตร์</div>
+                                                 <div class="col-1"> 6</div>
+                                                 <div class="col-1"> หน่วยกิต</div>
+                                               </a>
+                                               <a class="list-group-item list-group-item-action"  data-toggle="list" ng-click="clickList('human')">
+                                                 <div class="col-1" style="margin : 0px;"> 1.2 </div>
+                                                 <div class="col-8"> กลุ่มวิชามนุษยศาสตร์์</div>
+                                                 <div class="col-1"> 6</div>
+                                                 <div class="col-1"> หน่วยกิต</div>
+                                               </a>
+                                               <a class="list-group-item list-group-item-action"  data-toggle="list">
+                                                 <div class="col-1" style="margin : 0px;"> 1.3 </div>
+                                                 <div class="col-8"> กลุ่มวิชาภาษา</div>
+                                                 <div class="col-1"> 12</div>
+                                                 <div class="col-1"> หน่วยกิต</div>
+                                               </a>
+                                               <a class="list-group-item list-group-item-action"  data-toggle="list">
+                                                 <div class="col-1" style="margin : 0px;"> 1.4 </div>
+                                                 <div class="col-8"> กลุ่มวิชาวิทยาศาสตร์กับคณิตศาสตร์</div>
+                                                 <div class="col-1"> 6</div>
+                                                 <div class="col-1"> หน่วยกิต</div>
+                                               </a>
+                                             </div>
+
+                                              <div style="padding: 10px; background-color: #f9f9f9;"><b>2.&nbsp;หมวดวิชาเฉพาะ <span style="float: right;">30 &nbsp; หน่วยกิต</span></b></div>
+                                              <div class="list-group" id="list-tab" role="tablist" style="padding: 0px;">
+                                                 <a class="list-group-item list-group-item-action" data-toggle="list" ng-click="clickList('social')">
+                                                   <div class="col-1" style="margin : 0px;"> 1.1 </div>
+                                                   <div class="col-8"> กลุ่มวิชาสังคมศาสตร์</div>
+                                                   <div class="col-1"> 6</div>
+                                                   <div class="col-1"> หน่วยกิต</div>
+                                                 </a>
+                                                 <a class="list-group-item list-group-item-action"  data-toggle="list" ng-click="clickList('human')">
+                                                   <div class="col-1" style="margin : 0px;"> 1.2 </div>
+                                                   <div class="col-8"> กลุ่มวิชามนุษยศาสตร์์</div>
+                                                   <div class="col-1"> 6</div>
+                                                   <div class="col-1"> หน่วยกิต</div>
+                                                 </a>
+                                                 <a class="list-group-item list-group-item-action"  data-toggle="list">
+                                                   <div class="col-1" style="margin : 0px;"> 1.3 </div>
+                                                   <div class="col-8"> กลุ่มวิชาภาษา</div>
+                                                   <div class="col-1"> 12</div>
+                                                   <div class="col-1"> หน่วยกิต</div>
+                                                 </a>
+                                                 <a class="list-group-item list-group-item-action"  data-toggle="list">
+                                                   <div class="col-1" style="margin : 0px;"> 1.4 </div>
+                                                   <div class="col-8"> กลุ่มวิชาวิทยาศาสตร์กับคณิตศาสตร์</div>
+                                                   <div class="col-1"> 6</div>
+                                                   <div class="col-1"> หน่วยกิต</div>
+                                                 </a>
+                                               </div>
+
+                                          </div>
+                                          <div class="col" style="padding: 0px; background-color: #e4e4e4;">
+                                              <div style="background-color: #c5c5c5; padding: 10px 10px; text-align: center;"><b>รายละเอียดวิชา</b></div>
+
+                                              <div class = "row" style="margin: 10px;" ng-repeat = "item in deailCouse">
+                                                <div class="col-2">{{item.id}}</div>
+                                            <div class="col-8" style="margin-left: 12px;"><b>{{item.course_TName}} <br/> {{item.course_EName}} </b> <span><br/> วิชาบังคับก่อน : {{item.beforeCourse}} </span>
+                                                    <div class = "row">
+                                                      <div class="col-4">
+                                                        <span style="font-size: 12px;">หน่วยกิต
+                                                        <br/><center> {{item.credit}} </center></span>
+                                                      </div>
+                                                      <div class="col-8">
+                                                        <center><span style="font-size: 12px;">(บรรยาย-ปฎิบัติ-ค้นคว้า)
+                                                        <br/> {{item.hours}} </center></span>
+                                                      </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                          </div>
+                                          </div>
+                                          </div>
+                                        </div>
+
+
+                                        <div class="" ng-show = "tab==3">
+                                          <div id="accordion" role="tablist">
+<div class="card card-collapse">
+  <div class="card-header" role="tab" id="headingOne">
+    <h5 class="mb-0">
+      <a data-toggle="collapse" href="" aria-expanded="true" aria-controls="collapseOne">
+        Collapsible Group Item #1
+        <i class="material-icons">keyboard_arrow_down</i>
+      </a>
+    </h5>
+  </div>
+
+  <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
+    <div class="card-body">
+      Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+    </div>
+  </div>
+</div>
+<div class="card card-collapse">
+  <div class="card-header" role="tab" id="headingTwo">
+    <h5 class="mb-0">
+      <a class="collapsed" data-toggle="collapse" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+        Collapsible Group Item #2
+        <i class="material-icons">keyboard_arrow_down</i>
+      </a>
+    </h5>
+  </div>
+  <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordion">
+    <div class="card-body">
+      Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+    </div>
+  </div>
+</div>
+<div class="card card-collapse">
+  <div class="card-header" role="tab" id="headingThree">
+    <h5 class="mb-0">
+      <a class="collapsed" data-toggle="collapse" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+        Collapsible Group Item #3
+        <i class="material-icons">keyboard_arrow_down</i>
+      </a>
+    </h5>
+  </div>
+  <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree" data-parent="#accordion">
+    <div class="card-body">
+      Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+    </div>
+  </div>
+</div>
+</div>
+                                        </div>
+                                        <div class="" ng-show = "tab==4">
+                                            ยยย444444444ยยยยยยยยยยยยยยยยยยยยยยยยยne-to-one customer service with robust ideas.
                                             <br>
-                                            <br> Dramatically visualize customer directed convergence without revolutionary ROI.
+                                            <br>Dynamically innovate resource-leveling customer service for state of the art customer service.
                                         </div>
-                                        </div>
-                                        <div class="tab-pane" id="tab2">
-                                            Efficiently unleash cross-media information without cross-media value. Quickly maximize timely deliverables for real-time schemas.
-                                            <br>
-                                            <br>Dramatically maintain clicks-and-mortar solutions without functional solutions.
-                                        </div>
-                                        <div class="tab-pane" id="tab3">
-                                            Completely synergize resource taxing relationships via premier niche markets. Professionally cultivate one-to-one customer service with robust ideas.
+                                        <div class="" ng-show = "tab==5">
+                                            ยยยยยยยยยยยยยยยยยยยยยยย5555555555ยยยยยne-to-one customer service with robust ideas.
                                             <br>
                                             <br>Dynamically innovate resource-leveling customer service for state of the art customer service.
                                         </div>

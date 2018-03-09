@@ -22,3 +22,10 @@
     height:300px;
     overflow-y: scroll;
   }
+
+  .list-group-item.active {
+    z-index: 2;
+    color: #ffffff;
+    background-color: #e4e4e4;
+    border-color: #c5c5c5;
+}

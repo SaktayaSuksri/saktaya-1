@@ -82,5 +82,25 @@ app.controller("professorCtrl", function($scope, $location) {
 });
 
 app.controller("course_detailCtrl", function($scope, $location) {
+ $scope.tab = 1;
+ $scope.deailCouse = [];
+
+ $scope.clickMenu = function (index) {
+   $scope.tab = index;
+ }
+
+ $scope.clickList = function (nameCouse) {
+   console.log(nameCouse);
+   if(nameCouse == "social"){
+     $scope.deailCouse = com_social;
+   }
+   else if(nameCouse == "human"){
+     $scope.deailCouse = com_human;
+   }
+   else{
+
+   }
+   console.log($scope.deailCouse);
+ }
 
 });
