@@ -11,7 +11,7 @@ var eventSchema = mongoose.Schema({
     datetimeStart:      { type: Date,   required: true },
     datetimeFinish:     { type: Date,   required: true },
     eventLocation:      { type: String, required: true },
-    isApproved:         { type: String, required: true, default: 'pending' }
+    isApproved:         { type: String, required: true, default: 'pending' }     // 'pending' or 'pass' or 'fail'
     
 });
 

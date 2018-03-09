@@ -35,7 +35,7 @@ router.post('/newLink', function(req, res) {
                 });
             else
                 res.json({
-                    code: 'SUCCESS',
+                    code: '999999',
                     message: '[SUCCESS] Success in inserting link doc.'
                 });
         });
@@ -65,7 +65,7 @@ router.post('/editLink', function(req, res) {
                                         });
                                     else
                                         res.json({
-                                            code: 'SUCCESS',
+                                            code: '999999',
                                             message: '[SUCCESS] Success in editing link doc.'
                                         });
         });
@@ -87,7 +87,7 @@ router.post('/deleteLink', function(req, res) {
                 });
             else
                 res.json({
-                    code: 'SUCCESS',
+                    code: '999999',
                     message: '[SUCCESS] Success in deleting link doc.'
                 });
         });
@@ -114,7 +114,7 @@ router.post('/getLinksByType', function(req, res) {
                 });
             else
                 res.json({
-                    code: 'SUCCESS',
+                    code: '999999',
                     message: links
                 });
         });
@@ -141,7 +141,7 @@ router.post('/getLinkById', function(req, res) {
                 });
             else
                 res.json({
-                    code: 'SUCCESS',
+                    code: '999999',
                     message: link
                 });
         });
@@ -163,7 +163,7 @@ router.get('/getLinksAll', function(req, res) {
             });
         else
             res.json({
-                code: 'SUCCESS',
+                code: '999999',
                 message: links
             });
     });

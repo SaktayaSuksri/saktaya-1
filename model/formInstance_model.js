@@ -3,10 +3,13 @@
 // load the things we need
 var mongoose = require('mongoose');
 
+// ObjectId type for mongodb documents
+var ObjectId = require('mongodb').ObjectId;
+
 // define the schema for our user model
 var formInstanceSchema = mongoose.Schema({
 
-    formId:                 { type: String, required: true },
+    formId:                 { type: ObjectId, required: true },
     datetimeCreate:         { type: Date,   required: true, default: Date.now() },
     formInput:              { type: String, required: true, 
                                 get: function(data) {

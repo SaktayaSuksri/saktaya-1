@@ -103,15 +103,15 @@ router.post('/deleteEvent', function(req, res) {
     }
 });
 
-router.post('/getEventsApprovedLatest', function(req, res) {
+router.post('/getEventsApprovedComingSoon', function(req, res) {
     if (!req.body.numLimit) {
         res.json({
             code: 'FAILED',
             message: '[FAILED] Invalid request'
         });
     } else {
-        Event.find({ 'isApproved': 'pass' })
-            .sort({ 'datetimeStart': -1 })
+        Event.find({ 'isApproved': 'pass', 'datetimeStart': { '$gt': Date.now() } })
+            .sort({ 'datetimeStart': 1 })
             .limit(parseInt(req.body.numLimit))
             .then(function(events) {
                 if (events.length == 0) 

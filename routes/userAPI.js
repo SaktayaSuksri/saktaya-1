@@ -44,7 +44,7 @@ router.post('/newUser', function(req, res) {
                 });
             else
                 res.json({
-                    code: 'SUCCESS',
+                    code: '999999',
                     message: '[SUCCESS] Success in inserting user doc.'
                 });
         });
@@ -81,7 +81,7 @@ router.post('/editUser', function(req, res) {
                                             });
                                         else
                                             res.json({
-                                                code: 'SUCCESS',
+                                                code: '999999',
                                                 message: '[SUCCESS] Success in editing user doc.'
                                             });
         });
@@ -103,7 +103,7 @@ router.post('/deleteUser', function(req, res) {
                 });
             else
                 res.json({
-                    code: 'SUCCESS',
+                    code: '999999',
                     message: '[SUCCESS] Success in deleting user doc.'
                 });
         });
@@ -130,7 +130,7 @@ router.post('/getUserById', function(req, res) {
                 });
             else
                 res.json({
-                    code: 'SUCCESS',
+                    code: '999999',
                     message: user
                 });
         });
@@ -157,7 +157,7 @@ router.post('/getUsersByRole', function(req, res) {
                 });
             else
                 res.json({
-                    code: 'SUCCESS',
+                    code: '999999',
                     message: users
                 });
         });
@@ -178,7 +178,7 @@ router.get('/getUsersAll', function(req, res) {
             });
         else
             res.json({
-                code: 'SUCCESS',
+                code: '999999',
                 message: users
             });
     });

@@ -8,7 +8,7 @@ var linkSchema = mongoose.Schema({
 
     linkName:      { type: String, required: true, unique: true },
     url:           { type: String, required: true },
-    typeName:      { type: String, required: true, default: 'in'}
+    typeName:      { type: String, required: true, default: 'in'}    // 'in' or 'out'
     
 });
 
