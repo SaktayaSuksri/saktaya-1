@@ -1,16 +1,18 @@
-// app/models/form.js
+// app/models/document_model.js
 
 // load the things we need
 var mongoose = require('mongoose');
 
-// define the schema for our user model
-var formSchema = mongoose.Schema({
+// ObjectId type for mongodb documents
+var ObjectId = require('mongodb').ObjectId;
 
-    formName:               { type: String, required: true, unique: true },
-    formCode:               { type: String, default: null, unique: true },
-    formDetail:             { type: String, default: null },
-    formSource:             { type: String, required: true },
-    sourceType:             { type: String, required: true, default: 'link' },      // 'link' or 'upload' or 'generate'
+// define the schema for our user model
+var documentSchema = mongoose.Schema({
+
+    docName:                { type: String, required: true, unique: true },
+    docCode:                { type: String, default: null, unique: true },
+    docDetail:              { type: String, default: null },
+    docFile:                { type: String, required: true },
     authorId:               { type: String, required: true },
     datetimeCreate:         { type: Date,   default: Date.now() },
     datetimeLastEdit:       { type: Date,   default: Date.now() },
@@ -24,4 +26,4 @@ var formSchema = mongoose.Schema({
 });
 
 // create the model for users and expose it to our app
-module.exports = mongoose.model('Form', formSchema);
+module.exports = mongoose.model('Document', documentSchema);

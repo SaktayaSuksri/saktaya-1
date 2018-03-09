@@ -4,7 +4,7 @@ var router = express.Router();
 // ObjectId type for mongodb documents
 var ObjectId = require('mongodb').ObjectId;
 
-var Form = require('../model/form_model');
+var Document = require('../model/document_model');
 
 // Middleware for all routes
 router.use(function (req, res, next) {
@@ -13,10 +13,9 @@ router.use(function (req, res, next) {
 });
 
 // Route Definitions
-router.post('/newForm', function(req, res) {
-    if (!req.body.formName ||
-        !req.body.formSource ||
-        !req.body.sourceType ||
+router.post('/newDocument', function(req, res) {
+    if (!req.body.docName ||
+        !req.body.docFile ||
         !req.body.authorId ||
         !req.body.resourceTypeId ||
         !req.body.deptId ||
@@ -28,52 +27,50 @@ router.post('/newForm', function(req, res) {
                 message: '[FAILED] Invalid request'
             });
     } else {
-        var newForm = new Form();
-        newForm.formName = req.body.formName;
-        if (req.body.formCode) newForm.formCode = req.body.formCode;
-        if (req.body.formDetail) newForm.formDetail = req.body.formDetail; 
-        newForm.formSource = req.body.formSource;
-        newForm.sourceType = req.sourceType;
-        newForm.authorId = new ObjectId(req.body.authorId);
-        newForm.resourceTypeId = new ObjectId(req.body.resourceTypeId);
-        newForm.deptId = new ObjectId(req.body.deptId);
-        newForm.targetTypeId = new ObjectId(req.body.targetTypeId);
-        newForm.divisionId = new ObjectId(req.body.divisionId);
+        var newDoc = new Document();
+        newDoc.docName = req.body.docName;
+        if (req.body.docCode) newDoc.docCode = req.body.docCode;
+        if (req.body.docDetail) newDoc.docDetail = req.body.docDetail; 
+        newDoc.docFile = req.body.docFile;
+        newDoc.authorId = new ObjectId(req.body.authorId);
+        newDoc.resourceTypeId = new ObjectId(req.body.resourceTypeId);
+        newDoc.deptId = new ObjectId(req.body.deptId);
+        newDoc.targetTypeId = new ObjectId(req.body.targetTypeId);
+        newDoc.divisionId = new ObjectId(req.body.divisionId);
         if (req.body.tags) {
             var tagsArray = req.body.tags.split(',');
             for (var i=0; i<tagsArray.length; i++) tagsArray[i] = new ObjectId(tagsArray[i]);
-            newForm.tags = tagsArray;
+            newDoc.tags = tagsArray;
         }
-        if (req.body.showFlag) newForm.showFlag = (req.body.showFlag == 'true');
+        if (req.body.showFlag) newDoc.showFlag = (req.body.showFlag == 'true');
 
-        newForm.save(function(err) {
+        newDoc.save(function(err) {
             if (err)
                 res.json({
                     code: 'ERROR',
-                    message: '[ERROR] Error in inserting form doc. >> ' + err.message
+                    message: '[ERROR] Error in inserting document. >> ' + err.message
                 });
             else
                 res.json({
                     code: '999999',
-                    message: '[SUCCESS] Success in inserting form doc.'
+                    message: '[SUCCESS] Success in inserting document.'
                 });
         });
     }
 });
 
-router.post('/editForm', function(req, res) {
-    if (!req.body.formId) {
+router.post('/editDocument', function(req, res) {
+    if (!req.body.docId) {
             res.json({
                 code: 'FAILED',
                 message: '[FAILED] Invalid request'
             });
     } else {
         var updateParams = {};
-        if (req.body.formName) updateParams['formName'] = req.body.formName;
-        if (req.body.formCode) updateParams['formCode'] = req.body.formCode;
-        if (req.body.formDetail) updateParams['formDetail'] = req.body.formDetail;
-        if (req.body.formSource) updateParams['formSource'] = req.body.formSource;
-        if (req.body.sourceType) updateParams['sourceType'] = req.body.sourceType;
+        if (req.body.docName) updateParams['docName'] = req.body.docName;
+        if (req.body.docCode) updateParams['docCode'] = req.body.docCode;
+        if (req.body.docDetail) updateParams['docDetail'] = req.body.docDetail;
+        if (req.body.docFile) updateParams['docFile'] = req.body.docFile;
         if (req.body.authorId) updateParams['authorId'] = new ObjectId(req.body.authorId);
         updateParams['datetimeLastEdit'] = Date.now();
         if (req.body.resourceTypeId) updateParams['resourceTypeId'] = new ObjectId(req.body.resourceTypeId);
@@ -87,44 +84,44 @@ router.post('/editForm', function(req, res) {
         }
         if (req.body.showFlag) updateParams['showFlag'] = (req.body.showFlag == 'true');
 
-        Form.findByIdAndUpdate(new ObjectId(req.body.formId), updateParams, function(err) {
+        Document.findByIdAndUpdate(new ObjectId(req.body.docId), updateParams, function(err) {
                                     if (err)
                                         res.json({
                                             code: 'ERROR',
-                                            message: '[ERROR] Error in editing form doc. >> ' + err.message
+                                            message: '[ERROR] Error in editing document. >> ' + err.message
                                         });
                                     else
                                         res.json({
                                             code: '999999',
-                                            message: '[SUCCESS] Success in editing form doc.'
+                                            message: '[SUCCESS] Success in editing document.'
                                         });
         });
     }
 });
 
-router.post('/deleteForm', function(req, res) {
-    if (!req.body.formId) {
+router.post('/deleteDocument', function(req, res) {
+    if (!req.body.docId) {
         res.json({
             code: 'FAILED',
             message: '[FAILED] Invalid request'
         });
     } else {
-        Form.findByIdAndRemove(new ObjectId(req.body.formId), function(err) {
+        Document.findByIdAndRemove(new ObjectId(req.body.docId), function(err) {
             if (err)
                 res.json({
                     code: 'ERROR',
-                    message: '[ERROR] Error in deleting form doc. >> ' + err.message
+                    message: '[ERROR] Error in deleting document. >> ' + err.message
                 });
             else
                 res.json({
                     code: '999999',
-                    message: '[SUCCESS] Success in deleting form doc.'
+                    message: '[SUCCESS] Success in deleting document.'
                 });
         });
     }
 });
 
-router.post('/getFormsByTypes', function(req, res) {
+router.post('/getDocumentsByTypes', function(req, res) {
     if (!req.body.resourceTypeId &&
         !req.boby.deptId &&
         !req.body.targetTypeId &&
@@ -142,96 +139,96 @@ router.post('/getFormsByTypes', function(req, res) {
         if (req.body.targetTypeId) findParams['targetTypeId'] = req.body.targetTypeId;
         if (req.body.divisionId) findParams['divisionId'] = req.body.divisionId;
         if (req.body.showFlag) findParams['showFlag'] = req.body.showFlag;
-        Form.find(findParams, function(err, forms) {
+        Document.find(findParams, function(err, docs) {
             if (err)
                 res.json({
                     code: 'ERROR',
-                    message: '[ERROR] Error in finding forms by types. >> ' + err.message
+                    message: '[ERROR] Error in finding docs by types. >> ' + err.message
                 });
-            else if (forms.length == 0) 
+            else if (docs.length == 0) 
                 res.json({
                     code: 'FAILED',
-                    message: '[FAILED] No form found.'
+                    message: '[FAILED] No doc found.'
                 });
             else
                 res.json({
                     code: '999999',
-                    message: forms
+                    message: docs
                 });
         });
     }
 });
 
-router.post('/getFormById', function(req, res) {
-    if (!req.body.formId) {
+router.post('/getDocumentById', function(req, res) {
+    if (!req.body.docId) {
         res.json({
             code: 'FAILED',
             message: '[FAILED] Invalid request'
         });
     } else {
-        Form.findById(new ObjectId(req.body.formId), function(err, form) {
+        Document.findById(new ObjectId(req.body.docId), function(err, doc) {
             if (err)
                 res.json({
                     code: 'ERROR',
-                    message: '[ERROR] Error in finding form "' + req.body.formId + '" >> ' + err.message
+                    message: '[ERROR] Error in finding doc "' + req.body.docId + '" >> ' + err.message
                 });
-            else if (!form) 
+            else if (!doc) 
                 res.json({
                     code: 'FAILED',
-                    message: '[FAILED] No form found.'
+                    message: '[FAILED] No doc found.'
                 });
             else
                 res.json({
                     code: '999999',
-                    message: form
+                    message: doc
                 });
         });
     }
 });
 
-router.post('/getFormByCode', function(req, res) {
-    if (!req.body.formCode) {
+router.post('/getDocumentByCode', function(req, res) {
+    if (!req.body.docCode) {
         res.json({
             code: 'FAILED',
             message: '[FAILED] Invalid request'
         });
     } else {
-        Form.findOne({ 'formCode': req.body.formCode }, function(err, form) {
+        Document.findOne({ 'formCode': req.body.docCode }, function(err, doc) {
             if (err)
                 res.json({
                     code: 'ERROR',
-                    message: '[ERROR] Error in finding form code "' + req.body.formCode + '" >> ' + err.message
+                    message: '[ERROR] Error in finding doc code "' + req.body.docCode + '" >> ' + err.message
                 });
-            else if (!form) 
+            else if (!doc) 
                 res.json({
                     code: 'FAILED',
-                    message: '[FAILED] No form found.'
+                    message: '[FAILED] No doc found.'
                 });
             else
                 res.json({
                     code: '999999',
-                    message: form
+                    message: doc
                 });
         });
     }
 });
 
-router.get('/getFormsAll', function(req, res) {
-    Form.find(function(err, forms) {
+router.get('/getDocumentsAll', function(req, res) {
+    Document.find(function(err, docs) {
         if (err)
             res.json({
                 code: 'ERROR',
-                message: '[ERROR] Error in finding all forms >> ' + err.message
+                message: '[ERROR] Error in finding all docs >> ' + err.message
             });
-        else if (forms.length == 0) 
+        else if (docs.length == 0) 
             res.json({
                 code: 'FAILED',
-                message: '[FAILED] No form found.'
+                message: '[FAILED] No doc found.'
             });
         else
             res.json({
                 code: '999999',
-                message: forms
+                message: docs
             });
     });
 });

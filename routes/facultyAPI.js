@@ -38,7 +38,7 @@ router.post('/editFaculty', function(req, res) {
                                             });
                                         else
                                             res.json({
-                                                code: 'SUCCESS',
+                                                code: '999999',
                                                 message: '[SUCCESS] Success in editing faculty doc.'
                                             });
         });
@@ -59,7 +59,7 @@ router.get('/getFaculty', function(req, res) {
             });
         else
             res.json({
-                code: 'SUCCESS',
+                code: '999999',
                 message: forms
             });
     });

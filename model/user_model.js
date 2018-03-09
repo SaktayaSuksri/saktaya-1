@@ -12,7 +12,7 @@ var userSchema = mongoose.Schema({
     employeeId:    { type: String, required: true, unique: true },
     telNumber:     { type: String, default: null },
     email:         { type: String, default: null },
-    roleName:      { type: String, required: true, default: 'GeneralAdmin' }
+    roleName:      { type: String, required: true, default: 'GeneralAdmin' }     // 'GeneralAdmin' or 'DepartmentAdmin' or 'FacultyAdmin'
 
 });
 
