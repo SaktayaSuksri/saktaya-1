@@ -13,14 +13,14 @@ var documentSchema = mongoose.Schema({
     docCode:                { type: String, default: null, unique: true },
     docDetail:              { type: String, default: null },
     docFile:                { type: String, required: true },
-    authorId:               { type: ObjectId, required: true },
+    authorId:               { type: String, required: true },
     datetimeCreate:         { type: Date,   default: Date.now() },
     datetimeLastEdit:       { type: Date,   default: Date.now() },
-    resourceTypeId:         { type: ObjectId, required: true },
-    deptId:                 { type: ObjectId, required: true },
-    targetTypeId:           { type: ObjectId, required: true },
-    divisionId:             { type: ObjectId, required: true },
-    tags:                   { type: [ObjectId], default: [] },
+    resourceTypeId:         { type: String, required: true },
+    deptId:                 { type: String, required: true },
+    targetTypeId:           { type: String, required: true },
+    divisionId:             { type: String, required: true },
+    tags:                   { type: [String], default: [] },
     showFlag:               { type: Boolean, default: true }
     
 });

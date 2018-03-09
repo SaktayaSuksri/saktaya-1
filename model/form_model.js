@@ -3,9 +3,6 @@
 // load the things we need
 var mongoose = require('mongoose');
 
-// ObjectId type for mongodb documents
-var ObjectId = require('mongodb').ObjectId;
-
 // define the schema for our user model
 var formSchema = mongoose.Schema({
 
@@ -14,14 +11,14 @@ var formSchema = mongoose.Schema({
     formDetail:             { type: String, default: null },
     formSource:             { type: String, required: true },
     sourceType:             { type: String, required: true, default: 'link' },      // 'link' or 'upload' or 'generate'
-    authorId:               { type: ObjectId, required: true },
+    authorId:               { type: String, required: true },
     datetimeCreate:         { type: Date,   default: Date.now() },
     datetimeLastEdit:       { type: Date,   default: Date.now() },
-    resourceTypeId:         { type: ObjectId, required: true },
-    deptId:                 { type: ObjectId, required: true },
-    targetTypeId:           { type: ObjectId, required: true },
-    divisionId:             { type: ObjectId, required: true },
-    tags:                   { type: [ObjectId], default: [] },
+    resourceTypeId:         { type: String, required: true },
+    deptId:                 { type: String, required: true },
+    targetTypeId:           { type: String, required: true },
+    divisionId:             { type: String, required: true },
+    tags:                   { type: [String], default: [] },
     showFlag:               { type: Boolean, default: true }
     
 });
