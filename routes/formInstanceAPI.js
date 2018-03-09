@@ -33,7 +33,7 @@ router.post('/newFormInstance', function(req, res) {
                 });
             else
                 res.json({
-                    code: 'SUCCESS',
+                    code: '999999',
                     message: '[SUCCESS] Success in inserting form instance doc.'
                 });
         });
@@ -59,7 +59,7 @@ router.post('/editFormInstance', function(req, res) {
                                         });
                                     else
                                         res.json({
-                                            code: 'SUCCESS',
+                                            code: '999999',
                                             message: '[SUCCESS] Success in editing form instance doc.'
                                         });
         });
@@ -81,7 +81,7 @@ router.post('/deleteFormInstance', function(req, res) {
                 });
             else
                 res.json({
-                    code: 'SUCCESS',
+                    code: '999999',
                     message: '[SUCCESS] Success in deleting form instance doc.'
                 });
         });
@@ -108,7 +108,7 @@ router.post('/getFormInstancesByForm', function(req, res) {
                 });
             else
                 res.json({
-                    code: 'SUCCESS',
+                    code: '999999',
                     message: forms
                 });
         });
@@ -135,7 +135,7 @@ router.post('/getFormInstanceById', function(req, res) {
                 });
             else
                 res.json({
-                    code: 'SUCCESS',
+                    code: '999999',
                     message: form
                 });
         });
@@ -156,7 +156,7 @@ router.get('/getFormInstancesAll', function(req, res) {
             });
         else
             res.json({
-                code: 'SUCCESS',
+                code: '999999',
                 message: forms
             });
     });

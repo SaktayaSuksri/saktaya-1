@@ -54,7 +54,7 @@ router.post('/newForm', function(req, res) {
                 });
             else
                 res.json({
-                    code: 'SUCCESS',
+                    code: '999999',
                     message: '[SUCCESS] Success in inserting form doc.'
                 });
         });
@@ -95,7 +95,7 @@ router.post('/editForm', function(req, res) {
                                         });
                                     else
                                         res.json({
-                                            code: 'SUCCESS',
+                                            code: '999999',
                                             message: '[SUCCESS] Success in editing form doc.'
                                         });
         });
@@ -117,7 +117,7 @@ router.post('/deleteForm', function(req, res) {
                 });
             else
                 res.json({
-                    code: 'SUCCESS',
+                    code: '999999',
                     message: '[SUCCESS] Success in deleting form doc.'
                 });
         });
@@ -155,7 +155,7 @@ router.post('/getFormsByTypes', function(req, res) {
                 });
             else
                 res.json({
-                    code: 'SUCCESS',
+                    code: '999999',
                     message: forms
                 });
         });
@@ -182,7 +182,7 @@ router.post('/getFormById', function(req, res) {
                 });
             else
                 res.json({
-                    code: 'SUCCESS',
+                    code: '999999',
                     message: form
                 });
         });
@@ -209,7 +209,7 @@ router.post('/getFormByCode', function(req, res) {
                 });
             else
                 res.json({
-                    code: 'SUCCESS',
+                    code: '999999',
                     message: form
                 });
         });
@@ -230,7 +230,7 @@ router.get('/getFormsAll', function(req, res) {
             });
         else
             res.json({
-                code: 'SUCCESS',
+                code: '999999',
                 message: forms
             });
     });
