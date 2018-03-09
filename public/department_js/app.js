@@ -28,6 +28,10 @@ app.config(function($routeProvider) {
   .when('/professor', {
     templateUrl: 'department_template/professor.html',
     controller: 'professorCtrl'
+  })
+  .when('/course_detail', {
+    templateUrl: 'department_template/course_detail.html',
+    controller: 'course_detailCtrl'
   }).otherwise({
     redirectTo: "/"
   });
@@ -75,4 +79,8 @@ app.controller("professorCtrl", function($scope, $location) {
     console.log("show deatil");
     $('#myModal').modal('show');
   }
+});
+
+app.controller("course_detailCtrl", function($scope, $location) {
+
 });

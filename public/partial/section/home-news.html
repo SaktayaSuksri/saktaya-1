@@ -25,8 +25,8 @@
                                       
                                                 
                                                     <div class="row" >
-                                                            <div class="col-md-4" ng-repeat-start="item in news_list">
-                                                                    <div class="card card-blog"   >
+                                                            <div class="col-lg-4 col-md-6">
+                                                                    <div class="card card-blog"    ng-repeat="item in news_list_1" >
                                                 
                                                                          
                                                 
@@ -52,22 +52,110 @@
                                                 
                                                                          
                                                                           
-                                                
                                                                             <div class="card-body">
-                                                                                <h4 class="card-category text-warning">{{item.topicShort}}</h4>
-                                                                           
-                                                                                <p class="card-description">
-                                                                                        {{item.detailShort}}  </p>
-                                                                                <a  ng-href="http://localhost:2001/news_each/{{item._id}}" class="btn btn-info btn-round" >อ่านต่อ</a>
-                                                                                
-                                                                            </div>
+                                                                                    <h4 class="card-category text-warning text-left"> ข่าวทุนการศึกษา</h4>
+                                                                                    <h4 class="card-title">
+                                                                                            <a href="#pablo">{{item.topicShort  | limitTo:100}}</a>
+                                                                                        </h4>
+                                                                                    <p class="card-description text-left">
+                                                                                            &ensp; &ensp; {{item.detailShort | limitTo:300}}.... </p>
+                                                                                            <div class="row pull-right">
+                                                                                    <a ng-href="http://localhost:2001/news_each/{{item._id}}" class="btn  btn-round" sty>อ่านต่อ</a>
+                                                                                </div>
+                                                                                </div>
                                                                            
                                                 
                                                                      
                                                                         </div>
                                                             </div>
-                                                            <div class="clearfix" ng-if="$index%3==2"></div>
-                                                            <div ng-repeat-end=""></div>
+
+                                                            <div class="col-lg-4 col-md-6">
+                                                                    <div class="card card-blog"    ng-repeat="item in news_list_2" >
+                                                
+                                                                         
+                                                
+                                                                            <div  ng-if="item.topicPicture != ''" class="card-header card-header-image">
+                                                                                    <a href="#pablo">
+                                                                                        <img style="width:330px; height:186px" ng-src="{{item.topicPicture}}"  onerror="this.src='./assets/img/image_placeholder.jpg';" alt="not found">
+                                                                                    </a>
+                                                                                <div class="colored-shadow"
+                                                                                 style="background-image:url({{item.topicPicture}}); opacity: 1;">
+                                                                                </div>
+                                                                            </div>
+                                                
+                                                
+                                                                       
+                                                                            <div  ng-if="item.topicPicture == ''" class="card-header card-header-image">
+                                                                                    <a href="#pablo">
+                                                                                        <img style="width:330px; height:186px" ng-src="http://localhost:2001/admin/admin-faculty/assets/img/image_placeholder.jpg" onerror="this.src='./assets/img/image_placeholder.jpg';" alt="not found">
+                                                                                    </a>
+                                                                                <div class="colored-shadow"
+                                                                                 style="background-image: url(http://localhost:2001/admin/admin-faculty/assets/img/image_placeholder.jpg); opacity: 1;">
+                                                                                </div>
+                                                                            </div>
+                                                
+                                                                         
+                                                                          
+                                                                            <div class="card-body">
+                                                                                    <h6 class="card-category text-warning text-left"> ข่าวทุนการศึกษา</h6>
+                                                                                    <h4 class="card-title">
+                                                                                            <a href="#pablo">{{item.topicShort  | limitTo:100}}</a>
+                                                                                        </h4>
+                                                                                    <p class="card-description text-left">
+                                                                                            &ensp; &ensp; {{item.detailShort | limitTo:300}}.... </p>
+                                                                                            <div class="row pull-right">
+                                                                                    <a ng-href="http://localhost:2001/news_each/{{item._id}}" class="btn btn-info btn-round" sty>อ่านต่อ</a>
+                                                                                </div>
+                                                                                </div>
+                                                                           
+                                                
+                                                                     
+                                                                        </div>
+                                                            </div>
+
+                                                            <div class="col-lg-4 col-md-12">
+                                                                    <div class="card card-blog"    ng-repeat="item in news_list_3" >
+                                                
+                                                                         
+                                                
+                                                                            <div  ng-if="item.topicPicture != ''" class="card-header card-header-image">
+                                                                                    <a href="#pablo">
+                                                                                        <img style="width:330px; height:186px" ng-src="{{item.topicPicture}}"  onerror="this.src='./assets/img/image_placeholder.jpg';" alt="not found">
+                                                                                    </a>
+                                                                                <div class="colored-shadow"
+                                                                                 style="background-image:url({{item.topicPicture}}); opacity: 1;">
+                                                                                </div>
+                                                                            </div>
+                                                
+                                                
+                                                                       
+                                                                            <div  ng-if="item.topicPicture == ''" class="card-header card-header-image">
+                                                                                    <a href="#pablo">
+                                                                                        <img style="width:330px; height:186px" ng-src="http://localhost:2001/admin/admin-faculty/assets/img/image_placeholder.jpg" onerror="this.src='./assets/img/image_placeholder.jpg';" alt="not found">
+                                                                                    </a>
+                                                                                <div class="colored-shadow"
+                                                                                 style="background-image: url(http://localhost:2001/admin/admin-faculty/assets/img/image_placeholder.jpg); opacity: 1;">
+                                                                                </div>
+                                                                            </div>
+                                                
+                                                                         
+                                                                          
+                                                                            <div class="card-body">
+                                                                                    <h4 class="card-category text-warning text-left">{{item.topicShort  | limitTo:100}}</h4>
+                                                                               
+                                                                                    <p class="card-description text-left">
+                                                                                            &ensp; &ensp; {{item.detailShort | limitTo:300}}.... </p>
+                                                                                            <div class="row pull-right">
+                                                                                    <a ng-href="http://localhost:2001/news_each/{{item._id}}" class="btn btn-info btn-round" sty>อ่านต่อ</a>
+                                                                                </div>
+                                                                                </div>
+                                                                           
+                                                
+                                                                     
+                                                                        </div>
+                                                            </div>
+
+                                                       
                                                         </div>
                                                 
                                                       

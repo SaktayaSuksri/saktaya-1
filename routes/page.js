@@ -23,6 +23,16 @@ router.get('/page', function(req, res) {
 });
 
 
+
+router.get('/graduate', function(req, res) {
+    
+
+    console.log("graduate")
+    res.render('template_graduate.ejs'); 
+});
+
+
+
 router.get('/news_each/:news_id', function(req, res) {
    
 
