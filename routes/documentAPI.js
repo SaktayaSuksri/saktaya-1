@@ -52,7 +52,7 @@ router.post('/newDocument', function(req, res) {
                 });
             else
                 res.json({
-                    code: 'SUCCESS',
+                    code: '999999',
                     message: '[SUCCESS] Success in inserting document.'
                 });
         });
@@ -92,7 +92,7 @@ router.post('/editDocument', function(req, res) {
                                         });
                                     else
                                         res.json({
-                                            code: 'SUCCESS',
+                                            code: '999999',
                                             message: '[SUCCESS] Success in editing document.'
                                         });
         });
@@ -114,7 +114,7 @@ router.post('/deleteDocument', function(req, res) {
                 });
             else
                 res.json({
-                    code: 'SUCCESS',
+                    code: '999999',
                     message: '[SUCCESS] Success in deleting document.'
                 });
         });
@@ -152,7 +152,7 @@ router.post('/getDocumentsByTypes', function(req, res) {
                 });
             else
                 res.json({
-                    code: 'SUCCESS',
+                    code: '999999',
                     message: docs
                 });
         });
@@ -179,7 +179,7 @@ router.post('/getDocumentById', function(req, res) {
                 });
             else
                 res.json({
-                    code: 'SUCCESS',
+                    code: '999999',
                     message: doc
                 });
         });
@@ -206,7 +206,7 @@ router.post('/getDocumentByCode', function(req, res) {
                 });
             else
                 res.json({
-                    code: 'SUCCESS',
+                    code: '999999',
                     message: doc
                 });
         });
@@ -227,7 +227,7 @@ router.get('/getDocumentsAll', function(req, res) {
             });
         else
             res.json({
-                code: 'SUCCESS',
+                code: '999999',
                 message: docs
             });
     });
