@@ -29,3 +29,7 @@
     background-color: #e4e4e4;
     border-color: #c5c5c5;
 }
+
+.card-collapse .card-header a:hover, .card-collapse .card-header a:active, .card-collapse .card-header a[aria-expanded="true"] {
+    color: #ec6f2a;
+}
