@@ -62,4 +62,51 @@ router.post('/newPosition/', function (request, response) {
     }
 });
 
+router.post('/getPositionById', function(req, res) {
+    if (!req.body.posId) {
+        res.json({
+            code: 'FAILED',
+            message: 'Invalid request!'
+        });
+    } else {
+        Position.findById(new ObjectId(req.body.posId), function(err, pos) {
+            if (err)
+                res.json({
+                    code: 'ERROR',
+                    message: 'Error in finding position by id "' + req.body.posId + '" >> ' + err.message
+                });
+            else if (!pos)
+                res.json({
+                    code: 'FAILED',
+                    message: 'No position found!'
+                });
+            else
+                res.json({
+                    code: '999999',
+                    message: pos
+                });
+        });
+    }
+});
+
+router.get('/getPositionsAll', function(req, res) {
+    Position.find(function(err, postns) {
+        if (err)
+            res.json({
+                code: 'ERROR',
+                message: 'Error in finding all positions >> ' + err.message
+            });
+        else if (postns.length == 0)
+            res.json({
+                code: 'FAILED',
+                message: 'No position found!'
+            });
+        else
+            res.json({
+                code: '999999',
+                message: postns
+            });
+    });
+});
+
 module.exports = router;

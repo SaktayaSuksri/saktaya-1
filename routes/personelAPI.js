@@ -22,6 +22,7 @@ var News = require('../model/news_model.js');
 var Tag = require('../model/tag_model.js');
 var Position = require('../model/position_model.js');
 var Personel = require('../model/personel_model.js');
+var Division = require('../model/division_model');
 
 var Validate = require("../controller/validation_controller.js");
 var ResourceType_Control = require("../controller/resourceType_control.js");
@@ -39,11 +40,13 @@ router.post('/newPersonel/', function (request, response) {
     var requiredData = [];
     requiredData.push(request.body.personelName);
     requiredData.push(request.body.positionId);
+    requiredData.push(request.body.divisionId);
     requiredData.push(request.body.departmentId);
     var requiredReady = Validate.requiredData_Check(requiredData)
 
     var objectIdData = [];
     objectIdData.push(request.body.positionId);
+    objectIdData.push(request.body.divisionId);
     objectIdData.push(request.body.departmentId);
     var objectIdReady = Validate.objectIDData_Check(objectIdData)
 
@@ -83,6 +86,7 @@ router.post('/newPersonel/', function (request, response) {
                     personel.homepage = request.body.homepage;
                     personel.telNumber = request.body.telNumber;
                     personel.positionId = request.body.positionId;
+                    personel.divisionId = request.body.divisionId;
                     personel.departmentId = request.body.departmentId;
                     Personel_Control.newPersonel(personel, this);
                 }
@@ -106,12 +110,14 @@ router.post('/editPersonel/', function (request, response) {
     requiredData.push(request.body.personelId);
     requiredData.push(request.body.personelName);
     requiredData.push(request.body.positionId);
+    requiredData.push(request.body.divisionId);
     requiredData.push(request.body.departmentId);
     var requiredReady = Validate.requiredData_Check(requiredData)
 
     var objectIdData = [];
     objectIdData.push(request.body.personelId);
     objectIdData.push(request.body.positionId);
+    objectIdData.push(request.body.divisionId);
     objectIdData.push(request.body.departmentId);
     var objectIdReady = Validate.objectIDData_Check(objectIdData)
 
@@ -158,6 +164,7 @@ router.post('/editPersonel/', function (request, response) {
                     personel.homepage = request.body.homepage;
                     personel.telNumber = request.body.telNumber;
                     personel.positionId = request.body.positionId;
+                    personel.divisionId = request.body.divisionId;
                     personel.departmentId = request.body.departmentId;
                     Personel_Control.updatePersonelByID(new ObjectId(request.body.personelId), personel, this);
                 }
@@ -179,6 +186,7 @@ router.post('/getPersonel/', function (request, response) {
 
     var requiredData = [];
     requiredData.push(request.body.positionId);
+    requiredData.push(request.body.divisionId);
     requiredData.push(request.body.departmentId);
     requiredData.push(request.body.isPreview);
     var requiredReady = Validate.requiredData_Check(requiredData)
@@ -192,6 +200,8 @@ router.post('/getPersonel/', function (request, response) {
         objectIdData.push(request.body.positionId);
     if (request.body.departmentId != "0")
         objectIdData.push(request.body.departmentId);
+    if (request.body.divisionId != "0")
+        objectIdData.push(request.body.divisionId);
     var objectIdReady = Validate.objectIDData_Check(objectIdData)
 
     if (!requiredReady) {
@@ -218,6 +228,8 @@ router.post('/getPersonel/', function (request, response) {
                     position = new ObjectId(request.body.positionId);
                 if (ObjectId.isValid(request.body.departmentId))
                     department = new ObjectId(request.body.departmentId);
+                if (ObjectId.isValid(request.body.divisionId))
+                    department = new ObjectId(request.body.divisionId);
 
                 Personel_Control.getPersonel(position, department, request.body.isPreview, this);
             }, function (code, err, result) {
@@ -258,17 +270,18 @@ router.post('/getPersonelfromID/', function (request, response) {
     obj.homepage = "N/A";
     obj.telnumber = "N/A";
     obj.positionName = "N/A";
+    obj.divisionName = "N/A";
     obj.departmentName = "N/A";
 
     if (!requiredReady) {
-        var alert = "Input Not Valid, check if some data is required."
+        var alert = "Input Not Valid, check if some data is required.";
         console.log(alert);
-        Return_control.responseWithCode(ReturnCode.clientError + methodCode + "001", alert, response)
+        Return_control.responseWithCode(ReturnCode.clientError + methodCode + "001", alert, response);
     }
     else if (!objectIdReady) {
-        var alert = "Input Not Valid, check if some data is not ObjectID for MongoDB."
+        var alert = "Input Not Valid, check if some data is not ObjectID for MongoDB.";
         console.log(alert);
-        Return_control.responseWithCode(ReturnCode.clientError + methodCode + "003", alert, response)
+        Return_control.responseWithCode(ReturnCode.clientError + methodCode + "003", alert, response);
     }
     else {
         flow.exec(
@@ -310,6 +323,22 @@ router.post('/getPersonelfromID/', function (request, response) {
                 Return_control.responseWithCode(ReturnCode.success, obj, response)
             }
         );
+
+        async function findDivisionByID() {
+            await Division.findById(new ObjectId(thisNews.divisionId), function(err, div) {
+                if (err) {
+                    obj.divisionName = "N/A";
+                    console.log('----- Error in finding division by ID >> ' + err.message);
+                } else if (!target) {
+                    obj.divisionName = "N/A";
+                    console.log('----- No division found!');
+                } else {
+                    obj.divisionName = div.divisionName;
+                    Return_control.responseWithCode("999999", obj, response);
+                }
+            });
+        }
+        findDivisionByID();
     }
 });
 

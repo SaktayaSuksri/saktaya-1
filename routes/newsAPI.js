@@ -22,6 +22,7 @@ var News = require('../model/news_model.js');
 var Tag = require('../model/tag_model.js');
 var Position = require('../model/position_model.js');
 var Personel = require('../model/personel_model.js');
+var TargetType = require('../model/targetType_model');
 
 var Validate = require("../controller/validation_controller.js");
 var ResourceType_Control = require("../controller/resourceType_control.js");
@@ -42,6 +43,7 @@ router.post('/newNews/', function (request, response) {
     requiredData.push(request.body.detailShort);
     requiredData.push(request.body.detailFull);
     requiredData.push(request.body.resourceId);
+    requiredData.push(request.body.targetTypeId);
     requiredData.push(request.body.departmentId);
     var requiredReady = Validate.requiredData_Check(requiredData)
 
@@ -51,6 +53,7 @@ router.post('/newNews/', function (request, response) {
 
     var objectIdData = [];
     objectIdData.push(request.body.resourceId);
+    objectIdData.push(request.body.targetTypeId);
     objectIdData.push(request.body.departmentId);
     var tagIDArray = new Array();
     var tmp = [];
@@ -116,6 +119,7 @@ router.post('/newNews/', function (request, response) {
                     news.author = request.body.author;
                     news.isPinned = request.body.isPinned;
                     news.resourceId = request.body.resourceId;
+                    news.targetTypeId = request.body.targetTypeId;
                     news.departmentId = request.body.departmentId;
                     news.tagId = tmp;
                     News_Control.newNews(news, this);
@@ -143,6 +147,7 @@ router.post('/editNews/', function (request, response) {
     requiredData.push(request.body.detailShort);
     requiredData.push(request.body.detailFull);
     requiredData.push(request.body.resourceId);
+    requiredData.push(request.body.targetTypeId);
     requiredData.push(request.body.departmentId);
     var requiredReady = Validate.requiredData_Check(requiredData)
 
@@ -153,6 +158,7 @@ router.post('/editNews/', function (request, response) {
     var objectIdData = [];
     objectIdData.push(request.body.newsID);
     objectIdData.push(request.body.resourceId);
+    objectIdData.push(request.body.targetTypeId);
     objectIdData.push(request.body.departmentId);
     
    
@@ -230,6 +236,7 @@ router.post('/editNews/', function (request, response) {
                     news.author = request.body.author;
                     news.isPinned = request.body.isPinned;
                     news.resourceId = request.body.resourceId;
+                    news.targetTypeId = request.body.targetTypeId;
                     news.departmentId = request.body.departmentId;
                     news.tagId = request.body.tagId;
                     News_Control.updateNewsByID(new ObjectId(request.body.newsID), news, this);
@@ -252,6 +259,7 @@ router.post('/getNews/', function (request, response) {
 
     var requiredData = [];
     requiredData.push(request.body.resourceId);
+    requiredData.push(request.body.targetTypeId);
     requiredData.push(request.body.departmentId);
     requiredData.push(request.body.tagId);
     requiredData.push(request.body.limit);
@@ -267,6 +275,8 @@ router.post('/getNews/', function (request, response) {
     var objectIdData = [];
     if (request.body.resourceId != "0")
         objectIdData.push(request.body.resourceId);
+    if (request.body.targetTypeId != "0")
+        objectIdData.push(request.body.targetTypeId);
     if (request.body.departmentId != "0")
         objectIdData.push(request.body.departmentId);
     if (request.body.tagId != "0")
@@ -301,10 +311,13 @@ router.post('/getNews/', function (request, response) {
         flow.exec(
             function () {
                 let resource = "0"
+                let targetType = "0"
                 let department = "0"
                 let tag = "0"
                 if (ObjectId.isValid(request.body.resourceId))
                     resource = new ObjectId(request.body.resourceId);
+                if (ObjectId.isValid(request.body.targetTypeId))
+                    targetType = new ObjectId(request.body.targetTypeId);
                 if (ObjectId.isValid(request.body.departmentId))
                     department = new ObjectId(request.body.departmentId);
                 if (ObjectId.isValid(request.body.tagId))
@@ -330,6 +343,7 @@ router.post('/getNewsfromID/', function (request, response) {
     var thisNews;
     var thisDepartment;
     var thisResourceType;
+    var thisTargetType;
 
     var requiredData = [];
     requiredData.push(request.body.newsID);
@@ -351,6 +365,7 @@ router.post('/getNewsfromID/', function (request, response) {
     obj.readCount = "N/A";
     obj.isPinned = "N/A";
     obj.resourceName = "N/A";
+    obj.targetTypeName = "N/A";
     obj.departmentName = "N/A";
     obj.tagName = ["N/A"];
 
@@ -409,10 +424,26 @@ router.post('/getNewsfromID/', function (request, response) {
                 else {
                     obj.tagName = result;
                     News_Control.countReader(new ObjectId(request.body.newsID), request.body.readCount);
-                    Return_control.responseWithCode("999999", obj, response)
+                    // Return_control.responseWithCode("999999", obj, response)
                 }
             }
         );
+
+        async function findTargetTypeByID() {
+            await TargetType.findById(new ObjectId(thisNews.targetTypeId), function(err, target) {
+                if (err) {
+                    obj.targetTypeName = "N/A";
+                    console.log('----- Error in finding targetType by ID >> ' + err.message);
+                } else if (!target) {
+                    obj.targetTypeName = "N/A";
+                    console.log('----- No targetType found!');
+                } else {
+                    obj.targetTypeName = target.targetTypeName;
+                    Return_control.responseWithCode("999999", obj, response);
+                }
+            });
+        }
+        findTargetTypeByID();
     }
 });
 

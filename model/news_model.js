@@ -13,6 +13,7 @@ var News_Schema = new Schema({
     readCount: { type: Number, default: 0 },
     isPinned: { type: Boolean, default: false },
     resourceId: { type: String, required: true },
+    targetTypeId: { type: String, required: true },
     departmentId: { type: String, required: true },
     tagId: { type: [String] }
 });

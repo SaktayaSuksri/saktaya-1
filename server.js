@@ -65,6 +65,8 @@ var linkAPI = require('./routes/linkAPI');
 var userAPI =  require('./routes/userAPI');
 var formInstanceAPI = require('./routes/formInstanceAPI');
 var page = require('./routes/page');
+var divisionAPI = require('./routes/divisionAPI');
+var targetTypeAPI = require('./routes/targetTypeAPI');
 
 
 

@@ -62,6 +62,52 @@ router.post('/newDepartment/', function (request, response) {
     }
 });
 
+router.post('/getDepartmentById', function(req, res) {
+    if (!req.body.deptId) {
+        res.json({
+            code: 'FAILED',
+            message: 'Invalid request!'
+        });
+    } else {
+        Department.findById(new ObjectId(req.body.deptId), function(err, dept) {
+            if (err)
+                res.json({
+                    code: 'ERROR',
+                    message: 'Error in finding department by id "' + req.body.deptId + '" >> ' + err.message
+                });
+            else if (!dept)
+                res.json({
+                    code: 'FAILED',
+                    message: 'No department found!'
+                });
+            else
+                res.json({
+                    code: '999999',
+                    message: dept
+                });
+        });
+    }
+});
+
+router.get('/getDepartmentsAll', function(req, res) {
+    Department.find(function(err, depts) {
+        if (err)
+            res.json({
+                code: 'ERROR',
+                message: 'Error in finding all departments >> ' + err.message
+            });
+        else if (depts.length == 0)
+            res.json({
+                code: 'FAILED',
+                message: 'No department found!'
+            });
+        else
+            res.json({
+                code: '999999',
+                message: depts
+            });
+    });
+});
 
 
 module.exports = router;

@@ -21,7 +21,8 @@ router.post('/newForm', function(req, res) {
         !req.body.resourceTypeId ||
         !req.body.deptId ||
         !req.body.targetTypeId ||
-        !req.body.divisionId
+        !req.body.divisionId ||
+        !req.body.docFlag
     ) {
             res.json({
                 code: 'FAILED',
@@ -39,6 +40,7 @@ router.post('/newForm', function(req, res) {
         newForm.deptId = new ObjectId(req.body.deptId);
         newForm.targetTypeId = new ObjectId(req.body.targetTypeId);
         newForm.divisionId = new ObjectId(req.body.divisionId);
+        newForm.docFlag = (req.body.docFlag == 'true');
         if (req.body.tags) {
             var tagsArray = req.body.tags.split(',');
             for (var i=0; i<tagsArray.length; i++) tagsArray[i] = new ObjectId(tagsArray[i]);
@@ -80,6 +82,7 @@ router.post('/editForm', function(req, res) {
         if (req.body.deptId) updateParams['deptId'] = new ObjectId(req.body.deptId);
         if (req.body.targetTypeId) updateParams['targetTypeId'] = new ObjectId(req.body.targetTypeId);
         if (req.body.divisionId) updateParams['divisionId'] = new ObjectId(req.body.divisionId);
+        if (req.body.docFlag) updateParams['docFlag'] = new ObjectId(req.body.docFlag);
         if (req.body.tags) {
             var tagsArray = req.body.tags.split(',');
             for (var i=0; i<tagsArray.length; i++) tagsArray[i] = new ObjectId(tagsArray[i]);
@@ -129,7 +132,8 @@ router.post('/getFormsByTypes', function(req, res) {
         !req.boby.deptId &&
         !req.body.targetTypeId &&
         !req.body.divisionId &&
-        !req.body.showFlag
+        !req.body.showFlag &&
+        !req.body.docFlag
     ) {
         res.json({
             code: 'FAILED',
@@ -142,6 +146,7 @@ router.post('/getFormsByTypes', function(req, res) {
         if (req.body.targetTypeId) findParams['targetTypeId'] = req.body.targetTypeId;
         if (req.body.divisionId) findParams['divisionId'] = req.body.divisionId;
         if (req.body.showFlag) findParams['showFlag'] = req.body.showFlag;
+        if (req.body.docFlag) findParams['docFlag'] = req.body.docFlag;
         Form.find(findParams, function(err, forms) {
             if (err)
                 res.json({

@@ -19,7 +19,8 @@ var formSchema = mongoose.Schema({
     targetTypeId:           { type: String, required: true },
     divisionId:             { type: String, required: true },
     tags:                   { type: [String], default: [] },
-    showFlag:               { type: Boolean, default: true }
+    showFlag:               { type: Boolean, default: true },
+    docFlag:                { type: Boolean, required: true }
     
 });
 

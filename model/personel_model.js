@@ -14,6 +14,7 @@ var Personel_Schema = new Schema({
     homepage: { type: String, default: "N/A" },
     telNumber: { type: String, default: "N/A" },
     positionId: { type: String, required: true },
+    divisionId: { type: String, required: true },
     departmentId: { type: String, required: true }
 });
 
