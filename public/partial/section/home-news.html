@@ -2,34 +2,35 @@
                  <hr>
                <div class="" ng-controller="news" ng-init="init()">
                         <div class="row justify-content-md-center">
-                        
+
                                 <div class="col-12 col-md-auto">
-                                
-                                      
+
+
 
                                         <ul class="nav nav-pills nav-pills-warning">
                                             <li class="nav-item"><a class="nav-link active" href="#pill1" data-toggle="tab">ทั้งหมด</a></li>
                                             <li class="nav-item"><a class="nav-link" href="#pill2" data-toggle="tab">ข่าวประชาสัมพันธ์</a></li>
                                             <li class="nav-item"><a class="nav-link" href="#pill3" data-toggle="tab">สำหรับนักศึกษา</a></li>
                                             <li class="nav-item"><a class="nav-link" href="#pill4" data-toggle="tab">ทุนวิจัย</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="#pill5" data-toggle="tab">กิจกรรมต่างๆ</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="#pill5" data-toggle="tab">วารสารประจำเดือน</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="#pill6" data-toggle="tab">กิจกรรมต่างๆ</a></li>
                                         </ul>
 
                                     </div>
                                 </div>
                                 <hr>
-                              
+
                                     <div class="tab-content tab-space">
                                         <div class="tab-pane active" id="pill1">
                                             <div class="container">
-                                      
-                                                
+
+
                                                     <div class="row" >
                                                             <div class="col-lg-4 col-md-6">
                                                                     <div class="card card-blog"    ng-repeat="item in news_list_1" >
-                                                
-                                                                         
-                                                
+
+
+
                                                                             <div  ng-if="item.topicPicture != ''" class="card-header card-header-image">
                                                                                     <a href="#pablo">
                                                                                         <img style="width:330px; height:186px" ng-src="{{item.topicPicture}}"  onerror="this.src='./assets/img/image_placeholder.jpg';" alt="not found">
@@ -38,9 +39,9 @@
                                                                                  style="background-image:url({{item.topicPicture}}); opacity: 1;">
                                                                                 </div>
                                                                             </div>
-                                                
-                                                
-                                                                       
+
+
+
                                                                             <div  ng-if="item.topicPicture == ''" class="card-header card-header-image">
                                                                                     <a href="#pablo">
                                                                                         <img style="width:330px; height:186px" ng-src="http://localhost:2001/admin/admin-faculty/assets/img/image_placeholder.jpg" onerror="this.src='./assets/img/image_placeholder.jpg';" alt="not found">
@@ -49,9 +50,9 @@
                                                                                  style="background-image: url(http://localhost:2001/admin/admin-faculty/assets/img/image_placeholder.jpg); opacity: 1;">
                                                                                 </div>
                                                                             </div>
-                                                
-                                                                         
-                                                                          
+
+
+
                                                                             <div class="card-body">
                                                                                     <h4 class="card-category text-warning text-left"> ข่าวทุนการศึกษา</h4>
                                                                                     <h4 class="card-title">
@@ -63,17 +64,17 @@
                                                                                     <a ng-href="http://localhost:2001/news_each/{{item._id}}" class="btn  btn-round" sty>อ่านต่อ</a>
                                                                                 </div>
                                                                                 </div>
-                                                                           
-                                                
-                                                                     
+
+
+
                                                                         </div>
                                                             </div>
 
                                                             <div class="col-lg-4 col-md-6">
                                                                     <div class="card card-blog"    ng-repeat="item in news_list_2" >
-                                                
-                                                                         
-                                                
+
+
+
                                                                             <div  ng-if="item.topicPicture != ''" class="card-header card-header-image">
                                                                                     <a href="#pablo">
                                                                                         <img style="width:330px; height:186px" ng-src="{{item.topicPicture}}"  onerror="this.src='./assets/img/image_placeholder.jpg';" alt="not found">
@@ -82,9 +83,9 @@
                                                                                  style="background-image:url({{item.topicPicture}}); opacity: 1;">
                                                                                 </div>
                                                                             </div>
-                                                
-                                                
-                                                                       
+
+
+
                                                                             <div  ng-if="item.topicPicture == ''" class="card-header card-header-image">
                                                                                     <a href="#pablo">
                                                                                         <img style="width:330px; height:186px" ng-src="http://localhost:2001/admin/admin-faculty/assets/img/image_placeholder.jpg" onerror="this.src='./assets/img/image_placeholder.jpg';" alt="not found">
@@ -93,9 +94,9 @@
                                                                                  style="background-image: url(http://localhost:2001/admin/admin-faculty/assets/img/image_placeholder.jpg); opacity: 1;">
                                                                                 </div>
                                                                             </div>
-                                                
-                                                                         
-                                                                          
+
+
+
                                                                             <div class="card-body">
                                                                                     <h6 class="card-category text-warning text-left"> ข่าวทุนการศึกษา</h6>
                                                                                     <h4 class="card-title">
@@ -107,17 +108,17 @@
                                                                                     <a ng-href="http://localhost:2001/news_each/{{item._id}}" class="btn btn-info btn-round" sty>อ่านต่อ</a>
                                                                                 </div>
                                                                                 </div>
-                                                                           
-                                                
-                                                                     
+
+
+
                                                                         </div>
                                                             </div>
 
                                                             <div class="col-lg-4 col-md-12">
                                                                     <div class="card card-blog"    ng-repeat="item in news_list_3" >
-                                                
-                                                                         
-                                                
+
+
+
                                                                             <div  ng-if="item.topicPicture != ''" class="card-header card-header-image">
                                                                                     <a href="#pablo">
                                                                                         <img style="width:330px; height:186px" ng-src="{{item.topicPicture}}"  onerror="this.src='./assets/img/image_placeholder.jpg';" alt="not found">
@@ -126,9 +127,9 @@
                                                                                  style="background-image:url({{item.topicPicture}}); opacity: 1;">
                                                                                 </div>
                                                                             </div>
-                                                
-                                                
-                                                                       
+
+
+
                                                                             <div  ng-if="item.topicPicture == ''" class="card-header card-header-image">
                                                                                     <a href="#pablo">
                                                                                         <img style="width:330px; height:186px" ng-src="http://localhost:2001/admin/admin-faculty/assets/img/image_placeholder.jpg" onerror="this.src='./assets/img/image_placeholder.jpg';" alt="not found">
@@ -137,34 +138,34 @@
                                                                                  style="background-image: url(http://localhost:2001/admin/admin-faculty/assets/img/image_placeholder.jpg); opacity: 1;">
                                                                                 </div>
                                                                             </div>
-                                                
-                                                                         
-                                                                          
+
+
+
                                                                             <div class="card-body">
                                                                                     <h4 class="card-category text-warning text-left">{{item.topicShort  | limitTo:100}}</h4>
-                                                                               
+
                                                                                     <p class="card-description text-left">
                                                                                             &ensp; &ensp; {{item.detailShort | limitTo:300}}.... </p>
                                                                                             <div class="row pull-right">
                                                                                     <a ng-href="http://localhost:2001/news_each/{{item._id}}" class="btn btn-info btn-round" sty>อ่านต่อ</a>
                                                                                 </div>
                                                                                 </div>
-                                                                           
-                                                
-                                                                     
+
+
+
                                                                         </div>
                                                             </div>
 
-                                                       
+
                                                         </div>
-                                                
-                                                      
+
+
                                         </div>
                                     </div>
                                         <div class="tab-pane  " id="pill2">
-                                                 
-                                                                    
-                                        
+
+
+
                                         </div>
                                                         <div class="tab-pane" id="pill3">
                                                             Completely synergize resource taxing relationships via premier niche markets. Professionally cultivate one-to-one customer service with robust ideas.
@@ -175,12 +176,15 @@
                                                                 <br><br>Dramatically maintain clicks-and-mortar solutions without functional solutions.
                                                             </div>
                                                             <div class="tab-pane" id="pill5">
+                                                                ข่าวคณะวิทยาศาสตร์
+                                                            </div>
+                                                            <div class="tab-pane" id="pill6">
                                                                 Completely synergize resource taxing relationships via premier niche markets. Professionally cultivate one-to-one customer service with robust ideas.
                                                             <br><br>Dynamically innovate resource-leveling customer service for state of the art customer service.
                                                             </div>
                                         </div>
-                                
-                                        
+
+
                                         <div id="myModal" class="modal fade" tabindex="-1"  aria-labelledby="myLargeModalLabel" aria-hidden="true">
                                             <div class="modal-dialog modal-lg">
                                               <div class="modal-content">
@@ -198,21 +202,21 @@
                                                 <div class="modal-body">
                                                   <div class="container">
                                                     <div class="row">
-                                            
-                                        
+
+
                                                         <div class="col-md-12 ml-auto mr-auto ">
                                                                 <div class="">
                                                                         <div ng-bind-html="trustAsHtml(modal_news.detailFull)"></div>
-                                        
+
                                                                     </div>
-                                                          
+
                                                       </div>
                                                     </div>
-                                                    
-                                        
+
+
                                                   </div>
                                                 </div>
-                                      
+
                                                 <!-- Modal footer -->
                                             <div class="modal-footer">
                                                 <p><b>วันที่โพส : </b>{{modal_news.datetimePost}}</p>
@@ -224,10 +228,9 @@
                                                         {{modal_news.departmentName}}
                                                 </p>
                                                   <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                                                </div> 
+                                                </div>
                                               </div>
                                             </div>
                                           </div>
 
                     </div>
-                
