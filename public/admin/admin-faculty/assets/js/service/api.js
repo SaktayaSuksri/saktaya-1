@@ -40,6 +40,16 @@ angular.module('api_service', [])
                                                         create_news : function (data) {
                                                             return $http.post('/api/newNews/',data);
                                                         },
+
+                                                        create_form : function (data) {
+                                                            return $http.post('/api/newForm/',data);
+                                                        },   
+                                                        
+                                                        get_formAll : function () {
+                                                            return $http.get('/api/getFormsAll/');
+                                                        },   
+
+                                                        
                                                         
                                                         
                                                         
@@ -74,6 +84,9 @@ angular.module('api_service', [])
                 // console.log(data);
                 return $http.post('/signup_user', data);
             }
+
+
+
     }
     
 

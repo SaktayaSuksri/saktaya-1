@@ -159,9 +159,9 @@ $scope.get_news = function(){
           $scope.news_list_1[0] = data.message[1];
           $scope.news_list_1[1] = data.message[0];
           $scope.news_list_2[0] = data.message[2];
-        /*  $scope.news_list_2[1] = data.message[3];
+          $scope.news_list_2[1] = data.message[3];
           $scope.news_list_3[0] = data.message[4];
-          $scope.news_list_3[1] = data.message[5];*/
+          $scope.news_list_3[1] = data.message[5];
        //   console.log('$scope.news_list  =  '+ JSON.stringify($scope.news_list))
         //  $scope.news_table= new NgTableParams({count: 10 ,  sorting: { resourceName: "desc" }  }, { counts: [10,20, 100], dataset: $scope.news_list });
          

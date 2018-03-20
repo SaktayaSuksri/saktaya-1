@@ -44,6 +44,7 @@ angular.module('api_service', [])
                                                             return $http.post('/api/newNews/',data);
                                                         },
                                                         
+                                                                                                       
                                                         
                                                         
         getpadgeadminedit : function (id) {

@@ -1,4 +1,4 @@
-angular.module('app', ['ui.router',"xeditable","ngTable","api_service", 'ngSanitize','textAngular'])
+angular.module('app', ['ui.router',"xeditable","ngTable","api_service", 'ngSanitize','textAngular','ngTagsInput'])
 
 
 
@@ -436,15 +436,166 @@ angular.module('app').controller('content_management', function ($scope,NgTableP
     
 });
 
-angular.module('app').controller('form_management', function ($scope,NgTableParams, $filter, $q,$http){
+angular.module('app').controller('form_management', function ($scope,NgTableParams, $filter, $q,$http,api_manage){
     
     alert('form_management');
+/* $scope.tags = [
+                    { text: 'just' },
+                    { text: 'some' },
+                    { text: 'cool' },
+                    { text: 'tags' }
+                ];
+                $scope.loadTags = function(query) {
+                     return $http.get('/tags?query=' + query);
+                };*/
+  $scope.init = function(){
+    $scope.modal_form_data = {
+
+      formName : '',
+      formSource : '',
+      sourceType : '',
+      authorId : '',
+      resourceTypeId :'',
+      deptId : '',
+      targetTypeId : '',
+      divisionId : '',
+
+
+      formCode : '',
+      formDetail : '',
+      tags : [],
+      showFlag : true
+
+
+
+    }
+   $scope.get_catagory();
+   $scope.get_form_list();
+
+   $scope.show_tags = $scope.modal_form_data.tags;
+   
+  }
+
+  
+  $scope.get_form_list = function(){
+    
+
+    api_manage.get_formAll()
+    .success(function(data, status, headers, config) {
+
+       
+
+    
+
+        console.log("data  =  "+JSON.stringify(data));
+        if(data.code != "999999")
+        {
+          alert(data.message)
+        }
+        else{
+    
+          $scope.form_list  = data.message;
+          
+          $scope.form_table= new NgTableParams({count: 20 ,  sorting: { formName: "desc" }  }, { counts: [30,50, 100], dataset: $scope.form_list });
+          
+        
+    
+        }
+
+
+    })
+    .error(function(data, status, headers, config) {
+        alert( "failure message: " + JSON.stringify({data: data}) +"ไม่สามารถติดต่อเซิฟเวอร์ได้ ติดต่อแอดมิน");
+       
+    });
+
+
+  }
+
+    $scope.get_catagory = function(){
+      
+      
+          api_manage.get_catagory()
+          .success(function(data, status, headers, config) {
+   
+             
+    
+          
+
+              console.log("data  =  "+JSON.stringify(data));
+              if(data.code != "999999")
+              {
+                alert(data.message)
+              }
+              else{
+          
+                $scope.catagory_list  = data.message;
+                
+              
+          
+              }
+
+
+          })
+          .error(function(data, status, headers, config) {
+              alert( "failure message: " + JSON.stringify({data: data}) +"ไม่สามารถติดต่อเซิฟเวอร์ได้ ติดต่อแอดมิน");
+             
+          });	
+        }
+ 
+
 
     $scope.create_form = function(){
-        alert('create_form')
+        
         $('#form').modal('show');
         
+
+
     }
+
+    $scope.form_create = function(){
+
+      let dataObj = {
+
+        formName : modal_form_data.formName,
+        formSource : modal_form_data.formSource,
+        sourceType : modal_form_data.sourceType,
+        authorId : modal_form_data.authorId,
+        resourceTypeId : modal_form_data.resourceTypeId,
+        deptId : modal_form_data.deptId,
+        targetTypeId : modal_form_data.targetTypeId,
+        divisionId : modal_form_data.divisionId,
+
+
+        formCode : modal_form_data.formCode,
+        formDetail : modal_form_data.formDetail,
+        tags : modal_form_data.tags,
+        showFlag : modal_form_data.showFlag
+
+      }
+      api_manage.create_form(dataObj)
+      .success(function(data, status, headers, config) {
+        
+          console.log("data  =  "+JSON.stringify(data));
+          if(data.code != "999999")
+          {
+            alert(data.message)
+          }
+          else{
+      
+            $scope.init();
+              
+          
+      
+          }
+      })
+      .error(function(data, status, headers, config) {
+          alert( "failure message: " + JSON.stringify({data: data}) +"ไม่สามารถติดต่อเซิฟเวอร์ได้ ติดต่อแอดมิน");
+         
+      });	
+
+
+  }
     
 
     //for including fornm
