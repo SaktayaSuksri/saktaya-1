@@ -86,19 +86,20 @@ img {
                 <tbody>
                   <tr ng-repeat = "plist in personal_list">
                     <td>
-              
-                      <img ng-if="plist.picture != null" ng-src="{{plist.picture}}" class="img-fluid"  onerror="this.src='./assets/img/image_placeholder.jpg';" alt="Not found"   style="width:157px;height:69px">
-                      
-                        <img ng-if="plist.picture == null" ng-src="/assets/img/image_placeholder.jpg" class="img-fluid"  onerror="this.src='./assets/img/image_placeholder.jpg';" alt="Not found"   style="width:157px;height:69px">
-                        
-                        {{plist.picture}}
+
+                      <img ng-if="plist.picture != null" ng-src="{{plist.picture}}" class="img-fluid"  onerror="this.src='./assets/img/image_placeholder.jpg';" alt="Not found"   style="width:157px;height:auto;">
+
+                        <img ng-if="plist.picture == null" ng-src="/assets/img/image_placeholder.jpg" class="img-fluid"  onerror="this.src='./assets/img/image_placeholder.jpg';" alt="Not found"   style="width:157px;height:auto;">
+
+                        <!-- {{plist.picture}} -->
 
                     </td>
                     <td><b>{{plist.personelName}}</b></td>
                     <td>
                       {{plist.position}}
                     </td>
-                    <td class="td-actions text-right">
+                    <td>
+                      <span class="td-actions text-right">
                       <button type="button" data-toggle="modal" rel="tooltip" title="Edit Task" class="btn btn-primary btn-simple btn-xs" ng-click="edit_personel_profile(plist)">
                             <i class="material-icons">edit</i>
                       </button>
@@ -108,6 +109,7 @@ img {
                       <button type="button" rel="tooltip" title="View information" class="btn btn-info btn-simple btn-xs" ng-click="show_personel_profile(plist)">
                             <i class="material-icons">info_outline</i>
                       </button>
+                    </span>
                     </td>
                   </tr>
                 </tbody>
@@ -127,7 +129,7 @@ img {
 
 
 <!-- ==================================== create new personnal =============================================== -->
-  <div id="new_personel_profile" class="modal fade" tabindex="-1" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div id="new_personel_profile" class="modal fade" tabindex="-1" aria-labelledby="myLargeModalLabel" aria-hidden="true" role="dialog">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <!-- Modal Header -->
@@ -143,9 +145,9 @@ img {
                         <img src="../../assets/img/image_placeholder.jpg" ng-hide="filepreview" style=" width: 100%;">
                         <img ng-src="{{filepreview}}" ng-show="filepreview" style=" width: 100%;">
 
-                        
-                       
-                          
+
+
+
                         <label class="btn btn-rose btn-round">
                             Browse <input type="file" style="display: none !important;" filepreview="filepreview" fileinput="file">
                         </label>
@@ -232,6 +234,13 @@ img {
                                       <span class="material-input"></span></div>
                                     </div>
               </div>
+              <select class="form-control" id="exampleFormControlSelect1">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+              </select>
               <div class="row">
                       <label class="col-md-2 label-on-left">รหัสตำแหน่ง</label>
                             <div class="col-md-10">
@@ -267,7 +276,7 @@ img {
 
  <!-- ====================================Edit edit personnal =============================================== -->
    <div id="edit_personel_profile" class="modal fade" tabindex="-1" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-     <div class="modal-dialog modal-lg">
+     <div class="modal-dialog modal-lg" role="document">
        <div class="modal-content">
          <!-- Modal Header -->
          <div class="modal-header">

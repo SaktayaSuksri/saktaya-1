@@ -344,8 +344,9 @@ angular.module('app').controller('personelCtrl', function($scope, $filter, $q, $
   alert("personelCtrl started");
   //get list of personel
   let dataObj = {
-    positionId : 0,
-    departmentId : 0,
+    positionId : '0',
+    divisionId : '0',
+    departmentId : '0',
     isPreview : "false"
   }
 

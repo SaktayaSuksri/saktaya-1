@@ -57,9 +57,9 @@ $provide.decorator('taOptions', ['taRegisterTool', '$delegate', function(taRegis
 
 angular.module('app').config(function($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/home');
-    
+
         $stateProvider
-    
+
             // HOME STATES AND NESTED VIEWS ========================================
             .state('utility', {
                 url: '/utility',
@@ -76,7 +76,7 @@ angular.module('app').config(function($stateProvider, $urlRouterProvider) {
                 templateUrl : "./partial/user_management.html"
             })
 
-            
+
             .state('form_management', {
                 url: '/form_management',
                 templateUrl : "./partial/form_management.html"
@@ -93,7 +93,7 @@ angular.module('app').config(function($stateProvider, $urlRouterProvider) {
             })
 
                 // nested list with custom controller
-       
+
 
 
             .state('person', {
@@ -102,7 +102,7 @@ angular.module('app').config(function($stateProvider, $urlRouterProvider) {
             })
 
 
-     
+
 
 });
 
@@ -111,7 +111,7 @@ angular.module('app').config(function($stateProvider, $urlRouterProvider) {
 angular.module('app').controller('utility', function ($scope,NgTableParams, $filter, $q,$http,api_manage){
 
 
-   
+
     $scope.init = function(){
       $scope.get_catagory();
      $scope.get_tag();
@@ -127,30 +127,30 @@ angular.module('app').controller('utility', function ($scope,NgTableParams, $fil
         $scope.catagory_list  = data.message;
         console.log('$scope.catagory_list  =  '+ JSON.stringify($scope.catagory_list))
         $scope.catagory_table= new NgTableParams({count: 10 ,  sorting: { resourceName: "desc" }  }, { counts: [10,20, 100], dataset: $scope.catagory_list });
-        
-    
+
+
     })
     .error(function(data, status, headers, config) {
         alert( "failure message: " + JSON.stringify({data: data}) +"ไม่สามารถติดต่อเซิฟเวอร์ได้ ติดต่อแอดมิน");
         console.log(status+headers);
-    });	
+    });
   }
 
-//create catagory  
+//create catagory
 $scope.modal_create_catagory = function(){
-    
+
     $('#modal_create_catagory').modal('show');
 
-    
-    
+
+
 }
 $scope.create_catagory = function()
 {
 
     let dataobj = { resourceName : $scope.create_catagory_resourceName}
     console.log("beforesend  create_catagory = "+ JSON.stringify(dataobj))
-    api_manage.create_catagory(dataobj) 
-    
+    api_manage.create_catagory(dataobj)
+
     .success(function(data, status, headers, config) {
         //$scope.message = data;
       console.log("data  =  "+JSON.stringify(data));
@@ -160,25 +160,25 @@ $scope.create_catagory = function()
         }
         else{
         $scope.catagory_list.push(data.data);
-     
+
         $scope.catagory_table.reload();
 
-           
+
         $("#modal_create_catagory .close").click()
         $scope.create_catagory_resourceName = null;
         }
-     
+
     })
     .error(function(data, status, headers, config) {
         alert( "failure message: " + JSON.stringify({data: data}) +"ไม่สามารถติดต่อเซิฟเวอร์ได้ ติดต่อแอดมิน");
-   
-    });	
+
+    });
 
 
 
 }
 
-//update catagory 
+//update catagory
 
 
 $scope.modal_update_catagory = function(item){
@@ -187,8 +187,8 @@ $scope.modal_update_catagory = function(item){
   $scope.modal_update_catagory_resourceName = item.resourceName;
   $('#modal_update_catagory').modal('show');
 
-  
-  
+
+
 }
 
 $scope.update_catagory = function()
@@ -197,8 +197,8 @@ $scope.update_catagory = function()
     let dataobj = { resourceId  : $scope.modal_update_catagory_id,
                      resourceName : $scope.modal_update_catagory_resourceName}
     console.log("beforesend  update_catagory = "+ JSON.stringify(dataobj))
-    api_manage.update_catagory(dataobj) 
-    
+    api_manage.update_catagory(dataobj)
+
     .success(function(data, status, headers, config) {
         //$scope.message = data;
       console.log("data  =  "+JSON.stringify(data));
@@ -209,34 +209,34 @@ $scope.update_catagory = function()
         else{
 
           $scope.get_catagory();
-          
+
           $("#modal_update_catagory .close").click()
 
         }
-     
+
     })
     .error(function(data, status, headers, config) {
         alert( "failure message: " + JSON.stringify({data: data}) +"ไม่สามารถติดต่อเซิฟเวอร์ได้ ติดต่อแอดมิน");
-   
-    });	
+
+    });
 
 
 
 }
 
-    
-//delete catagory  
+
+//delete catagory
 
 
 $scope.delete_catagory = function(item){
 
   let dataObj = {
       resourceId:item._id
-         
-      };	
-  api_manage.delete_catagory(dataObj) 
+
+      };
+  api_manage.delete_catagory(dataObj)
   .success(function(data, status, headers, config) {
-    
+
     console.log("data  =  "+JSON.stringify(data));
     if(data.code != "999999")
     {
@@ -245,30 +245,30 @@ $scope.delete_catagory = function(item){
     else{
 
       $scope.get_catagory();
-      
-    
+
+
 
     }
   })
   .error(function(data, status, headers, config) {
       alert( "failure message: " + JSON.stringify({data: data}) +"ไม่สามารถติดต่อเซิฟเวอร์ได้ ติดต่อแอดมิน");
-     
-  });	
-  
+
+  });
+
 }
 
 
 
-   
 
-   
+
+
     //--tag
 
-   
+
 
   $scope.get_tag = function(){
-    
-    
+
+
         api_manage.get_tag()
         .success(function(data, status, headers, config) {
 
@@ -282,29 +282,29 @@ $scope.delete_catagory = function(item){
             console.log('$scope.tag_list  =  '+ JSON.stringify($scope.tag_list))
             $scope.tag_table= new NgTableParams({count: 10 ,  sorting: { tagName: "desc" }  }, { counts: [10,20, 100], dataset: $scope.tag_list });
           }
-        
+
         })
         .error(function(data, status, headers, config) {
             alert( "failure message: " + JSON.stringify({data: data}) +"ไม่สามารถติดต่อเซิฟเวอร์ได้ ติดต่อแอดมิน");
             console.log(status+headers);
-        });	
+        });
      }
-    
-    //create catagory  
+
+    //create catagory
     $scope.modal_create_tag = function(){
-        
+
         $('#modal_create_tag').modal('show');
-    
-        
-        
+
+
+
     }
     $scope.create_tag = function()
     {
-    
+
         let dataobj = { tagName : $scope.create_tag_resourceName}
         console.log("beforesend  create_tag = "+ JSON.stringify(dataobj))
-        api_manage.create_tag(dataobj) 
-        
+        api_manage.create_tag(dataobj)
+
         .success(function(data, status, headers, config) {
             //$scope.message = data;
           console.log("data  =  "+JSON.stringify(data));
@@ -314,45 +314,45 @@ $scope.delete_catagory = function(item){
             }
             else{
             $scope.tag_list.push(data.data);
-         
+
             $scope.tag_table.reload();
-    
-               
+
+
             $("#modal_create_tag .close").click()
             $scope.create_tag_resourceName = null;
             }
-         
+
         })
         .error(function(data, status, headers, config) {
             alert( "failure message: " + JSON.stringify({data: data}) +"ไม่สามารถติดต่อเซิฟเวอร์ได้ ติดต่อแอดมิน");
-       
-        });	
-    
-    
-    
+
+        });
+
+
+
     }
-    
+
     //update tag
-    
-    
+
+
     $scope.modal_update_tag = function(item){
-    
+
       $scope.modal_update_tag_id  = item._id;
       $scope.modal_update_tag_resourceName = item.tagName;
       $('#modal_update_tag').modal('show');
-    
-      
-      
+
+
+
     }
-    
+
     $scope.update_tag = function()
     {
-    
+
         let dataobj = { tagId  : $scope.modal_update_tag_id,
                          tagName : $scope.modal_update_tag_resourceName}
         console.log("beforesend  update_tag = "+ JSON.stringify(dataobj))
-        api_manage.update_tag(dataobj) 
-        
+        api_manage.update_tag(dataobj)
+
         .success(function(data, status, headers, config) {
             //$scope.message = data;
           console.log("data  =  "+JSON.stringify(data));
@@ -361,83 +361,83 @@ $scope.delete_catagory = function(item){
               alert(data.message)
             }
             else{
-    
+
               $scope.get_tag();
-              
+
               $("#modal_update_tag .close").click()
-    
+
             }
-         
+
         })
         .error(function(data, status, headers, config) {
             alert( "failure message: " + JSON.stringify({data: data}) +"ไม่สามารถติดต่อเซิฟเวอร์ได้ ติดต่อแอดมิน");
-       
-        });	
-    
-    
-    
+
+        });
+
+
+
     }
-    
-        
-    //delete tag  
-    
-    
+
+
+    //delete tag
+
+
     $scope.delete_tag = function(item){
-    
+
       let dataObj = {
           tagId:item._id
-             
-          };	
-      api_manage.delete_tag(dataObj) 
+
+          };
+      api_manage.delete_tag(dataObj)
       .success(function(data, status, headers, config) {
-        
+
         console.log("data  =  "+JSON.stringify(data));
         if(data.code != "999999")
         {
           alert(data.message)
         }
         else{
-    
+
           $scope.get_tag();
-          
-        
-    
+
+
+
         }
       })
       .error(function(data, status, headers, config) {
           alert( "failure message: " + JSON.stringify({data: data}) +"ไม่สามารถติดต่อเซิฟเวอร์ได้ ติดต่อแอดมิน");
-         
-      });	
-      
-    }
-    
-       
-    
-      
-    
 
-      
+      });
+
+    }
+
+
+
+
+
+
+
 });
 
 angular.module('app').controller('user_management', function ($scope,NgTableParams, $filter, $q,$http){
-    
+
     alert('user_management');
 
 
-    
+
 });
 
 
 angular.module('app').controller('content_management', function ($scope,NgTableParams, $filter, $q,$http){
-    
+
     alert('content_management');
 
 
-    
+
 });
 
 angular.module('app').controller('form_management', function ($scope,NgTableParams, $filter, $q,$http,api_manage){
-    
+
     alert('form_management');
 /* $scope.tags = [
                     { text: 'just' },
@@ -473,19 +473,19 @@ angular.module('app').controller('form_management', function ($scope,NgTablePara
    $scope.get_form_list();
 
    $scope.show_tags = $scope.modal_form_data.tags;
-   
+
   }
 
-  
+
   $scope.get_form_list = function(){
-    
+
 
     api_manage.get_formAll()
     .success(function(data, status, headers, config) {
 
-       
 
-    
+
+
 
         console.log("data  =  "+JSON.stringify(data));
         if(data.code != "999999")
@@ -493,34 +493,34 @@ angular.module('app').controller('form_management', function ($scope,NgTablePara
           alert(data.message)
         }
         else{
-    
+
           $scope.form_list  = data.message;
-          
+
           $scope.form_table= new NgTableParams({count: 20 ,  sorting: { formName: "desc" }  }, { counts: [30,50, 100], dataset: $scope.form_list });
-          
-        
-    
+
+
+
         }
 
 
     })
     .error(function(data, status, headers, config) {
         alert( "failure message: " + JSON.stringify({data: data}) +"ไม่สามารถติดต่อเซิฟเวอร์ได้ ติดต่อแอดมิน");
-       
+
     });
 
 
   }
 
     $scope.get_catagory = function(){
-      
-      
+
+
           api_manage.get_catagory()
           .success(function(data, status, headers, config) {
-   
-             
-    
-          
+
+
+
+
 
               console.log("data  =  "+JSON.stringify(data));
               if(data.code != "999999")
@@ -528,27 +528,27 @@ angular.module('app').controller('form_management', function ($scope,NgTablePara
                 alert(data.message)
               }
               else{
-          
+
                 $scope.catagory_list  = data.message;
-                
-              
-          
+
+
+
               }
 
 
           })
           .error(function(data, status, headers, config) {
               alert( "failure message: " + JSON.stringify({data: data}) +"ไม่สามารถติดต่อเซิฟเวอร์ได้ ติดต่อแอดมิน");
-             
-          });	
+
+          });
         }
- 
+
 
 
     $scope.create_form = function(){
-        
+
         $('#form').modal('show');
-        
+
 
 
     }
@@ -575,28 +575,28 @@ angular.module('app').controller('form_management', function ($scope,NgTablePara
       }
       api_manage.create_form(dataObj)
       .success(function(data, status, headers, config) {
-        
+
           console.log("data  =  "+JSON.stringify(data));
           if(data.code != "999999")
           {
             alert(data.message)
           }
           else{
-      
+
             $scope.init();
-              
-          
-      
+
+
+
           }
       })
       .error(function(data, status, headers, config) {
           alert( "failure message: " + JSON.stringify({data: data}) +"ไม่สามารถติดต่อเซิฟเวอร์ได้ ติดต่อแอดมิน");
-         
-      });	
+
+      });
 
 
   }
-    
+
 
     //for including fornm
 
@@ -608,27 +608,27 @@ angular.module('app').controller('form_management', function ($scope,NgTablePara
         {id: 3, colId:['col5', 'col6', 'col7', 'col8'], dataTypeName: 'textarea'},
         {id: 4, colId:['col5', 'col6', 'col7', 'col8'], dataTypeName: 'multiplechoice'}
       ];
-      
-     $scope.columns = [{colId: 'col1', 
-     title:'', 
-     type: {  
-        view: 'select',  
-        options: [  
-        /*  {id: 0, name: 'นักเรียน'},  
-          {id: 1, name: 'คุนครู'},  
-          {id: 2, name: 'ผุ้ปกครอง'}*/  
-        ]  
-      }, 
-      detail:'', 
+
+     $scope.columns = [{colId: 'col1',
+     title:'',
+     type: {
+        view: 'select',
+        options: [
+        /*  {id: 0, name: 'นักเรียน'},
+          {id: 1, name: 'คุนครู'},
+          {id: 2, name: 'ผุ้ปกครอง'}*/
+        ]
+      },
+      detail:'',
       isKeyRequired:false }];
-      
+
      //title  //dataType   //detail   //isrequired
       $scope.addNewColumn = function() {
         var newItemNo = $scope.columns.length+1;
         $scope.columns.push({'colId':'col'+newItemNo});
       };
-        
-    
+
+
       $scope.removeColumn = function(index) {
         // remove the row specified in index
         $scope.columns.splice( index, 1);
@@ -637,80 +637,79 @@ angular.module('app').controller('form_management', function ($scope,NgTablePara
           alert('no rec');
           $scope.columns.push = [{"colId":"col1"}];
         }
-            
-      
+
+
       };
-    
-    
+
+
     //end includin form
 
-    // entity to edit  
-  $scope.entity = {  
-    name: 'Max',  
-    country: 2,  
-    licenceAgreement: true,  
-    description: 'I use AngularJS'  
-  };  
-  
-  // fields description of entity  
-  $scope.fields = [  
-    {  
-      name: 'name',  
-      title: 'Name',  
-      required: true,  
-      type: {  
-        view: 'input'  
-      }  
-    },  
-    {  
-      name: 'country',  
-      title: 'Country',  
-      type: {  
-        view: 'select',  
-        options: [  
-          {id: 0, name: 'USA'},  
-          {id: 1, name: 'German'},  
-          {id: 2, name: 'Russia'}  
-        ]  
-      }  
-    },  
-    {  
-      name: 'licenceAgreement',  
-      title: 'Licence Agreement',  
-      type: {  
-        view: 'checkbox'  
-      }  
-    },  
-    {  
-      name: 'description',  
-      title: 'Description',  
-      type: {  
-        view: 'textarea'  
-      }  
-    }  
-  ];  
+    // entity to edit
+  $scope.entity = {
+    name: 'Max',
+    country: 2,
+    licenceAgreement: true,
+    description: 'I use AngularJS'
+  };
 
-    
+  // fields description of entity
+  $scope.fields = [
+    {
+      name: 'name',
+      title: 'Name',
+      required: true,
+      type: {
+        view: 'input'
+      }
+    },
+    {
+      name: 'country',
+      title: 'Country',
+      type: {
+        view: 'select',
+        options: [
+          {id: 0, name: 'USA'},
+          {id: 1, name: 'German'},
+          {id: 2, name: 'Russia'}
+        ]
+      }
+    },
+    {
+      name: 'licenceAgreement',
+      title: 'Licence Agreement',
+      type: {
+        view: 'checkbox'
+      }
+    },
+    {
+      name: 'description',
+      title: 'Description',
+      type: {
+        view: 'textarea'
+      }
+    }
+  ];
+
+
 });
 
 
 angular.module('app').controller('link_management', function ($scope,NgTableParams, $filter, $q,$http){
-    
+
     alert('link_management');
 
 
-    
+
 });
 
 angular.module('app').controller('person', function ($scope,NgTableParams, $filter, $q,$http){
-    
-    let dataObj = {
-        positionId: "0",
-        departmentId: "0",
-        isPreview : "false"
-    };
-  
-  
+
+  let dataObj = {
+    positionId : '0',
+    divisionId : '0',
+    departmentId : '0',
+    isPreview : "false"
+  }
     console.log("for table catagory =====----dataObj ---+++++" + JSON.stringify(dataObj));
     let res = $http.post('/api/getPersonel/',dataObj);
     res.success(function(data, status, headers, config) {
@@ -718,19 +717,15 @@ angular.module('app').controller('person', function ($scope,NgTableParams, $filt
           alert(data.message)
         }else {
           $scope.personal_list = data.message;
-          console.log(data.message);
+          console.log($scope.personal_list);
         }
     });
     res.error(function(data, status, headers, config) {
         alert( "failure message: " + JSON.stringify({data: data}) +"ไม่สามารถติดต่อเซิฟเวอร์ได้ ติดต่อแอดมิน");
         console.log(status+headers);
     });
-  
+
     //brgin functioning
-    $scope.new_personel_profile = function(person){
-        $('#new_personel_profile').modal('show');
-        console.log(person);
-    }
     $scope.show_personel_profile = function(person){
         $('#show_personel_profile').modal('show');
         console.log(person);
@@ -747,24 +742,41 @@ angular.module('app').controller('person', function ($scope,NgTableParams, $filt
         $scope.show_position_id = person.positionId;
         $scope.show_department_id = person.departmentId;
     }
-  
-      $scope.edit_personel_profile = function(person){
-          $('#edit_personel_profile').modal('show');
+
+
+
+
+// New personel
+      $scope.new_personel_profile = function(person){
+          $('#new_personel_profile').modal('show');
           console.log(person);
-          $scope.edit_personel_id = person._id;
-          $scope.edit_personel_name = person.personelName ;
-          $scope.edit_education = person.education;
-          $scope.edit_position = person.position;
-          $scope.edit_expertise = person.expertise;
-          $scope.edit_subjects = person.subjects;
-          $scope.edit_office_room = person.officeRoom;
-          $scope.edit_e_mail = person.email;
-          $scope.edit_home_page = person.homepage;
-          $scope.edit_tel_num = person.telNumber;
-          $scope.edit_position_id = person.positionId;
-          $scope.edit_department_id = person.departmentId;
+
+    //get list department NO API
+          // let dataObj = {
+          //     positionId: "0",
+          //     departmentId: "0",
+          //     isPreview : "false"
+          // };
+          // console.log("for table catagory =====----dataObj ---+++++" + JSON.stringify(dataObj));
+          // let res = $http.post('/api/getPersonel/',dataObj);
+          // res.success(function(data, status, headers, config) {
+          //     if(data.code !== "999999"){
+          //       alert(data.message)
+          //     }else {
+          //       $scope.departmentList = data.message;
+          //       console.log(data.message);
+          //     }
+          // });
+          // res.error(function(data, status, headers, config) {
+          //     alert( "failure message: " + JSON.stringify({data: data}) +"ไม่สามารถติดต่อเซิฟเวอร์ได้ ติดต่อแอดมิน");
+          //     console.log(status+headers);
+          // });
+    //get list position
+
+    //get list division
+
       }
-  
+
       $scope.create_new_presonal_submit = function(item){
         let personelObj = {
               personelName : $scope.personel_name,
@@ -778,7 +790,9 @@ angular.module('app').controller('person', function ($scope,NgTableParams, $filt
               homepage : $scope.home_page,
               telNumber : $scope.tel_num,
               positionId : $scope.position_id,
-              departmentId : $scope.department_id
+              departmentId : $scope.department_id,
+              divisionId : '5ac34c06734d1d4f8afa3038'
+
         };
          console.log(personelObj);
          let res = $http.post('/api/newPersonel/',personelObj);
@@ -796,7 +810,24 @@ angular.module('app').controller('person', function ($scope,NgTableParams, $filt
              console.log(status+headers);
          });
       }
-  
+
+//edit personel
+      $scope.edit_personel_profile = function(person){
+          $('#edit_personel_profile').modal('show');
+          console.log(person);
+          $scope.edit_personel_id = person._id;
+          $scope.edit_personel_name = person.personelName ;
+          $scope.edit_education = person.education;
+          $scope.edit_position = person.position;
+          $scope.edit_expertise = person.expertise;
+          $scope.edit_subjects = person.subjects;
+          $scope.edit_office_room = person.officeRoom;
+          $scope.edit_e_mail = person.email;
+          $scope.edit_home_page = person.homepage;
+          $scope.edit_tel_num = person.telNumber;
+          $scope.edit_position_id = person.positionId;
+          $scope.edit_department_id = person.departmentId;
+      }
       $scope.edit_presonal_submit = function() {
         let personelObj = {
               personelId : $scope.edit_personel_id,
@@ -829,9 +860,9 @@ angular.module('app').controller('person', function ($scope,NgTableParams, $filt
             console.log(status+headers);
         });
       }
-  
+
   });
-  
+
 
 angular.module('app').controller('news', function ($scope,$sce,NgTableParams, $filter, $q,$http,api_manage){
   $scope.trustAsHtml = function(string) {
@@ -854,7 +885,7 @@ console.log("str = "+string)
   $scope.init = function(){
 
     //  quill_title  quill_detail      quill_title_yo  quill_detail_yo
-   
+
     $scope.get_catagory();
     $scope.get_news();
 
@@ -864,7 +895,7 @@ console.log("str = "+string)
     $scope.quill_detail_yo = '';
 
 
-  
+
 }
 
 $scope.reload_table = function(item){
@@ -875,7 +906,7 @@ $scope.reload_table = function(item){
     alert("reload");
 }
 $scope.get_news = function(){
-  
+
   let dataObj = {
 
 
@@ -885,7 +916,7 @@ $scope.get_news = function(){
     limit:0,
     isPosted:"false",
     isPreview:"false"
-    
+
   }
     api_manage.get_news(dataObj)
     .success(function(data, status, headers, config) {
@@ -901,16 +932,16 @@ $scope.get_news = function(){
         $scope.news_list  = data.message;
       //  console.log('$scope.news_list  =  '+ JSON.stringify($scope.news_list))
         $scope.news_table= new NgTableParams({count: 10 ,  sorting: { resourceName: "desc" }  }, { counts: [10,20, 100], dataset: $scope.news_list });
-       
+
       }
-    
+
     })
     .error(function(data, status, headers, config) {
         alert( "failure message: " + JSON.stringify({data: data}) +"ไม่สามารถติดต่อเซิฟเวอร์ได้ ติดต่อแอดมิน");
         console.log(status+headers);
-    });	
+    });
   }
-  
+
 $scope.get_catagory = function(){
 
 
@@ -928,21 +959,21 @@ $scope.get_catagory = function(){
       console.log('$scope.catagory_list  =  '+ JSON.stringify($scope.catagory_list))
       //$scope.catagory_table= new NgTableParams({count: 10 ,  sorting: { resourceName: "desc" }  }, { counts: [10,20, 100], dataset: $scope.catagory_list });
       }
-  
+
   })
   .error(function(data, status, headers, config) {
       alert( "failure message: " + JSON.stringify({data: data}) +"ไม่สามารถติดต่อเซิฟเวอร์ได้ ติดต่อแอดมิน");
       console.log(status+headers);
-  });	
+  });
 }
 
 $scope.update_news = function(){
 
-    
-    
 
 
-   
+
+
+
     $scope.modal_update_news_data.topicFull   = $scope.quill_title;
     $scope.modal_update_news_data.detailFull  =  $scope.quill_detail;
     $scope.modal_update_news_data.topicShort  = $scope.quill_title_yo;
@@ -958,7 +989,7 @@ $scope.update_news = function(){
     if($scope.modal_update_news_data.aiswitch != 'create')
 {
     $scope.modal_update_news_data.newsID = $scope.modal_update_news_data._id;
-      
+
     api_manage.update_news($scope.modal_update_news_data)
     .success(function(data, status, headers, config) {
             //$scope.message = data;
@@ -968,37 +999,37 @@ $scope.update_news = function(){
               alert(data.message)
             }
             else{
-    
+
               $scope.get_news();
-              
+
               $("#modal_update_news .close").click()
-    
+
             }
-    
+
     })
     .error(function(data, status, headers, config) {
         alert( "failure message: " + JSON.stringify({data: data}) +"ไม่สามารถติดต่อเซิฟเวอร์ได้ ติดต่อแอดมิน");
         console.log(status+headers);
-    });	
+    });
 
 }
 else{
     $scope.create_news( $scope.modal_update_news_data);
 }
-    
-        
-           
-        
-          
+
+
+
+
+
 
 }
 
 
 $scope.modal_create_news = function(){
-    
+
 
     $scope.modal_create_news_data  = {
-        
+
                     topicShort : '',
                     topicFull   : '',
                     detailShort :'',
@@ -1017,18 +1048,18 @@ $scope.modal_create_news = function(){
 
     $scope.modal_update_news($scope.modal_create_news_data)
 
-    
-    
+
+
 }
 $scope.create_news = function(item)
 {
 
 
     $scope.modal_create_news_data  = item;
-  
+
     console.log("beforesend  create_news = "+ JSON.stringify($scope.modal_create_news_data))
-    api_manage.create_news($scope.modal_create_news_data) 
-    
+    api_manage.create_news($scope.modal_create_news_data)
+
     .success(function(data, status, headers, config) {
         //$scope.message = data;
       console.log("data  =  "+JSON.stringify(data));
@@ -1038,65 +1069,65 @@ $scope.create_news = function(item)
         }
         else{
         $scope.news_list.push($scope.modal_create_news_data);
-     
+
         $scope.news_table.reload();
 
-           
+
         $("#modal_update_news .close").click()
-  
-        
+
+
         }
-     
+
     })
     .error(function(data, status, headers, config) {
         alert( "failure message: " + JSON.stringify({data: data}) +"ไม่สามารถติดต่อเซิฟเวอร์ได้ ติดต่อแอดมิน");
-   
-    });	
+
+    });
 
 
 
 }
 
 
-//delete news  
-    
-    
+//delete news
+
+
 $scope.delete_news = function(item){
     alert("delete news")
       let dataObj = {
           newsId:item._id
-             
-          };	
+
+          };
           console.log("beforesend   =  "+JSON.stringify(dataObj));
-      api_manage.delete_news(dataObj) 
+      api_manage.delete_news(dataObj)
       .success(function(data, status, headers, config) {
-        
+
         console.log("data  =  "+JSON.stringify(data));
         if(data.code != "999999")
         {
           alert(data.message)
         }
         else{
-    
+
           $scope.get_news();
-          
-        
-    
+
+
+
         }
       })
       .error(function(data, status, headers, config) {
           alert( "failure message: " + JSON.stringify({data: data}) +"ไม่สามารถติดต่อเซิฟเวอร์ได้ ติดต่อแอดมิน");
-         
-      });	
-      
+
+      });
+
 }
 
             $scope.modal_update_news = function(item){
-               
+
 
 
                 $scope.modal_update_news_data = item;
-                
+
                 $scope.quill_title = $scope.modal_update_news_data.topicFull;
                 $scope.quill_detail = $scope.modal_update_news_data.detailFull;
                 $scope.quill_title_yo = $scope.modal_update_news_data.topicShort;
@@ -1104,15 +1135,15 @@ $scope.delete_news = function(item){
                 console.log("$scope.modal_update_news_data   =  "+JSON.stringify($scope.modal_update_news_data ));
                         $('#modal_update_news').modal('show');
 
-                    
-                       
+
+
 /*
                         $scope.quill_title.setText($scope.modal_update_news_data.topicFull);
-                    
+
                          $scope.quill_detail.setText($scope.modal_update_news_data.detailFull);
-                       
+
                           $scope.quill_title_yo.setText($scope.modal_update_news_data.topicShort);
-                        
+
 
                   $scope.quill_detail_yo.setText($scope.modal_update_news_data.detailShort);
                         */
@@ -1122,18 +1153,16 @@ $scope.delete_news = function(item){
                             // Populate hidden form on submit
                             var about = document.querySelector('input[name=about]');
                            about.value = JSON.stringify(quill.getContents());
-                            
+
                             console.log("Submitted", $(form).serialize(), $(form).serializeArray());
-                            
+
                             // No back end to actually submit to!
                             alert('Open the console to see the submit data!')
                             return false;
                         };*/
 
-                
+
             }
 
-      
+
 })
-
-

@@ -34,6 +34,7 @@ var Personel_Control = require('../controller/personel_control.js');
 var Return_control = require('../controller/return_control.js');
 
 router.post('/newPersonel/', function (request, response) {
+    // console.log(JSON.stringify(request.body));
     var personel = new Personel();
     var methodCode = "09";
 
@@ -88,6 +89,7 @@ router.post('/newPersonel/', function (request, response) {
                     personel.positionId = request.body.positionId;
                     personel.divisionId = request.body.divisionId;
                     personel.departmentId = request.body.departmentId;
+                    personel.picture = request.body.picture;
                     Personel_Control.newPersonel(personel, this);
                 }
             }, function (code, err, saveResult) {
