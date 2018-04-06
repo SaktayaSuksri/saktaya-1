@@ -747,33 +747,63 @@ angular.module('app').controller('person', function ($scope,NgTableParams, $filt
 
 
 // New personel
-      $scope.new_personel_profile = function(person){
+      $scope.new_personel_profile = function(){
           $('#new_personel_profile').modal('show');
-          console.log(person);
-
     //get list department NO API
-          // let dataObj = {
-          //     positionId: "0",
-          //     departmentId: "0",
-          //     isPreview : "false"
-          // };
-          // console.log("for table catagory =====----dataObj ---+++++" + JSON.stringify(dataObj));
-          // let res = $http.post('/api/getPersonel/',dataObj);
-          // res.success(function(data, status, headers, config) {
-          //     if(data.code !== "999999"){
-          //       alert(data.message)
-          //     }else {
-          //       $scope.departmentList = data.message;
-          //       console.log(data.message);
-          //     }
-          // });
-          // res.error(function(data, status, headers, config) {
-          //     alert( "failure message: " + JSON.stringify({data: data}) +"ไม่สามารถติดต่อเซิฟเวอร์ได้ ติดต่อแอดมิน");
-          //     console.log(status+headers);
-          // });
+          let res = $http.get('/api/getDepartmentsAll/');
+          res.success(function(data, status, headers, config) {
+              if(data.code !== "999999"){
+                alert(data.message)
+              }else{
+                $scope.departmentList = data.message;
+                console.log("getDepartmentsAll >>>");
+                console.log(data.message);
+              }
+              getPosition();
+          });
+          res.error(function(data, status, headers, config) {
+              alert( "failure message: " + JSON.stringify({data: data}) +"ไม่สามารถติดต่อเซิฟเวอร์ได้ ติดต่อแอดมิน");
+              console.log(status+headers);
+          });
     //get list position
+    function getPosition() {
+      let res2 = $http.get('/api/getPositionsAll/');
+      res.success(function(data, status, headers, config) {
+          if(data.code !== "999999"){
+            alert(data.message)
+          }else{
+            $scope.positionList = data.message;
+            console.log("getPositionAll >>>>>>>>>>>>>");
+            console.log($scope.positionList);
+          }
+          getDivisions()
+      });
+      res.error(function(data, status, headers, config) {
+          alert( "failure message: " + JSON.stringify({data: data}) +"ไม่สามารถติดต่อเซิฟเวอร์ได้ ติดต่อแอดมิน");
+          console.log(status+headers);
+      });
+    }
 
     //get list division
+    function getDivisions() {
+      let res3 = $http.get('/api/getDivisionsAll/');
+      res.success(function(data, status, headers, config) {
+          if(data.code !== "999999"){
+            alert(data.message)
+          }else{
+            $scope.divisionList = data.message;
+            console.log("getDivisionsAll >>>>>>>>>>>>>");
+            console.log($scope.divisionList);
+          }
+      });
+      res.error(function(data, status, headers, config) {
+          alert( "failure message: " + JSON.stringify({data: data}) +"ไม่สามารถติดต่อเซิฟเวอร์ได้ ติดต่อแอดมิน");
+          console.log(status+headers);
+      });
+    }
+
+
+
 
       }
 
@@ -816,7 +846,7 @@ angular.module('app').controller('person', function ($scope,NgTableParams, $filt
           $('#edit_personel_profile').modal('show');
           console.log(person);
           $scope.edit_personel_id = person._id;
-          $scope.edit_personel_name = person.personelName ;
+          $scope.edit_personel_name = person.personelName;
           $scope.edit_education = person.education;
           $scope.edit_position = person.position;
           $scope.edit_expertise = person.expertise;
@@ -860,7 +890,6 @@ angular.module('app').controller('person', function ($scope,NgTableParams, $filt
             console.log(status+headers);
         });
       }
-
   });
 
 
