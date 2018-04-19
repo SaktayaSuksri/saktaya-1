@@ -81,7 +81,7 @@ app.set('views', path.join(__dirname, 'public'));
 app.set('view engine', 'ejs'); // set up ejs for templating
 
 
-        
+
 // Add headers
 app.use(function (req, res, next) {
 
@@ -161,6 +161,7 @@ app.use('/api', formAPI);
 app.use('/api', linkAPI);
 app.use('/api', userAPI);
 app.use('/api', formInstanceAPI);
+app.use('/api', divisionAPI);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

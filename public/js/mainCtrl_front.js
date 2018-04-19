@@ -244,13 +244,8 @@ angular.module('app').controller('news', function($sce, $scope, $filter, $q, $ht
   };
 
   $scope.init = function() {
-
     //  quill_title  quill_detail      quill_title_yo  quill_detail_yo
-
-
     $scope.get_news();
-
-
   }
 
   $scope.news_detail_href = function(id) {
@@ -287,7 +282,6 @@ angular.module('app').controller('news', function($sce, $scope, $filter, $q, $ht
           $scope.modal_news = data.message;
           console.log('$scope.news_list  =  ' + JSON.stringify($scope.news_list))
           //    $scope.news_table= new NgTableParams({count: 10 ,  sorting: { resourceName: "desc" }  }, { counts: [10,20, 100], dataset: $scope.news_list });
-
         }
 
       })
@@ -297,22 +291,19 @@ angular.module('app').controller('news', function($sce, $scope, $filter, $q, $ht
         }) + "ไม่สามารถติดต่อเซิฟเวอร์ได้ ติดต่อแอดมิน");
         console.log(status + headers);
       });
-
   }
 
   $scope.get_news = function() {
 
     let dataObj = {
-
-
       resourceId: "0",
       departmentId: "0",
       tagId: "0",
       limit: 6,
       isPosted: "false",
       isPreview: "true"
-
     }
+
     api_manage.get_news(dataObj)
       .success(function(data, status, headers, config) {
         //$scope.message = data;
@@ -324,9 +315,7 @@ angular.module('app').controller('news', function($sce, $scope, $filter, $q, $ht
           $scope.news_list = data.message;
           console.log('$scope.news_list  =  ' + JSON.stringify($scope.news_list))
           //  $scope.news_table= new NgTableParams({count: 10 ,  sorting: { resourceName: "desc" }  }, { counts: [10,20, 100], dataset: $scope.news_list });
-
         }
-
       })
       .error(function(data, status, headers, config) {
         alert("failure message: " + JSON.stringify({

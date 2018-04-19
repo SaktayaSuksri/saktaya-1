@@ -233,16 +233,16 @@ img {
               <div class="row">
                       <label class="col-md-2 label-on-left">รหัสตำแหน่ง</label>
                             <div class="col-md-10">
-                              <select class="form-control" id="exampleFormControlSelect1">
-                                <option ng-repeat = "position in positionList"> {{position._id}} - {{position.positionName}}</option>
+                              <select class="form-control" ng-model="position_id">
+                                <option ng-repeat = "position in positionList" value="{{position._id}}"> {{position._id}} - {{position.positionName}}</option>
                               </select>
                             </div>
               </div>
               <div class="row">
                       <label class="col-md-2 label-on-left">รหัสภาควิชา</label>
                             <div class="col-md-10">
-                              <select class="form-control" id="exampleFormControlSelect1">
-                                <option ng-repeat = "department in departmentList"> {{department._id}} - {{department.departmentName}}</option>
+                              <select class="form-control" ng-model="department_id">
+                                <option ng-repeat = "department in departmentList" value="{{department._id}}"> {{department._id}} - {{department.departmentName}}</option>
                               </select>
                             </div>
               </div>
@@ -250,8 +250,8 @@ img {
               <div class="row">
                       <label class="col-md-2 label-on-left">รหัสสาขาวิชา</label>
                             <div class="col-md-10">
-                              <select class="form-control" id="exampleFormControlSelect1">
-                                <option ng-repeat = "dvidision in divisionList"> {{dvidision._id}} - {{dvidision.dvidisionName}}</option>
+                              <select class="form-control" ng-model="division_id">
+                                <option ng-repeat = "dvidision in divisionList" value="{{dvidision._id}}"> {{dvidision._id}} - {{dvidision.divisionName}}</option>
                               </select>
                             </div>
               </div>
