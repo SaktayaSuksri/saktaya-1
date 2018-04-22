@@ -142,12 +142,24 @@ app.controller("course_detailCtrl", function($scope, $location) {
  }
 
  $scope.clickList = function (nameCouse) {
-   console.log(nameCouse);
+   //console.log(nameCouse);
    if(nameCouse == "social"){
      $scope.deailCouse = com_social;
    }
    else if(nameCouse == "human"){
      $scope.deailCouse = com_human;
+   }
+   else if(nameCouse == "language"){
+     $scope.deailCouse = com_language;
+   }
+   else if(nameCouse == "science"){
+     $scope.deailCouse = com_science;
+   }
+   else if(nameCouse == "force_math"){
+     $scope.deailCouse = force_math;
+   }
+   else if(nameCouse == "force_com"){
+     $scope.deailCouse = force_com;
    }
    else{
 

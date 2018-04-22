@@ -116,13 +116,13 @@
                                                  <div class="col-1"> 6</div>
                                                  <div class="col-1"> หน่วยกิต</div>
                                                </a>
-                                               <a class="list-group-item list-group-item-action"  data-toggle="list">
+                                               <a class="list-group-item list-group-item-action"  data-toggle="list" ng-click="clickList('language')">
                                                  <div class="col-1" style="margin : 0px;"> 1.3 </div>
                                                  <div class="col-8"> กลุ่มวิชาภาษา</div>
                                                  <div class="col-1"> 12</div>
                                                  <div class="col-1"> หน่วยกิต</div>
                                                </a>
-                                               <a class="list-group-item list-group-item-action"  data-toggle="list">
+                                               <a class="list-group-item list-group-item-action"  data-toggle="list" ng-click="clickList('science')">
                                                  <div class="col-1" style="margin : 0px;"> 1.4 </div>
                                                  <div class="col-8"> กลุ่มวิชาวิทยาศาสตร์กับคณิตศาสตร์</div>
                                                  <div class="col-1"> 6</div>
@@ -130,33 +130,37 @@
                                                </a>
                                              </div>
 
-                                              <div style="padding: 10px; background-color: #f9f9f9;"><b>2.&nbsp;หมวดวิชาเฉพาะ <span style="float: right;">30 &nbsp; หน่วยกิต</span></b></div>
+                                              <div style="padding: 10px; background-color: #f9f9f9;"><b>2.&nbsp;หมวดวิชาเฉพาะ (กลุ่มวิชาบังคับ)<span style="float: right;">73 &nbsp; หน่วยกิต</span></b></div>
                                               <div class="list-group" id="list-tab" role="tablist" style="padding: 0px;">
-                                                 <a class="list-group-item list-group-item-action" data-toggle="list" ng-click="clickList('social')">
-                                                   <div class="col-1" style="margin : 0px;"> 1.1 </div>
-                                                   <div class="col-8"> กลุ่มวิชาสังคมศาสตร์</div>
-                                                   <div class="col-1"> 6</div>
+                                                 <a class="list-group-item list-group-item-action" data-toggle="list" ng-click="clickList('force_math')">
+                                                   <div class="col-1" style="margin : 0px;"> 2.1 </div>
+                                                   <div class="col-8"> วิชาบังคับทางคณิตศาสตร์และสถิติ</div>
+                                                   <div class="col-1"> 18</div>
                                                    <div class="col-1"> หน่วยกิต</div>
                                                  </a>
-                                                 <a class="list-group-item list-group-item-action"  data-toggle="list" ng-click="clickList('human')">
-                                                   <div class="col-1" style="margin : 0px;"> 1.2 </div>
-                                                   <div class="col-8"> กลุ่มวิชามนุษยศาสตร์์</div>
-                                                   <div class="col-1"> 6</div>
-                                                   <div class="col-1"> หน่วยกิต</div>
-                                                 </a>
-                                                 <a class="list-group-item list-group-item-action"  data-toggle="list">
-                                                   <div class="col-1" style="margin : 0px;"> 1.3 </div>
-                                                   <div class="col-8"> กลุ่มวิชาภาษา</div>
-                                                   <div class="col-1"> 12</div>
-                                                   <div class="col-1"> หน่วยกิต</div>
-                                                 </a>
-                                                 <a class="list-group-item list-group-item-action"  data-toggle="list">
-                                                   <div class="col-1" style="margin : 0px;"> 1.4 </div>
-                                                   <div class="col-8"> กลุ่มวิชาวิทยาศาสตร์กับคณิตศาสตร์</div>
-                                                   <div class="col-1"> 6</div>
+                                                 <a class="list-group-item list-group-item-action"  data-toggle="list" ng-click="clickList('force_com')">
+                                                   <div class="col-1" style="margin : 0px;"> 2.2 </div>
+                                                   <div class="col-8"> วิชาบังคับทางวิทยาการคอมพิวเตอร์</div>
+                                                   <div class="col-1"> 55</div>
                                                    <div class="col-1"> หน่วยกิต</div>
                                                  </a>
                                                </div>
+
+                                               <div style="padding: 10px; background-color: #f9f9f9;"><b>3.&nbsp;หมวดวิชาเฉพาะ (กลุ่มวิชาเลือก)<span style="float: right;">21 &nbsp; หน่วยกิต</span></b></div>
+                                               <div class="list-group" id="list-tab" role="tablist" style="padding: 0px;">
+                                                  <a class="list-group-item list-group-item-action" data-toggle="list" ng-click="clickList('force_math')">
+                                                    <div class="col-1" style="margin : 0px;"> 3.1 </div>
+                                                    <div class="col-8"> กลุ่มวิชาวิทยาการคอมพิวเตอร์ (Computer Science)</div>
+                                                    <div class="col-1"> </div>
+                                                    <div class="col-1"> </div>
+                                                  </a>
+                                                  <a class="list-group-item list-group-item-action"  data-toggle="list" ng-click="clickList('force_com')">
+                                                    <div class="col-1" style="margin : 0px;"> 2.2 </div>
+                                                    <div class="col-8"> วิชาบังคับทางวิทยาการคอมพิวเตอร์</div>
+                                                    <div class="col-1"> 55</div>
+                                                    <div class="col-1"> หน่วยกิต</div>
+                                                  </a>
+                                                </div>
 
                                           </div>
                                           <div class="col" style="padding: 0px; background-color: #e4e4e4;">

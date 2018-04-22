@@ -1,6 +1,4 @@
 <!--หลักสูตร-->
-
-
 <div style="height: 28vh; width: 100%;"></div>
 
 <div class="main main-raised"ng-controller="personelCtrl">
@@ -14,57 +12,16 @@
                             </h2><hr>
                         </center>
                         <div class="row">
-                          <div class=".col-8 .col-sm-12" style="padding: 14px">
+                          <div class=".col-8 .col-sm-12" style="padding: 14px" ng-repeat = "personel_item in personel_list">
                             <div class="card card-profile " style="max-width: 250px" data-toggle="modal" ng-click = "showDetail();">
                               <div class="card-header card-header-image">
-                                  <img class="img" src="/department_img/ajCs/01.jpg">
-                              </div>
-
-                              <div class="card-body ">
-                                <h4 class="card-title">ผศ.กฤษฎา บุศรา</h4>
-                                <h6 class="card-category text-gray">หัวหน้าภาควิชาวิทยาการคอมพิวเตอร์</h6>
-                              </div>
-                            </div>
-                          </div>
-                          <div class=".col-8 .col-sm-12" style="padding: 14px">
-                            <div class="card card-profile" style="max-width:  250px">
-                              <div class="card-header card-header-image">
-                                <a href="#pablo">
-                                  <img class="img" src="/department_img/ajCs/02.jpg">
-                                </a>
-                              </div>
-
-                              <div class=".col-8 .col-sm-12" style="padding: 14px">
-                                <h4 class="card-title">รศ.ดร.จีรพร วีระพันธุ์</h4>
-                                <h6 class="card-category text-gray">อาจารย์ประจำภาควิชา</h6>
-                              </div>
-                            </div>
-                          </div>
-                          <div class=".col-8 .col-sm-12" style="padding: 14px">
-                            <div class="card card-profile" style="max-width: 250px">
-                              <div class="card-header card-header-image">
-                                <a href="#pablo">
-                                  <img class="img" src="/department_img/ajCs/03.jpg">
-                                </a>
-                              </div>
-
-                              <div class="card-body ">
-                                <h4 class="card-title">ผศ.สิริสักษณ์ อนันต์สถิตย์สิน</h4>
-                                <h6 class="card-category text-gray">อาจารย์ประจำภาควิชา</h6>
-                              </div>
-                            </div>
-                          </div>
-                          <div class=".col-8 .col-md-12" style="padding: 14px">
-                            <div class="card card-profile" style="max-width:  250px">
-                              <div class="card-header card-header-image">
-                                <a href="#pablo">
-                                  <img class="img" src="/department_img/ajCs/04.jpg">
-                                </a>
+                                  <img class="img" ng-if = "personel_item.picture == null" src="assets\img\image_placeholder.jpg">
+                                  <img class="img" ng-if = "personel_item.picture != null"src="{{personel_item.picture}}">
                               </div>
 
                               <div class="card-body">
-                                <h4 class="card-title">ผศ.ดร.ศรัณย์ อินทโกสุม</h4>
-                                <h6 class="card-category text-gray">อาจารย์ประจำภาควิชา</h6>
+                                <h4 class="card-title">{{personel_item.personelName}}</h4>
+                                <h6 class="card-category text-gray">{{personel_item.position}}</h6>
                               </div>
                             </div>
                           </div>

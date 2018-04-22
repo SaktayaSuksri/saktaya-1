@@ -330,7 +330,7 @@ angular.module('app').controller('news', function($sce, $scope, $filter, $q, $ht
 
 //MrPondS created 21-03-2018
 angular.module('app').controller('personelCtrl', function($scope, $filter, $q, $http, youtubeFactory) {
-  alert("personelCtrl started");
+  // alert("personelCtrl started");
   //get list of personel
   let dataObj = {
     positionId : '0',
@@ -348,7 +348,7 @@ angular.module('app').controller('personelCtrl', function($scope, $filter, $q, $
       } else {
         console.log(data);
         $scope.personel_list = data.message;
-        console.log('$scope.news_list  =  ' + JSON.stringify($scope.personel_list))
+        //console.log('$scope.news_list  =  ' + JSON.stringify($scope.personel_list))
       }
     })
     .error(function(data, status, headers, config) {
