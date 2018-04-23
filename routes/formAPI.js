@@ -35,7 +35,7 @@ router.post('/newForm', upload.single('formSource'), function(req, res) {
             code: 'FAILED',
             message: '[FAILED] Invalid request ( NO formSource !!! )'
         });
-    } else if (!req.file){
+    } else if ((req.body.sourceType == 'upload') && !req.file){
         res.json({
             code: 'FAILED',
             message: '[FAILED] Invalid request ( NO file uploaded !!! )'
@@ -148,7 +148,7 @@ router.post('/editForm', upload.single('formSource'), function(req, res) {
                     code: 'FAILED',
                     message: '[FAILED] Invalid request ( NO formSource !!! )'
                 });
-            } else if (!req.file){
+            } else if ((req.body.sourceType == 'upload') && !req.file){
                 res.json({
                     code: 'FAILED',
                     message: '[FAILED] Invalid request ( NO file uploaded !!! )'
