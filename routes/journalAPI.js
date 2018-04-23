@@ -13,230 +13,126 @@ router.use(function (req, res, next) {
 });
 
 // Route Definitions
-router.post('/newForm', function(req, res) {
-    if (!req.body.formName ||
-        !req.body.formSource ||
-        !req.body.sourceType ||
-        !req.body.authorId ||
-        !req.body.resourceTypeId ||
-        !req.body.deptId ||
-        !req.body.targetTypeId ||
-        !req.body.divisionId ||
-        !req.body.docFlag
+router.post('/newJournal', function(req, res) {
+    if (!req.body.journalName ||
+        !req.body.journalSource
     ) {
             res.json({
                 code: 'FAILED',
                 message: '[FAILED] Invalid request'
             });
     } else {
-        var newForm = new Form();
-        newForm.formName = req.body.formName;
-        if (req.body.formCode) newForm.formCode = req.body.formCode;
-        if (req.body.formDetail) newForm.formDetail = req.body.formDetail; 
-        newForm.formSource = req.body.formSource;
-        newForm.sourceType = req.sourceType;
-        newForm.authorId = new ObjectId(req.body.authorId);
-        newForm.resourceTypeId = new ObjectId(req.body.resourceTypeId);
-        newForm.deptId = new ObjectId(req.body.deptId);
-        newForm.targetTypeId = new ObjectId(req.body.targetTypeId);
-        newForm.divisionId = new ObjectId(req.body.divisionId);
-        newForm.docFlag = (req.body.docFlag == 'true');
-        if (req.body.tags) {
-            var tagsArray = req.body.tags.split(',');
-            for (var i=0; i<tagsArray.length; i++) tagsArray[i] = new ObjectId(tagsArray[i]);
-            newForm.tags = tagsArray;
-        }
-        if (req.body.showFlag) newForm.showFlag = (req.body.showFlag == 'true');
+        var newJournal = new Journal();
+        newJournal.journalName = req.body.journalName;
+        newJournal.journalSource = req.body.journalSource;
+        newJournal.datetimeCreate = new Date();
 
-        newForm.save(function(err) {
+        newJournal.save(function(err) {
             if (err)
                 res.json({
                     code: 'ERROR',
-                    message: '[ERROR] Error in inserting form doc. >> ' + err.message
+                    message: '[ERROR] Error in inserting journal doc. >> ' + err.message
                 });
             else
                 res.json({
                     code: '999999',
-                    message: '[SUCCESS] Success in inserting form doc.'
+                    message: '[SUCCESS] Success in inserting journal doc.'
                 });
         });
     }
 });
 
-router.post('/editForm', function(req, res) {
-    if (!req.body.formId) {
+router.post('/editJournal', function(req, res) {
+    if (!req.body.journalId) {
             res.json({
                 code: 'FAILED',
                 message: '[FAILED] Invalid request'
             });
     } else {
         var updateParams = {};
-        if (req.body.formName) updateParams['formName'] = req.body.formName;
-        if (req.body.formCode) updateParams['formCode'] = req.body.formCode;
-        if (req.body.formDetail) updateParams['formDetail'] = req.body.formDetail;
-        if (req.body.formSource) updateParams['formSource'] = req.body.formSource;
-        if (req.body.sourceType) updateParams['sourceType'] = req.body.sourceType;
-        if (req.body.authorId) updateParams['authorId'] = new ObjectId(req.body.authorId);
-        updateParams['datetimeLastEdit'] = Date.now();
-        if (req.body.resourceTypeId) updateParams['resourceTypeId'] = new ObjectId(req.body.resourceTypeId);
-        if (req.body.deptId) updateParams['deptId'] = new ObjectId(req.body.deptId);
-        if (req.body.targetTypeId) updateParams['targetTypeId'] = new ObjectId(req.body.targetTypeId);
-        if (req.body.divisionId) updateParams['divisionId'] = new ObjectId(req.body.divisionId);
-        if (req.body.docFlag) updateParams['docFlag'] = (req.body.docFlag == 'true');
-        if (req.body.tags) {
-            var tagsArray = req.body.tags.split(',');
-            for (var i=0; i<tagsArray.length; i++) tagsArray[i] = new ObjectId(tagsArray[i]);
-            updateParams['tags'] = tagsArray;
-        }
-        if (req.body.showFlag) updateParams['showFlag'] = (req.body.showFlag == 'true');
+        if (req.body.journalName) updateParams['journalName'] = req.body.journalName;
+        if (req.body.journalSource) updateParams['journalSource'] = req.body.journalSource;
 
-        Form.findByIdAndUpdate(new ObjectId(req.body.formId), updateParams, function(err) {
+        Journal.findByIdAndUpdate(new ObjectId(req.body.journalId), updateParams, function(err) {
                                     if (err)
                                         res.json({
                                             code: 'ERROR',
-                                            message: '[ERROR] Error in editing form doc. >> ' + err.message
+                                            message: '[ERROR] Error in editing journal doc. >> ' + err.message
                                         });
                                     else
                                         res.json({
                                             code: '999999',
-                                            message: '[SUCCESS] Success in editing form doc.'
+                                            message: '[SUCCESS] Success in editing journal doc.'
                                         });
         });
     }
 });
 
-router.post('/deleteForm', function(req, res) {
-    if (!req.body.formId) {
+router.post('/deleteJournal', function(req, res) {
+    if (!req.body.journalId) {
         res.json({
             code: 'FAILED',
             message: '[FAILED] Invalid request'
         });
     } else {
-        Form.findByIdAndRemove(new ObjectId(req.body.formId), function(err) {
+        Journal.findByIdAndRemove(new ObjectId(req.body.journalId), function(err) {
             if (err)
                 res.json({
                     code: 'ERROR',
-                    message: '[ERROR] Error in deleting form doc. >> ' + err.message
+                    message: '[ERROR] Error in deleting journal doc. >> ' + err.message
                 });
             else
                 res.json({
                     code: '999999',
-                    message: '[SUCCESS] Success in deleting form doc.'
+                    message: '[SUCCESS] Success in deleting journal doc.'
                 });
         });
     }
 });
 
-router.post('/getFormsByTypes', function(req, res) {
-    if (!req.body.resourceTypeId &&
-        !req.boby.deptId &&
-        !req.body.targetTypeId &&
-        !req.body.divisionId &&
-        !req.body.showFlag &&
-        !req.body.docFlag
-    ) {
+router.post('/getJournalById', function(req, res) {
+    if (!req.body.journalId) {
         res.json({
             code: 'FAILED',
             message: '[FAILED] Invalid request'
         });
     } else {
-        var findParams = {};
-        if (req.body.resourceTypeId) findParams['resourceTypeId'] = req.body.resourceTypeId;
-        if (req.body.deptId) findParams['deptId'] = req.body.deptId;
-        if (req.body.targetTypeId) findParams['targetTypeId'] = req.body.targetTypeId;
-        if (req.body.divisionId) findParams['divisionId'] = req.body.divisionId;
-        if (req.body.showFlag) findParams['showFlag'] = req.body.showFlag;
-        if (req.body.docFlag) findParams['docFlag'] = (req.body.docFlag == 'true');
-        Form.find(findParams, function(err, forms) {
+        Journal.findById(new ObjectId(req.body.journalId), function(err, journal) {
             if (err)
                 res.json({
                     code: 'ERROR',
-                    message: '[ERROR] Error in finding forms by types. >> ' + err.message
+                    message: '[ERROR] Error in finding journal "' + req.body.journalId + '" >> ' + err.message
                 });
-            else if (forms.length == 0) 
+            else if (!journal) 
                 res.json({
                     code: 'FAILED',
-                    message: '[FAILED] No form found.'
+                    message: '[FAILED] No journal found.'
                 });
             else
                 res.json({
                     code: '999999',
-                    message: forms
+                    message: journal
                 });
         });
     }
 });
 
-router.post('/getFormById', function(req, res) {
-    if (!req.body.formId) {
-        res.json({
-            code: 'FAILED',
-            message: '[FAILED] Invalid request'
-        });
-    } else {
-        Form.findById(new ObjectId(req.body.formId), function(err, form) {
-            if (err)
-                res.json({
-                    code: 'ERROR',
-                    message: '[ERROR] Error in finding form "' + req.body.formId + '" >> ' + err.message
-                });
-            else if (!form) 
-                res.json({
-                    code: 'FAILED',
-                    message: '[FAILED] No form found.'
-                });
-            else
-                res.json({
-                    code: '999999',
-                    message: form
-                });
-        });
-    }
-});
-
-router.post('/getFormByCode', function(req, res) {
-    if (!req.body.formCode) {
-        res.json({
-            code: 'FAILED',
-            message: '[FAILED] Invalid request'
-        });
-    } else {
-        Form.findOne({ 'formCode': req.body.formCode }, function(err, form) {
-            if (err)
-                res.json({
-                    code: 'ERROR',
-                    message: '[ERROR] Error in finding form code "' + req.body.formCode + '" >> ' + err.message
-                });
-            else if (!form) 
-                res.json({
-                    code: 'FAILED',
-                    message: '[FAILED] No form found.'
-                });
-            else
-                res.json({
-                    code: '999999',
-                    message: form
-                });
-        });
-    }
-});
-
-router.get('/getFormsAll', function(req, res) {
-    Form.find(function(err, forms) {
+router.get('/getJournalsAll', function(req, res) {
+    Journal.find(function(err, journals) {
         if (err)
             res.json({
                 code: 'ERROR',
-                message: '[ERROR] Error in finding all forms >> ' + err.message
+                message: '[ERROR] Error in finding all journals >> ' + err.message
             });
-        else if (forms.length == 0) 
+        else if (journals.length == 0) 
             res.json({
                 code: 'FAILED',
-                message: '[FAILED] No form found.'
+                message: '[FAILED] No journals found.'
             });
         else
             res.json({
                 code: '999999',
-                message: forms
+                message: journals
             });
     });
 });
