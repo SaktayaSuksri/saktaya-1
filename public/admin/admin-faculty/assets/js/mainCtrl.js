@@ -492,7 +492,7 @@ angular.module('app').controller('content_management', function ($scope,NgTableP
 
 angular.module('app').controller('form_management', function ($scope,NgTableParams, $filter, $q,$http,api_manage){
 
-    alert('form_management');
+    //alert('form_management');
 /* $scope.tags = [
                     { text: 'just' },
                     { text: 'some' },
@@ -517,7 +517,7 @@ angular.module('app').controller('form_management', function ($scope,NgTablePara
 
       formCode : '',
       formDetail : '',
-      tags : [],
+      tags : null,
       showFlag : true,
     }
 
@@ -592,6 +592,12 @@ angular.module('app').controller('form_management', function ($scope,NgTablePara
     $scope.form_create = function(){
       console.log("form_create");
 
+      $scope.modal_form_data.authorId="a7b2489be10aa3b0836b35a";
+      //$scope.modal_form_data.resourceTypeId = "5a8470b228d2e92a0c753010";
+      $scope.modal_form_data.deptId = "5a8470b228d2e92a0c753010";
+      $scope.modal_form_data.targetTypeId = "5ade1b9ef36d2856dd57f399";
+      $scope.modal_form_data.divisionId = "5ac34c06734d1d4f8afa3038";
+
       let dataObj = {
         formName : $scope.modal_form_data.formName,
         formSource : $scope.modal_form_data.formSource,
@@ -601,14 +607,14 @@ angular.module('app').controller('form_management', function ($scope,NgTablePara
         deptId : $scope.modal_form_data.deptId,
         targetTypeId : $scope.modal_form_data.targetTypeId,
         divisionId : $scope.modal_form_data.divisionId,
-
+        docFlag : true,
 
         formCode : $scope.modal_form_data.formCode,
         formDetail : $scope.modal_form_data.formDetail,
         tags : $scope.modal_form_data.tags,
         showFlag : $scope.modal_form_data.showFlag,
-
       }
+
       console.log(dataObj);
       api_manage.create_form(dataObj)
       .success(function(data, status, headers, config) {
