@@ -4,7 +4,7 @@ var router = express.Router();
 // ObjectId type for mongodb documents
 var ObjectId = require('mongodb').ObjectId;
 
-var Form = require('../model/form_model');
+var Journal = require('../model/journal_model');
 
 // Middleware for all routes
 router.use(function (req, res, next) {
