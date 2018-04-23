@@ -25,31 +25,26 @@ module.exports = {
         let tagID_Current;
 
         if (tagIDArray.length > 0) {
-            var _tagIDArray = new Array();
-            //console.log("tagIDArray: " + tagIDArray + " length = "+tagIDArray.length);
-            _tagIDArray = tagIDArray[0].split(",");
 
-            flow.serialForEach(_tagIDArray, function (tagID) {
+            flow.serialForEach(tagIDArray, function (tagID) {
                 tagID_Current = tagID;
                 //console.log("tagID: " + tagID);
                 checkTagByID(new ObjectId(tagID), this);
             }, function (code, error, checkResult) {
                 if (code == "061") {
-                    errorOnce = true;
                     errorFoundText = errorFoundText + tagID_Current + ", ";
                 }
                 else if (code == "063") {
-                    errorOnce = true;
                     notFoundText = notFoundText + tagID_Current + ", ";
                 }
                 else {
-                    tagNameArray.push(checkResult.tagName);
+                    var obj = new Object();
+                    obj.tagId = tagID_Current;
+                    obj.tagName = checkResult.tagName;
+                    tagNameArray.push(obj);
                 }
             }, function () {
-                if (errorOnce)
-                    callback("071", errorFoundText + " >> " + notFoundText, null)
-                else
-                    callback("072", null, tagNameArray)
+                callback("072", null, tagNameArray)
             });
         }
         else {

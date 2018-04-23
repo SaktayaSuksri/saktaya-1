@@ -31,6 +31,7 @@ var Tag_Control = require("../controller/tag_control.js");
 var News_Control = require("../controller/news_control.js");
 var Position_Control = require('../controller/position_control.js');
 var Personel_Control = require('../controller/personel_control.js');
+var TargetType_Control = require('../controller/targetType_control.js');
 var Return_control = require('../controller/return_control.js');
 
 router.post('/newNews/', function (request, response) {
@@ -56,13 +57,10 @@ router.post('/newNews/', function (request, response) {
     objectIdData.push(request.body.targetTypeId);
     objectIdData.push(request.body.departmentId);
     var tagIDArray = new Array();
+
     var tmp = [];
     if (request.body.tagId.length > 0) {
-        tagIDArray = request.body.tagId.split(",");
-        for (let i = 0; i < tagIDArray.length; i++){
-            objectIdData.push(tagIDArray[i]);
-            tmp.push(tagIDArray[i]);
-        }
+        tmp.push(tagIDArray[i]);
     }
     var objectIdReady = Validate.objectIDData_Check(objectIdData)
 
@@ -99,12 +97,19 @@ router.post('/newNews/', function (request, response) {
                 else {
                     ResourceType_Control.checkResourceTypeByID(new ObjectId(request.body.resourceId), this);
                 }
+            }, function (code, err, result) {
+                if (err) {
+                    Return_control.responseWithCode(ReturnCode.serviceError + methodCode + code, err, response);
+                }
+                else {
+                    TargetType_Control.checkTargetTypeByID(new ObjectId(request.body.targetTypeId), this);
+                }
             }, function (code, err, checkResult) {
                 if (err) {
                     Return_control.responseWithCode(ReturnCode.serviceError + methodCode + code, err, response);
                 }
                 else {
-                    News_Control.clearPinnedNews(request.body.isPinned, new ObjectId(request.body.resourceId), new ObjectId(request.body.departmentId), this);
+                    News_Control.clearPinnedNews(request.body.isPinned, new ObjectId(request.body.resourceId), new ObjectId(request.body.targetTypeId), new ObjectId(request.body.departmentId), this);
                 }
             }, function (code, err, updateResult) {
                 if (err) {
@@ -160,19 +165,12 @@ router.post('/editNews/', function (request, response) {
     objectIdData.push(request.body.resourceId);
     objectIdData.push(request.body.targetTypeId);
     objectIdData.push(request.body.departmentId);
-    
-   
+
     var tagIDArray = request.body.tagId;
- 
     for (let i = 0; i < tagIDArray.length; i++)
         objectIdData.push(tagIDArray[i]);
-
-        
-       
     var objectIdReady = Validate.objectIDData_Check(objectIdData)
 
-    
-   
     if (!requiredReady) {
         var alert = "Input Not Valid, check if some data is required."
         console.log(alert);
@@ -189,9 +187,6 @@ router.post('/editNews/', function (request, response) {
         Return_control.responseWithCode(ReturnCode.clientError + methodCode + "003", alert, response)
     }
     else {
-
-        var alert = " sawasdee ."
-        console.log(alert);
         flow.exec(
             function () {
                 Tag_Control.checkTagByArrayID(tagIDArray, this);
@@ -221,7 +216,14 @@ router.post('/editNews/', function (request, response) {
                     Return_control.responseWithCode(ReturnCode.serviceError + methodCode + code, err, response);
                 }
                 else {
-                    News_Control.clearPinnedNews(request.body.isPinned, new ObjectId(request.body.resourceId), new ObjectId(request.body.departmentId), this);
+                    TargetType_Control.checkTargetTypeByID(new ObjectId(request.body.targetTypeId), this);
+                }
+            }, function (code, err, result) {
+                if (err) {
+                    Return_control.responseWithCode(ReturnCode.serviceError + methodCode + code, err, response);
+                }
+                else {
+                    News_Control.clearPinnedNews(request.body.isPinned, new ObjectId(request.body.resourceId), new ObjectId(request.body.targetTypeId), new ObjectId(request.body.departmentId), this);
                 }
             }, function (code, err, result) {
                 if (err) {
@@ -322,15 +324,16 @@ router.post('/getNews/', function (request, response) {
                     department = new ObjectId(request.body.departmentId);
                 if (ObjectId.isValid(request.body.tagId))
                     tag = new ObjectId(request.body.tagId);
-
-                News_Control.getAllNews(resource, department, tag, request.body.isPreview, parseInt(request.body.limit), request.body.isPosted, this);
+                News_Control.getAllNews(resource, targetType, department, tag, request.body.isPreview, parseInt(request.body.limit), request.body.isPosted, this);
             }, function (code, err, result) {
                 if (err) {
                     Return_control.responseWithCode(ReturnCode.serviceError + methodCode + code, err, response);
                 }
                 else {
-                    Return_control.responseWithCode("999999", result, response)
+                    News_Control.joinNewsData(result, this)
                 }
+            }, function (code, err, result) {
+                    Return_control.responseWithCode("999999", result, response)
             }
         );
     }
@@ -367,7 +370,7 @@ router.post('/getNewsfromID/', function (request, response) {
     obj.resourceName = "N/A";
     obj.targetTypeName = "N/A";
     obj.departmentName = "N/A";
-    obj.tagName = ["N/A"];
+    obj.tagData = [];
 
     if (!requiredReady) {
         var alert = "Input Not Valid, check if some data is required."
@@ -408,6 +411,14 @@ router.post('/getNewsfromID/', function (request, response) {
                 else {
                     obj.departmentName = result.departmentName;
                 }
+                TargetType_Control.checkTargetTypeByID(new ObjectId(thisNews.targetTypeId), this);
+            }, function (code, err, result) {
+                if (err) {
+                    obj.targetTypeName = "N/A";
+                }
+                else {
+                    obj.targetTypeName = result.targetTypeName;
+                }
                 ResourceType_Control.checkResourceTypeByID(new ObjectId(thisNews.resourceId), this);
             }, function (code, err, result) {
                 if (err) {
@@ -422,28 +433,13 @@ router.post('/getNewsfromID/', function (request, response) {
                     Return_control.responseWithCode(ReturnCode.serviceError + methodCode + code, err, response);
                 }
                 else {
-                    obj.tagName = result;
+                    console.log("tag" + result)
+                    obj.tagData = result;
                     News_Control.countReader(new ObjectId(request.body.newsID), request.body.readCount);
-                    // Return_control.responseWithCode("999999", obj, response)
+                    Return_control.responseWithCode("999999", obj, response)
                 }
             }
         );
-
-        async function findTargetTypeByID() {
-            await TargetType.findById(new ObjectId(thisNews.targetTypeId), function(err, target) {
-                if (err) {
-                    obj.targetTypeName = "N/A";
-                    console.log('----- Error in finding targetType by ID >> ' + err.message);
-                } else if (!target) {
-                    obj.targetTypeName = "N/A";
-                    console.log('----- No targetType found!');
-                } else {
-                    obj.targetTypeName = target.targetTypeName;
-                    Return_control.responseWithCode("999999", obj, response);
-                }
-            });
-        }
-        findTargetTypeByID();
     }
 });
 
