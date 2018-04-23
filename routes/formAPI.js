@@ -45,20 +45,20 @@ router.post('/newForm', upload.single('formSource'), function(req, res) {
         newForm.formName = req.body.formName;
         if (req.body.formCode) newForm.formCode = req.body.formCode;
         if (req.body.formDetail) newForm.formDetail = req.body.formDetail;
-        newForm.sourceType = req.sourceType;
+        newForm.sourceType = req.body.sourceType;
         newForm.authorId = new ObjectId(req.body.authorId);
         newForm.resourceTypeId = new ObjectId(req.body.resourceTypeId);
         newForm.deptId = new ObjectId(req.body.deptId);
         newForm.targetTypeId = new ObjectId(req.body.targetTypeId);
         newForm.divisionId = new ObjectId(req.body.divisionId);
-        newForm.docFlag = (req.body.docFlag == 'true');
+        newForm.docFlag = req.body.docFlag;
         if (req.body.tags) {
             var tagsArray = req.body.tags.split(',');
             for (var i=0; i<tagsArray.length; i++) tagsArray[i] = new ObjectId(tagsArray[i]);
             newForm.tags = tagsArray;
         }
-        if (req.body.showFlag) newForm.showFlag = (req.body.showFlag == 'true');
-        if (req.body.isFavorite) newForm.isFavorite = (req.body.isFavorite == 'true');
+        if (req.body.showFlag) newForm.showFlag = req.body.showFlag;
+        if (req.body.isFavorite) newForm.isFavorite = req.body.isFavorite;
 
         if (req.body.sourceType == 'link') {
             newForm.formSource = req.body.formSource;
@@ -132,14 +132,14 @@ router.post('/editForm', upload.single('formSource'), function(req, res) {
         if (req.body.deptId) updateParams['deptId'] = new ObjectId(req.body.deptId);
         if (req.body.targetTypeId) updateParams['targetTypeId'] = new ObjectId(req.body.targetTypeId);
         if (req.body.divisionId) updateParams['divisionId'] = new ObjectId(req.body.divisionId);
-        if (req.body.docFlag) updateParams['docFlag'] = (req.body.docFlag == 'true');
+        if (req.body.docFlag) updateParams['docFlag'] = req.body.docFlag;
         if (req.body.tags) {
             var tagsArray = req.body.tags.split(',');
             for (var i=0; i<tagsArray.length; i++) tagsArray[i] = new ObjectId(tagsArray[i]);
             updateParams['tags'] = tagsArray;
         }
-        if (req.body.showFlag) updateParams['showFlag'] = (req.body.showFlag == 'true');
-        if (req.body.isFavorite) updateParams['isFavorite'] = (req.body.isFavorite == 'true');
+        if (req.body.showFlag) updateParams['showFlag'] = req.body.showFlag;
+        if (req.body.isFavorite) updateParams['isFavorite'] = req.body.isFavorite;
 
         if (req.body.sourceType) {
             updateParams['sourceType'] = req.body.sourceType;
@@ -266,8 +266,8 @@ router.post('/getFormsByTypes', function(req, res) {
         if (req.body.targetTypeId) findParams['targetTypeId'] = req.body.targetTypeId;
         if (req.body.divisionId) findParams['divisionId'] = req.body.divisionId;
         if (req.body.showFlag) findParams['showFlag'] = req.body.showFlag;
-        if (req.body.docFlag) findParams['docFlag'] = (req.body.docFlag == 'true');
-        if (req.body.isFavorite) findParams['isFavorite'] = (req.body.isFavorite == 'true');
+        if (req.body.docFlag) findParams['docFlag'] = req.body.docFlag;
+        if (req.body.isFavorite) findParams['isFavorite'] = req.body.isFavorite;
         Form.find(findParams, function(err, forms) {
             if (err)
                 res.json({
