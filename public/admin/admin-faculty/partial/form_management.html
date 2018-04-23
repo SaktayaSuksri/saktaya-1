@@ -1,45 +1,45 @@
 <div ng-controller="form_management" ng-init="init()">
                 <div class="container-fluid">
-            
-            
-            
+
+
+
                     <div class="col-md-12">
                         <div class="card">
                             <form id="RegisterValidation" action="" method="" novalidate="novalidate">
                                 <div class="card-header card-header-icon" data-background-color="purple">
-            
+
                                     <h4 class="card-title"> <i class="material-icons">insert_drive_file</i> Form
-            
+
                                     </h4>
-            
-            
-            
+
+
+
                                 </div>
                                 <div class="card-content">
-                                    <button ng-click="create_form()" class="btn btn-white btn-round btn-just-icon" style="position: absolute; right: 0;"> 
+                                    <button ng-click="create_form()" class="btn btn-white btn-round btn-just-icon" style="position: absolute; right: 0;">
                                                             <i class="material-icons">add</i>
                                                         </button>
-            
-            
-            
+
+
+
                                     <div class="section" style="overflow-x:auto;">
                                         <table ng-table="form_table" class="table table-striped table-bordered table-condensed table-hover" width="100%" show-filter="true">
                                             <tr ng-repeat="item in $data">
-            
+
                                                     <td title="'formCode'" filter="{ formCode: 'text'}" sortable="'formCode'" width="10%">
                                                             {{item.formCode}}
                                                         </td>
 
-          
+
                                                 <td title="'formName'" filter="{ formName: 'text'}" sortable="'formName'" width="10%">
                                                     {{item.formName}}
                                                 </td>
-                       
+
                                                 <td title="'formDetail'" filter="{ formDetail: 'text'}" sortable="'formDetail'" width="10%">
                                                         {{item.formDetail}}
                                                     </td>
-                                                  
-                                                    
+
+
                                                 </td>
                                                 <td title="'sourceType'" filter="{ sourceType: 'text'}" sortable="'sourceType'" width="10%">
                                                     {{item.sourceType}}
@@ -50,10 +50,10 @@
                                                 <td title="'resourceTypeId'" filter="{ resourceTypeId: 'text'}" sortable="'resourceTypeId'" width="10%">
                                                     {{item.resourceTypeId}}
                                                 </td>
-            
-            
-            
-            
+
+
+
+
                                                 <td title="'deptId'" filter="{ deptId: 'text'}" sortable="'deptId'" width="10%">
                                                     {{item.deptId}}
                                                 </td>
@@ -70,7 +70,7 @@
                                                                 {{item.showFlag}}
                                                             </td>
 
-                        
+
                                             </tr>
                                         </table>
                                     </div>
@@ -78,16 +78,16 @@
                             </form>
                         </div>
                     </div>
-            
-            
+
+
                 </div>
-            
-            
-         
-            
+
+
+
+
             <!-- modal  -->
-            
-            
+
+
             <div id="form" class="modal fade" tabindex="-1" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
@@ -99,27 +99,27 @@
                         <!-- Modal body -->
                         <div class="modal-body">
                             <div class="container-fluid">
-            
+
                                 <div class="form-group label-floating is-empty">
                                     <label class="control-label">Form name</label>
                                     <input name="resourceName"  type="text" class="form-control" ng-model="formName">
                                     <span class="material-input"></span></div>
-            
+
 
 
                                     <div class="form-group label-floating is-empty">
                                             <label >ประเภท </label>
                                             <select class="form-control" ng-model="modal_form_data.resourceTypeId">
                           <option ng-repeat="item in catagory_list" value="{{item._id}}">{{item.resourceName}}</option>
-                        
+
                         </select>
                                         </div>
-            
+
                                         <div class="form-group label-floating is-empty">
                                                 <label >ภาควิชา </label>
                                                 <select class="form-control" ng-model="modal_form_data.deptId">
                               <option ng-repeat="item in department_list" value="{{item._id}}">{{item.resourceName}}</option>
-                            
+
                             </select>
                                             </div>
 
@@ -128,7 +128,7 @@
                                                     <label >แผนก </label>
                                                     <select class="form-control" ng-model="modal_form_data.divisionId">
                                   <option ng-repeat="item in division_list" value="{{item._id}}">{{item.resourceName}}</option>
-                                
+
                                 </select>
                                                 </div>
                                                 <div>
@@ -136,10 +136,10 @@
                                                     <tags-input ng-model="modal_form_data.tags">
                                                             <auto-complete ></auto-complete>
                                                         </tags-input>
-                                                    
+
                                                     </div>
                                                     {{show_tags}}
-                                                
+
                                                 <div class="form-check">
                                                         <label class="form-check-label">
                                                             <input class="form-check-input" type="checkbox" ng-model="modal_form_data.showFlag">
@@ -150,66 +150,66 @@
                                                         </label>
                                                     </div>
 
-                                                   
-                                             
+
+
                                 <div class="form-group">
                                     <label for="selectresource">Select Resource</label>
-                                    <select ng-model="sourceType" class="form-control" id="selectresource">
+                                    <select ng-model="modal_form_data.sourceType" class="form-control" id="selectresource">
                                       <option value="upload">Upload</option>
                                       <option value="link">Link</option>
                                       <option value="generate">Generate</option>
-                               
-                                
+
                                     </select>
                                 </div>
                                 <div class="jumbotron">
-                                    <div class="animate-switch-container" ng-switch on="sourceType">
+                                    <div class="animate-switch-container" ng-switch on="modal_form_data.sourceType">
                                         <div class="animate-switch" ng-switch-when="upload">
                                             <label class="custom-file">
-                                                                    <input type="file" id="file" class="custom-file-input" ng-model="formSource">
+                                                                    <input type="file" id="fileupload" class="change-link" fileinput="file" filepreview="modal_form_data.formSource" >
+                                                                    <!-- <input type="file" id="file" class="custom-file-input"  file-model="modal_form_data.formSource"> -->
                                                                     <span class="custom-file-control"></span>
                                                                   </label>
                                         </div>
                                         <div class="animate-switch" ng-switch-when="link">
                                                 <div class="form-group label-floating is-empty">
                                                         <label class="control-label">Link</label>
-                                                        <input   type="text" class="form-control" ng-model="formSource">
+                                                        <input type="text" class="form-control" ng-model="modal_form_data.formSource">
                                                         <span class="material-input"></span></div>
                                             </div>
                                         <div class="animate-switch" ng-switch-when="generate">
-            
-                                                        <ng-include src="'partial/including/generate_dynamic_form.html'"/>  
-            
-                                                        <h1>แสดงหน้าจอ ฝั่งคนสมัคร:</h1>  
-                                                        <div ng-repeat="field in  columns">  
-                                                          <ng-include src="'partial/including/edit-field.html'"/>  
-                                                        </div>  
-                                                      <!-- 
-                                                        <div>  
-                                                          <h1>Your entity JSON:</h1>  
-                                                          {{ entity }}  
-                                                        </div>  
-                                                        
-                                                        <h1>View mode:</h1>  
-                                                        <div ng-repeat="field in fields">  
-                                                          <ng-include src="'partial/including/view-field.html'"/>  
-                                                        </div>  
-                                                        --> 
-            
-            
+
+                                                        <ng-include src="'partial/including/generate_dynamic_form.html'"/>
+
+                                                        <h1>แสดงหน้าจอ ฝั่งคนสมัคร:</h1>
+                                                        <div ng-repeat="field in  columns">
+                                                          <ng-include src="'partial/including/edit-field.html'"/>
+                                                        </div>
+                                                      <!--
+                                                        <div>
+                                                          <h1>Your entity JSON:</h1>
+                                                          {{ entity }}
+                                                        </div>
+
+                                                        <h1>View mode:</h1>
+                                                        <div ng-repeat="field in fields">
+                                                          <ng-include src="'partial/including/view-field.html'"/>
+                                                        </div>
+                                                        -->
+
+
                                         </div>
                                         <div class="animate-switch" ng-switch-default>Plz select </div>
                                     </div>
                                     <hr/>
                                 </div>
-            
+
                             </div>
                         </div>
-            
+
                         <!-- Modal footer -->
                          <div class="modal-footer">
-                          <button type="button" class="btn btn-success" ng-model="form_create">save</button>
-                        </div> 
+                          <button type="button" class="btn btn-success" ng-click="form_create()">save</button>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -464,11 +464,9 @@ angular.module('app').controller('form_management', function ($scope,NgTablePara
       formCode : '',
       formDetail : '',
       tags : [],
-      showFlag : true
-
-
-
+      showFlag : true,
     }
+
    $scope.get_catagory();
    $scope.get_form_list();
 
@@ -478,15 +476,8 @@ angular.module('app').controller('form_management', function ($scope,NgTablePara
 
 
   $scope.get_form_list = function(){
-
-
     api_manage.get_formAll()
     .success(function(data, status, headers, config) {
-
-
-
-
-
         console.log("data  =  "+JSON.stringify(data));
         if(data.code != "999999")
         {
@@ -514,13 +505,8 @@ angular.module('app').controller('form_management', function ($scope,NgTablePara
 
     $scope.get_catagory = function(){
 
-
           api_manage.get_catagory()
           .success(function(data, status, headers, config) {
-
-
-
-
 
               console.log("data  =  "+JSON.stringify(data));
               if(data.code != "999999")
@@ -546,33 +532,30 @@ angular.module('app').controller('form_management', function ($scope,NgTablePara
 
 
     $scope.create_form = function(){
-
         $('#form').modal('show');
-
-
-
     }
 
     $scope.form_create = function(){
+      console.log("form_create");
 
       let dataObj = {
+        formName : $scope.modal_form_data.formName,
+        formSource : $scope.modal_form_data.formSource,
+        sourceType : $scope.modal_form_data.sourceType,
+        authorId : $scope.modal_form_data.authorId,
+        resourceTypeId : $scope.modal_form_data.resourceTypeId,
+        deptId : $scope.modal_form_data.deptId,
+        targetTypeId : $scope.modal_form_data.targetTypeId,
+        divisionId : $scope.modal_form_data.divisionId,
 
-        formName : modal_form_data.formName,
-        formSource : modal_form_data.formSource,
-        sourceType : modal_form_data.sourceType,
-        authorId : modal_form_data.authorId,
-        resourceTypeId : modal_form_data.resourceTypeId,
-        deptId : modal_form_data.deptId,
-        targetTypeId : modal_form_data.targetTypeId,
-        divisionId : modal_form_data.divisionId,
 
-
-        formCode : modal_form_data.formCode,
-        formDetail : modal_form_data.formDetail,
-        tags : modal_form_data.tags,
-        showFlag : modal_form_data.showFlag
+        formCode : $scope.modal_form_data.formCode,
+        formDetail : $scope.modal_form_data.formDetail,
+        tags : $scope.modal_form_data.tags,
+        showFlag : $scope.modal_form_data.showFlag,
 
       }
+      console.log(dataObj);
       api_manage.create_form(dataObj)
       .success(function(data, status, headers, config) {
 
