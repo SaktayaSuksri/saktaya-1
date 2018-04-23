@@ -50,7 +50,7 @@ router.post('/editTargetType', function(req, res) {
             'targetTypeName': req.body.targetTypeName,
             'dateTime_edit': Date.now()
         };
-        TargetType.findByIdAndUpdate(new ObjectId(req.body.targetTypeId), updateParams, function(err) {
+        TargetType.findByIdAndUpdate(req.body.targetTypeId, updateParams, function(err) {
             if (err)
                 res.json({
                     code: 'ERROR',
@@ -72,7 +72,7 @@ router.post('/deleteTargetType', function(req, res) {
             message: '[FAILED] Invalid request'
         });
     } else {
-        TargetType.findByIdAndRemove(new ObjectId(req.body.targetTypeId), function(err) {
+        TargetType.findByIdAndRemove(req.body.targetTypeId, function(err) {
             if (err)
                 res.json({
                     code: 'ERROR',
@@ -94,7 +94,7 @@ router.post('/getTargetTypeById', function(req, res) {
             message: '[FAILED] Invalid request'
         });
     } else {
-        TargetType.findById(new ObjectId(req.body.targetTypeId), function(err, target) {
+        TargetType.findById(req.body.targetTypeId, function(err, target) {
             if (err)
                 res.json({
                     code: 'ERROR',

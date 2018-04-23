@@ -53,7 +53,7 @@ router.post('/editLink', function(req, res) {
             });
     } else {
 
-        Link.findByIdAndUpdate(new ObjectId(req.body.linkId), 
+        Link.findByIdAndUpdate(req.body.linkId, 
                                 { 'linkName': req.body.linkName,
                                     'url' : req.body.url,
                                     'typeName' : req.body.type }, function(err) {
@@ -79,7 +79,7 @@ router.post('/deleteLink', function(req, res) {
             message: '[FAILED] Invalid request'
         });
     } else {
-        Link.findByIdAndRemove(new ObjectId(req.body.linkId), function(err) {
+        Link.findByIdAndRemove(req.body.linkId, function(err) {
             if (err)
                 res.json({
                     code: 'ERROR',
@@ -128,7 +128,7 @@ router.post('/getLinkById', function(req, res) {
             message: '[FAILED] Invalid request'
         });
     } else {
-        Link.findById(new ObjectId(req.body.linkId), function(err, link) {
+        Link.findById(req.body.linkId, function(err, link) {
             if (err)
                 res.json({
                     code: 'ERROR',

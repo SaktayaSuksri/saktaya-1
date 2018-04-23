@@ -60,7 +60,7 @@ router.post('/editJournal', upload.single('journalSource'), function(req, res) {
         if (req.file) {
             let journalFile = req.file;
             updateParams['journalSource'].journalSource = journalFile.path;
-            Journal.findByIdAndUpdate(new ObjectId(req.body.journalId), updateParams, function(err) {
+            Journal.findByIdAndUpdate(req.body.journalId, updateParams, function(err) {
                 if (err)
                     res.json({
                         code: 'ERROR',
@@ -73,7 +73,7 @@ router.post('/editJournal', upload.single('journalSource'), function(req, res) {
                     });
             });
         } else {
-            Journal.findByIdAndUpdate(new ObjectId(req.body.journalId), updateParams, function(err) {
+            Journal.findByIdAndUpdate(req.body.journalId, updateParams, function(err) {
                 if (err)
                     res.json({
                         code: 'ERROR',
@@ -96,7 +96,7 @@ router.post('/deleteJournal', function(req, res) {
             message: '[FAILED] Invalid request'
         });
     } else {
-        Journal.findByIdAndRemove(new ObjectId(req.body.journalId), function(err) {
+        Journal.findByIdAndRemove(req.body.journalId, function(err) {
             if (err)
                 res.json({
                     code: 'ERROR',
@@ -118,7 +118,7 @@ router.post('/getJournalById', function(req, res) {
             message: '[FAILED] Invalid request'
         });
     } else {
-        Journal.findById(new ObjectId(req.body.journalId), function(err, journal) {
+        Journal.findById(req.body.journalId, function(err, journal) {
             if (err)
                 res.json({
                     code: 'ERROR',

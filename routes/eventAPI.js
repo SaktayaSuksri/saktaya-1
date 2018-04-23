@@ -59,7 +59,7 @@ router.post('/editEvent', function(req, res) {
                 message: '[FAILED] Invalid request'
             });
     } else {
-        Event.findByIdAndUpdate(new ObjectId(req.body.eventId), {
+        Event.findByIdAndUpdate(req.body.eventId, {
                                     'eventName': req.body.name,
                                     'eventDetail': req.body.detail,
                                     'datetimeStart': req.body.start,
@@ -88,7 +88,7 @@ router.post('/deleteEvent', function(req, res) {
             message: '[FAILED] Invalid request'
         });
     } else {
-        Event.findByIdAndRemove(new ObjectId(req.body.eventId), function(err) {
+        Event.findByIdAndRemove(req.body.eventId, function(err) {
             if (err)
                 res.json({
                     code: 'ERROR',
@@ -167,7 +167,7 @@ router.post('/getEventById', function(req, res) {
             message: '[FAILED] Invalid request'
         });
     } else {
-        Event.findById(new ObjectId(req.body.eventId), function(err, event) {
+        Event.findById(req.body.eventId, function(err, event) {
             if (err)
                 res.json({
                     code: 'ERROR',

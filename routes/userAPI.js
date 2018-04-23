@@ -65,7 +65,7 @@ router.post('/editUser', function(req, res) {
                 message: '[FAILED] Invalid request'
             });
     } else {
-        User.findByIdAndUpdate(new ObjectId(req.body.userId), {
+        User.findByIdAndUpdate(req.body.userId, {
                                     'username': req.body.username,
                                     'password': req.body.password,
                                     'fullName': req.body.fullName,
@@ -95,7 +95,7 @@ router.post('/deleteUser', function(req, res) {
             message: '[FAILED] Invalid request'
         });
     } else {
-        User.findByIdAndRemove(new ObjectId(req.body.userId), function(err) {
+        User.findByIdAndRemove(req.body.userId, function(err) {
             if (err)
                 res.json({
                     code: 'ERROR',
@@ -117,7 +117,7 @@ router.post('/getUserById', function(req, res) {
             message: '[FAILED] Invalid request'
         });
     } else {
-        User.findById(new ObjectId(req.body.userId), function(err, user) {
+        User.findById(req.body.userId, function(err, user) {
             if (err)
                 res.json({
                     code: 'ERROR',

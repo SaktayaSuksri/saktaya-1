@@ -3,9 +3,6 @@ var multer = require('multer');
 var upload = multer({ dest: 'uploaded_forms/' });
 var router = express.Router();
 
-// ObjectId type for mongodb documents
-var ObjectId = require('mongodb').ObjectId;
-
 var Form = require('../model/form_model');
 
 // Middleware for all routes
@@ -46,15 +43,15 @@ router.post('/newForm', upload.single('formSource'), function(req, res) {
         if (req.body.formCode) newForm.formCode = req.body.formCode;
         if (req.body.formDetail) newForm.formDetail = req.body.formDetail;
         newForm.sourceType = req.body.sourceType;
-        newForm.authorId = new ObjectId(req.body.authorId);
-        newForm.resourceTypeId = new ObjectId(req.body.resourceTypeId);
-        newForm.deptId = new ObjectId(req.body.deptId);
-        newForm.targetTypeId = new ObjectId(req.body.targetTypeId);
-        newForm.divisionId = new ObjectId(req.body.divisionId);
+        newForm.authorId = req.body.authorId;
+        newForm.resourceTypeId = req.body.resourceTypeId;
+        newForm.deptId = req.body.deptId;
+        newForm.targetTypeId = req.body.targetTypeId;
+        newForm.divisionId = req.body.divisionId;
         newForm.docFlag = req.body.docFlag;
         if (req.body.tags) {
             var tagsArray = req.body.tags.split(',');
-            for (var i=0; i<tagsArray.length; i++) tagsArray[i] = new ObjectId(tagsArray[i]);
+            for (var i=0; i<tagsArray.length; i++) tagsArray[i] = tagsArray[i];
             newForm.tags = tagsArray;
         }
         if (req.body.showFlag) newForm.showFlag = req.body.showFlag;
@@ -126,16 +123,16 @@ router.post('/editForm', upload.single('formSource'), function(req, res) {
         if (req.body.formName) updateParams['formName'] = req.body.formName;
         if (req.body.formCode) updateParams['formCode'] = req.body.formCode;
         if (req.body.formDetail) updateParams['formDetail'] = req.body.formDetail;
-        if (req.body.authorId) updateParams['authorId'] = new ObjectId(req.body.authorId);
+        if (req.body.authorId) updateParams['authorId'] = req.body.authorId;
         updateParams['datetimeLastEdit'] = Date.now();
-        if (req.body.resourceTypeId) updateParams['resourceTypeId'] = new ObjectId(req.body.resourceTypeId);
-        if (req.body.deptId) updateParams['deptId'] = new ObjectId(req.body.deptId);
-        if (req.body.targetTypeId) updateParams['targetTypeId'] = new ObjectId(req.body.targetTypeId);
-        if (req.body.divisionId) updateParams['divisionId'] = new ObjectId(req.body.divisionId);
+        if (req.body.resourceTypeId) updateParams['resourceTypeId'] = req.body.resourceTypeId;
+        if (req.body.deptId) updateParams['deptId'] = req.body.deptId;
+        if (req.body.targetTypeId) updateParams['targetTypeId'] = req.body.targetTypeId;
+        if (req.body.divisionId) updateParams['divisionId'] = req.body.divisionId;
         if (req.body.docFlag) updateParams['docFlag'] = req.body.docFlag;
         if (req.body.tags) {
             var tagsArray = req.body.tags.split(',');
-            for (var i=0; i<tagsArray.length; i++) tagsArray[i] = new ObjectId(tagsArray[i]);
+            for (var i=0; i<tagsArray.length; i++) tagsArray[i] = tagsArray[i];
             updateParams['tags'] = tagsArray;
         }
         if (req.body.showFlag) updateParams['showFlag'] = req.body.showFlag;
@@ -156,7 +153,7 @@ router.post('/editForm', upload.single('formSource'), function(req, res) {
             } else {
                 if (req.body.sourceType == 'link') {
                     updateParams['formSource'] = req.body.formSource;
-                    Form.findByIdAndUpdate(new ObjectId(req.body.formId), updateParams, function(err) {
+                    Form.findByIdAndUpdate(req.body.formId, updateParams, function(err) {
                         if (err)
                             res.json({
                                 code: 'ERROR',
@@ -172,7 +169,7 @@ router.post('/editForm', upload.single('formSource'), function(req, res) {
                     try {
                         var formJSON = JSON.parse(req.body.formSource);
                         updateParams['formSource'] = req.body.formSource;
-                        Form.findByIdAndUpdate(new ObjectId(req.body.formId), updateParams, function(err) {
+                        Form.findByIdAndUpdate(req.body.formId, updateParams, function(err) {
                             if (err)
                                 res.json({
                                     code: 'ERROR',
@@ -193,7 +190,7 @@ router.post('/editForm', upload.single('formSource'), function(req, res) {
                 } else {
                     let formFile = req.file;
                     updateParams['formSource'] = formFile.path;
-                    Form.findByIdAndUpdate(new ObjectId(req.body.formId), updateParams, function(err) {
+                    Form.findByIdAndUpdate(req.body.formId, updateParams, function(err) {
                         if (err)
                             res.json({
                                 code: 'ERROR',
@@ -208,7 +205,7 @@ router.post('/editForm', upload.single('formSource'), function(req, res) {
                 }
             }
         } else {
-            Form.findByIdAndUpdate(new ObjectId(req.body.formId), updateParams, function(err) {
+            Form.findByIdAndUpdate(req.body.formId, updateParams, function(err) {
                 if (err)
                     res.json({
                         code: 'ERROR',
@@ -231,7 +228,7 @@ router.post('/deleteForm', function(req, res) {
             message: '[FAILED] Invalid request'
         });
     } else {
-        Form.findByIdAndRemove(new ObjectId(req.body.formId), function(err) {
+        Form.findByIdAndRemove(req.body.formId, function(err) {
             if (err)
                 res.json({
                     code: 'ERROR',
@@ -295,7 +292,7 @@ router.post('/getFormById', function(req, res) {
             message: '[FAILED] Invalid request'
         });
     } else {
-        Form.findById(new ObjectId(req.body.formId), function(err, form) {
+        Form.findById(req.body.formId, function(err, form) {
             if (err)
                 res.json({
                     code: 'ERROR',
