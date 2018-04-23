@@ -151,15 +151,13 @@ angular.module('app').controller('news_container', function($scope, $http, api_m
   $scope.get_news = function() {
 
     let dataObj = {
-
-
-      resourceId: "0",
-      departmentId: "0",
-      tagId: "0",
-      limit: 6,
-      isPosted: "false",
-      isPreview: "true"
-
+      resourceId : "0",
+      departmentId:"0",
+      targetTypeId:"0",
+      tagId:"0",
+      limit:6,
+      isPosted:"false",
+      isPreview:"true"
     }
     api_manage.get_news(dataObj)
       .success(function(data, status, headers, config) {
@@ -216,9 +214,6 @@ angular.module('app').controller('news_container', function($scope, $http, api_m
 
 });
 angular.module('app').controller('news_detail', function($scope, $http, api_manage, global_service) {
-
-
-
 
 });
 
