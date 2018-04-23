@@ -20,7 +20,8 @@ var formSchema = mongoose.Schema({
     divisionId:             { type: String, required: true },
     tags:                   { type: [String], default: [] },
     showFlag:               { type: Boolean, default: true },
-    docFlag:                { type: Boolean, required: true }
+    docFlag:                { type: Boolean, required: true },
+    isFavorite:             { type: Boolean, default: false }
     
 });
 

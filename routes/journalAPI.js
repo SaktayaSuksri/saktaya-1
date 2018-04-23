@@ -14,30 +14,49 @@ router.use(function (req, res, next) {
 
 // Route Definitions
 router.post('/newJournal', function(req, res) {
-    if (!req.body.journalName ||
-        !req.body.journalSource
-    ) {
-            res.json({
-                code: 'FAILED',
-                message: '[FAILED] Invalid request'
-            });
+    if (!req.body.journalName) {
+        res.json({
+            code: 'FAILED',
+            message: '[FAILED] Invalid request'
+        });
+    } else if (!req.files) {
+        res.json({
+            code: 'FAILED',
+            message: '[FAILED] Invalid request (No file uploaded !!!)'
+        });
+    } else if (!req.files.journalSource) {
+        res.json({
+            code: 'FAILED',
+            message: '[FAILED] Invalid request (expected file var. not found !!!)'
+        });
     } else {
         var newJournal = new Journal();
         newJournal.journalName = req.body.journalName;
-        newJournal.journalSource = req.body.journalSource;
         newJournal.datetimeCreate = new Date();
 
-        newJournal.save(function(err) {
-            if (err)
+        let journalFile = req.files.journalSource;
+        let journalFilePath = '/uploaded_journals/' + journalFile.name;
+        journalFile.mv(journalFilePath, function(err) {
+            if (err) {
                 res.json({
                     code: 'ERROR',
-                    message: '[ERROR] Error in inserting journal doc. >> ' + err.message
+                    message: 'Error moving uploaded file >> ' + err.message
                 });
-            else
-                res.json({
-                    code: '999999',
-                    message: '[SUCCESS] Success in inserting journal doc.'
+            } else {
+                newJournal.journalSource = journalFilePath;
+                newJournal.save(function(err) {
+                    if (err)
+                        res.json({
+                            code: 'ERROR',
+                            message: '[ERROR] Error in inserting journal doc. >> ' + err.message
+                        });
+                    else
+                        res.json({
+                            code: '999999',
+                            message: '[SUCCESS] Success in inserting journal doc.'
+                        });
                 });
+            }
         });
     }
 });
@@ -51,20 +70,52 @@ router.post('/editJournal', function(req, res) {
     } else {
         var updateParams = {};
         if (req.body.journalName) updateParams['journalName'] = req.body.journalName;
-        if (req.body.journalSource) updateParams['journalSource'] = req.body.journalSource;
-
-        Journal.findByIdAndUpdate(new ObjectId(req.body.journalId), updateParams, function(err) {
-                                    if (err)
-                                        res.json({
-                                            code: 'ERROR',
-                                            message: '[ERROR] Error in editing journal doc. >> ' + err.message
-                                        });
-                                    else
-                                        res.json({
-                                            code: '999999',
-                                            message: '[SUCCESS] Success in editing journal doc.'
-                                        });
-        });
+        if (req.files) {
+            if (!req.files.journalSource) {
+                res.json({
+                    code: 'FAILED',
+                    message: '[FAILED] Invalid request (expected file var. not found !!!)'
+                });
+            } else {
+                let journalFile = req.files.journalSource;
+                let journalFilePath = '/uploaded_journals/' + journalFile.name;
+                journalFile.mv(journalFilePath, function(err) {
+                    if (err) {
+                        res.json({
+                            code: 'ERROR',
+                            message: 'Error moving uploaded file >> ' + err.message
+                        });
+                    } else {
+                        updateParams['journalSource'].journalSource = journalFilePath;
+                        Journal.findByIdAndUpdate(new ObjectId(req.body.journalId), updateParams, function(err) {
+                            if (err)
+                                res.json({
+                                    code: 'ERROR',
+                                    message: '[ERROR] Error in editing journal doc. >> ' + err.message
+                                });
+                            else
+                                res.json({
+                                    code: '999999',
+                                    message: '[SUCCESS] Success in editing journal doc.'
+                                });
+                        });
+                    }
+                });
+            }
+        } else {
+            Journal.findByIdAndUpdate(new ObjectId(req.body.journalId), updateParams, function(err) {
+                if (err)
+                    res.json({
+                        code: 'ERROR',
+                        message: '[ERROR] Error in editing journal doc. >> ' + err.message
+                    });
+                else
+                    res.json({
+                        code: '999999',
+                        message: '[SUCCESS] Success in editing journal doc.'
+                    });
+            });
+        }
     }
 });
 
