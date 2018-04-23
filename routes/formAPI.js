@@ -1,4 +1,6 @@
 var express = require('express');
+var multer = require('multer');
+var upload = multer({ dest: 'uploaded_forms/' });
 var router = express.Router();
 
 // ObjectId type for mongodb documents
@@ -13,7 +15,7 @@ router.use(function (req, res, next) {
 });
 
 // Route Definitions
-router.post('/newForm', function(req, res) {
+router.post('/newForm', upload.single('formSource'), function(req, res) {
     if (!req.body.formName ||
         !req.body.sourceType ||
         !req.body.authorId ||
@@ -33,15 +35,10 @@ router.post('/newForm', function(req, res) {
             code: 'FAILED',
             message: '[FAILED] Invalid request ( NO formSource !!! )'
         });
-    } else if (!req.files){
+    } else if (!req.file){
         res.json({
             code: 'FAILED',
             message: '[FAILED] Invalid request ( NO file uploaded !!! )'
-        });
-    } else if (!req.files.formSource) {
-        res.json({
-            code: 'FAILED',
-            message: '[FAILED] Invalid request ( expected file var. NOT found !!! )'
         });
     } else {
         var newForm = new Form();
@@ -100,55 +97,30 @@ router.post('/newForm', function(req, res) {
                 });
             }
         } else {
-            let formFile = req.files.formSource;
-            let formFilePath = '/uploaded_forms/' + formFile.name;
-            formFile.mv(formFilePath, function(err) {
-                if (err) {
+            let formFile = req.file;
+            newForm.formSource = formFile.path;
+            newForm.save(function(err) {
+                if (err)
                     res.json({
                         code: 'ERROR',
-                        message: 'Error moving uploaded file >> ' + err.message
+                        message: '[ERROR] Error in inserting form doc. >> ' + err.message
                     });
-                } else {
-                    newForm.formSource = formFilePath;
-                    newForm.save(function(err) {
-                        if (err)
-                            res.json({
-                                code: 'ERROR',
-                                message: '[ERROR] Error in inserting form doc. >> ' + err.message
-                            });
-                        else
-                            res.json({
-                                code: '999999',
-                                message: '[SUCCESS] Success in inserting form doc.'
-                            });
+                else
+                    res.json({
+                        code: '999999',
+                        message: '[SUCCESS] Success in inserting form doc.'
                     });
-                }
             });
         }
     }
 });
 
-router.post('/editForm', function(req, res) {
+router.post('/editForm', upload.single('formSource'), function(req, res) {
     if (!req.body.formId) {
             res.json({
                 code: 'FAILED',
                 message: '[FAILED] Invalid request'
             });
-    } else if ((req.body.sourceType == 'link' || req.body.sourceType == 'generate') && !req.body.formSource) {
-        res.json({
-            code: 'FAILED',
-            message: '[FAILED] Invalid request ( NO formSource !!! )'
-        });
-    } else if (!req.files){
-        res.json({
-            code: 'FAILED',
-            message: '[FAILED] Invalid request ( NO file uploaded !!! )'
-        });
-    } else if (!req.files.formSource) {
-        res.json({
-            code: 'FAILED',
-            message: '[FAILED] Invalid request ( expected file var. NOT found !!! )'
-        });
     } else {
         var updateParams = {};
         if (req.body.formName) updateParams['formName'] = req.body.formName;
@@ -171,23 +143,18 @@ router.post('/editForm', function(req, res) {
 
         if (req.body.sourceType) {
             updateParams['sourceType'] = req.body.sourceType;
-            if (req.body.sourceType == 'link') {
-                updateParams['formSource'] = req.body.formSource;
-                Form.findByIdAndUpdate(new ObjectId(req.body.formId), updateParams, function(err) {
-                    if (err)
-                        res.json({
-                            code: 'ERROR',
-                            message: '[ERROR] Error in editing form doc. >> ' + err.message
-                        });
-                    else
-                        res.json({
-                            code: '999999',
-                            message: '[SUCCESS] Success in editing form doc.'
-                        });
+            if ((req.body.sourceType == 'link' || req.body.sourceType == 'generate') && !req.body.formSource) {
+                res.json({
+                    code: 'FAILED',
+                    message: '[FAILED] Invalid request ( NO formSource !!! )'
                 });
-            } else if (req.body.sourceType == 'generate') {
-                try {
-                    var formJSON = JSON.parse(req.body.formSource);
+            } else if (!req.file){
+                res.json({
+                    code: 'FAILED',
+                    message: '[FAILED] Invalid request ( NO file uploaded !!! )'
+                });
+            } else {
+                if (req.body.sourceType == 'link') {
                     updateParams['formSource'] = req.body.formSource;
                     Form.findByIdAndUpdate(new ObjectId(req.body.formId), updateParams, function(err) {
                         if (err)
@@ -201,23 +168,10 @@ router.post('/editForm', function(req, res) {
                                 message: '[SUCCESS] Success in editing form doc.'
                             });
                     });
-                } catch (err) {
-                    res.json({
-                        code: 'ERROR',
-                        message: 'Error parsing "formSource" value to JSON >> ' + err.message
-                    });
-                }
-            } else {
-                let formFile = req.files.formSource;
-                let formFilePath = '/uploaded_forms/' + formFile.name;
-                formFile.mv(formFilePath, function(err) {
-                    if (err) {
-                        res.json({
-                            code: 'ERROR',
-                            message: 'Error moving uploaded file >> ' + err.message
-                        });
-                    } else {
-                        updateParams['formSource'] = formFilePath;
+                } else if (req.body.sourceType == 'generate') {
+                    try {
+                        var formJSON = JSON.parse(req.body.formSource);
+                        updateParams['formSource'] = req.body.formSource;
                         Form.findByIdAndUpdate(new ObjectId(req.body.formId), updateParams, function(err) {
                             if (err)
                                 res.json({
@@ -230,8 +184,28 @@ router.post('/editForm', function(req, res) {
                                     message: '[SUCCESS] Success in editing form doc.'
                                 });
                         });
+                    } catch (err) {
+                        res.json({
+                            code: 'ERROR',
+                            message: 'Error parsing "formSource" value to JSON >> ' + err.message
+                        });
                     }
-                });
+                } else {
+                    let formFile = req.file;
+                    updateParams['formSource'] = formFile.path;
+                    Form.findByIdAndUpdate(new ObjectId(req.body.formId), updateParams, function(err) {
+                        if (err)
+                            res.json({
+                                code: 'ERROR',
+                                message: '[ERROR] Error in editing form doc. >> ' + err.message
+                            });
+                        else
+                            res.json({
+                                code: '999999',
+                                message: '[SUCCESS] Success in editing form doc.'
+                            });
+                    });
+                }
             }
         } else {
             Form.findByIdAndUpdate(new ObjectId(req.body.formId), updateParams, function(err) {
