@@ -10,89 +10,89 @@ angular.module('app').config(function($stateProvider, $urlRouterProvider) {
 
     .state('course-tee', {
       url: '/course-tee',
-      templateUrl: "http://localhost:2001/partial/course-tee.html"
+      templateUrl: "./partial/course-tee.html"
     })
 
     .state('course-tor', {
       url: '/course-tor',
-      templateUrl: "http://localhost:2001/partial/course-tor.html"
+      templateUrl: "./partial/course-tor.html"
     })
 
 
     .state('course-aek', {
       url: '/course-aek',
-      templateUrl: "http://localhost:2001/partial/course-aek.html"
+      templateUrl: "./partial/course-aek.html"
     })
 
     .state('news', {
       url: '/news',
-      templateUrl: "http://localhost:2001/partial/news.html"
+      templateUrl: "./partial/news.html"
     })
 
 
     .state('history', {
       url: '/history',
-      templateUrl: "http://localhost:2001/partial/history.html"
+      templateUrl: "./partial/history.html"
     })
 
     .state('resolution', {
       url: '/resolution',
-      templateUrl: "http://localhost:2001/partial/resolution.html"
+      templateUrl: "./partial/resolution.html"
     })
     .state('structure', {
       url: '/structure',
-      templateUrl: "http://localhost:2001/partial/structure.html"
+      templateUrl: "./partial/structure.html"
     })
 
     .state('yearly-report', {
       url: '/yearly-report',
-      templateUrl: "http://localhost:2001/partial/yearly-report.html"
+      templateUrl: "./partial/yearly-report.html"
     })
 
     .state('graduate', {
       url: '/graduate',
-      templateUrl: "http://localhost:2001/partial/graduate.html"
+      templateUrl: "./partial/graduate.html"
     })
 
 
     .state('news_container', {
       url: '/news_container',
-      templateUrl: "http://localhost:2001/partial/news_container.html"
+      templateUrl: "./partial/news_container.html"
     })
 
     .state('docs_container', {
       url: '/docs_container',
-      templateUrl: "http://localhost:2001/partial/docs_container.html"
+      templateUrl: "./partial/docs_container.html"
     })
 
     .state('link_management', {
       url: '/link_management',
-      templateUrl: "http://localhost:2001/partial/link_management.html"
+      templateUrl: "./partial/link_management.html"
     })
 
     .state('about_timeline', {
       url: '/about_timeline',
-      templateUrl: "http://localhost:2001/partial/about_timeline.html"
+      templateUrl: "./partial/about_timeline.html"
     })
 
     .state('about_vision', {
       url: '/about_vision',
-      templateUrl: "http://localhost:2001/partial/about_vision.html"
+      templateUrl: "./partial/about_vision.html"
     })
 
     .state('about_organizational_structure', {
       url: '/about_organizational_structure',
-      templateUrl: "http://localhost:2001/partial/about_organizational_structure.html"
+      templateUrl: "./partial/about_organizational_structure.html"
     })
 
     .state('about_year_reports', {
       url: '/about_year_reports',
-      templateUrl: "http://localhost:2001/partial/about_year_reports.html"
+      templateUrl: "./partial/about_year_reports.html"
     })
 
     .state('personel', {
       url: '/personel',
-      templateUrl: "http://localhost:2001/partial/personel.html"
+      templateUrl: "./partial/personel.html"
     })
   // nested list with custom controller
 
@@ -119,7 +119,6 @@ angular.module('app')
 
   }]);
 angular.module('app').controller('global', function($scope, $http, api_manage) {
-
 
 });
 
