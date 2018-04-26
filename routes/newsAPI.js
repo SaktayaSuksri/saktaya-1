@@ -259,7 +259,7 @@ router.post('/getNews/', function (request, response) {
 
     var requiredData = [];
     requiredData.push(request.body.resourceId);
-    requiredData.push(request.body.targetTypeId);
+   // requiredData.push(request.body.targetTypeId);
     requiredData.push(request.body.departmentId);
     requiredData.push(request.body.tagId);
     requiredData.push(request.body.limit);
@@ -272,11 +272,15 @@ router.post('/getNews/', function (request, response) {
     booleanData.push(request.body.isPreview);
     var booleanReady = Validate.booleanData_Check(booleanData)
 
+    
+ 
+
+
     var objectIdData = [];
     if (request.body.resourceId != "0")
         objectIdData.push(request.body.resourceId);
-    if (request.body.targetTypeId != "0")
-        objectIdData.push(request.body.targetTypeId);
+   /* if (request.body.targetTypeId != "0")
+        objectIdData.push(request.body.targetTypeId);*/
     if (request.body.departmentId != "0")
         objectIdData.push(request.body.departmentId);
     if (request.body.tagId != "0")
@@ -316,8 +320,8 @@ router.post('/getNews/', function (request, response) {
                 let tag = "0"
                 if (ObjectId.isValid(request.body.resourceId))
                     resource = new ObjectId(request.body.resourceId);
-                if (ObjectId.isValid(request.body.targetTypeId))
-                    targetType = new ObjectId(request.body.targetTypeId);
+            /*    if (ObjectId.isValid(request.body.targetTypeId))
+                    targetType = new ObjectId(request.body.targetTypeId);*/
                 if (ObjectId.isValid(request.body.departmentId))
                     department = new ObjectId(request.body.departmentId);
                 if (ObjectId.isValid(request.body.tagId))
@@ -343,7 +347,7 @@ router.post('/getNewsfromID/', function (request, response) {
     var thisNews;
     var thisDepartment;
     var thisResourceType;
-    var thisTargetType;
+    //var thisTargetType;
 
     var requiredData = [];
     requiredData.push(request.body.newsID);
@@ -365,7 +369,7 @@ router.post('/getNewsfromID/', function (request, response) {
     obj.readCount = "N/A";
     obj.isPinned = "N/A";
     obj.resourceName = "N/A";
-    obj.targetTypeName = "N/A";
+   // obj.targetTypeName = "N/A";
     obj.departmentName = "N/A";
     obj.tagName = ["N/A"];
 
@@ -429,7 +433,7 @@ router.post('/getNewsfromID/', function (request, response) {
             }
         );
 
-        async function findTargetTypeByID() {
+        /*async function findTargetTypeByID() {
             await TargetType.findById(new ObjectId(thisNews.targetTypeId), function(err, target) {
                 if (err) {
                     obj.targetTypeName = "N/A";
@@ -443,7 +447,7 @@ router.post('/getNewsfromID/', function (request, response) {
                 }
             });
         }
-        findTargetTypeByID();
+        findTargetTypeByID();*/
     }
 });
 

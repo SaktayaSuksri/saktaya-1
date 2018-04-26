@@ -1,4 +1,4 @@
-<div ng-controller="form_management" ng-init="init()">
+<div ng-controller="form_management">
                 <div class="container-fluid">
             
             
@@ -23,54 +23,31 @@
             
             
                                     <div class="section" style="overflow-x:auto;">
-                                        <table ng-table="form_table" class="table table-striped table-bordered table-condensed table-hover" width="100%" show-filter="true">
+                                        <table ng-table="catagory_table" class="table table-striped table-bordered table-condensed table-hover" width="100%" show-filter="true">
                                             <tr ng-repeat="item in $data">
             
-                                                    <td title="'formCode'" filter="{ formCode: 'text'}" sortable="'formCode'" width="10%">
-                                                            {{item.formCode}}
-                                                        </td>
-
-          
-                                                <td title="'formName'" filter="{ formName: 'text'}" sortable="'formName'" width="10%">
-                                                    {{item.formName}}
+                                                <td title="'id'" filter="{ id: 'text'}" sortable="'id'" width="10%">
+                                                    {{item.id}}
                                                 </td>
-                       
-                                                <td title="'formDetail'" filter="{ formDetail: 'text'}" sortable="'formDetail'" width="10%">
-                                                        {{item.formDetail}}
-                                                    </td>
-                                                  
-                                                    
+                                                <td title="'name'" filter="{ name: 'text'}" sortable="'name'" width="10%">
+                                                    {{item.name}}
                                                 </td>
-                                                <td title="'sourceType'" filter="{ sourceType: 'text'}" sortable="'sourceType'" width="10%">
-                                                    {{item.sourceType}}
+                                                <td title="'path'" filter="{ path: 'text'}" sortable="'path'" width="10%">
+                                                    {{item.path}}
                                                 </td>
-                                                <td title="'authorId'" filter="{ authorId: 'text'}" sortable="'authorId'" width="10%">
-                                                    {{item.authorId}}
+                                                <td title="'type'" filter="{ type: 'text'}" sortable="'type'" width="10%">
+                                                    {{item.type}}
                                                 </td>
-                                                <td title="'resourceTypeId'" filter="{ resourceTypeId: 'text'}" sortable="'resourceTypeId'" width="10%">
-                                                    {{item.resourceTypeId}}
+                                                <td title="'date_create'" filter="{ date_create: 'text'}" sortable="'date_create'" width="10%">
+                                                    {{item.date_create}}
                                                 </td>
             
             
             
             
-                                                <td title="'deptId'" filter="{ deptId: 'text'}" sortable="'deptId'" width="10%">
-                                                    {{item.deptId}}
+                                                <td title="'resourceName'" filter="{ resourceName: 'text'}" sortable="'resourceName'" width="10%">
+                                                    {{item.resourceName}}
                                                 </td>
-
-                                                <td title="'divisionId'" filter="{ divisionId: 'text'}" sortable="'divisionId'" width="10%">
-                                                        {{item.divisionId}}
-                                                    </td>
-
-                                                    <td title="'tags'" filter="{ tags: 'text'}" sortable="'tags'" width="10%">
-                                                            {{item.tags}}
-                                                        </td>
-
-                                                        <td title="'showFlag'" filter="{ showFlag: 'text'}" sortable="'showFlag'" width="10%">
-                                                                {{item.showFlag}}
-                                                            </td>
-
-                        
                                             </tr>
                                         </table>
                                     </div>
@@ -102,80 +79,32 @@
             
                                 <div class="form-group label-floating is-empty">
                                     <label class="control-label">Form name</label>
-                                    <input name="resourceName"  type="text" class="form-control" ng-model="formName">
                                     <span class="material-input"></span></div>
             
-
-
-                                    <div class="form-group label-floating is-empty">
-                                            <label >ประเภท </label>
-                                            <select class="form-control" ng-model="modal_form_data.resourceTypeId">
-                          <option ng-repeat="item in catagory_list" value="{{item._id}}">{{item.resourceName}}</option>
-                        
-                        </select>
-                                        </div>
+                                <div class="form-group label-floating is-empty">
+                                    <label class="control-label">Catagory </label>
+                                    <input name="resourceName" type="text" class="form-control">
+                                    <span class="material-input"></span></div>
             
-                                        <div class="form-group label-floating is-empty">
-                                                <label >ภาควิชา </label>
-                                                <select class="form-control" ng-model="modal_form_data.deptId">
-                              <option ng-repeat="item in department_list" value="{{item._id}}">{{item.resourceName}}</option>
-                            
-                            </select>
-                                            </div>
-
-
-                                            <div class="form-group label-floating is-empty">
-                                                    <label >แผนก </label>
-                                                    <select class="form-control" ng-model="modal_form_data.divisionId">
-                                  <option ng-repeat="item in division_list" value="{{item._id}}">{{item.resourceName}}</option>
-                                
-                                </select>
-                                                </div>
-                                                <div>
-                                                    Tags
-                                                    <tags-input ng-model="modal_form_data.tags">
-                                                            <auto-complete ></auto-complete>
-                                                        </tags-input>
-                                                    
-                                                    </div>
-                                                    {{show_tags}}
-                                                
-                                                <div class="form-check">
-                                                        <label class="form-check-label">
-                                                            <input class="form-check-input" type="checkbox" ng-model="modal_form_data.showFlag">
-                                                            แสดงบนหน้าเว็บ
-                                                            <span class="form-check-sign">
-                                                                <span class="check"></span>
-                                                            </span>
-                                                        </label>
-                                                    </div>
-
-                                                   
-                                             
+            
+            
                                 <div class="form-group">
                                     <label for="selectresource">Select Resource</label>
-                                    <select ng-model="sourceType" class="form-control" id="selectresource">
+                                    <select ng-model="selectresource" class="form-control" id="selectresource">
                                       <option value="upload">Upload</option>
-                                      <option value="link">Link</option>
                                       <option value="generate">Generate</option>
                                
                                 
                                     </select>
                                 </div>
                                 <div class="jumbotron">
-                                    <div class="animate-switch-container" ng-switch on="sourceType">
+                                    <div class="animate-switch-container" ng-switch on="selectresource">
                                         <div class="animate-switch" ng-switch-when="upload">
                                             <label class="custom-file">
-                                                                    <input type="file" id="file" class="custom-file-input" ng-model="formSource">
+                                                                    <input type="file" id="file" class="custom-file-input">
                                                                     <span class="custom-file-control"></span>
                                                                   </label>
                                         </div>
-                                        <div class="animate-switch" ng-switch-when="link">
-                                                <div class="form-group label-floating is-empty">
-                                                        <label class="control-label">Link</label>
-                                                        <input   type="text" class="form-control" ng-model="formSource">
-                                                        <span class="material-input"></span></div>
-                                            </div>
                                         <div class="animate-switch" ng-switch-when="generate">
             
                                                         <ng-include src="'partial/including/generate_dynamic_form.html'"/>  
@@ -207,9 +136,9 @@
                         </div>
             
                         <!-- Modal footer -->
-                         <div class="modal-footer">
-                          <button type="button" class="btn btn-success" ng-model="form_create">save</button>
-                        </div> 
+                        <!-- <div class="modal-footer">
+                          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                        </div> -->
                     </div>
                 </div>
             </div>

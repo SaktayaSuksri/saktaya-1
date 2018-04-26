@@ -136,7 +136,7 @@ $scope.get_news = function(){
     $scope.news_list_3 =[];
     let dataObj = {
 
-
+        targetTypeId:"0",
       resourceId : "0",
       departmentId:"0",
       tagId:"0",
@@ -159,7 +159,7 @@ $scope.get_news = function(){
           $scope.news_list_1[0] = data.message[1];
           $scope.news_list_1[1] = data.message[0];
           $scope.news_list_2[0] = data.message[2];
-          $scope.news_list_2[1] = data.message[3];
+         $scope.news_list_2[1] = data.message[3];
           $scope.news_list_3[0] = data.message[4];
           $scope.news_list_3[1] = data.message[5];
        //   console.log('$scope.news_list  =  '+ JSON.stringify($scope.news_list))
