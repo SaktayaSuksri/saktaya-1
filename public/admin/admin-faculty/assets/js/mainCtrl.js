@@ -1168,7 +1168,6 @@ $scope.delete_news = function(item){
     alert("delete news")
       let dataObj = {
           newsId:item._id
-
           };
           console.log("beforesend   =  "+JSON.stringify(dataObj));
       api_manage.delete_news(dataObj)
@@ -1180,11 +1179,7 @@ $scope.delete_news = function(item){
           alert(data.message)
         }
         else{
-
           $scope.get_news();
-
-
-
         }
       })
       .error(function(data, status, headers, config) {
