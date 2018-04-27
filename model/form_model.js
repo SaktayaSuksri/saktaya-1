@@ -7,7 +7,7 @@ var mongoose = require('mongoose');
 var formSchema = mongoose.Schema({
 
     formName:               { type: String, required: true, unique: true },
-    formCode:               { type: String, default: null, unique: true },
+    formCode:               { type: String, default: null },
     formDetail:             { type: String, default: null },
     formSource:             { type: String, required: true },
     sourceType:             { type: String, required: true, default: 'link' },      // 'link' or 'upload' or 'generate'
