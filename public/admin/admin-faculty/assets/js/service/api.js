@@ -1,58 +1,54 @@
 angular.module('api_service', [])
 
     // super simple service
-    // each function returns a promise object 
+    // each function returns a promise object
     .factory('api_manage', ['$rootScope', '$http', function ($rootScope, $http){
     return {
-        get_catagory : function () {
-            return $http.get('/api/getResourceType/');
+        get_catagory: function() {
+          return $http.get('/api/getResourceType/');
         },
-        create_catagory : function (data) {
-            return $http.post('/api/newResourceType',data);
-            },
-            update_catagory : function (data) {
-                return $http.post('/api/editResourceType',data);
-                },
-                delete_catagory : function (data) {
-                    return $http.post('/api/deleteResourceType',data);
-                    },
-                                get_tag : function () {
-                                    return $http.get('/api/getTag/');
-                                },
-                                create_tag : function (data) {
-                                    return $http.post('/api/newTag/',data);
-                                    },
-                                    update_tag : function (data) {
-                                        return $http.post('/api/editTag/',data);
-                                        },
-                                        delete_tag : function (data) {
-                                            return $http.post('/api/deleteTag/',data);
-                                            },
-                                                        get_news : function (data) {
-                                                            return $http.post('/api/getNews/',data);
-                                                        },
-                                                        update_news : function (data) {
-                                                            return $http.post('/api/editNews/',data);
-                                                        },
-                                                        delete_news : function (data) {
-                                                            return $http.post('/api/deleteNews/',data);
-                                                        },
-                                                        create_news : function (data) {
-                                                            return $http.post('/api/newNews/',data);
-                                                        },
+        create_catagory: function(data) {
+          return $http.post('/api/newResourceType', data);
+        },
+        update_catagory: function(data) {
+          return $http.post('/api/editResourceType', data);
+        },
+        delete_catagory: function(data) {
+          return $http.post('/api/deleteResourceType', data);
+        },
+        get_tag: function() {
+          return $http.get('/api/getTag/');
+        },
+        create_tag: function(data) {
+          return $http.post('/api/newTag/', data);
+        },
+        update_tag: function(data) {
+          return $http.post('/api/editTag/', data);
+        },
+        delete_tag: function(data) {
+          return $http.post('/api/deleteTag/', data);
+        },
+        get_news: function(data) {
+          return $http.post('/api/getNews/', data);
+        },
+        update_news: function(data) {
+          return $http.post('/api/editNews/', data);
+        },
+        delete_news: function(data) {
+          return $http.post('/api/deleteNews/', data);
+        },
+        create_news: function(data) {
+          return $http.post('/api/newNews/', data);
+        },
 
-                                                        create_form : function (data) {
-                                                            return $http.post('/api/newForm/',data);
-                                                        },   
-                                                        
-                                                        get_formAll : function () {
-                                                            return $http.get('/api/getFormsAll/');
-                                                        },   
+        create_form: function(data) {
+          return $http.post('/api/newForm/', data);
+        },
 
-                                                        
-                                                        
-                                                        
-                                                        
+        get_formAll: function() {
+          return $http.get('/api/getFormsAll/');
+        },
+
         getpadgeadminedit : function (id) {
                 return $http.get('https://ghb-npl2560.herokuapp.com/Q_manage_admin/' + id);
             },
@@ -88,16 +84,16 @@ angular.module('api_service', [])
 
 
     }
-    
+
 
 
     }])
 .service("uploadService", function($http, $q) {
-    
+
     return ({
         upload: upload
     });
-    
+
     function upload(file) {
         var upl = $http({
             method: 'POST',
@@ -114,29 +110,29 @@ angular.module('api_service', [])
                 angular.forEach(data, function (value, key) {
                     formData.append(key, value);
                 });
-                
+
                 var headers = headersGetter();
                 delete headers['Content-Type'];
-                
+
                 return formData;
             }
         });
         return upl.then(handleSuccess, handleError);
 
     } // End upload function
-    
+
     // ---
     // PRIVATE METHODS.
     // ---
-    
+
     function handleError(response, data) {
         if (!angular.isObject(response.data) || !response.data.message) {
             return ($q.reject("An unknown error occurred."));
         }
-        
+
         return ($q.reject(response.data.message));
     }
-    
+
     function handleSuccess(response) {
         return (response);
     }

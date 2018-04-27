@@ -1,6 +1,20 @@
 angular.module('app', ['ui.router',"xeditable","ngTable","api_service", 'ngSanitize','textAngular','ngTagsInput'])
 
-
+angular.module('app').directive('fileModel', ['$parse', function ($parse) {
+  return {
+      restrict: 'A',
+      link: function(scope, element, attrs) {
+          var model = $parse(attrs.fileModel);
+          var modelSetter = model.assign;
+  
+          element.bind('change', function(){
+              scope.$apply(function(){
+                  modelSetter(scope, element[0].files[0]);
+              });
+          });
+      }
+  };
+  }]);
 
 angular.module('app').config(function($provide){
 $provide.decorator('taOptions', ['taRegisterTool', '$delegate', function(taRegisterTool, taOptions){
@@ -436,9 +450,63 @@ angular.module('app').controller('content_management', function ($scope,NgTableP
 
 });
 
+
+//============uploadFile==============================
+// angular.module('app').('fileModel', ['$parse', function ($parse) {
+//     return {
+//         restrict: 'A',
+//         link: function(scope, element, attrs) {
+//             var model = $parse(attrs.fileModel);
+//             var modelSetter = model.assign;
+//
+//             element.bind('change', function(){
+//                 scope.$apply(function() {
+//                         modelSetter(scope, element[0].files[0]);
+//                         evt.target.value = "";
+//                     });
+//                     document.getElementById("test").classList.remove("open");
+//                   <!--   scope.uploadFile(); -->
+//             });
+//         }
+//     };
+// }]);
+// angular.module('app').service('fileUpload', ['$http', function ($http) {
+//     this.uploadFileToUrl = function(file, uploadUrl){
+//         var fd = new FormData();
+//         fd.append('file', file);
+//         $http.post(uploadUrl, fd, {
+//             transformRequest: angular.identity,
+//             headers: {'Content-Type': undefined}
+//         })
+//         .success(function(){
+//         })
+//         .error(function(){
+//         });
+//     }
+// }]);
+//
+// angular.module('app').controller('myCtrl', ['$scope', 'fileUpload', function($scope, fileUpload){
+//
+//     $scope.uploadFile = function(){
+//         var file = $scope.myFile;
+//         console.log('file is ' );
+//         console.dir(file);
+//         var uploadUrl = "/fileUpload";
+//         fileUpload.uploadFileToUrl(file, uploadUrl);
+//     };
+//
+// }]);
+
+
+//==================uploadFile==========================================
+
+
+
+
+
 angular.module('app').controller('form_management', function ($scope,NgTableParams, $filter, $q,$http,api_manage){
 
-    alert('form_management');
+    //alert('form_management');
 /* $scope.tags = [
                     { text: 'just' },
                     { text: 'some' },
@@ -463,30 +531,40 @@ angular.module('app').controller('form_management', function ($scope,NgTablePara
 
       formCode : '',
       formDetail : '',
-      tags : [],
-      showFlag : true
-
-
-
+      tags : null,
+      showFlag : true,
     }
+
    $scope.get_catagory();
    $scope.get_form_list();
 
    $scope.show_tags = $scope.modal_form_data.tags;
 
   }
+  $scope.uploadFile = function(){
+    
+            var file = $scope.myFile;
+            var uploadUrl = "/api/multer";
+            var fd = new FormData();
+            fd.append('file', file);
+    
+            $http.post(uploadUrl,fd, {
+                transformRequest: angular.identity,
+                headers: {'Content-Type': undefined}
+            })
+            .success(function(){
+              console.log("success!!");
+            })
+            .error(function(){
+              console.log("error!!");
+            });
+        };
+
 
 
   $scope.get_form_list = function(){
-
-
     api_manage.get_formAll()
     .success(function(data, status, headers, config) {
-
-
-
-
-
         console.log("data  =  "+JSON.stringify(data));
         if(data.code != "999999")
         {
@@ -514,13 +592,8 @@ angular.module('app').controller('form_management', function ($scope,NgTablePara
 
     $scope.get_catagory = function(){
 
-
           api_manage.get_catagory()
           .success(function(data, status, headers, config) {
-
-
-
-
 
               console.log("data  =  "+JSON.stringify(data));
               if(data.code != "999999")
@@ -546,33 +619,36 @@ angular.module('app').controller('form_management', function ($scope,NgTablePara
 
 
     $scope.create_form = function(){
-
         $('#form').modal('show');
-
-
-
     }
 
     $scope.form_create = function(){
+      console.log("form_create");
+
+      $scope.modal_form_data.authorId="a7b2489be10aa3b0836b35a";
+      //$scope.modal_form_data.resourceTypeId = "5a8470b228d2e92a0c753010";
+      $scope.modal_form_data.deptId = "5a8470b228d2e92a0c753010";
+      $scope.modal_form_data.targetTypeId = "5ade1b9ef36d2856dd57f399";
+      $scope.modal_form_data.divisionId = "5ac34c06734d1d4f8afa3038";
 
       let dataObj = {
+        formName : $scope.modal_form_data.formName,
+        formSource : $scope.modal_form_data.formSource,
+        sourceType : $scope.modal_form_data.sourceType,
+        authorId : $scope.modal_form_data.authorId,
+        resourceTypeId : $scope.modal_form_data.resourceTypeId,
+        deptId : $scope.modal_form_data.deptId,
+        targetTypeId : $scope.modal_form_data.targetTypeId,
+        divisionId : $scope.modal_form_data.divisionId,
+        docFlag : true,
 
-        formName : modal_form_data.formName,
-        formSource : modal_form_data.formSource,
-        sourceType : modal_form_data.sourceType,
-        authorId : modal_form_data.authorId,
-        resourceTypeId : modal_form_data.resourceTypeId,
-        deptId : modal_form_data.deptId,
-        targetTypeId : modal_form_data.targetTypeId,
-        divisionId : modal_form_data.divisionId,
-
-
-        formCode : modal_form_data.formCode,
-        formDetail : modal_form_data.formDetail,
-        tags : modal_form_data.tags,
-        showFlag : modal_form_data.showFlag
-
+        formCode : $scope.modal_form_data.formCode,
+        formDetail : $scope.modal_form_data.formDetail,
+        tags : $scope.modal_form_data.tags,
+        showFlag : $scope.modal_form_data.showFlag,
       }
+
+      console.log("create_form dataOBJ = " + JSON.stringify(dataObj));
       api_manage.create_form(dataObj)
       .success(function(data, status, headers, config) {
 
@@ -939,6 +1015,7 @@ $scope.get_news = function(){
 
     resourceId : "0",
     departmentId:"0",
+    targetTypeId:"0",
     tagId:"0",
     limit:0,
     isPosted:"false",
@@ -1042,6 +1119,8 @@ $scope.update_news = function(){
 }
 else{
     $scope.create_news( $scope.modal_update_news_data);
+    console.log("Pond log test >>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+    console.log($scope.modal_update_news_data);
 }
 
 
@@ -1068,9 +1147,8 @@ $scope.modal_create_news = function(){
                     resourceId: '',
                     departmentId: '5a8470b228d2e92a0c753010',
                     tagId: '',
-                    aiswitch: 'create'
-
-
+                    aiswitch: 'create',
+                    targetTypeId:'5ade1b9ef36d2856dd57f399'
     }
 
     $scope.modal_update_news($scope.modal_create_news_data)
@@ -1084,7 +1162,7 @@ $scope.create_news = function(item)
 
     $scope.modal_create_news_data  = item;
 
-    console.log("beforesend  create_news = "+ JSON.stringify($scope.modal_create_news_data))
+    console.log("beforesend  create_news = "+ JSON.stringify($scope.modal_create_news_data));
     api_manage.create_news($scope.modal_create_news_data)
 
     .success(function(data, status, headers, config) {
@@ -1123,7 +1201,6 @@ $scope.delete_news = function(item){
     alert("delete news")
       let dataObj = {
           newsId:item._id
-
           };
           console.log("beforesend   =  "+JSON.stringify(dataObj));
       api_manage.delete_news(dataObj)
@@ -1135,11 +1212,7 @@ $scope.delete_news = function(item){
           alert(data.message)
         }
         else{
-
           $scope.get_news();
-
-
-
         }
       })
       .error(function(data, status, headers, config) {

@@ -142,7 +142,8 @@ $scope.get_news = function(){
       tagId:"0",
       limit:6,
       isPosted:"false",
-      isPreview:"true"
+      isPreview:"true",
+      targetTypeId:"0"
 
     }
       api_manage.get_news(dataObj)

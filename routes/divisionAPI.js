@@ -50,7 +50,7 @@ router.post('/editDivision', function(req, res) {
             'divisionName': req.body.divisionName,
             'dateTime_edit': Date.now()
         };
-        Division.findByIdAndUpdate(new ObjectId(req.body.divisionId), updateParams, function(err) {
+        Division.findByIdAndUpdate(req.body.divisionId, updateParams, function(err) {
             if (err)
                 res.json({
                     code: 'ERROR',
@@ -72,7 +72,7 @@ router.post('/deleteDivision', function(req, res) {
             message: '[FAILED] Invalid request'
         });
     } else {
-        Division.findByIdAndRemove(new ObjectId(req.body.divisionId), function(err) {
+        Division.findByIdAndRemove(req.body.divisionId, function(err) {
             if (err)
                 res.json({
                     code: 'ERROR',
@@ -94,7 +94,7 @@ router.post('/getDivisionById', function(req, res) {
             message: '[FAILED] Invalid request'
         });
     } else {
-        Division.findById(new ObjectId(req.body.divisionId), function(err, div) {
+        Division.findById(req.body.divisionId, function(err, div) {
             if (err)
                 res.json({
                     code: 'ERROR',

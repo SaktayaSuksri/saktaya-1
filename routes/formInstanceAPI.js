@@ -22,7 +22,7 @@ router.post('/newFormInstance', function(req, res) {
             });
     } else {
         var newFormInstance = new FormInstance();
-        newForm.formId = new ObjectId(req.body.formId);
+        newForm.formId = req.body.formId;
         newForm.formInput = req.body.inputData;
 
         newFormInstance.save(function(err) {
@@ -49,7 +49,7 @@ router.post('/editFormInstance', function(req, res) {
             });
     } else {
 
-        FormInstance.findByIdAndUpdate(new ObjectId(req.body.formInstanceId), 
+        FormInstance.findByIdAndUpdate(req.body.formInstanceId, 
                             {   'formInput': req.body.inputData
                                 }, function(err) {
                                     if (err)
@@ -73,7 +73,7 @@ router.post('/deleteFormInstance', function(req, res) {
             message: '[FAILED] Invalid request'
         });
     } else {
-        FormInstance.findByIdAndRemove(new ObjectId(req.body.formInstanceId), function(err) {
+        FormInstance.findByIdAndRemove(req.body.formInstanceId, function(err) {
             if (err)
                 res.json({
                     code: 'ERROR',
@@ -95,7 +95,7 @@ router.post('/getFormInstancesByForm', function(req, res) {
             message: '[FAILED] Invalid request'
         });
     } else {
-        FormInstance.find({ 'formId': new ObjectId(req.body.formId) }, function(err, forms) {
+        FormInstance.find({ 'formId': req.body.formId }, function(err, forms) {
             if (err)
                 res.json({
                     code: 'ERROR',
@@ -122,7 +122,7 @@ router.post('/getFormInstanceById', function(req, res) {
             message: '[FAILED] Invalid request'
         });
     } else {
-        FormInstance.findById(new ObjectId(req.body.formInstanceId), function(err, form) {
+        FormInstance.findById(req.body.formInstanceId, function(err, form) {
             if (err)
                 res.json({
                     code: 'ERROR',

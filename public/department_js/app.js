@@ -47,47 +47,47 @@ app.config(function($stateProvider, $urlRouterProvider) {
 
       .state('about', {
         url: '/about',
-        templateUrl : "http://localhost:2001/department_template/about.html"
+        templateUrl : "./department_template/about.html"
     , controller: 'aboutCtrl'
       })
     .state('enroll', {
       url: '/enroll',
-      templateUrl : "http://localhost:2001/department_template/enroll.html"
+      templateUrl : "./department_template/enroll.html"
   , controller: 'enrollCtrl'
     })
 
       .state('scollarship', {
         url: '/scollarship',
-        templateUrl : "http://localhost:2001/department_template/scollarship.html"
+        templateUrl : "./department_template/scollarship.html"
     ,   controller: 'scollarshipCtrl'
       })
     .state('scollarship-partial', {
       url: '/scollarship-partial',
-      templateUrl : "http://localhost:2001/department_template/scollarship-partial.html"
+      templateUrl : "./department_template/scollarship-partial.html"
   ,   controller: 'scollarshipCtrl'
     })
 
   .state('course', {
     url: '/course',
-    templateUrl : "http://localhost:2001/department_template/course.html"
+    templateUrl : "./department_template/course.html"
 ,  controller: 'courseCtrl'
   })
 
 .state('course-partial', {
   url: '/course-partial',
-  templateUrl : "http://localhost:2001/department_template/course-partial.html"
+  templateUrl : "./department_template/course-partial.html"
 ,  controller: 'courseCtrl'
 })
 
 .state('professor', {
   url: '/professor',
-  templateUrl : "http://localhost:2001/department_template/professor.html"
+  templateUrl : "./department_template/professor.html"
 ,    controller: 'professorCtrl'
 })
 
 .state('course_detail', {
   url: '/course_detail',
-  templateUrl : "http://localhost:2001/department_template/course_detail.html"
+  templateUrl : "./department_template/course_detail.html"
 ,controller: 'course_detailCtrl'
 })
 

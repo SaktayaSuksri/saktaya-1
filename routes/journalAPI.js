@@ -1,5 +1,7 @@
 var express = require('express');
 var router = express.Router();
+var multer = require('multer');
+var upload = multer({ dest: 'uploaded_journals/' });
 
 // ObjectId type for mongodb documents
 var ObjectId = require('mongodb').ObjectId;
@@ -13,55 +15,40 @@ router.use(function (req, res, next) {
 });
 
 // Route Definitions
-router.post('/newJournal', function(req, res) {
+router.post('/newJournal', upload.single('journalSource'), function(req, res) {
     if (!req.body.journalName) {
         res.json({
             code: 'FAILED',
             message: '[FAILED] Invalid request'
         });
-    } else if (!req.files) {
+    } else if (!req.file) {
         res.json({
             code: 'FAILED',
             message: '[FAILED] Invalid request (No file uploaded !!!)'
-        });
-    } else if (!req.files.journalSource) {
-        res.json({
-            code: 'FAILED',
-            message: '[FAILED] Invalid request (expected file var. not found !!!)'
         });
     } else {
         var newJournal = new Journal();
         newJournal.journalName = req.body.journalName;
         newJournal.datetimeCreate = new Date();
 
-        let journalFile = req.files.journalSource;
-        let journalFilePath = '/uploaded_journals/' + journalFile.name;
-        journalFile.mv(journalFilePath, function(err) {
-            if (err) {
+        let journalFile = req.file;
+        newJournal.journalSource = journalFile.path;
+        newJournal.save(function(err) {
+            if (err)
                 res.json({
                     code: 'ERROR',
-                    message: 'Error moving uploaded file >> ' + err.message
+                    message: '[ERROR] Error in inserting journal doc. >> ' + err.message
                 });
-            } else {
-                newJournal.journalSource = journalFilePath;
-                newJournal.save(function(err) {
-                    if (err)
-                        res.json({
-                            code: 'ERROR',
-                            message: '[ERROR] Error in inserting journal doc. >> ' + err.message
-                        });
-                    else
-                        res.json({
-                            code: '999999',
-                            message: '[SUCCESS] Success in inserting journal doc.'
-                        });
+            else
+                res.json({
+                    code: '999999',
+                    message: '[SUCCESS] Success in inserting journal doc.'
                 });
-            }
         });
     }
 });
 
-router.post('/editJournal', function(req, res) {
+router.post('/editJournal', upload.single('journalSource'), function(req, res) {
     if (!req.body.journalId) {
             res.json({
                 code: 'FAILED',
@@ -70,40 +57,23 @@ router.post('/editJournal', function(req, res) {
     } else {
         var updateParams = {};
         if (req.body.journalName) updateParams['journalName'] = req.body.journalName;
-        if (req.files) {
-            if (!req.files.journalSource) {
-                res.json({
-                    code: 'FAILED',
-                    message: '[FAILED] Invalid request (expected file var. not found !!!)'
-                });
-            } else {
-                let journalFile = req.files.journalSource;
-                let journalFilePath = '/uploaded_journals/' + journalFile.name;
-                journalFile.mv(journalFilePath, function(err) {
-                    if (err) {
-                        res.json({
-                            code: 'ERROR',
-                            message: 'Error moving uploaded file >> ' + err.message
-                        });
-                    } else {
-                        updateParams['journalSource'].journalSource = journalFilePath;
-                        Journal.findByIdAndUpdate(new ObjectId(req.body.journalId), updateParams, function(err) {
-                            if (err)
-                                res.json({
-                                    code: 'ERROR',
-                                    message: '[ERROR] Error in editing journal doc. >> ' + err.message
-                                });
-                            else
-                                res.json({
-                                    code: '999999',
-                                    message: '[SUCCESS] Success in editing journal doc.'
-                                });
-                        });
-                    }
-                });
-            }
+        if (req.file) {
+            let journalFile = req.file;
+            updateParams['journalSource'].journalSource = journalFile.path;
+            Journal.findByIdAndUpdate(req.body.journalId, updateParams, function(err) {
+                if (err)
+                    res.json({
+                        code: 'ERROR',
+                        message: '[ERROR] Error in editing journal doc. >> ' + err.message
+                    });
+                else
+                    res.json({
+                        code: '999999',
+                        message: '[SUCCESS] Success in editing journal doc.'
+                    });
+            });
         } else {
-            Journal.findByIdAndUpdate(new ObjectId(req.body.journalId), updateParams, function(err) {
+            Journal.findByIdAndUpdate(req.body.journalId, updateParams, function(err) {
                 if (err)
                     res.json({
                         code: 'ERROR',
@@ -126,7 +96,7 @@ router.post('/deleteJournal', function(req, res) {
             message: '[FAILED] Invalid request'
         });
     } else {
-        Journal.findByIdAndRemove(new ObjectId(req.body.journalId), function(err) {
+        Journal.findByIdAndRemove(req.body.journalId, function(err) {
             if (err)
                 res.json({
                     code: 'ERROR',
@@ -148,7 +118,7 @@ router.post('/getJournalById', function(req, res) {
             message: '[FAILED] Invalid request'
         });
     } else {
-        Journal.findById(new ObjectId(req.body.journalId), function(err, journal) {
+        Journal.findById(req.body.journalId, function(err, journal) {
             if (err)
                 res.json({
                     code: 'ERROR',
