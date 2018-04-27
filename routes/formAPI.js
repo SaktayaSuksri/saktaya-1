@@ -12,229 +12,226 @@ var storage = multer.diskStorage({
 });
 var upload = multer({storage: storage});
 
-
-
 var router = express.Router();
 
-var Form = require('../model/form_model');
 
-// Middleware for all routes
-router.use(function (req, res, next) {
-    console.log("\n** Request detected >> " + JSON.stringify(req.body));
-    next();
-});
+var flow = require('../services/flow.js')
+var ReturnCode = require('../model/returnCode.js');
+
+var Form = require('../model/form_model');
+var ObjectId = require('mongodb').ObjectId;
+
+var Validate = require("../controller/validation_controller.js");
+var ResourceType_Control = require("../controller/resourceType_control.js");
+var Department_Control = require('../controller/department_control.js');
+var Tag_Control = require("../controller/tag_control.js");
+var News_Control = require("../controller/news_control.js");
+var Position_Control = require('../controller/position_control.js');
+var Personel_Control = require('../controller/personel_control.js');
+var TargetType_Control = require('../controller/targetType_control.js');
+var Division_Control = require('../controller/division_control.js');
+var Form_Control = require('../controller/form_control.js');
+var Return_Control = require('../controller/return_control.js');
 
 // Route Definitions
 router.post('/multer', upload.single('file'));
 
-router.post('/newForm', upload.single('formSource'), function(req, res) {
-    if (!req.body.formName ||
-        !req.body.sourceType ||
-        !req.body.authorId ||
-        !req.body.resourceTypeId ||
-        !req.body.deptId ||
-        !req.body.targetTypeId ||
-        !req.body.divisionId ||
-        !req.body.docFlag
-    ) {
-        res.json({
-            code: 'FAILED',
-            message: '[FAILED] Invalid request'
-        });
+router.post('/newForm', function (request, response) {
+    var methodCode = "45";
 
-    } else if ((req.body.sourceType == 'link' || req.body.sourceType == 'generate') && !req.body.formSource) {
-        res.json({
-            code: 'FAILED',
-            message: '[FAILED] Invalid request ( NO formSource !!! )'
-        });
-    } else if ((req.body.sourceType == 'upload') && !req.file.filename){
-        res.json({
-            code: 'FAILED',
-            message: '[FAILED] Invalid request ( NO file uploaded !!! )'
-        });
-    } else {
-        var newForm = new Form();
-        newForm.formName = req.body.formName;
-        if (req.body.formCode) newForm.formCode = req.body.formCode;
-        if (req.body.formDetail) newForm.formDetail = req.body.formDetail;
-        newForm.sourceType = req.body.sourceType;
-        newForm.authorId = req.body.authorId;
-        newForm.resourceTypeId = req.body.resourceTypeId;
-        newForm.deptId = req.body.deptId;
-        newForm.targetTypeId = req.body.targetTypeId;
-        newForm.divisionId = req.body.divisionId;
-        newForm.docFlag = req.body.docFlag;
-        if (req.body.tags) {
-            var tagsArray = req.body.tags.split(',');
-            for (var i=0; i<tagsArray.length; i++) tagsArray[i] = tagsArray[i];
-            newForm.tags = tagsArray;
-        }
-        if (req.body.showFlag) newForm.showFlag = req.body.showFlag;
-        if (req.body.isFavorite) newForm.isFavorite = req.body.isFavorite;
+    var requiredData = [];
+    requiredData.push(request.body.formName);
+    requiredData.push(request.body.formSource);
+    requiredData.push(request.body.sourceType);
+    requiredData.push(request.body.authorId);
+    requiredData.push(request.body.resourceTypeId);
+    requiredData.push(request.body.deptId);
+    requiredData.push(request.body.targetTypeId);
+    requiredData.push(request.body.divisionId);
+    requiredData.push(request.body.docFlag);
+    var requiredReady = Validate.requiredData_Check(requiredData);
 
-        if (req.body.sourceType == 'link') {
-            newForm.formSource = req.body.formSource;
-            newForm.save(function(err) {
-                if (err)
-                    res.json({
-                        code: 'ERROR',
-                        message: '[ERROR] Error in inserting form doc. >> ' + err.message
-                    });
-                else
-                    res.json({
-                        code: '999999',
-                        message: '[SUCCESS] Success in inserting form doc.'
-                    });
-            });
-        } else if (req.body.sourceType == 'generate') {
-            try {
-                var formJSON = JSON.parse(req.body.formSource);
-                newForm.formSource = req.body.formSource;
-                newForm.save(function(err) {
-                    if (err)
-                        res.json({
-                            code: 'ERROR',
-                            message: '[ERROR] Error in inserting form doc. >> ' + err.message
-                        });
-                    else
-                        res.json({
-                            code: '999999',
-                            message: '[SUCCESS] Success in inserting form doc.'
-                        });
-                });
-            } catch (err) {
-                res.json({
-                    code: 'ERROR',
-                    message: 'Error parsing "formSource" value to JSON >> ' + err.message
-                });
-            }
-        } else {
-            let formFile = req.file;
-            newForm.formSource = formFile;
-            newForm.save(function(err) {
-                if (err)
-                    res.json({
-                        code: 'ERROR',
-                        message: '[ERROR] Error in inserting form doc. >> ' + err.message
-                    });
-                else
-                    res.json({
-                        code: '999999',
-                        message: '[SUCCESS] Success in inserting form doc.'
-                    });
-            });
-        }
+    var objectIdData = [];
+    requiredData.push(request.body.resourceTypeId);
+    requiredData.push(request.body.deptId);
+    requiredData.push(request.body.targetTypeId);
+    requiredData.push(request.body.divisionId);
+    var objectIdReady = Validate.objectIDData_Check(objectIdData)
+
+    if (!requiredReady) {
+        var alert = "Input Not Valid, check if some data is required."
+        console.log(alert);
+        Return_Control.responseWithCode(ReturnCode.clientError + methodCode + "001", alert, response)
     }
-});
+    else if (!objectIdReady) {
+        var alert = "Input Not Valid, check if some data is not ObjectID for MongoDB."
+        console.log(alert);
+        Return_Control.responseWithCode(ReturnCode.clientError + methodCode + "003", alert, response)
+    }
+    else {
+        flow.exec(
+            function () {
+                TargetType_Control.checkTargetTypeByID(new ObjectId(request.body.targetTypeId), this)
+            }, function (code, err, functionCallback) {
+                if (code != "362") {
+                    Return_Control.responseWithCode(ReturnCode.serviceError + methodCode + code, err, response);
+                }
+                else {
+                    Department_Control.checkDepartmentByID(new ObjectId(request.body.deptId), this)
+                }
+            }, function (code, err, functionCallback) {
+                if (code != "112") {
+                    Return_Control.responseWithCode(ReturnCode.serviceError + methodCode + code, err, response);
+                }
+                else {
+                    ResourceType_Control.checkResourceTypeByID(new ObjectId(request.body.resourceTypeId), this)
+                }
+            }, function (code, err, functionCallback) {
+                if (code != "052") {
+                    Return_Control.responseWithCode(ReturnCode.serviceError + methodCode + code, err, response);
+                }
+                else {
+                    Division_Control.checkDivisionByID(new ObjectId(request.body.divisionId), this)
+                }
+            }, function (code, err, functionCallback) {
+                if (code != "322") {
+                    Return_Control.responseWithCode(ReturnCode.serviceError + methodCode + code, err, response);
+                }
+                else {
+                    var form = new Form();
 
-router.post('/editForm', upload.single('formSource'), function(req, res) {
-    if (!req.body.formId) {
-            res.json({
-                code: 'FAILED',
-                message: '[FAILED] Invalid request'
-            });
-    } else {
-        var updateParams = {};
-        if (req.body.formName) updateParams['formName'] = req.body.formName;
-        if (req.body.formCode) updateParams['formCode'] = req.body.formCode;
-        if (req.body.formDetail) updateParams['formDetail'] = req.body.formDetail;
-        if (req.body.authorId) updateParams['authorId'] = req.body.authorId;
-        updateParams['datetimeLastEdit'] = Date.now();
-        if (req.body.resourceTypeId) updateParams['resourceTypeId'] = req.body.resourceTypeId;
-        if (req.body.deptId) updateParams['deptId'] = req.body.deptId;
-        if (req.body.targetTypeId) updateParams['targetTypeId'] = req.body.targetTypeId;
-        if (req.body.divisionId) updateParams['divisionId'] = req.body.divisionId;
-        if (req.body.docFlag) updateParams['docFlag'] = req.body.docFlag;
-        if (req.body.tags) {
-            var tagsArray = req.body.tags.split(',');
-            for (var i=0; i<tagsArray.length; i++) tagsArray[i] = tagsArray[i];
-            updateParams['tags'] = tagsArray;
-        }
-        if (req.body.showFlag) updateParams['showFlag'] = req.body.showFlag;
-        if (req.body.isFavorite) updateParams['isFavorite'] = req.body.isFavorite;
+                    form.formName = request.body.formName;
+                    form.formSource = request.body.formSource;
+                    form.sourceType = request.body.sourceType;
+                    form.authorId = request.body.authorId;
+                    form.resourceTypeId = request.body.resourceTypeId;
+                    form.deptId = request.body.deptId;
+                    form.targetTypeId = request.body.targetTypeId;
+                    form.divisionId = request.body.divisionId;
+                    form.docFlag = request.body.docFlag;
+                    form.formCode = request.body.formCode;
+                    form.formDetail = request.body.formDetail;
+                    form.tags = request.body.tags;
+                    form.showFlag = request.body.showFlag;
 
-        if (req.body.sourceType) {
-            updateParams['sourceType'] = req.body.sourceType;
-            if ((req.body.sourceType == 'link' || req.body.sourceType == 'generate') && !req.body.formSource) {
-                res.json({
-                    code: 'FAILED',
-                    message: '[FAILED] Invalid request ( NO formSource !!! )'
-                });
-            } else if ((req.body.sourceType == 'upload') && !req.file){
-                res.json({
-                    code: 'FAILED',
-                    message: '[FAILED] Invalid request ( NO file uploaded !!! )'
-                });
-            } else {
-                if (req.body.sourceType == 'link') {
-                    updateParams['formSource'] = req.body.formSource;
-                    Form.findByIdAndUpdate(req.body.formId, updateParams, function(err) {
-                        if (err)
-                            res.json({
-                                code: 'ERROR',
-                                message: '[ERROR] Error in editing form doc. >> ' + err.message
-                            });
-                        else
-                            res.json({
-                                code: '999999',
-                                message: '[SUCCESS] Success in editing form doc.'
-                            });
-                    });
-                } else if (req.body.sourceType == 'generate') {
-                    try {
-                        var formJSON = JSON.parse(req.body.formSource);
-                        updateParams['formSource'] = req.body.formSource;
-                        Form.findByIdAndUpdate(req.body.formId, updateParams, function(err) {
-                            if (err)
-                                res.json({
-                                    code: 'ERROR',
-                                    message: '[ERROR] Error in editing form doc. >> ' + err.message
-                                });
-                            else
-                                res.json({
-                                    code: '999999',
-                                    message: '[SUCCESS] Success in editing form doc.'
-                                });
-                        });
-                    } catch (err) {
-                        res.json({
-                            code: 'ERROR',
-                            message: 'Error parsing "formSource" value to JSON >> ' + err.message
-                        });
-                    }
-                } else {
-                    let formFile = req.file;
-                    updateParams['formSource'] = formFile.path;
-                    Form.findByIdAndUpdate(req.body.formId, updateParams, function(err) {
-                        if (err)
-                            res.json({
-                                code: 'ERROR',
-                                message: '[ERROR] Error in editing form doc. >> ' + err.message
-                            });
-                        else
-                            res.json({
-                                code: '999999',
-                                message: '[SUCCESS] Success in editing form doc.'
-                            });
-                    });
+                    Form_Control.newForm(form, this);
+                }
+            }, function (code, err, functionCallback) {
+                if (code != "262") {
+                    Return_Control.responseWithCode(ReturnCode.serviceError + methodCode + code, err, response);
+                }
+                else {
+                    Return_Control.responseWithCodeAndData(ReturnCode.success, "New Publication was saved successfully as _id defined", functionCallback._id, response);
                 }
             }
-        } else {
-            Form.findByIdAndUpdate(req.body.formId, updateParams, function(err) {
-                if (err)
-                    res.json({
-                        code: 'ERROR',
-                        message: '[ERROR] Error in editing form doc. >> ' + err.message
-                    });
-                else
-                    res.json({
-                        code: '999999',
-                        message: '[SUCCESS] Success in editing form doc.'
-                    });
-            });
-        }
+        );
     }
 });
+
+router.post('/editForm/', function (request, response) {
+    var methodCode = "46";
+
+    var requiredData = [];
+    requiredData.push(request.body.formId);
+    requiredData.push(request.body.formName);
+    requiredData.push(request.body.formSource);
+    requiredData.push(request.body.sourceType);
+    requiredData.push(request.body.authorId);
+    requiredData.push(request.body.resourceTypeId);
+    requiredData.push(request.body.deptId);
+    requiredData.push(request.body.targetTypeId);
+    requiredData.push(request.body.divisionId);
+    requiredData.push(request.body.docFlag);
+    requiredData.push(request.body.formCode);
+    requiredData.push(request.body.showFlag);
+    var requiredReady = Validate.requiredData_Check(requiredData);
+
+    var objectIdData = [];
+    requiredData.push(request.body.resourceTypeId);
+    requiredData.push(request.body.deptId);
+    requiredData.push(request.body.targetTypeId);
+    requiredData.push(request.body.divisionId);
+    var objectIdReady = Validate.objectIDData_Check(objectIdData)
+
+    if (!requiredReady) {
+        var alert = "Input Not Valid, check if some data is required."
+        console.log(alert);
+        Return_Control.responseWithCode(ReturnCode.clientError + methodCode + "001", alert, response)
+    }
+    else if (!objectIdReady) {
+        var alert = "Input Not Valid, check if some data is not ObjectID for MongoDB."
+        console.log(alert);
+        Return_Control.responseWithCode(ReturnCode.clientError + methodCode + "003", alert, response)
+    }
+    else {
+        flow.exec(
+            function () {
+                Form_Control.checkFormByID(new ObjectId(request.body.formId), this)
+            }, function (code, err, functionCallback) {
+                if (code != "282") {
+                    Return_Control.responseWithCode(ReturnCode.serviceError + methodCode + code, err, response);
+                }
+                else {
+                    TargetType_Control.checkTargetTypeByID(new ObjectId(request.body.targetTypeId), this)
+                }
+            }, function (code, err, functionCallback) {
+                if (code != "362") {
+                    Return_Control.responseWithCode(ReturnCode.serviceError + methodCode + code, err, response);
+                }
+                else {
+                    Department_Control.checkDepartmentByID(new ObjectId(request.body.deptId), this)
+                }
+            }, function (code, err, functionCallback) {
+                if (code != "112") {
+                    Return_Control.responseWithCode(ReturnCode.serviceError + methodCode + code, err, response);
+                }
+                else {
+                    ResourceType_Control.checkResourceTypeByID(new ObjectId(request.body.resourceTypeId), this)
+                }
+            }, function (code, err, functionCallback) {
+                if (code != "052") {
+                    Return_Control.responseWithCode(ReturnCode.serviceError + methodCode + code, err, response);
+                }
+                else {
+                    Division_Control.checkDivisionByID(new ObjectId(request.body.divisionId), this)
+                }
+            }, function (code, err, result) {
+                if (code != "322") {
+                    Return_Control.responseWithCode(ReturnCode.serviceError + methodCode + code, err, response);
+                }
+                else {
+                    var publication = new Publication();
+                    publication.researcherId = request.body.researcherId;
+                    publication.publicationName = request.body.publicationName;
+                    publication.publishLocation = request.body.publishLocation;
+                    publication.publishYear = request.body.publishYear;
+                    publication.publishType = request.body.publishType;
+                    publication.scholarType = request.body.scholarType;
+                    publication.address = request.body.address;
+                    publication.publicationDatabase = request.body.publicationDatabase;
+                    publication.impactFactor = request.body.impactFactor;
+                    publication.quartile = request.body.quartile;
+                    publication.weight = request.body.weight;
+                    publication.detail = request.body.detail;
+                    publication.studentName = request.body.studentName;
+                    publication.bachelorDepartment = request.body.bachelorDepartment;
+                    publication.masterDepartment = request.body.masterDepartment;
+                    publication.doctoryDepartment = request.body.doctoryDepartment;
+                    Publication_Control.updatePublicationByID(new ObjectId(request.body.publicationId), publication, this);
+                }
+            }, function (code, err, result) {
+                if (code != "452") {
+                    Return_Control.responseWithCode(ReturnCode.serviceError + methodCode + code, err, response);
+                }
+                else {
+                    Return_Control.responseWithCode(ReturnCode.success, "Publication with _id: " + request.body.publicationId + " has updated successfully.", response);
+                }
+            }
+        );
+    }
+});
+
+//----------------*-*-*-*-*----------------------------------------
 
 router.post('/deleteForm', function(req, res) {
     if (!req.body.formId) {

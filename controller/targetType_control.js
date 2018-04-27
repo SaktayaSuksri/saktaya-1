@@ -6,10 +6,10 @@ module.exports = {
             if (error) {
                 var alert = "Saving Resource fail, Error: " + error.message;
                 console.log(alert);
-                callback("011", alert, null);
+                callback("351", alert, null);
             }
             else {
-                callback("012", null, saveResponse)
+                callback("352", null, saveResponse)
             }
         });
     },
@@ -17,25 +17,25 @@ module.exports = {
         TargetType.findOne({ "_id": targetTypeId }, function (error, targetTypeResponse) {
             if (error) {
                 var alert = "Error in finding TargetType with _id: " + targetTypeId + "\nError: " + error.message;
-                callback("051", alert, null)
+                callback("361", alert, null)
             }
             else if (targetTypeResponse) {
-                callback("052", null, targetTypeResponse)
+                callback("362", null, targetTypeResponse)
             }
             else {
                 var alert = "TargetType with _id: " + targetTypeId + " not found";
-                callback("053", alert, 0)
+                callback("363", alert, 0)
             }
         });
     },
-    getAllResourceName: function (callback) {
+    getAllTargetTypeName: function (callback) {
         TargetType.find({}, { resourceName: true}, function (error, targetTypeResponse) {
             if (error) {
                 var alert = "Error in finding TargetType Error: " + error.message;
-                callback("181", alert, null)
+                callback("371", alert, null)
             }
             else {
-                callback("182", null, targetTypeResponse)
+                callback("372", null, targetTypeResponse)
             }
         });
     },
@@ -43,10 +43,10 @@ module.exports = {
         TargetType.remove({ "_id": targetTypeId }, function (error, targetTypeResponse) {
             if (error) {
                 var alert = "Error in deleting TargetType Error: " + error.message;
-                callback("191", alert, null)
+                callback("381", alert, null)
             }
             else {
-                callback("192", null, targetTypeResponse)
+                callback("382", null, targetTypeResponse)
             }
         });
     }
