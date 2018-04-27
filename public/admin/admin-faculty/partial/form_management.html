@@ -70,6 +70,17 @@
                                                                 {{item.showFlag}}
                                                             </td>
 
+                                                            <td class="" width="20%"> 
+                                                                <button type="button" ng-click="modal_update(item)" rel="tooltip" title="Edit Task" class="btn btn-primary btn-simple btn-xs">
+                                                                    <i class="material-icons">edit</i>
+                                                                </button>
+                                                                <button type="button" ng-click="modal_delete(item)" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
+                                                                    <i class="material-icons">close</i>
+                                                                </button>
+                                                            </td>
+
+
+
 
                                             </tr>
                                         </table>
@@ -215,5 +226,132 @@
                     </div>
                 </div>
             </div>
+
+            <div id="modal_update" class="modal fade" tabindex="-1"  aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                  <div class="modal-content">
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                      <h3 class="modal-title ">Update Catagory</h3>
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                         <!-- Modal body -->
+                         <div class="modal-body">
+                            <div class="container-fluid">
+
+                                <div class="form-group label-floating is-empty">
+                                    <label class="control-label">Form name</label>
+                                    <input name="resourceName"  type="text" class="form-control" ng-model="modal_form_data.formName">
+                                    <span class="material-input"></span></div>
+
+
+
+                                    <div class="form-group label-floating is-empty">
+                                            <label >ประเภท </label>
+                                            <select class="form-control" ng-model="modal_form_data.resourceTypeId">
+                          <option ng-repeat="item in catagory_list" value="{{item._id}}">{{item.resourceName}}</option>
+
+                        </select>
+                                        </div>
+
+                                        <div class="form-group label-floating is-empty">
+                                                <label >ภาควิชา </label>
+                                                <select class="form-control" ng-model="modal_form_data.deptId">
+                              <option ng-repeat="item in department_list" value="{{item._id}}">{{item.resourceName}}</option>
+
+                            </select>
+                                            </div>
+
+
+                                            <div class="form-group label-floating is-empty">
+                                                    <label >แผนก </label>
+                                                    <select class="form-control" ng-model="modal_form_data.divisionId">
+                                  <option ng-repeat="item in division_list" value="{{item._id}}">{{item.resourceName}}</option>
+
+                                </select>
+                                                </div>
+                                                <div>
+                                                    Tags
+                                                    <tags-input ng-model="modal_form_data.tags">
+                                                            <auto-complete ></auto-complete>
+                                                        </tags-input>
+
+                                                    </div>
+                                                    {{show_tags}}
+
+                                                <div class="form-check">
+                                                        <label class="form-check-label">
+                                                            <input class="form-check-input" type="checkbox" ng-model="modal_form_data.showFlag">
+                                                            แสดงบนหน้าเว็บ
+                                                            <span class="form-check-sign">
+                                                                <span class="check"></span>
+                                                            </span>
+                                                        </label>
+                                                    </div>
+
+
+
+                                <div class="form-group">
+                                    <label for="selectresource">Select Resource</label>
+                                    <select ng-model="modal_form_data.sourceType" class="form-control" id="selectresource">
+                                      <option value="upload">Upload</option>
+                                      <option value="link">Link</option>
+                                      <option value="generate">Generate</option>
+
+                                    </select>
+                                </div>
+                                <div class="jumbotron">
+                                    <div class="animate-switch-container" ng-switch on="modal_form_data.sourceType">
+                                        <div class="animate-switch" ng-switch-when="upload">
+                                            <label class="custom-file">
+                                                                   <input type="file" id="fileupload" class="change-link" fileinput="file" filepreview="modal_form_data.formSource" >
+                                                                     <!-- <input type="file" id="file" class="custom-file-input"  ng-model="modal_form_data.formSource"> -->
+
+                                                                     
+                                                                    <span class="custom-file-control"></span>
+                                                                  </label>
+                                        </div>
+                                        <div class="animate-switch" ng-switch-when="link">
+                                                <div class="form-group label-floating is-empty">
+                                                        <label class="control-label">Link</label>
+                                                        <input type="text" class="form-control" ng-model="modal_form_data.formSource">
+                                                        <span class="material-input"></span></div>
+                                            </div>
+                                        <div class="animate-switch" ng-switch-when="generate">
+
+                                                        <ng-include src="'partial/including/generate_dynamic_form.html'"/>
+
+                                                        <h1>แสดงหน้าจอ ฝั่งคนสมัคร:</h1>
+                                                        <div ng-repeat="field in  columns">
+                                                          <ng-include src="'partial/including/edit-field.html'"/>
+                                                        </div>
+                                                      <!--
+                                                        <div>
+                                                          <h1>Your entity JSON:</h1>
+                                                          {{ entity }}
+                                                        </div>
+
+                                                        <h1>View mode:</h1>
+                                                        <div ng-repeat="field in fields">
+                                                          <ng-include src="'partial/including/view-field.html'"/>
+                                                        </div>
+                                                        -->
+
+
+                                        </div>
+                                        <div class="animate-switch" ng-switch-default>Plz select </div>
+                                    </div>
+                                    <hr/>
+                                </div>
+
+                            </div>
+                        </div>
+               <!-- Modal footer -->
+               <div class="modal-footer">
+                <button type="button" class="btn btn-success" ng-click="update_form()">save</button>
+              </div>
+                  </div>
+                </div>
+              </div>
 
         </div>

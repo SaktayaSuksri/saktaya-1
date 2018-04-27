@@ -44,6 +44,13 @@ angular.module('api_service', [])
         create_form: function(data) {
           return $http.post('/api/newForm/', data);
         },
+        update_form: function(data) {
+            return $http.post('/api/editForm/', data);
+          },
+          delete_form: function(data) {
+            return $http.post('/api/deleteForm/', data);
+          },
+          
 
         get_formAll: function() {
           return $http.get('/api/getFormsAll/');
