@@ -1,6 +1,20 @@
 angular.module('app', ['ui.router',"xeditable","ngTable","api_service", 'ngSanitize','textAngular','ngTagsInput'])
 
-
+angular.module('app').directive('fileModel', ['$parse', function ($parse) {
+  return {
+      restrict: 'A',
+      link: function(scope, element, attrs) {
+          var model = $parse(attrs.fileModel);
+          var modelSetter = model.assign;
+  
+          element.bind('change', function(){
+              scope.$apply(function(){
+                  modelSetter(scope, element[0].files[0]);
+              });
+          });
+      }
+  };
+  }]);
 
 angular.module('app').config(function($provide){
 $provide.decorator('taOptions', ['taRegisterTool', '$delegate', function(taRegisterTool, taOptions){
@@ -527,6 +541,25 @@ angular.module('app').controller('form_management', function ($scope,NgTablePara
    $scope.show_tags = $scope.modal_form_data.tags;
 
   }
+  $scope.uploadFile = function(){
+    
+            var file = $scope.myFile;
+            var uploadUrl = "/api/multer";
+            var fd = new FormData();
+            fd.append('file', file);
+    
+            $http.post(uploadUrl,fd, {
+                transformRequest: angular.identity,
+                headers: {'Content-Type': undefined}
+            })
+            .success(function(){
+              console.log("success!!");
+            })
+            .error(function(){
+              console.log("error!!");
+            });
+        };
+
 
 
   $scope.get_form_list = function(){
@@ -615,7 +648,7 @@ angular.module('app').controller('form_management', function ($scope,NgTablePara
         showFlag : $scope.modal_form_data.showFlag,
       }
 
-      console.log(dataObj);
+      console.log("create_form dataOBJ = " + JSON.stringify(dataObj));
       api_manage.create_form(dataObj)
       .success(function(data, status, headers, config) {
 

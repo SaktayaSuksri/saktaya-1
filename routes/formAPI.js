@@ -1,6 +1,19 @@
 var express = require('express');
 var multer = require('multer');
-var upload = multer({ dest: 'uploaded_forms/' });
+//var upload = multer({ dest: 'uploaded_forms/' });
+
+var storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+      cb(null, 'public/uploads/file')
+    },
+    filename: (req, file, cb) => {
+      cb(null, file.fieldname + '-' + Date.now())
+    }
+});
+var upload = multer({storage: storage});
+
+
+
 var router = express.Router();
 
 var Form = require('../model/form_model');
@@ -12,6 +25,8 @@ router.use(function (req, res, next) {
 });
 
 // Route Definitions
+router.post('/multer', upload.single('file'));
+
 router.post('/newForm', upload.single('formSource'), function(req, res) {
     if (!req.body.formName ||
         !req.body.sourceType ||
@@ -32,7 +47,7 @@ router.post('/newForm', upload.single('formSource'), function(req, res) {
             code: 'FAILED',
             message: '[FAILED] Invalid request ( NO formSource !!! )'
         });
-    } else if ((req.body.sourceType == 'upload') && !req.file){
+    } else if ((req.body.sourceType == 'upload') && !req.file.filename){
         res.json({
             code: 'FAILED',
             message: '[FAILED] Invalid request ( NO file uploaded !!! )'
@@ -95,7 +110,7 @@ router.post('/newForm', upload.single('formSource'), function(req, res) {
             }
         } else {
             let formFile = req.file;
-            newForm.formSource = formFile.path;
+            newForm.formSource = formFile;
             newForm.save(function(err) {
                 if (err)
                     res.json({
