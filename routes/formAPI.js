@@ -304,7 +304,8 @@ router.post('/getFormById', function(req, res) {
             message: '[FAILED] Invalid request'
         });
     } else {
-        Form.findById(req.body.formId, function(err, form) {
+        Form.findById(req.body.formId,
+            {"formSource":false}, function(err, form) {
             if (err)
                 res.json({
                     code: 'ERROR',
@@ -324,6 +325,37 @@ router.post('/getFormById', function(req, res) {
     }
 });
 
+router.post('/getFormSourceById', function(req, res) {
+    if (!req.body.formId) {
+        res.json({
+            code: 'FAILED',
+            message: '[FAILED] Invalid request'
+        });
+    } else {
+        Form.findById(req.body.formId, function(err, form) {
+            if (err)
+                res.json({
+                    code: 'ERROR',
+                    message: '[ERROR] Error in finding form "' + req.body.formId + '" >> ' + err.message
+                });
+            else if (!form) 
+                res.json({
+                    code: 'FAILED',
+                    message: '[FAILED] No form found.'
+                });
+            else
+           /*     res.json({
+                    code: '999999',
+                    message: form.formSource
+                });*/
+
+                {
+                    res.sendFile(form.formSource, {headers: {'Content-Type': 'image/jpeg'}})
+                  
+                }
+        });
+    }
+});
 router.post('/getFormByCode', function(req, res) {
     if (!req.body.formCode) {
         res.json({
@@ -352,7 +384,7 @@ router.post('/getFormByCode', function(req, res) {
 });
 
 router.get('/getFormsAll', function(req, res) {
-    Form.find(function(err, forms) {
+    Form.find({},{"formSource":false},function(err, forms) {
         if (err)
             res.json({
                 code: 'ERROR',

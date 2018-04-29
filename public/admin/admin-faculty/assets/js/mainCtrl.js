@@ -553,7 +553,7 @@ angular.module('app').controller('form_management', function ($scope,NgTablePara
 
     $scope.create_form = function(){
       $scope.modal_form_data = {};
-      
+
         $('#form').modal('show');
     }
 
@@ -676,7 +676,7 @@ angular.module('app').controller('form_management', function ($scope,NgTablePara
           //delete tag
       
       
-          $scope.delete_form = function(item){
+          $scope.modal_delete = function(item){
       
             let dataObj = {
               formId:item._id

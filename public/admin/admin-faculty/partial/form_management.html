@@ -25,7 +25,9 @@
                                     <div class="section" style="overflow-x:auto;">
                                         <table ng-table="form_table" class="table table-striped table-bordered table-condensed table-hover" width="100%" show-filter="true">
                                             <tr ng-repeat="item in $data">
-
+                                                <td title="'formID'" filter="{ _id: 'text'}" sortable="'_id'" width="10%">
+                                                    {{item._id}}
+                                                </td>
                                                     <td title="'formCode'" filter="{ formCode: 'text'}" sortable="'formCode'" width="10%">
                                                             {{item.formCode}}
                                                         </td>
