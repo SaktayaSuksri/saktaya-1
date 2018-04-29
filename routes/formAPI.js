@@ -325,6 +325,11 @@ router.post('/getFormById', function(req, res) {
     }
 });
 
+
+
+
+ 
+
 router.post('/getFormSourceById', function(req, res) {
     if (!req.body.formId) {
         res.json({
@@ -350,8 +355,12 @@ router.post('/getFormSourceById', function(req, res) {
                 });*/
 
                 {
-                    res.sendFile(form.formSource, {headers: {'Content-Type': 'image/jpeg'}})
-                  
+                    res.json({
+                        code: '999999',
+                        message: '',
+                        data:form.formSource
+                    });
+                
                 }
         });
     }

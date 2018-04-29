@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" href="../assets/img/apple-icon.png">
+    <link rel="icon" href="../assets/img/favicon.png">
+    <title>
+       Demo ai
+    </title>
+    <!--     Fonts and icons     -->
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="../assets/css/material-kit.css?v=2.0.0">
+    <!-- Documentation extras -->
+    <!-- CSS Just for demo purpose, don't include it in your project -->
+    <link href="../assets/assets-for-demo/demo.css" rel="stylesheet" />
+    <link href="../assets/assets-for-demo/vertical-nav.css" rel="stylesheet" />
+    <link href="../assets/assets-for-demo/timeline.css" rel="stylesheet" />
+</head>
+
+
+
+
+
+<style>
+
+.bg-kmitl {
+    background: rgba(244,117,33,1);
+    background: -moz-linear-gradient(45deg, rgba(244,117,33,1) 0%, rgba(244,117,33,1) 53%, rgba(244,117,33,1) 70%, rgba(242,142,34,1) 86%, rgba(240,175,62,1) 93%, rgba(255,213,150,1) 100%);
+    background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(244,117,33,1)), color-stop(53%, rgba(244,117,33,1)), color-stop(70%, rgba(244,117,33,1)), color-stop(86%, rgba(242,142,34,1)), color-stop(93%, rgba(240,175,62,1)), color-stop(100%, rgba(255,213,150,1)));
+    background: -webkit-linear-gradient(45deg, rgba(244,117,33,1) 0%, rgba(244,117,33,1) 53%, rgba(244,117,33,1) 70%, rgba(242,142,34,1) 86%, rgba(240,175,62,1) 93%, rgba(255,213,150,1) 100%);
+    background: -o-linear-gradient(45deg, rgba(244,117,33,1) 0%, rgba(244,117,33,1) 53%, rgba(244,117,33,1) 70%, rgba(242,142,34,1) 86%, rgba(240,175,62,1) 93%, rgba(255,213,150,1) 100%);
+    background: -ms-linear-gradient(45deg, rgba(244,117,33,1) 0%, rgba(244,117,33,1) 53%, rgba(244,117,33,1) 70%, rgba(242,142,34,1) 86%, rgba(240,175,62,1) 93%, rgba(255,213,150,1) 100%);
+    background: linear-gradient(45deg, rgba(244,117,33,1) 0%, rgba(244,117,33,1) 53%, rgba(244,117,33,1) 70%, rgba(242,142,34,1) 86%, rgba(240,175,62,1) 93%, rgba(255,213,150,1) 100%);
+ 
+}
+
+    .bubble-six { top: 8vh; left: 75vw; width: 23px; height: 23px; opacity: 0.2; transform-origin: 80% 200%; animation: bubble-move 2s ease-in-out 0s infinite alternate; }
+    .bubble-eight { top: 72vh; left: 85vw; width: 360px; height: 360px; opacity: 0.2; transform-origin: -100% 100%; animation: bubble-move 7s ease-in-out 0s infinite alternate; } 
+.bubble-seven { top: 33vh; left: 84vw; width: 120px; height: 120px; opacity: 0.2; transform-origin: 100% 90%; animation: bubble-move 6s ease-in-out 0s infinite alternate; }
+.bubble-two { top: 44vh; left: 6vw; width: 100px; height: 100px; opacity: 0.1; transform-origin: 60% 400%; animation: bubble-move 4s ease-in-out 0s infinite alternate; }
+@keyframes bubble-move { 0% { opacity: 0.6; transform: scale(1.0) rotate(-8deg) translate(-1px,-2px); } 70% { opacity: 0.6; transform: scale(1.04) rotate(10deg) translate(2px,1px); } 100% { opacity: 0.4; transform: scale(0.94) rotate(-18deg) translate(-3px,-1px); } }
+
+.angularjs-chat-bubble-white {
+   
+    position: absolute;
+    display: inline-block;
+  
+    border-image: transparent;
+    background: transparent url(../assets/img/85dad3324df40961c16639a9aecb7f4a.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+</style>
+<body class="landing-page " ng-app="app" ng-controller="form_each" ng-init="showtranparent = true" > 
+        
+        <div ng-include src="'http://localhost:2001/partial/navbar_template/for_front.html'"></div>
+
+        
+
+    
+                    
+
+    <div class="content" >
+           
+<div style="height: 28vh; width: 100%;"></div>
+
+<div class="main main-raised">
+    <div class="contact-content">
+        <div class="  cd-section text-center">
+            <div class="">
+                <br>
+              
+               
+                <div class="container">
+
+
+                    <h3><%= formName %></h3>
+
+                    <iframe id="Afile" class="img-responsive box" src="<%= file_src %>" name="<%= formName %>" height="800px" width="1000px" ></iframe> 
+         
+                    
+                </p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+            
+        </div>
+
+
+    <footer class="footer ">
+        <div class="container">
+            <nav class="pull-left">
+            <!--    <ul>
+                    <li>
+                        <a href="https://www.creative-tim.com">
+                            Creative Tim
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://presentation.creative-tim.com">
+                            About Us
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://blog.creative-tim.com">
+                            Blog
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.creative-tim.com/license">
+                            Licenses
+                        </a>
+                    </li>
+                </ul>-->
+            </nav>
+            <div class="copyright pull-right">
+                &copy;
+              <!--     <script>
+                    document.write(new Date().getFullYear())
+                </script>, made with <i class="material-icons">favorite</i> by
+                <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a> for a better web.
+                 -->
+            </div>
+        </div>
+    </footer>
+    <!--   Core JS Files   -->
+    
+    <script src="../assets/js/core/jquery.min.js"></script>
+    <script src="../assets/js/core/popper.min.js"></script>
+    <script src="../assets/js/bootstrap-material-design.js"></script>
+    <!--  Plugin for Date Time Picker and Full Calendar Plugin-->
+    <script src="../assets/js/plugins/moment.min.js"></script>
+    <!--	Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->
+    <script src="../assets/js/plugins/bootstrap-selectpicker.js"></script>
+    <!--	Plugin for Tags, full documentation here: http://xoxco.com/projects/code/tagsinput/  -->
+    <script src="../assets/js/plugins/bootstrap-tagsinput.js"></script>
+    <!--	Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput -->
+    <script src="../assets/js/plugins/jasny-bootstrap.min.js"></script>
+    <!--	Plugin for Small Gallery in Product Page -->
+    <script src="../assets/js/plugins/jquery.flexisel.js"></script>
+    <!--	Plugin for the Datepicker, full documentation here: https://github.com/Eonasdan/bootstrap-datetimepicker -->
+    <script src="../assets/js/plugins/bootstrap-datetimepicker.min.js"></script>
+    <!--	Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
+    <script src="../assets/js/plugins/nouislider.min.js"></script>
+    <!-- Material Kit Core initialisations of plugins and Bootstrap Material Design Library -->
+    <script src="../assets/js/material-kit.js?v=2.0.0"></script>
+    <!-- Fixed Sidebar Nav - js With initialisations For Demo Purpose, Don't Include it in your project -->
+    <script src="../assets/assets-for-demo/js/material-kit-demo.js"></script>
+    <!-- Plugins for presentation and navigation  -->
+    <script src="../assets/assets-for-demo/js/modernizr.js"></script>
+    <script src="../assets/assets-for-demo/js/vertical-nav.js"></script>
+    <!--  Google Maps Plugin    -->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+
+ 
+
+    
+    <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.3.11/angular.min.js'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular-sanitize.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.min.js"></script>
+
+
+<script src="../bower_components/angular-youtube-api-factory/dist/angular-youtube-api-factory.min.js"></script>
+
+<script type="text/javascript" src="//cdn.quilljs.com/1.2.0/quill.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/ng-quill/2.2.1/ng-quill.min.js"></script>
+
+<script src='http://textangular.com/dist/textAngular-rangy.min.js'></script>
+
+  <script src='http://textangular.com/dist/textAngular-sanitize.min.js'></script>
+
+  <script src='http://textangular.com/dist/textAngular.min.js'></script>
+
+<script>
+angular.module('app', ['ui.router','ngSanitize','textAngular'])
+
+
+angular.module('app').controller('form_each', function ($sce,$scope, $filter, $q,$http){
+    $scope.trustAsHtml = function(string) {
+        console.log("str = "+string)
+            return $sce.trustAsHtml(string);
+        };
+    });
+</script>
+
+</body>
+
+</html>
