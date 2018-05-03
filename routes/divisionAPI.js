@@ -21,7 +21,7 @@ router.post('/newDivision', function(req, res) {
         });
     } else {
         var newDivision = new Division();
-        newForm.divisionName = req.body.divisionName;
+        newDivision.divisionName = req.body.divisionName;
 
         newDivision.save(function(err) {
             if (err)

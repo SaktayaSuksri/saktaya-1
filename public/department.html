@@ -33,6 +33,11 @@
     width: 100%;
     overflow:hidden;
 }
+
+.btn-kmitl {
+
+    background-color:#ec6f2a"
+}
 </style>
 <body class="about-us " ng-app ="department_app">
   <nav class="navbar      navbar-default fixed-top  navbar-expand-lg" style="background-color:#ffffffcf !important" color-on-scroll="100" id="sectionsNav" ng-controller = "navCtrl">
@@ -50,12 +55,12 @@
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item" >
-                        <a ui-sref="about" class="btn btn-rose btn-raised btn-round " style="background-color:#ec6f2a">
+                        <a ui-sref="about" class="btn btn-warning btn-raised btn-round">
                             <i class="material-icons">apps</i> หน้าแรก
                         </a>
                     </li>
                     <!-- ng-click = "gotoEnroll();" -->
-                    <li class="dropdown nav-item">
+                    <li class="dropdown active nav-item "  >
                         <a ui-sref="enroll" class="nav-link">
                             <i class="material-icons">view_day</i> สมัครเข้าศึกษา
                         </a>
@@ -82,6 +87,7 @@
     </nav>
 
     <div ui-view></div>
+
 
    <!--   Core JS Files   -->
 

@@ -33,6 +33,92 @@ router.get('/graduate', function(req, res) {
 
 
 
+
+router.get('/form_each/:form_id', function(req, res) {
+    
+ 
+     console.log("---"+req.params.form_id)
+     console.log("testststs");
+ 
+   var form = {  formId : req.params.form_id };
+   var formData = querystring.stringify(form);
+   console.log("To new : getFormSourceById   = " +formData);
+   var contentLength = formData.length;
+   request({
+     header : {
+       'User-Agent':       'Super Agent/0.0.1',
+       'Content-Type':     'application/x-www-form-urlencoded'
+   },
+     uri: 'http://localhost:2001/api/getFormSourceById/',
+     form: formData,
+     method: 'POST'
+   }, function (err, res2, body1) {
+     //it works!
+     if(err){
+         console.log("[ERROR] = "+err);
+     }
+     else{      
+     //    console.log(body1);
+         body1 = JSON.parse(body1);
+ 
+         if(body1.code != "999999")
+         {
+             res.send(body1); 
+         }
+         else{
+ 
+
+
+            console.log("To new : getFormById   = " +formData);
+            var contentLength = formData.length;
+            request({
+              header : {
+                'User-Agent':       'Super Agent/0.0.1',
+                'Content-Type':     'application/x-www-form-urlencoded'
+            },
+              uri: 'http://localhost:2001/api/getFormById/',
+              form: formData,
+              method: 'POST'
+            }, function (err, res2, body2) {
+              //it works!
+              if(err){
+                  console.log("[ERROR] = "+err);
+              }
+              else{      
+                  console.log(body2);
+                  body2 = JSON.parse(body2);
+          
+                  if(body2.code != "999999")
+                  {
+                      res.send(body2); 
+                  }
+                  else{
+          
+                    
+                   res.render('form_each.ejs',{formName:body2.message.formName,file_src:body1.data}); 
+         
+                }
+                
+                  
+                       // body = JSON.parse(body);
+                    
+                     
+                      }
+                  });
+          
+         }
+ 
+   
+        // body = JSON.parse(body);
+     
+      
+       }
+   });
+ 
+ 
+     
+ });
+ 
 router.get('/news_each/:news_id', function(req, res) {
    
 

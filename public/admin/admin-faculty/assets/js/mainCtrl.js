@@ -1,6 +1,20 @@
 angular.module('app', ['ui.router',"xeditable","ngTable","api_service", 'ngSanitize','textAngular','ngTagsInput'])
 
-
+angular.module('app').directive('fileModel', ['$parse', function ($parse) {
+  return {
+      restrict: 'A',
+      link: function(scope, element, attrs) {
+          var model = $parse(attrs.fileModel);
+          var modelSetter = model.assign;
+  
+          element.bind('change', function(){
+              scope.$apply(function(){
+                  modelSetter(scope, element[0].files[0]);
+              });
+          });
+      }
+  };
+  }]);
 
 angular.module('app').config(function($provide){
 $provide.decorator('taOptions', ['taRegisterTool', '$delegate', function(taRegisterTool, taOptions){
@@ -437,55 +451,6 @@ angular.module('app').controller('content_management', function ($scope,NgTableP
 });
 
 
-//============uploadFile==============================
-// angular.module('app').('fileModel', ['$parse', function ($parse) {
-//     return {
-//         restrict: 'A',
-//         link: function(scope, element, attrs) {
-//             var model = $parse(attrs.fileModel);
-//             var modelSetter = model.assign;
-//
-//             element.bind('change', function(){
-//                 scope.$apply(function() {
-//                         modelSetter(scope, element[0].files[0]);
-//                         evt.target.value = "";
-//                     });
-//                     document.getElementById("test").classList.remove("open");
-//                   <!--   scope.uploadFile(); -->
-//             });
-//         }
-//     };
-// }]);
-// angular.module('app').service('fileUpload', ['$http', function ($http) {
-//     this.uploadFileToUrl = function(file, uploadUrl){
-//         var fd = new FormData();
-//         fd.append('file', file);
-//         $http.post(uploadUrl, fd, {
-//             transformRequest: angular.identity,
-//             headers: {'Content-Type': undefined}
-//         })
-//         .success(function(){
-//         })
-//         .error(function(){
-//         });
-//     }
-// }]);
-//
-// angular.module('app').controller('myCtrl', ['$scope', 'fileUpload', function($scope, fileUpload){
-//
-//     $scope.uploadFile = function(){
-//         var file = $scope.myFile;
-//         console.log('file is ' );
-//         console.dir(file);
-//         var uploadUrl = "/fileUpload";
-//         fileUpload.uploadFileToUrl(file, uploadUrl);
-//     };
-//
-// }]);
-
-
-//==================uploadFile==========================================
-
 
 
 
@@ -527,6 +492,7 @@ angular.module('app').controller('form_management', function ($scope,NgTablePara
    $scope.show_tags = $scope.modal_form_data.tags;
 
   }
+
 
 
   $scope.get_form_list = function(){
@@ -586,11 +552,14 @@ angular.module('app').controller('form_management', function ($scope,NgTablePara
 
 
     $scope.create_form = function(){
+      $scope.modal_form_data = {};
+
         $('#form').modal('show');
     }
 
     $scope.form_create = function(){
       console.log("form_create");
+      
 
       $scope.modal_form_data.authorId="a7b2489be10aa3b0836b35a";
       //$scope.modal_form_data.resourceTypeId = "5a8470b228d2e92a0c753010";
@@ -615,7 +584,7 @@ angular.module('app').controller('form_management', function ($scope,NgTablePara
         showFlag : $scope.modal_form_data.showFlag,
       }
 
-      console.log(dataObj);
+      console.log("create_form dataOBJ = " + JSON.stringify(dataObj));
       api_manage.create_form(dataObj)
       .success(function(data, status, headers, config) {
 
@@ -640,6 +609,102 @@ angular.module('app').controller('form_management', function ($scope,NgTablePara
 
   }
 
+
+  
+    //update tag
+
+
+    $scope.modal_update = function(item){
+      
+            $scope.modal_form_data  = item;
+      
+            $('#modal_update').modal('show');
+      
+      
+      
+          }
+      
+          $scope.update_form = function()
+          {
+      
+            let dataObj = {
+              formId:$scope.modal_form_data._id,
+              formName : $scope.modal_form_data.formName,
+              formSource : $scope.modal_form_data.formSource,
+              sourceType : $scope.modal_form_data.sourceType,
+              authorId : $scope.modal_form_data.authorId,
+              resourceTypeId : $scope.modal_form_data.resourceTypeId,
+              deptId : $scope.modal_form_data.deptId,
+              targetTypeId : $scope.modal_form_data.targetTypeId,
+              divisionId : $scope.modal_form_data.divisionId,
+              docFlag : true,
+      
+              formCode : $scope.modal_form_data.formCode,
+              formDetail : $scope.modal_form_data.formDetail,
+              tags : $scope.modal_form_data.tags,
+              showFlag : $scope.modal_form_data.showFlag,
+            }
+      
+            console.log("update_form dataOBJ = " + JSON.stringify(dataObj));
+            api_manage.update_form(dataObj)
+            .success(function(data, status, headers, config) {
+      
+                console.log("data  =  "+JSON.stringify(data));
+                if(data.code != "999999")
+                {
+                  alert(data.message)
+                }
+                else{
+      
+                  $scope.init();
+      
+      
+      
+                }
+            })
+            .error(function(data, status, headers, config) {
+                alert( "failure message: " + JSON.stringify({data: data}) +"ไม่สามารถติดต่อเซิฟเวอร์ได้ ติดต่อแอดมิน");
+      
+            });
+      
+      
+      
+      
+          }
+      
+      
+          //delete tag
+      
+      
+          $scope.modal_delete = function(item){
+      
+            let dataObj = {
+              formId:item._id
+      
+                };
+            api_manage.delete_form(dataObj)
+            .success(function(data, status, headers, config) {
+      
+              console.log("data  =  "+JSON.stringify(data));
+              if(data.code != "999999")
+              {
+                alert(data.message)
+              }
+              else{
+      
+                $scope.init();
+                
+                
+      
+      
+              }
+            })
+            .error(function(data, status, headers, config) {
+                alert( "failure message: " + JSON.stringify({data: data}) +"ไม่สามารถติดต่อเซิฟเวอร์ได้ ติดต่อแอดมิน");
+      
+            });
+      
+          }
 
     //for including fornm
 
@@ -1168,7 +1233,6 @@ $scope.delete_news = function(item){
     alert("delete news")
       let dataObj = {
           newsId:item._id
-
           };
           console.log("beforesend   =  "+JSON.stringify(dataObj));
       api_manage.delete_news(dataObj)
@@ -1180,11 +1244,7 @@ $scope.delete_news = function(item){
           alert(data.message)
         }
         else{
-
           $scope.get_news();
-
-
-
         }
       })
       .error(function(data, status, headers, config) {
