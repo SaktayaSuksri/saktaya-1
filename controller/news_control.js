@@ -22,7 +22,7 @@ module.exports = {
     },
     updateNewsByID: function (newsID, news, callback) {
         var myquery = { "_id": newsID };
-        var newvalues = { $set: { "topicShort": news.topicShort, "topicFull": news.topicFull, "detailShort": news.detailShort, "detailFull": news.detailFull, "topicPicture": news.topicPicture, "author": news.author, "isPinned": news.isPinned, "resourceId": news.resourceId, "tagId": news.tagId, "datetimeEdit": Date.now() } };
+        var newvalues = { $set: { "topicShort": news.topicShort, "topicFull": news.topicFull, "detailShort": news.detailShort, "detailFull": news.detailFull, "topicPicture": news.topicPicture, "author": news.author, "isPinned": news.isPinned, "resourceId": news.resourceId, "tagArray": news.tagArray, "datetimeEdit": Date.now() } };
         News.updateOne(myquery, newvalues, function (error, updateResponse) {
             if (error) {
                 var alert = "Error in finding News with _id: " + newsID + "\nError: " + error.message;
@@ -71,74 +71,74 @@ module.exports = {
             callback("043", null, null)
         }
     },
-    getAllNews: function (resourceId, targetTypeId, departmentId, tagId, isPreview, limitNum, isPosted, callback) {
+    getAllNews: function (resourceId, targetTypeId, departmentId, tag, isPreview, limitNum, isPosted, callback) {
         var today = new Date();
-        console.log("resourceId: " + resourceId + " / targetType " + targetTypeId + " / departmentId " + departmentId + " / tagId: " + tagId);
-        var myquery = { $and: [{ "resourceId": resourceId }, { "targetTypeId": targetTypeId }, { "departmentId": departmentId }, { "tagId": tagId }] };
+        console.log("resourceId: " + resourceId + " / targetType " + targetTypeId + " / departmentId " + departmentId + " / tagArray: " + tag);
+        var myquery = { $and: [{ "resourceId": resourceId }, { "targetTypeId": targetTypeId }, { "departmentId": departmentId }, { "tagArray": tag }] };
         var projection = {}
 
-        if (resourceId == "0" && departmentId == "0" && tagId == "0" && targetTypeId == "0" && isPosted == "false")
+        if (resourceId == "0" && departmentId == "0" && tag == "0" && targetTypeId == "0" && isPosted == "false")
             myquery = {}
         else if (resourceId == "0" && departmentId == "0" && targetTypeId == "0" && isPosted == "false")
-            myquery = { "tagId": tagId }
-        else if (resourceId == "0" && tagId == "0" && targetTypeId == "0" && isPosted == "false")
+            myquery = { "tagArray": tag }
+        else if (resourceId == "0" && tag == "0" && targetTypeId == "0" && isPosted == "false")
             myquery = { "departmentId": departmentId }
-        else if (departmentId == "0" && tagId == "0" && targetTypeId == "0" && isPosted == "false")
+        else if (departmentId == "0" && tag == "0" && targetTypeId == "0" && isPosted == "false")
             myquery = { "resourceId": resourceId }
         else if (resourceId == "0" && targetTypeId == "0" && isPosted == "false")
-            myquery = { $and: [{ "departmentId": departmentId }, { "tagId": tagId }] }
+            myquery = { $and: [{ "departmentId": departmentId }, { "tagArray": tag }] }
         else if (departmentId == "0" && targetTypeId == "0" && isPosted == "false")
-            myquery = { $and: [{ "resourceId": resourceId }, { "tagId": tagId }] }
-        else if (tagId == "0" && targetTypeId == "0" && isPosted == "false")
+            myquery = { $and: [{ "resourceId": resourceId }, { "tagArray": tag }] }
+        else if (tag == "0" && targetTypeId == "0" && isPosted == "false")
             myquery = { $and: [{ "resourceId": resourceId }, { "departmentId": departmentId }] }
 
-        else if (resourceId == "0" && departmentId == "0" && targetTypeId == "0" && tagId == "0" && isPosted == "false")
+        else if (resourceId == "0" && departmentId == "0" && targetTypeId == "0" && tag == "0" && isPosted == "false")
             myquery = { "targetTypeId": targetTypeId }
         else if (resourceId == "0" && departmentId == "0" && targetTypeId == "0" && isPosted == "false")
-            myquery = { $and: [{ "tagId": tagId, "targetTypeId": targetTypeId }] }
-        else if (resourceId == "0" && tagId == "0" && targetTypeId == "0" && isPosted == "false")
+            myquery = { $and: [{ "tagArray": tag, "targetTypeId": targetTypeId }] }
+        else if (resourceId == "0" && tag == "0" && targetTypeId == "0" && isPosted == "false")
             myquery = { $and: [{ "departmentId": departmentId, "targetTypeId": targetTypeId }] }
-        else if (departmentId == "0" && tagId == "0" && targetTypeId == "0" && isPosted == "false")
+        else if (departmentId == "0" && tag == "0" && targetTypeId == "0" && isPosted == "false")
             myquery = { $and: [{ "resourceId": resourceId, "targetTypeId": targetTypeId }] }
         else if (resourceId == "0" && targetTypeId == "0" && isPosted == "false")
-            myquery = { $and: [{ "departmentId": departmentId }, { "tagId": tagId }, { "targetTypeId": targetTypeId }] }
+            myquery = { $and: [{ "departmentId": departmentId }, { "tagArray": tag }, { "targetTypeId": targetTypeId }] }
         else if (departmentId == "0" && targetTypeId == "0" && isPosted == "false")
-            myquery = { $and: [{ "resourceId": resourceId }, { "tagId": tagId }, { "targetTypeId": targetTypeId }] }
-        else if (tagId == "0" && targetTypeId == "0" && isPosted == "false")
+            myquery = { $and: [{ "resourceId": resourceId }, { "tagArray": tag }, { "targetTypeId": targetTypeId }] }
+        else if (tag == "0" && targetTypeId == "0" && isPosted == "false")
             myquery = { $and: [{ "resourceId": resourceId }, { "departmentId": departmentId }, { "targetTypeId": targetTypeId }] }
 
-        else if (resourceId == "0" && departmentId == "0" && tagId == "0" && isPosted == "true")
+        else if (resourceId == "0" && departmentId == "0" && tag == "0" && isPosted == "true")
             myquery = { "datetimePost": { $lte: today } }
         else if (resourceId == "0" && departmentId == "0" && isPosted == "true")
-            myquery = { $and: [{ "tagId": tagId }, { "datetimePost": { $lte: today } }] }
-        else if (resourceId == "0" && tagId == "0" && isPosted == "true")
+            myquery = { $and: [{ "tagArray": tag }, { "datetimePost": { $lte: today } }] }
+        else if (resourceId == "0" && tag == "0" && isPosted == "true")
             myquery = { $and: [{ "departmentId": departmentId }, { "datetimePost": { $lte: today } }] }
-        else if (departmentId == "0" && tagId == "0" && isPosted == "true")
+        else if (departmentId == "0" && tag == "0" && isPosted == "true")
             myquery = { $and: [{ "resourceId": resourceId }, { "datetimePost": { $lte: today } }] }
         else if (resourceId == "0" && isPosted == "true")
-            myquery = { $and: [{ "departmentId": departmentId }, { "tagId": tagId }, { "datetimePost": { $lte: today } }] }
+            myquery = { $and: [{ "departmentId": departmentId }, { "tagArray": tag }, { "datetimePost": { $lte: today } }] }
         else if (departmentId == "0" && isPosted == "true")
-            myquery = { $and: [{ "resourceId": resourceId }, { "tagId": tagId }, { "datetimePost": { $lte: today } }] }
-        else if (tagId == "0" && isPosted == "true")
+            myquery = { $and: [{ "resourceId": resourceId }, { "tagArray": tag }, { "datetimePost": { $lte: today } }] }
+        else if (tag == "0" && isPosted == "true")
             myquery = { $and: [{ "resourceId": resourceId }, { "departmentId": departmentId }, { "datetimePost": { $lte: today } }] }
 
-        else if (resourceId == "0" && departmentId == "0" && tagId == "0" && isPosted == "true")
+        else if (resourceId == "0" && departmentId == "0" && tag == "0" && isPosted == "true")
             myquery = { $and: [{ "datetimePost": { $lte: today } }, { "targetTypeId": targetTypeId }] }
         else if (resourceId == "0" && departmentId == "0" && isPosted == "true")
-            myquery = { $and: [{ "tagId": tagId }, { "datetimePost": { $lte: today } }, { "targetTypeId": targetTypeId }] }
-        else if (resourceId == "0" && tagId == "0" && isPosted == "true")
+            myquery = { $and: [{ "tagArray": tag }, { "datetimePost": { $lte: today } }, { "targetTypeId": targetTypeId }] }
+        else if (resourceId == "0" && tag == "0" && isPosted == "true")
             myquery = { $and: [{ "departmentId": departmentId }, { "datetimePost": { $lte: today } }, { "targetTypeId": targetTypeId }] }
-        else if (departmentId == "0" && tagId == "0" && isPosted == "true")
+        else if (departmentId == "0" && tag == "0" && isPosted == "true")
             myquery = { $and: [{ "resourceId": resourceId }, { "datetimePost": { $lte: today } }, { "targetTypeId": targetTypeId }] }
         else if (resourceId == "0" && isPosted == "true")
-            myquery = { $and: [{ "departmentId": departmentId }, { "tagId": tagId }, { "datetimePost": { $lte: today } }, { "targetTypeId": targetTypeId }] }
+            myquery = { $and: [{ "departmentId": departmentId }, { "tagArray": tag }, { "datetimePost": { $lte: today } }, { "targetTypeId": targetTypeId }] }
         else if (departmentId == "0" && isPosted == "true")
-            myquery = { $and: [{ "resourceId": resourceId }, { "tagId": tagId }, { "datetimePost": { $lte: today } }, { "targetTypeId": targetTypeId }] }
-        else if (tagId == "0" && isPosted == "true")
+            myquery = { $and: [{ "resourceId": resourceId }, { "tagArray": tag }, { "datetimePost": { $lte: today } }, { "targetTypeId": targetTypeId }] }
+        else if (tag == "0" && isPosted == "true")
             myquery = { $and: [{ "resourceId": resourceId }, { "departmentId": departmentId }, { "datetimePost": { $lte: today } }, { "targetTypeId": targetTypeId }] }
 
         if (isPreview == "true") {
-            projection = { "_id": true, "topicShort": true, "targetTypeId": true, "detailShort": true, "topicPicture": true, "readCount": true, "isPinned": true, "resourceId": true, "departmentId": true, "tagId": true };
+            projection = { "_id": true, "topicShort": true, "targetTypeId": true, "detailShort": true, "topicPicture": true, "readCount": true, "isPinned": true, "resourceId": true, "departmentId": true, "tagArray": true };
         }
 
         News.find(myquery, projection, { sort: { isPinned: -1, datetimePost: -1 }, limit: limitNum }, function (error, newsGetResult) { 	// return error into 'err' and response into 'bear'
@@ -242,14 +242,7 @@ function getFullNews(news, callback) {
             else {
                 tmp["targetTypeName"] = null;
             }
-            Tag_Control.checkTagByArrayID(news.tagId, this);
-        }, function (code, err, functionCallback) {
-            if (functionCallback) {
-                tmp["tagData"] = functionCallback;
-            }
-            else {
-                tmp["tagData"] = null;
-            }
+            
             callback(tmp)
         }
     );
