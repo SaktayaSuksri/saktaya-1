@@ -4,15 +4,6 @@ var router = express.Router();
 // DATABASE SETUP
 var ObjectId = require('mongodb').ObjectId;
 
-
-//มิดเดิ้ลแว อยุ่ข้างบนเสมอ ก่อน get ไว้ทำ log  // เฉพาะ ที่ accessเข้าไฟล์นี้  ดูจากต้นทาง app.ut(/???,....);
-// middleware to use for all requests
-router.use(function (req, res, next) {
-    console.log("\n** Request detected >> " + JSON.stringify(req.body));
-    next();
-});
-
-
 var flow = require('../services/flow.js')
 
 var ReturnCode = require('../model/returnCode.js');

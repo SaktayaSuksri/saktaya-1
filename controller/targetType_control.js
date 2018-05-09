@@ -1,3 +1,6 @@
+
+var ObjectId = require('mongodb').ObjectId;
+var flow = require('../services/flow.js')
 var TargetType = require('../model/targetType_model.js');
 
 module.exports = {
@@ -28,8 +31,38 @@ module.exports = {
             }
         });
     },
+    getTargetTypeIdArrayFromTargetTypeName: function (targetTypeName, callback) {
+        console.log("targetTypeName >> " + targetTypeName)
+
+        if (targetTypeName != "0") {
+            var re = new RegExp(targetTypeName, "g");
+            TargetType.find({ "targetTypeName": { $regex: re, $options: 'i' } }, function (error, targetTypeResponse) {
+                if (error) {
+                    var alert = "Error in finding TargetType with _id: " + targetTypeId + "\nError: " + error.message;
+                    callback("361", alert, null)
+                }
+                else if (targetTypeResponse) {
+                    //console.log("targetTypeResponse >> " + JSON.stringify(targetTypeResponse))
+                    tmp = []
+                    for (let i = 0; i < targetTypeResponse.length; i++) {
+                        tmp.push(new ObjectId(targetTypeResponse[i]._id))
+                    }
+                    //console.log(tmp.toString())
+                    callback("362", null, tmp)
+                }
+                else {
+                    var alert = "TargetType with _id: " + targetTypeId + " not found";
+                    callback("363", alert, [])
+                }
+            });
+        }
+        else {
+            console.log("OKAY!")
+            callback("363", null, "0")
+        }
+    },
     getAllTargetTypeName: function (callback) {
-        TargetType.find({}, { resourceName: true}, function (error, targetTypeResponse) {
+        TargetType.find({}, { resourceName: true }, function (error, targetTypeResponse) {
             if (error) {
                 var alert = "Error in finding TargetType Error: " + error.message;
                 callback("371", alert, null)

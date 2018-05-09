@@ -6,12 +6,6 @@ var ObjectId = require('mongodb').ObjectId;
 
 var Event = require('../model/event_model');
 
-// Middleware for all routes
-router.use(function (req, res, next) {
-    console.log("\n** Request detected >> " + JSON.stringify(req.body));
-    next();
-});
-
 // Route Definitions
 router.post('/newEvent', function(req, res) {
     if (!req.body.name ||

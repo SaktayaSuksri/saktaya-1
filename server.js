@@ -140,8 +140,10 @@ app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
 
-
-
+app.use(function (req, res, next) {
+    console.log("\n** Request detected >> " + JSON.stringify(req.body));
+    next();
+});
 
 // routes ======================================================================
 // REGISTER OUR ROUTES -------------------------------
