@@ -233,12 +233,12 @@ router.post('/getNews/', function (request, response) {
 
     var requiredData = [];
     requiredData.push(request.body.resourceId);
-    requiredData.push(request.body.targetTypeId);
     requiredData.push(request.body.departmentId);
     requiredData.push(request.body.tag);
     requiredData.push(request.body.limit);
     requiredData.push(request.body.isPosted);
     requiredData.push(request.body.isPreview);
+    requiredData.push(request.body.filterTargetTypeName);
     var requiredReady = Validate.requiredData_Check(requiredData)
 
     var booleanData = [];
@@ -249,8 +249,6 @@ router.post('/getNews/', function (request, response) {
     var objectIdData = [];
     if (request.body.resourceId != "0")
         objectIdData.push(request.body.resourceId);
-    if (request.body.targetTypeId != "0")
-        objectIdData.push(request.body.targetTypeId);
     if (request.body.departmentId != "0")
         objectIdData.push(request.body.departmentId);
     var objectIdReady = Validate.objectIDData_Check(objectIdData)
@@ -282,16 +280,16 @@ router.post('/getNews/', function (request, response) {
     else {
         flow.exec(
             function () {
+                TargetType_Control.getTargetTypeIdArrayFromTargetTypeName(request.body.filterTargetTypeName, this)
+            }, function (code, err, result) {
+                console.log("OKAY!!!")
                 let resource = "0"
-                let targetType = "0"
                 let department = "0"
                 if (ObjectId.isValid(request.body.resourceId))
                     resource = new ObjectId(request.body.resourceId);
-                if (ObjectId.isValid(request.body.targetTypeId))
-                    targetType = new ObjectId(request.body.targetTypeId);
                 if (ObjectId.isValid(request.body.departmentId))
                     department = new ObjectId(request.body.departmentId);
-                News_Control.getAllNews(resource, targetType, department, request.body.tag, request.body.isPreview, parseInt(request.body.limit), request.body.isPosted, this);
+                News_Control.getAllNews(resource, result, department, request.body.tag, request.body.isPreview, parseInt(request.body.limit), request.body.isPosted, this);
             }, function (code, err, result) {
                 if (err) {
                     Return_control.responseWithCode(ReturnCode.serviceError + methodCode + code, err, response);
