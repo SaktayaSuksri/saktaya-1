@@ -5,14 +5,6 @@ var router = express.Router();
 var ObjectId = require('mongodb').ObjectId;
 
 var User = require('../model/user_model');
-
-//มิดเดิ้ลแว อยุ่ข้างบนเสมอ ก่อน get ไว้ทำ log  // เฉพาะ ที่ accessเข้าไฟล์นี้  ดูจากต้นทาง app.ut(/???,....);
-// middleware to use for all requests
-router.use(function (req, res, next) {
-    console.log("\n** Request detected >> " + JSON.stringify(req.body));
-    next();
-});
-
 // Route Definitions 
 router.post('/newUser', function(req, res) {
     if (!req.body.username ||

@@ -108,7 +108,7 @@ module.exports = {
                 callback("122", null, newsGetResult)
             }
             else {
-                var alert = "No News with resourceId: " + resourceId + " and departmentId: " + departmentId + " was found";
+                var alert = "No News with resourceId: " + resourceId + " / departmentId: " + departmentId + " / targetTypeId: " + targetTypeId + " / tagArray: " + tag + " was found";
                 console.log(alert);
                 callback("123", alert, null)
             }

@@ -6,12 +6,6 @@ var ObjectId = require('mongodb').ObjectId;
 
 var Link = require('../model/link_model');
 
-// Middleware for all routes
-router.use(function (req, res, next) {
-    console.log("\n** Request detected >> " + JSON.stringify(req.body));
-    next();
-});
-
 // Route Definitions
 router.post('/newLink', function(req, res) {
     if (!req.body.linkName ||
