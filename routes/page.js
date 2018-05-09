@@ -7,12 +7,6 @@ var querystring = require('querystring');
 var request = require('request');
 var Link = require('../model/link_model');
 
-// Middleware for all routes
-router.use(function (req, res, next) {
-    console.log("\n** Request detected >> " + JSON.stringify(req.body));
-    next();
-});
-
 // Route Definitions
 
 router.get('/page', function(req, res) {

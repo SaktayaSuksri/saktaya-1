@@ -6,11 +6,6 @@ var ObjectId = require('mongodb').ObjectId;
 
 var Faculty = require('../model/faculty_model');
 
-// Middleware for all routes
-router.use(function (req, res, next) {
-    console.log("\n** Request detected >> " + JSON.stringify(req.body));
-    next();
-});
 
 // Route Definitions
 router.post('/editFaculty', function(req, res) {

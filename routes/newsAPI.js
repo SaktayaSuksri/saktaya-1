@@ -7,10 +7,6 @@ var ObjectId = require('mongodb').ObjectId;
 
 //มิดเดิ้ลแว อยุ่ข้างบนเสมอ ก่อน get ไว้ทำ log  // เฉพาะ ที่ accessเข้าไฟล์นี้  ดูจากต้นทาง app.ut(/???,....);
 // middleware to use for all requests
-router.use(function (req, res, next) {
-    console.log("\n** Request detected >> " + JSON.stringify(req.body));
-    next();
-});
 
 
 var flow = require('../services/flow.js')
@@ -46,6 +42,7 @@ router.post('/newNews/', function (request, response) {
     requiredData.push(request.body.resourceId);
     requiredData.push(request.body.targetTypeId);
     requiredData.push(request.body.departmentId);
+    requiredData.push(request.body.isPinned);
     var requiredReady = Validate.requiredData_Check(requiredData)
 
     var booleanData = [];

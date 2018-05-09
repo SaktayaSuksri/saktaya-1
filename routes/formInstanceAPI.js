@@ -6,12 +6,6 @@ var ObjectId = require('mongodb').ObjectId;
 
 var FormInstance = require('../model/formInstance_model');
 
-// Middleware for all routes
-router.use(function (req, res, next) {
-    console.log("\n** Request detected >> " + JSON.stringify(req.body));
-    next();
-});
-
 // Route Definitions
 router.post('/newFormInstance', function(req, res) {
     if (!req.body.formId ||
