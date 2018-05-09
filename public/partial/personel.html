@@ -15,8 +15,8 @@
                           <div class=".col-8 .col-sm-12" style="padding: 14px" ng-repeat = "personel_item in personel_list">
                             <div class="card card-profile " style="max-width: 250px" data-toggle="modal" ng-click = "showDetail();">
                               <div class="card-header card-header-image">
-                                  <img class="img" ng-if = "personel_item.picture == null" src="assets\img\image_placeholder.jpg">
-                                  <img class="img" ng-if = "personel_item.picture != null"src="{{personel_item.picture}}">
+                                  <img class="img" style = "width: 222px; height: 252px;" ng-if = "personel_item.picture == null" src="assets\img\image_placeholder.jpg">
+                                  <img class="img" style = "width: 222px; height: 252px;" ng-if = "personel_item.picture != null"src="{{personel_item.picture}}" >
                               </div>
 
                               <div class="card-body">
