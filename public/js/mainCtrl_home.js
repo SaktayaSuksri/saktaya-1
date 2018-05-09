@@ -75,7 +75,6 @@ angular.module('app').controller('news', function ($sce,$scope, $filter, $q,$htt
 
             //  quill_title  quill_detail      quill_title_yo  quill_detail_yo
 
-
             $scope.get_news();
 
 
@@ -156,7 +155,7 @@ $scope.get_news = function(){
           }
           else
           {
-          console.log(data);
+          console.log(" get_news  "+ JSON.stringify(data));
           $scope.news_list_1[0] = data.message[1];
           $scope.news_list_1[1] = data.message[0];
           $scope.news_list_2[0] = data.message[2];
