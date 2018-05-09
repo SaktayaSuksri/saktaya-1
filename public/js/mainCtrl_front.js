@@ -165,9 +165,13 @@ angular.module('app').controller('news_container', function($scope, $http, api_m
         if (data.code != "999999") {
           alert(data.message);
         } else {
+
+          
           console.log(data.code);
           $scope.news_list = data.message;
           console.log('$scope.news_list  =  ')
+
+
           //  $scope.news_table= new NgTableParams({count: 10 ,  sorting: { resourceName: "desc" }  }, { counts: [10,20, 100], dataset: $scope.news_list });
 
           //for pagination
@@ -183,6 +187,8 @@ angular.module('app').controller('news_container', function($scope, $http, api_m
 
 
           $scope.setItemsPerPage(20);
+
+          document.querySelector("#loading").style.display = "none";
           //end pagination
         }
 
