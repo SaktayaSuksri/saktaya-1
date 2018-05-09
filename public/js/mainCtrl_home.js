@@ -76,10 +76,15 @@ angular.module('app').controller('news', function ($sce,$scope, $filter, $q,$htt
             //  quill_title  quill_detail      quill_title_yo  quill_detail_yo
 
             $scope.get_news();
+            $scope.search = {};
 
 
         }
 
+        $scope.news_filter = function(filter){
+            $scope.search.targetTypeName = filter
+
+        }
         $scope.news_detail_href= function(id){
 
 
