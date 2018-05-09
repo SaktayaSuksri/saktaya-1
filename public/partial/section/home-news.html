@@ -1,19 +1,19 @@
 
                  <hr>
-               <div class="container" ng-controller="news" ng-init="init()">
+               <div class="container-fluid" ng-controller="news" ng-init="init()">
                         <div class="row justify-content-md-center">
 
                                 <div class="col-12 col-md-auto">
 
 
 
-                                        <ul class="nav nav-pills nav-pills-warning">
-                                            <li class="nav-item"><a class="nav-link active" href="#pill1" data-toggle="tab">ทั้งหมด</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="#pill2" data-toggle="tab">ข่าวประชาสัมพันธ์</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="#pill3" data-toggle="tab">สำหรับนักศึกษา</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="#pill4" data-toggle="tab">ทุนวิจัย</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="#pill5" data-toggle="tab">วารสารประจำเดือน</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="#pill6" data-toggle="tab">กิจกรรมต่างๆ</a></li>
+                                        <ul class="nav nav-pills nav-pills-warning nav-pills-lg">
+                                            <li class="nav-item"><a class="nav-link active" href="#pill1" ng-click="news_filter('')" data-toggle="tab">ทั้งหมด</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="#pill1"  ng-click="news_filter('ข่าวประชาสัมพันธ์')" data-toggle="tab">ข่าวประชาสัมพันธ์</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="#pill1"  ng-click="news_filter('สำหรับนักศึกษา')" data-toggle="tab">สำหรับนักศึกษา</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="#pill1"  ng-click="news_filter('ทุนวิจัย')" data-toggle="tab">ทุนวิจัย</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="#pill1"  ng-click="news_filter('วารสารประจำเดือน')" data-toggle="tab">วารสารประจำเดือน</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="#pill1"  ng-click="news_filter('กิจกรรมต่างๆ')" data-toggle="tab">กิจกรรมต่างๆ</a></li>
                                         </ul>
 
                                     </div>
@@ -27,7 +27,7 @@
 
                                                     <div class="row" >
                                                             <div class="col-lg-4 col-md-6">
-                                                                    <div class="card card-blog"    ng-repeat="item in news_list_1" >
+                                                                    <div class="card card-blog"    ng-repeat="item in news_list_1 | filter:search:strict  " >
 
 
 
