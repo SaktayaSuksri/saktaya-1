@@ -304,6 +304,27 @@ router.post('/getNews/', function (request, response) {
     }
 });
 
+router.post('/getNewsForHomeSlide/', function (request, response) {
+    var news = new News();
+    var methodCode = "06";
+        flow.exec(
+             function () {
+                News_Control.getAllNews(new ObjectId("5a8f0856f9bb232d7442ff04"), "0", new ObjectId("5a8470b228d2e92a0c753010"), "0", "true", 3, "true", this);
+            }, function (code, err, result) {
+                if (err) {
+                    Return_control.responseWithCode(ReturnCode.serviceError + methodCode + code, err, response);
+                }
+                else {
+                    News_Control.joinNewsData(result, this)
+                }
+            }, function (code, err, result) {
+                Return_control.responseWithCode("999999", result, response)
+            }
+        );
+    
+});
+
+
 router.post('/getNewsfromID/', function (request, response) {
     var personel = new Personel();
     var methodCode = "07";
