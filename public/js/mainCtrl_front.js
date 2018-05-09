@@ -153,7 +153,7 @@ angular.module('app').controller('news_container', function($scope, $http, api_m
       resourceId : "0",
       departmentId:"0",
       targetTypeId:"0",
-      tagId:"0",
+      tag:"0",
       limit:6,
       isPosted:"false",
       isPreview:"true"
