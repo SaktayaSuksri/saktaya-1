@@ -56,12 +56,6 @@ router.post('/newNews/', function (request, response) {
     objectIdData.push(request.body.resourceId);
     objectIdData.push(request.body.targetTypeId);
     objectIdData.push(request.body.departmentId);
-    var tagIDArray = new Array();
-
-    var tmp = [];
-    if (request.body.tagId.length > 0) {
-        tmp.push(tagIDArray[i]);
-    }
     var objectIdReady = Validate.objectIDData_Check(objectIdData)
 
     if (!requiredReady) {
@@ -82,14 +76,7 @@ router.post('/newNews/', function (request, response) {
     else {
         flow.exec(
             function () {
-                Tag_Control.checkTagByArrayID(tmp, this);
-            }, function (code, err, result) {
-                if (err) {
-                    Return_control.responseWithCode(ReturnCode.serviceError + methodCode + code, err, response);
-                }
-                else {
-                    Department_Control.checkDepartmentByID(new ObjectId(request.body.departmentId), this);
-                }
+                Department_Control.checkDepartmentByID(new ObjectId(request.body.departmentId), this);
             }, function (code, err, result) {
                 if (err) {
                     Return_control.responseWithCode(ReturnCode.serviceError + methodCode + code, err, response);
@@ -126,7 +113,7 @@ router.post('/newNews/', function (request, response) {
                     news.resourceId = request.body.resourceId;
                     news.targetTypeId = request.body.targetTypeId;
                     news.departmentId = request.body.departmentId;
-                    news.tagId = tmp;
+                    news.tagArray = request.body.tagArray;
                     News_Control.newNews(news, this);
                 }
             }, function (code, err, saveResult) {
@@ -166,11 +153,6 @@ router.post('/editNews/', function (request, response) {
     objectIdData.push(request.body.targetTypeId);
     objectIdData.push(request.body.departmentId);
 
-    var tagIDArray = request.body.tagId;
-    for (let i = 0; i < tagIDArray.length; i++)
-        objectIdData.push(tagIDArray[i]);
-    var objectIdReady = Validate.objectIDData_Check(objectIdData)
-
     if (!requiredReady) {
         var alert = "Input Not Valid, check if some data is required."
         console.log(alert);
@@ -189,14 +171,7 @@ router.post('/editNews/', function (request, response) {
     else {
         flow.exec(
             function () {
-                Tag_Control.checkTagByArrayID(tagIDArray, this);
-            }, function (code, err, result) {
-                if (err) {
-                    Return_control.responseWithCode(ReturnCode.serviceError + methodCode + code, err, response);
-                }
-                else {
-                    Department_Control.checkDepartmentByID(new ObjectId(request.body.departmentId), this);
-                }
+                Department_Control.checkDepartmentByID(new ObjectId(request.body.departmentId), this);
             }, function (code, err, result) {
                 if (err) {
                     Return_control.responseWithCode(ReturnCode.serviceError + methodCode + code, err, response);
@@ -240,7 +215,7 @@ router.post('/editNews/', function (request, response) {
                     news.resourceId = request.body.resourceId;
                     news.targetTypeId = request.body.targetTypeId;
                     news.departmentId = request.body.departmentId;
-                    news.tagId = request.body.tagId;
+                    news.tagArray = request.body.tagArray;
                     News_Control.updateNewsByID(new ObjectId(request.body.newsID), news, this);
                 }
             }, function (code, err, result) {
@@ -263,7 +238,7 @@ router.post('/getNews/', function (request, response) {
     requiredData.push(request.body.resourceId);
     requiredData.push(request.body.targetTypeId);
     requiredData.push(request.body.departmentId);
-    requiredData.push(request.body.tagId);
+    requiredData.push(request.body.tag);
     requiredData.push(request.body.limit);
     requiredData.push(request.body.isPosted);
     requiredData.push(request.body.isPreview);
@@ -281,8 +256,6 @@ router.post('/getNews/', function (request, response) {
         objectIdData.push(request.body.targetTypeId);
     if (request.body.departmentId != "0")
         objectIdData.push(request.body.departmentId);
-    if (request.body.tagId != "0")
-        objectIdData.push(request.body.tagId);
     var objectIdReady = Validate.objectIDData_Check(objectIdData)
 
     var numberData = [];
@@ -315,16 +288,13 @@ router.post('/getNews/', function (request, response) {
                 let resource = "0"
                 let targetType = "0"
                 let department = "0"
-                let tag = "0"
                 if (ObjectId.isValid(request.body.resourceId))
                     resource = new ObjectId(request.body.resourceId);
                 if (ObjectId.isValid(request.body.targetTypeId))
                     targetType = new ObjectId(request.body.targetTypeId);
                 if (ObjectId.isValid(request.body.departmentId))
                     department = new ObjectId(request.body.departmentId);
-                if (ObjectId.isValid(request.body.tagId))
-                    tag = new ObjectId(request.body.tagId);
-                News_Control.getAllNews(resource, targetType, department, tag, request.body.isPreview, parseInt(request.body.limit), request.body.isPosted, this);
+                News_Control.getAllNews(resource, targetType, department, request.body.tag, request.body.isPreview, parseInt(request.body.limit), request.body.isPosted, this);
             }, function (code, err, result) {
                 if (err) {
                     Return_control.responseWithCode(ReturnCode.serviceError + methodCode + code, err, response);
@@ -333,7 +303,7 @@ router.post('/getNews/', function (request, response) {
                     News_Control.joinNewsData(result, this)
                 }
             }, function (code, err, result) {
-                    Return_control.responseWithCode("999999", result, response)
+                Return_control.responseWithCode("999999", result, response)
             }
         );
     }
@@ -370,7 +340,7 @@ router.post('/getNewsfromID/', function (request, response) {
     obj.resourceName = "N/A";
     obj.targetTypeName = "N/A";
     obj.departmentName = "N/A";
-    obj.tagData = [];
+    obj.tag = "N/A";
 
     if (!requiredReady) {
         var alert = "Input Not Valid, check if some data is required."
@@ -402,6 +372,7 @@ router.post('/getNewsfromID/', function (request, response) {
                     obj.author = result.author;
                     obj.readCount = result.readCount;
                     obj.isPinned = result.isPinned;
+                    obj.tag = result.tag;
                     Department_Control.checkDepartmentByID(new ObjectId(thisNews.departmentId), this);
                 }
             }, function (code, err, result) {
@@ -427,17 +398,8 @@ router.post('/getNewsfromID/', function (request, response) {
                 else {
                     obj.resourceName = result.resourceName;
                 }
-                Tag_Control.checkTagByArrayID(thisNews.tagId, this);
-            }, function (code, err, result) {
-                if (err) {
-                    Return_control.responseWithCode(ReturnCode.serviceError + methodCode + code, err, response);
-                }
-                else {
-                    console.log("tag" + result)
-                    obj.tagData = result;
-                    News_Control.countReader(new ObjectId(request.body.newsID), request.body.readCount);
-                    Return_control.responseWithCode("999999", obj, response)
-                }
+                News_Control.countReader(new ObjectId(request.body.newsID), request.body.readCount);
+                Return_control.responseWithCode("999999", obj, response)
             }
         );
     }
