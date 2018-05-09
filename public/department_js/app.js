@@ -121,6 +121,7 @@ app.controller("aboutCtrl", function($scope, $location,$http) {
 $scope.init_news_modal = function(id){
 alert("new detail = "+id)
 
+
     let dataObj = {
 
 
@@ -160,11 +161,12 @@ $scope.news_list_1 =[];
 $scope.news_list_2 =[];
 $scope.news_list_3 =[];
 let dataObj = {
-
+  tag:$scope.filter_tag,
+  filterTargetTypeName : $scope.search.targetTypeName,
 
   resourceId : "0",
   departmentId:"0",
-  tagId:"0",
+  tag:"0",
   limit:6,
   isPosted:"false",
   isPreview:"true",
@@ -202,8 +204,11 @@ $http.post('/api/getNews/',dataObj)
 $scope.init = function(){
   
           //  quill_title  quill_detail      quill_title_yo  quill_detail_yo
-  
-  
+          $scope.search = {};
+          $scope.search.targetTypeName = "0";
+        //  $scope.search.department = "5a8470c028d2e92a0c753011"; //ภาคคอม
+        $scope.search.department = "5a8470b228d2e92a0c753010";
+        
           $scope.get_news();
   
   

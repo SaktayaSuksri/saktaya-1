@@ -17,6 +17,24 @@ router.get('/page', function(req, res) {
 });
 
 
+router.get('/page/', function(req, res) {
+    
+
+    console.log("test")
+    res.render('template_front.ejs'); 
+});
+
+
+
+router.get('/page/news_container/:traget/:department', function(request, response) {
+    const traget = request.params.traget 
+    const department = request.params.department 
+
+    console.log(traget + department);
+    response.render('news_container.ejs', {'traget':traget,"department":department}); // load the index.ejs file
+   
+    
+ });
 
 router.get('/graduate', function(req, res) {
     
