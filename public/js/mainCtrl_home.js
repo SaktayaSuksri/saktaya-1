@@ -74,15 +74,18 @@ angular.module('app').controller('news', function ($sce,$scope, $filter, $q,$htt
     $scope.init = function(){
 
             //  quill_title  quill_detail      quill_title_yo  quill_detail_yo
-
-            $scope.get_news();
             $scope.search = {};
+            $scope.get_news();
+        
 
 
         }
 
         $scope.news_filter = function(filter){
+
             $scope.search.targetTypeName = filter
+   
+            $scope.get_news();
 
         }
         $scope.news_detail_href= function(id){
@@ -140,10 +143,10 @@ $scope.get_news = function(){
     $scope.news_list_3 =[];
     let dataObj = {
 
-
+        filterTargetTypeName : $scope.search.targetTypeName,
       resourceId : "0",
       departmentId:"0",
-      tagId:"0",
+      tag:"0",
       limit:6,
       isPosted:"false",
       isPreview:"true",

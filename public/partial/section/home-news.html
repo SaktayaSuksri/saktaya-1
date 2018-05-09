@@ -9,11 +9,11 @@
 
                                         <ul class="nav nav-pills nav-pills-warning nav-pills-lg">
                                             <li class="nav-item"><a class="nav-link active" href="#pill1" ng-click="news_filter('')" data-toggle="tab">ทั้งหมด</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="#pill1"  ng-click="news_filter('ข่าวประชาสัมพันธ์')" data-toggle="tab">ข่าวประชาสัมพันธ์</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="#pill1"  ng-click="news_filter('สำหรับนักศึกษา')" data-toggle="tab">สำหรับนักศึกษา</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="#pill1"  ng-click="news_filter('ทุนวิจัย')" data-toggle="tab">ทุนวิจัย</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="#pill1"  ng-click="news_filter('วารสารประจำเดือน')" data-toggle="tab">วารสารประจำเดือน</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="#pill1"  ng-click="news_filter('กิจกรรมต่างๆ')" data-toggle="tab">กิจกรรมต่างๆ</a></li>
+                                            <li class="nav-item"><a class="nav-link"  ng-click="news_filter('ประชาสัมพันธ์')" data-toggle="tab">ข่าวประชาสัมพันธ์</a></li>
+                                            <li class="nav-item"><a class="nav-link" ng-click="news_filter('ปริญญาตรี')" data-toggle="tab">สำหรับนักศึกษา</a></li>
+                                            <li class="nav-item"><a class="nav-link"  ng-click="news_filter('ทุนการศึกษา')" data-toggle="tab">ทุนวิจัย</a></li>
+                                            <li class="nav-item"><a class="nav-link"  ng-click="news_filter('วารสารประจำเดือน')" data-toggle="tab">วารสารประจำเดือน</a></li>
+                                            <li class="nav-item"><a class="nav-link"   ng-click="news_filter('กิจกรรม')" data-toggle="tab">กิจกรรมต่างๆ</a></li>
                                         </ul>
 
                                     </div>
@@ -23,8 +23,7 @@
                                     <div class="tab-content tab-space">
                                         <div class="tab-pane active" id="pill1">
                                             <div class="container">
-
-
+                                        
                                                     <div class="row" >
                                                             <div class="col-lg-4 col-md-6">
                                                                     <div class="card card-blog"    ng-repeat="item in news_list_1 | filter:search:strict  " >
@@ -159,7 +158,12 @@
 
                                                         </div>
 
-
+                                                        <a style="float: right;" href="./page#/news_container" target="_blank" class="btn btn-warning btn-raised btn-lg">
+                                                            <i class="material-icons">view_module</i>
+                                                            
+                                                            ข่าวทั้งหมด
+                                                        </a>
+                                                        <br>
                                         </div>
                                     </div>
                                         <div class="tab-pane  " id="pill2">
@@ -182,6 +186,8 @@
                                                                 Completely synergize resource taxing relationships via premier niche markets. Professionally cultivate one-to-one customer service with robust ideas.
                                                             <br><br>Dynamically innovate resource-leveling customer service for state of the art customer service.
                                                             </div>
+
+                                                            
                                         </div>
 
 
@@ -230,7 +236,12 @@
                                                   <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                                                 </div>
                                               </div>
+                                              
                                             </div>
+                                        
                                           </div>
-
-                    </div>
+                 
+  
+                                        
+                                    
+</div>
