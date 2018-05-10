@@ -77,8 +77,8 @@ font-weight: 400;
 }
 </style>
 <body class="landing-page " ng-app="app" ng-controller="global" ng-init="showtranparent = true" > 
-        
-    <div ng-include src="'http://localhost:2001/partial/navbar_template/for_front.html'"></div>
+     
+    <div ng-include src="trustAsHtml('http://localhost:2001/partial/navbar_template/for_front.html')"></div>
 
     
                     

@@ -120,6 +120,11 @@ angular.module('app')
   }]);
 angular.module('app').controller('global', function($scope, $http, api_manage) {
 
+  $scope.trustAsHtml = function(string) {
+    console.log("str = "+string)
+        return $sce.trustAsHtml(string);
+    };
+    
 });
 
 angular.module('app').controller('docs_container', function($scope, $http, api_manage, global_service) {
