@@ -100,6 +100,11 @@ app.controller("navCtrl", function($scope , $location) {
     $location.path('/course/')
     console.log("gotoEnroll2222");
   };
+
+  $scope.change_navstep = function(step){
+
+    $scope.navstep = step;
+  }
 });
 
 
