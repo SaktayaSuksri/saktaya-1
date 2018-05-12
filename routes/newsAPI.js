@@ -149,7 +149,8 @@ router.post('/editNews/', function (request, response) {
     objectIdData.push(request.body.resourceId);
     objectIdData.push(request.body.targetTypeId);
     objectIdData.push(request.body.departmentId);
-
+    var objectIdReady = Validate.objectIDData_Check(objectIdData)
+    
     if (!requiredReady) {
         var alert = "Input Not Valid, check if some data is required."
         console.log(alert);
