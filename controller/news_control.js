@@ -187,6 +187,11 @@ module.exports = {
 
 function getFullNews(news, callback) {
     let tmp = JSON.parse(JSON.stringify(news));
+    let tmp = news.tag;
+    news.tag = []
+    for (let i = 0; i < tmp.length; i++)
+        news.tag.push({text: tmp[i]});
+
     flow.exec(
         function () {
             //console.log("history.requestId: "+history.requestID)
