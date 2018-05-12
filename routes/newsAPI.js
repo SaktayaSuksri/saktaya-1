@@ -110,7 +110,7 @@ router.post('/newNews/', function (request, response) {
                     news.resourceId = request.body.resourceId;
                     news.targetTypeId = request.body.targetTypeId;
                     news.departmentId = request.body.departmentId;
-                    news.tagArray = request.body.tagArray;
+                    news.tag = request.body.tag;
                     News_Control.newNews(news, this);
                 }
             }, function (code, err, saveResult) {
@@ -212,7 +212,7 @@ router.post('/editNews/', function (request, response) {
                     news.resourceId = request.body.resourceId;
                     news.targetTypeId = request.body.targetTypeId;
                     news.departmentId = request.body.departmentId;
-                    news.tagArray = request.body.tagArray;
+                    news.tag = request.body.tag;
                     News_Control.updateNewsByID(new ObjectId(request.body.newsID), news, this);
                 }
             }, function (code, err, result) {

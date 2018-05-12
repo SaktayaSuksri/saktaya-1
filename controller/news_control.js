@@ -22,7 +22,7 @@ module.exports = {
     },
     updateNewsByID: function (newsID, news, callback) {
         var myquery = { "_id": newsID };
-        var newvalues = { $set: { "topicShort": news.topicShort, "topicFull": news.topicFull, "detailShort": news.detailShort, "detailFull": news.detailFull, "topicPicture": news.topicPicture, "author": news.author, "isPinned": news.isPinned, "resourceId": news.resourceId, "tagArray": news.tagArray, "datetimeEdit": Date.now() } };
+        var newvalues = { $set: { "topicShort": news.topicShort, "topicFull": news.topicFull, "detailShort": news.detailShort, "detailFull": news.detailFull, "topicPicture": news.topicPicture, "author": news.author, "isPinned": news.isPinned, "resourceId": news.resourceId, "tag": news.tag, "datetimeEdit": Date.now() } };
         News.updateOne(myquery, newvalues, function (error, updateResponse) {
             if (error) {
                 var alert = "Error in finding News with _id: " + newsID + "\nError: " + error.message;
@@ -73,7 +73,7 @@ module.exports = {
     },
     getAllNews: function (resourceId, targetTypeId, departmentId, tag, isPreview, limitNum, isPosted, callback) {
         var today = new Date();
-        console.log("resourceId: " + resourceId + " / targetType " + targetTypeId + " / departmentId " + departmentId + " / tagArray: " + tag);
+        console.log("resourceId: " + resourceId + " / targetType " + targetTypeId + " / departmentId " + departmentId + " / tag: " + tag);
         var myquery = {};
 
         let tmp = [];
@@ -84,16 +84,16 @@ module.exports = {
         if (targetTypeId !== "0")
             tmp.push({ "targetTypeId": targetTypeId })
         if (tag !== "0")
-            tmp.push({ "tagArray": tag })
+            tmp.push({ "tag": tag })
         if (isPosted !== "true")
             tmp.push({ "datetimePost": { $lte: today } })
         myquery = { $and: tmp };
 
-        //$and: [{ "resourceId": resourceId }, { "targetTypeId": targetTypeId }, { "departmentId": departmentId }, { "tagArray": tag }]
+        //$and: [{ "resourceId": resourceId }, { "targetTypeId": targetTypeId }, { "departmentId": departmentId }, { "tag": tag }]
 
         var projection = {}
         if (isPreview == "true") {
-            projection = { "_id": true, "topicShort": true, "targetTypeId": true, "detailShort": true, "topicPicture": true, "readCount": true, "isPinned": true, "resourceId": true, "departmentId": true, "tagArray": true };
+            projection = { "_id": true, "topicShort": true, "targetTypeId": true, "detailShort": true, "topicPicture": true, "readCount": true, "isPinned": true, "resourceId": true, "departmentId": true, "tag": true };
         }
 
         News.find(myquery, projection, { sort: { isPinned: -1, datetimePost: -1 }, limit: limitNum }, function (error, newsGetResult) { 	// return error into 'err' and response into 'bear'
@@ -108,7 +108,7 @@ module.exports = {
                 callback("122", null, newsGetResult)
             }
             else {
-                var alert = "No News with resourceId: " + resourceId + " / departmentId: " + departmentId + " / targetTypeId: " + targetTypeId + " / tagArray: " + tag + " was found";
+                var alert = "No News with resourceId: " + resourceId + " / departmentId: " + departmentId + " / targetTypeId: " + targetTypeId + " / tag: " + tag + " was found";
                 console.log(alert);
                 callback("123", alert, null)
             }
