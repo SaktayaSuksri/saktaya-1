@@ -21,7 +21,7 @@ router.post('/newTargetType', function(req, res) {
         });
     } else {
         var newTargetType = new TargetType();
-        newForm.targetTypeName = req.body.targetTypeName;
+        newTargetType.targetTypeName = req.body.targetTypeName;
 
         newTargetType.save(function(err) {
             if (err)
