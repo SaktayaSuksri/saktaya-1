@@ -71,9 +71,9 @@ module.exports = {
             callback("043", null, null)
         }
     },
-    getAllNews: function (resourceId, targetTypeId, departmentId, tag, isPreview, limitNum, isPosted, callback) {
+    getAllNews: function (resourceId, targetTypeId, departmentId, tag, isPreview, limitNum, isPosted, isPinned, callback) {
         var today = new Date();
-        console.log("resourceId: " + resourceId + " / targetType " + targetTypeId + " / departmentId " + departmentId + " / tag: " + tag);
+        console.log("resourceId: " + resourceId + " / targetType " + targetTypeId + " / departmentId " + departmentId + " / isPinned " + isPinned + " / tag: " + tag);
         var myquery = {};
 
         let tmp = [];
@@ -87,6 +87,8 @@ module.exports = {
             tmp.push({ "tag": tag })
         if (isPosted !== "true")
             tmp.push({ "datetimePost": { $lte: today } })
+        if (isPinned !== "0")
+            tmp.push({ "isPinned": isPinned })
         myquery = { $and: tmp };
 
         //$and: [{ "resourceId": resourceId }, { "targetTypeId": targetTypeId }, { "departmentId": departmentId }, { "tag": tag }]
@@ -96,7 +98,7 @@ module.exports = {
             projection = { "_id": true, "topicShort": true, "targetTypeId": true, "detailShort": true, "topicPicture": true, "readCount": true, "isPinned": true, "resourceId": true, "departmentId": true, "tag": true };
         }
 
-        News.find(myquery, projection, { sort: { isPinned: -1, datetimePost: -1 }, limit: limitNum }, function (error, newsGetResult) { 	// return error into 'err' and response into 'bear'
+        News.find(myquery, projection, { sort: { datetimePost: -1 }, limit: limitNum }, function (error, newsGetResult) { 	// return error into 'err' and response into 'bear'
             if (error) {
                 var alert = "Error in getAllNews , Error : " + error.message;
                 console.log(alert);
@@ -108,7 +110,7 @@ module.exports = {
                 callback("122", null, newsGetResult)
             }
             else {
-                var alert = "No News with resourceId: " + resourceId + " / departmentId: " + departmentId + " / targetTypeId: " + targetTypeId + " / tag: " + tag + " was found";
+                var alert = "No News with resourceId: " + resourceId + " / departmentId: " + departmentId + " / targetTypeId: " + targetTypeId + " / isPinned " + isPinned + " / tag: " + tag + " was found";
                 console.log(alert);
                 callback("123", alert, null)
             }

@@ -88,13 +88,6 @@ router.post('/newNews/', function (request, response) {
                 else {
                     TargetType_Control.checkTargetTypeByID(new ObjectId(request.body.targetTypeId), this);
                 }
-            }, function (code, err, checkResult) {
-                if (err) {
-                    Return_control.responseWithCode(ReturnCode.serviceError + methodCode + code, err, response);
-                }
-                else {
-                    News_Control.clearPinnedNews(request.body.isPinned, new ObjectId(request.body.resourceId), new ObjectId(request.body.targetTypeId), new ObjectId(request.body.departmentId), this);
-                }
             }, function (code, err, updateResult) {
                 if (err) {
                     Return_control.responseWithCode(ReturnCode.serviceError + methodCode + code, err, response);
@@ -150,7 +143,7 @@ router.post('/editNews/', function (request, response) {
     objectIdData.push(request.body.targetTypeId);
     objectIdData.push(request.body.departmentId);
     var objectIdReady = Validate.objectIDData_Check(objectIdData)
-    
+
     if (!requiredReady) {
         var alert = "Input Not Valid, check if some data is required."
         console.log(alert);
@@ -196,13 +189,6 @@ router.post('/editNews/', function (request, response) {
                     Return_control.responseWithCode(ReturnCode.serviceError + methodCode + code, err, response);
                 }
                 else {
-                    News_Control.clearPinnedNews(request.body.isPinned, new ObjectId(request.body.resourceId), new ObjectId(request.body.targetTypeId), new ObjectId(request.body.departmentId), this);
-                }
-            }, function (code, err, result) {
-                if (err) {
-                    Return_control.responseWithCode(ReturnCode.serviceError + methodCode + code, err, response);
-                }
-                else {
                     news.topicShort = request.body.topicShort;
                     news.topicFull = request.body.topicFull;
                     news.detailShort = request.body.detailShort;
@@ -239,12 +225,14 @@ router.post('/getNews/', function (request, response) {
     requiredData.push(request.body.limit);
     requiredData.push(request.body.isPosted);
     requiredData.push(request.body.isPreview);
+    requiredData.push(request.body.isPinned);
     requiredData.push(request.body.filterTargetTypeName);
     var requiredReady = Validate.requiredData_Check(requiredData)
 
     var booleanData = [];
     booleanData.push(request.body.isPosted);
     booleanData.push(request.body.isPreview);
+    requiredData.push(request.body.isPinned);
     var booleanReady = Validate.booleanData_Check(booleanData)
 
     var objectIdData = [];
@@ -290,7 +278,7 @@ router.post('/getNews/', function (request, response) {
                     resource = new ObjectId(request.body.resourceId);
                 if (ObjectId.isValid(request.body.departmentId))
                     department = new ObjectId(request.body.departmentId);
-                News_Control.getAllNews(resource, result, department, request.body.tag, request.body.isPreview, parseInt(request.body.limit), request.body.isPosted, this);
+                News_Control.getAllNews(resource, result, department, request.body.tag, request.body.isPreview, parseInt(request.body.limit), request.body.isPosted, request.body.isPinned, this);
             }, function (code, err, result) {
                 if (err) {
                     Return_control.responseWithCode(ReturnCode.serviceError + methodCode + code, err, response);
@@ -308,21 +296,21 @@ router.post('/getNews/', function (request, response) {
 router.post('/getNewsForHomeSlide/', function (request, response) {
     var news = new News();
     var methodCode = "06";
-        flow.exec(
-             function () {
-                News_Control.getAllNews(new ObjectId("5a8f0856f9bb232d7442ff04"), "0", new ObjectId("5a8470b228d2e92a0c753010"), "0", "true", 3, "true", this);
-            }, function (code, err, result) {
-                if (err) {
-                    Return_control.responseWithCode(ReturnCode.serviceError + methodCode + code, err, response);
-                }
-                else {
-                    News_Control.joinNewsData(result, this)
-                }
-            }, function (code, err, result) {
-                Return_control.responseWithCode("999999", result, response)
+    flow.exec(
+        function () {
+            News_Control.getAllNews(new ObjectId("5a8f0856f9bb232d7442ff04"), "0", new ObjectId("5a8470b228d2e92a0c753010"), "0", "true", 3, "true", this);
+        }, function (code, err, result) {
+            if (err) {
+                Return_control.responseWithCode(ReturnCode.serviceError + methodCode + code, err, response);
             }
-        );
-    
+            else {
+                News_Control.joinNewsData(result, this)
+            }
+        }, function (code, err, result) {
+            Return_control.responseWithCode("999999", result, response)
+        }
+    );
+
 });
 
 
