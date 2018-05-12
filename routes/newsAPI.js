@@ -104,9 +104,10 @@ router.post('/newNews/', function (request, response) {
                     news.targetTypeId = request.body.targetTypeId;
                     news.departmentId = request.body.departmentId;
 
-                    for(let i=0 ; i<request.body.tag.length; i++)
+                    news.tag = []
+                    for (let i = 0; i < request.body.tag.length; i++)
                         news.tag.push(request.body.tag[i].text);
-                    
+
                     //    news.tag = request.body.tag;
                     News_Control.newNews(news, this);
                 }
@@ -203,7 +204,11 @@ router.post('/editNews/', function (request, response) {
                     news.resourceId = request.body.resourceId;
                     news.targetTypeId = request.body.targetTypeId;
                     news.departmentId = request.body.departmentId;
-                    news.tag = request.body.tag;
+
+                    news.tag = []
+                    for (let i = 0; i < request.body.tag.length; i++)
+                        news.tag.push(request.body.tag[i].text);
+
                     News_Control.updateNewsByID(new ObjectId(request.body.newsID), news, this);
                 }
             }, function (code, err, result) {
@@ -381,7 +386,10 @@ router.post('/getNewsfromID/', function (request, response) {
                     obj.author = result.author;
                     obj.readCount = result.readCount;
                     obj.isPinned = result.isPinned;
-                    obj.tag = result.tag;
+                    obj.tag = []
+                    for (let i = 0; i < request.body.tag.length; i++)
+                        news.tag.push({text: result.tag[i]});
+
                     Department_Control.checkDepartmentByID(new ObjectId(thisNews.departmentId), this);
                 }
             }, function (code, err, result) {
