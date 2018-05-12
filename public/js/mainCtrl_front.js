@@ -152,7 +152,7 @@ angular.module('app').controller('news_container', function($scope, $http, api_m
     let traget = window.traget;
     let department = window.department;
 
-
+    $scope.tag = "0";
     $scope.search = {};
     $scope.search.targetTypeName = traget;
     $scope.search.department = department;
@@ -161,7 +161,7 @@ angular.module('app').controller('news_container', function($scope, $http, api_m
   $scope.news_filter = function(){
     
               
-       
+    $scope.tag = $scope.filter_tag;
     document.querySelector("#loading").style.display = "";
                 $scope.get_news();
     
@@ -169,13 +169,14 @@ angular.module('app').controller('news_container', function($scope, $http, api_m
   $scope.get_news = function() {
 
     let dataObj = {
-      tag:$scope.filter_tag,
+      tag: $scope.tag,
       filterTargetTypeName : $scope.search.targetTypeName,
       resourceId : "0",
       departmentId:$scope.search.department,
       targetTypeId:"0",
-      tag:"0",
+      
       limit:0,
+      isPinned :"0",
       isPosted:"false",
       isPreview:"true"
     }

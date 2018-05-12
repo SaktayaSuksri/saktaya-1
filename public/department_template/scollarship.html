@@ -5,46 +5,61 @@
 <div class="container">
         <center><h2 class="title">ทุนการศึกษา</h2></center>
         <div class="row">
+                <h4 class="title">ปริญญาตรี</h4>
          <div class="col-md-4">
-           <div class="card card-raised card-background" style="background-image: url('../assets/img/examples/office2.jpg')">
+           <div class="card card-raised card-background" ng-repeat="item in news_list_tee" style="background-image: url({{item.topicPicture}})">
                <div class="card-body">
-                     <h3 class="card-title">รับสมัครทุนการศึกษาเครือเจริญโภคภัณฑ์</h3>
+                     <h3 class="card-title">{{item.topicShort}}</h3>
                    <p class="card-description">
-                       รับสมัครทุนการศึกษาเครือเจริญโภคภัณฑ์ทุนละ30,000บาท
+                      {{item.detailShort}}
                    </p>
-                   <a href="#!scollarship-partial" class="btn btn-danger btn-round">
+                   <a ng-href="./news_each/{{item._id}}" class="btn btn-danger btn-round">
                        <i class="material-icons">format_align_left</i> อ่านต่อ...
                    </a>
                </div>
            </div>
          </div>
-         <div class="col-md-4">
-           <div class="card card-raised card-background" style="background-image: url('../assets/img/examples/office2.jpg')">
-               <div class="card-body">
-                     <h3 class="card-title">ทุนการศึกษาคณะวิทยาศาสตร์</h3>
-                   <p class="card-description">
-                       ทุนการศึกษาคณะวิทยาศาสตร์
-                   </p>
-                   <a href="#pablo" class="btn btn-danger btn-round">
-                       <i class="material-icons">format_align_left</i> อ่านต่อ...
-                   </a>
-               </div>
-           </div>
-         </div>
-         <div class="col-md-4">
-           <div class="card card-raised card-background" style="background-image: url('../assets/img/examples/office2.jpg')">
-               <div class="card-body">
-                     <h3 class="card-title">รับสมัครทุนการศึกษาวิจิตรพงศ์พันธุ์</h3>
-                   <p class="card-description">
-                     รับสมัครทุนการศึกษา32ทุนๆละ20,000บาท
-                   </p>
-                   <a href="#pablo" class="btn btn-danger btn-round">
-                       <i class="material-icons">format_align_left</i> อ่านต่อ...
-                   </a>
-               </div>
-           </div>
-         </div>
+    
+
        </div>
+       <div class="row">
+            <div class="col-md-4 ml-auto mr-auto text-center">
+              <a class="btn btn-primary btn-round"  href="./page/news_container/ทุนการศึกษาปริญญาตรี/5a8470c028d2e92a0c753011" target="_blank" >
+                  อ่านทั้งหมด <i class="material-icons">forward</i>
+            </a>
+
+          
+            </div>
+        </div>
+       <hr>
+       <div class="row">
+            <h4 class="title">บัญฑิต</h4>
+     <div class="col-md-4">
+       <div class="card card-raised card-background" ng-repeat="item in news_list_bundit" style="background-image: url({{item.topicPicture}})">
+           <div class="card-body">
+                 <h3 class="card-title">{{item.topicShort}}</h3>
+               <p class="card-description">
+                  {{item.detailShort}}
+               </p>
+               <a ng-href="./news_each/{{item._id}}" class="btn btn-danger btn-round">
+                   <i class="material-icons">format_align_left</i> อ่านต่อ...
+               </a>
+           </div>
+       </div>
+     </div>
+
+   </div>
+
+   <div class="row">
+        <div class="col-md-4 ml-auto mr-auto text-center">
+          <a class="btn btn-primary btn-round"  href="./page/news_container/ทุนการศึกษาบัณฑิตศึกษา/5a8470c028d2e92a0c753011" target="_blank" >
+              อ่านทั้งหมด <i class="material-icons">forward</i>
+        </a>
+
+      
+        </div>
+    </div>
+
    </div>
 </div>
 <br>

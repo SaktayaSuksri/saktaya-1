@@ -26,7 +26,6 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angular-bootstrap-colorpicker/3.0.32/css/colorpicker.css" type="text/css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ng-tags-input/3.2.0/ng-tags-input.css" type="text/css">
     
-    
 
 <!-- Core build with no theme, formatting, non-essential modules -->
 <style>
@@ -52,7 +51,74 @@
         font-size: 100%;
       }
       
-      
+      .loader-page{
+
+  position: fixed;
+    z-index: 1100;
+    height: 2em;
+    width: 2em;
+    overflow: show;
+    margin: auto;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    font: 0/0 a;
+
+    text-shadow: none;
+    
+    border: 0;
+      }
+
+      .loader-circle
+{
+
+
+  height: 10px;
+  animation: 1.75s ease load infinite;
+  width: 10px;
+  background: #2c67e3!important;
+  display: inline-block;
+  position: fixed;
+  top: calc(50% + 5px);
+  left: -15px;
+  border-radius: 50%;
+
+
+}
+.red
+{
+  background: #da1212;
+}
+.yellow
+{
+  background: #dada12;
+  animation-delay: .15s;
+}
+.green
+{
+  background: #5cb85c;
+  animation-delay: .3s;
+}
+.blue
+{
+  background: #2c67e3;
+  animation-delay: 0.45s;
+}
+@keyframes load {
+  0% {left: -15px}
+  50% {left: calc(50% - 5px)}
+  100% {left: calc(100% + 15px)}
+}
+.lime
+{
+  animation-delay: .6s;
+}
+.black
+{
+  animation-delay: .75s;
+}
+
 
         
       </style>
@@ -60,6 +126,16 @@
 </head>
 
 <body ng-app="app">
+
+    <div id="loader" class="loader-page">
+        <div class="loader-circle red"></div>
+        <div class="loader-circle yellow"></div>
+        <div class="loader-circle green"></div>
+        <div class="loader-circle blue"></div>
+        <div class="loader-circle lime"></div>
+        <div class="loader-circle black"></div>
+    </div>
+
     <div class="wrapper">
         <div class="sidebar" data-color="purple" data-image="./assets/img/sidebar-1.jpg">
             <!--
@@ -214,5 +290,5 @@
   <script src=' https://cdnjs.cloudflare.com/ajax/libs/angular-bootstrap-colorpicker/3.0.32/js/bootstrap-colorpicker-module.js'></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/ng-tags-input/3.2.0/ng-tags-input.js"></script>
   
- 
+
 </html>

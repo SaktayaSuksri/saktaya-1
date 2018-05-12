@@ -2,7 +2,7 @@
 
 
 // Declare app level module which depends on filters, and services
-var app = angular.module('department_app', ['ui.router'] );
+var app = angular.module('department_app', ['ui.router',"api_service"] );
 
 /*app.config(function($routeProvider) {
   $routeProvider.when('/', {
@@ -94,7 +94,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
   });
 
 // ===================== start controller ===========================
-app.controller("navCtrl", function($scope , $location) {
+app.controller("navCtrl", function($scope , $location,api_manage) {
   $scope.gotoEnroll = function() {
     console.log("gotoEnroll");
     $location.path('/course/')
@@ -108,7 +108,7 @@ app.controller("navCtrl", function($scope , $location) {
 });
 
 
-app.controller("aboutCtrl", function($scope, $location,$http) {
+app.controller("aboutCtrl", function($scope, $location,$http,api_manage) {
   $scope.gotoEnroll = function() {
     $location.path('/course/')
   };
@@ -160,63 +160,109 @@ alert("new detail = "+id)
 
 }
 
+
 $scope.get_news = function(){
 
-$scope.news_list_1 =[];
-$scope.news_list_2 =[];
-$scope.news_list_3 =[];
-let dataObj = {
-  tag:$scope.filter_tag,
-  filterTargetTypeName : $scope.search.targetTypeName,
+  $scope.news_list = null;
+  let dataObj = {
 
-  resourceId : "0",
-  departmentId:"0",
-  tag:"0",
-  limit:6,
-  isPosted:"false",
-  isPreview:"true",
-  targetTypeId:"0"
+   filterTargetTypeName : "0",
+    resourceId : "0",
+    departmentId:"5a8470c028d2e92a0c753011",
+    tag:"0",
+    limit:3,
+    isPinned : "false",
+    isPosted:"false",
+    isPreview:"true",
+    targetTypeId:"0"
 
-}
-$http.post('/api/getNews/',dataObj)
-  .success(function(data, status, headers, config) {
-      //$scope.message = data;
-    //  console.log("-----------"+ JSON.stringify(data));
-      if(data.code != "999999")
-      {
-        alert(data.message);
+  }
+    api_manage.get_news(dataObj)
+    .success(function(data, status, headers, config) {
+        //$scope.message = data;
+      //  console.log("-----------"+ JSON.stringify(data));
+        if(data.code != "999999")
+        {
+          alert(data.message);
+        }
+        else
+        {
+        console.log(" get_news  "+ JSON.stringify(data));
+        $scope.news_list = data.message
+      
+     //   console.log('$scope.news_list  =  '+ JSON.stringify($scope.news_list))
+      //  $scope.news_table= new NgTableParams({count: 10 ,  sorting: { resourceName: "desc" }  }, { counts: [10,20, 100], dataset: $scope.news_list });
+
       }
-      else
-      {
-      console.log(data);
-      $scope.news_list_1[0] = data.message[0];
-      $scope.news_list_1[1] = data.message[1];
-      $scope.news_list_1[2] = data.message[2];
-      $scope.news_list_2[0] = data.message[3];
-      $scope.news_list_2[1] = data.message[4];
-      $scope.news_list_2[2] = data.message[5];
-   //   console.log('$scope.news_list  =  '+ JSON.stringify($scope.news_list))
-    //  $scope.news_table= new NgTableParams({count: 10 ,  sorting: { resourceName: "desc" }  }, { counts: [10,20, 100], dataset: $scope.news_list });
 
-    }
+    })
+    .error(function(data, status, headers, config) {
+        alert( "failure message: " + JSON.stringify({data: data}) +"ไม่สามารถติดต่อเซิฟเวอร์ได้ ติดต่อแอดมิน");
+        console.log(status+headers);
+    });
+  }
 
-  })
-  .error(function(data, status, headers, config) {
-      alert( "failure message: " + JSON.stringify({data: data}) +"ไม่สามารถติดต่อเซิฟเวอร์ได้ ติดต่อแอดมิน");
-      console.log(status+headers);
-  });
-}
-$scope.init = function(){
+
+                
+$scope.get_news_slide = function(){
   
-          //  quill_title  quill_detail      quill_title_yo  quill_detail_yo
+      //document.querySelector("#loading").style.display = "";
+       $scope.news_list_slide = [];
+  
+    
+      let dataObj = {
+  
+       filterTargetTypeName : "0",
+        resourceId : "0",
+        departmentId:"0",
+        tag:"0",
+        limit:0,
+        isPinned : "true",
+        isPosted:"false",
+        isPreview:"true",
+        targetTypeId:"0"
+  
+      }
+        api_manage.get_news(dataObj)
+        .success(function(data, status, headers, config) {
+            //$scope.message = data;
+          //  console.log("-----------"+ JSON.stringify(data));
+            if(data.code != "999999")
+            {
+              alert(data.message);
+            }
+            else
+            {
+            console.log(" get_news for slide  "+ JSON.stringify(data));
+            $scope.news_list_slide = data.message;
+           
+  
+       //     document.querySelector("#loading").style.display = "none";
+         //   console.log('$scope.news_list  =  '+ JSON.stringify($scope.news_list))
+          //  $scope.news_table= new NgTableParams({count: 10 ,  sorting: { resourceName: "desc" }  }, { counts: [10,20, 100], dataset: $scope.news_list });
+  
+          }
+  
+        })
+        .error(function(data, status, headers, config) {
+            alert( "failure message: " + JSON.stringify({data: data}) +"ไม่สามารถติดต่อเซิฟเวอร์ได้ ติดต่อแอดมิน");
+            console.log(status+headers);
+        });
+      }
+  
+  
+  
+$scope.init = function(){
           $scope.search = {};
           $scope.search.targetTypeName = "0";
         //  $scope.search.department = "5a8470c028d2e92a0c753011"; //ภาคคอม
-        $scope.search.department = "5a8470b228d2e92a0c753010";
+        $scope.search.department = "5a8470c028d2e92a0c753011";
         
+
+          $scope.get_news_slide();
+  
           $scope.get_news();
-  
-  
+          
       }
   
       
@@ -294,3 +340,106 @@ app.controller("course_detailCtrl", function($scope, $location) {
  }
 
 });
+
+app.controller("scollarshipCtrl", function($scope, $location) {
+  
+  $scope.init = function(){
+ 
+    $scope.get_news();
+    
+}
+
+
+$scope.init();
+
+
+
+$scope.get_news_tee = function(){
+  
+    $scope.news_list = null;
+    let dataObj = {
+  
+     filterTargetTypeName : "0",
+      resourceId : "0",
+      departmentId:"5a8470c028d2e92a0c753011",
+      tag:"0",
+      limit:6,
+      isPinned : "0",
+      isPosted:"false",
+      isPreview:"true",
+      targetTypeId:"5af34b56734d1d64dbec343c"
+  
+    }
+      api_manage.get_news(dataObj)
+      .success(function(data, status, headers, config) {
+          //$scope.message = data;
+        //  console.log("-----------"+ JSON.stringify(data));
+          if(data.code != "999999")
+          {
+            alert(data.message);
+          }
+          else
+          {
+          console.log(" get_news tee  "+ JSON.stringify(data));
+          $scope.news_list_tee = data.message
+        
+       //   console.log('$scope.news_list  =  '+ JSON.stringify($scope.news_list))
+        //  $scope.news_table= new NgTableParams({count: 10 ,  sorting: { resourceName: "desc" }  }, { counts: [10,20, 100], dataset: $scope.news_list });
+  
+        }
+  
+      })
+      .error(function(data, status, headers, config) {
+          alert( "failure message: " + JSON.stringify({data: data}) +"ไม่สามารถติดต่อเซิฟเวอร์ได้ ติดต่อแอดมิน");
+          console.log(status+headers);
+      });
+    }
+  
+
+    
+$scope.get_news_bundit = function(){
+  
+    $scope.news_list = null;
+    let dataObj = {
+  
+     filterTargetTypeName : "0",
+      resourceId : "0",
+      departmentId:"5a8470c028d2e92a0c753011",
+      tag:"0",
+      limit:6,
+      isPinned : "0",
+      isPosted:"false",
+      isPreview:"true",
+      targetTypeId:"5af34b7a734d1d64dbec346a"
+  
+    }
+      api_manage.get_news(dataObj)
+      .success(function(data, status, headers, config) {
+          //$scope.message = data;
+        //  console.log("-----------"+ JSON.stringify(data));
+          if(data.code != "999999")
+          {
+            alert(data.message);
+          }
+          else
+          {
+          console.log(" get_news_bundit "+ JSON.stringify(data));
+          $scope.news_list_bundit = data.message
+        
+       //   console.log('$scope.news_list  =  '+ JSON.stringify($scope.news_list))
+        //  $scope.news_table= new NgTableParams({count: 10 ,  sorting: { resourceName: "desc" }  }, { counts: [10,20, 100], dataset: $scope.news_list });
+  
+        }
+  
+      })
+      .error(function(data, status, headers, config) {
+          alert( "failure message: " + JSON.stringify({data: data}) +"ไม่สามารถติดต่อเซิฟเวอร์ได้ ติดต่อแอดมิน");
+          console.log(status+headers);
+      });
+    }
+  
+  
+
+
+  });
+  

@@ -10,12 +10,27 @@ angular.module('api_service', [])
         create_catagory: function(data) {
           return $http.post('/api/newResourceType', data);
         },
+        
         update_catagory: function(data) {
           return $http.post('/api/editResourceType', data);
         },
         delete_catagory: function(data) {
           return $http.post('/api/deleteResourceType', data);
         },
+
+        get_department : function () {
+            return $http.get('/api/getDepartmentsAll/');
+        },
+
+
+
+        get_traget: function () {
+            return $http.get('/api/getTargetTypesAll/');
+        },
+
+
+
+
         get_tag: function() {
           return $http.get('/api/getTag/');
         },
@@ -31,6 +46,7 @@ angular.module('api_service', [])
         get_news: function(data) {
           return $http.post('/api/getNews/', data);
         },
+        
         update_news: function(data) {
           return $http.post('/api/editNews/', data);
         },

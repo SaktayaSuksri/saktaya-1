@@ -42,6 +42,76 @@ angular.module('app').controller('global', function ($scope,$http,api_manage){
 
 });
 
+angular.module('app').controller('header_first', function ($scope,$http,api_manage){
+    // alert("global ctrl");
+  
+    $scope.init = function(){
+        
+                    //  quill_title  quill_detail      quill_title_yo  quill_detail_yo
+            
+        
+                    
+                    $scope.search = {};
+                    $scope.search.targetTypeName = "0";
+                    $scope.get_news();
+                
+        
+        
+                }
+
+                
+$scope.get_news = function(){
+
+    //document.querySelector("#loading").style.display = "";
+     $scope.news_list_slide = [];
+
+     alert();
+    let dataObj = {
+
+     filterTargetTypeName : $scope.search.targetTypeName,
+      resourceId : "0",
+      departmentId:"0",
+      tag:"0",
+      limit:0,
+      isPinned : "true",
+      isPosted:"false",
+      isPreview:"true",
+      targetTypeId:"0"
+
+    }
+      api_manage.get_news(dataObj)
+      .success(function(data, status, headers, config) {
+          //$scope.message = data;
+        //  console.log("-----------"+ JSON.stringify(data));
+          if(data.code != "999999")
+          {
+            alert(data.message);
+          }
+          else
+          {
+          console.log(" get_news for slide  "+ JSON.stringify(data));
+          $scope.news_list_slide = data.message;
+         
+
+     //     document.querySelector("#loading").style.display = "none";
+       //   console.log('$scope.news_list  =  '+ JSON.stringify($scope.news_list))
+        //  $scope.news_table= new NgTableParams({count: 10 ,  sorting: { resourceName: "desc" }  }, { counts: [10,20, 100], dataset: $scope.news_list });
+
+        }
+
+      })
+      .error(function(data, status, headers, config) {
+          alert( "failure message: " + JSON.stringify({data: data}) +"ไม่สามารถติดต่อเซิฟเวอร์ได้ ติดต่อแอดมิน");
+          console.log(status+headers);
+      });
+    }
+
+
+});
+
+
+
+
 
 angular.module('app').controller('news_detail', function ($scope,$http,api_manage,global_service){
 
@@ -152,6 +222,7 @@ $scope.get_news = function(){
       departmentId:"0",
       tag:"0",
       limit:6,
+      isPinned : "false",
       isPosted:"false",
       isPreview:"true",
       targetTypeId:"0"
