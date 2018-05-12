@@ -188,9 +188,9 @@ module.exports = {
 function getFullNews(news, callback) {
     let tmp = JSON.parse(JSON.stringify(news));
     let tmpTag = news.tag;
-    news.tag = []
+    news.tag2 = []
     for (let i = 0; i < tmpTag.length; i++)
-        news.tag.push({text: tmpTag[i]});
+        news.tag2.push({text: tmpTag[i]});
 
     flow.exec(
         function () {
