@@ -73,9 +73,119 @@
 }
 </style>
 <body class="product-page" ng-app="app"  > 
-        
-    <div ng-include src="'http://localhost:2001/partial/navbar_template/for_graduate.html'"></div>
-
+        <nav class="navbar   navbar-color-on-scroll  fixed-top   navbar-expand-lg   bg-warning"  color-on-scroll="100"  >
+                
+                           <div class="container-fluid">
+                               <div class="navbar-translate">
+                                   <img class=" mr-0 mr-md-2 navbar-absolute-logo" src="http://www.science.kmitl.ac.th/wp-content/themes/personalTheme/assets/images/science-logo.png" width="375" height="80">
+                                   <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
+                                       <span class="navbar-toggler-icon"></span>
+                                       <span class="navbar-toggler-icon"></span>
+                                       <span class="navbar-toggler-icon"></span>
+                                   </button>
+                               </div>
+                               <div class="collapse navbar-collapse">
+                                   <ul class="nav justify-content-center ml-auto">
+                   
+                                         
+                                               <li class="nav-item">
+                                                   <a href="/graduate/home" class=" nav-link" >
+                                                       <i class="material-icons">view_day</i> หน้าแรก
+                                                   </a>
+                       
+                                               </li>
+                                         
+                                       <li class="dropdown nav-item">
+                                           <a  class="dropdown-toggle nav-link" data-toggle="dropdown">
+                                               <i class="material-icons">view_day</i> หลักสูตร
+                                           </a>
+                                           <div class="dropdown-menu dropdown-menu-right dropdown-with-icons">
+                                          
+                                               <a href="/page#/course-tor" class="dropdown-item">
+                                                       <i class="material-icons">build</i> ปริญญาโท
+                                                   </a>
+                                               <a href="/page#/course-aek"class="dropdown-item">
+                                                   <i class="material-icons">build</i> ปริญญาเอก
+                                               </a>
+                                               <a href="/page#/course-aek"class="dropdown-item">
+                                                   <i class="material-icons">build</i> กรอบมาตรฐานคุณวุฒิระดับอุดมศึกษา
+                                               </a>
+                   
+                                           </div>
+                                       </li>
+                          
+                                       
+                                       <li class="dropdown nav-item">
+                                           <a  class="dropdown-toggle nav-link " data-toggle="dropdown">
+                                               <i class="material-icons">view_carousel</i> การเข้าศึกษา
+                                           </a>
+                                           <div class="dropdown-menu dropdown-menu-right dropdown-with-icons">
+                                                   <a href="" class="dropdown-item">
+                                                           <i class="material-icons">account_balance</i> ปฎิทินการศึกษา
+                                                       </a>
+                                               <a href="" class="dropdown-item">
+                                                   <i class="material-icons">account_balance</i> ระเบียบ-ข้อบังคับ
+                                               </a>
+                                               <a href="" class="dropdown-item">
+                                                   <i class="material-icons">art_track</i> รายชื่อาจารย์บัณฑิต
+                                               </a>
+                                               <a href="" class="dropdown-item">
+                                                   <i class="material-icons">view_quilt</i>  การสอบวัดคุณสมบัติ (QE)
+                                               </a>
+                                               <a href="./department.html" class="dropdown-item">
+                                                   <i class="material-icons">location_on</i> ตารางเรียน-ตารางสอบ
+                                               </a>
+                                               <a href="" class="dropdown-item">
+                                                   <i class="material-icons">view_day</i> แบบฟอร์ม
+                                               </a>
+                                  
+                                           </div>
+                                       </li>
+                                       <li class="nav-item">
+                                           <a href="" class=" nav-link" >
+                                               <i class="material-icons">view_day</i> วิทยานิพนธ์
+                                           </a>
+               
+                                       </li>
+                                       <li class="nav-item">
+                                           <a href="" class=" nav-link" >
+                                               <i class="material-icons">view_day</i> ทุนอุดหนุน                            </a>
+               
+                                       </li>
+               
+                                       <li class="dropdown nav-item">
+                                           <a  class="dropdown-toggle nav-link" data-toggle="dropdown">
+                                               <i class="material-icons">view_carousel</i> อื่นๆ
+                                           </a>
+                                           <div class="dropdown-menu dropdown-menu-right dropdown-with-icons">
+                                               <a href="/page#/history" class="dropdown-item">
+                                                   <i class="material-icons">account_balance</i> รายชื่อวารสารของคณะวิทย์
+                                               </a>
+                                               <a  href="/page#/resolution" class="dropdown-item">
+                                                   <i class="material-icons">art_track</i> รายชื่อวารสารของสถาบัน
+                                               </a>
+                                               <a href="/page#/structure" class="dropdown-item">
+                                                   <i class="material-icons">view_day</i>  วารสารติด BEALL’S LIST 2015 – 2016
+                                               </a>
+                                               <a  href="/page#/yearly-report" class="dropdown-item">
+                                                   <i class="material-icons">store</i> แหล่งฐานข้อมูลวารสาร/บทความ
+                                               </a>
+                                           </div>
+                                       </li>
+               
+                                       <li class="button-container nav-item">
+                                          <!-- <a href="http://www.creative-tim.com/buy/material-kit-pro?ref=presentation" target="_blank" class="btn  btn-rose   btn-round btn-block">
+                                               <i class="material-icons">shopping_cart</i> Buy Now
+                                           </a>-->
+                                       </li>
+                                   </ul>
+                   
+                              
+                   
+                               </div>
+                   
+                           </div>
+                       </nav>
     
                     
     <div class="page-header header-filter" data-parallax="true" filter-color="rose" style="background-image: url(&quot;http://demos.creative-tim.com/material-kit-pro/assets/img/kit/pro/bg6.jpg&quot;); transform: translate3d(0px, 0px, 0px);">

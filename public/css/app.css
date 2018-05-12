@@ -5,3 +5,8 @@
 .ace_editor {
 	height: 80vh;
 }
+
+.navbar .dropdown.show .dropdown-menu, .navbar .dropdown .dropdown-menu {
+  height: auto;
+ 
+}

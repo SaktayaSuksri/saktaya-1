@@ -5,13 +5,6 @@ var router = express.Router();
 var ObjectId = require('mongodb').ObjectId;
 
 var TargetType = require('../model/targetType_model');
-
-// Middleware for all routes
-router.use(function (req, res, next) {
-    console.log("\n** Request detected >> " + JSON.stringify(req.body));
-    next();
-});
-
 // Route Definitions
 router.post('/newTargetType', function(req, res) {
     if (!req.body.targetTypeName) {

@@ -22,7 +22,7 @@ module.exports = {
     },
     updateNewsByID: function (newsID, news, callback) {
         var myquery = { "_id": newsID };
-        var newvalues = { $set: { "topicShort": news.topicShort, "topicFull": news.topicFull, "detailShort": news.detailShort, "detailFull": news.detailFull, "topicPicture": news.topicPicture, "author": news.author, "isPinned": news.isPinned, "resourceId": news.resourceId, "tagArray": news.tagArray, "datetimeEdit": Date.now() } };
+        var newvalues = { $set: { "topicShort": news.topicShort, "topicFull": news.topicFull, "detailShort": news.detailShort, "detailFull": news.detailFull, "topicPicture": news.topicPicture, "author": news.author, "isPinned": news.isPinned, "resourceId": news.resourceId, "tag": news.tag, "datetimeEdit": Date.now() } };
         News.updateOne(myquery, newvalues, function (error, updateResponse) {
             if (error) {
                 var alert = "Error in finding News with _id: " + newsID + "\nError: " + error.message;
@@ -71,77 +71,34 @@ module.exports = {
             callback("043", null, null)
         }
     },
-    getAllNews: function (resourceId, targetTypeId, departmentId, tag, isPreview, limitNum, isPosted, callback) {
+    getAllNews: function (resourceId, targetTypeId, departmentId, tag, isPreview, limitNum, isPosted, isPinned, callback) {
         var today = new Date();
-        console.log("resourceId: " + resourceId + " / targetType " + targetTypeId + " / departmentId " + departmentId + " / tagArray: " + tag);
-        var myquery = { $and: [{ "resourceId": resourceId }, { "targetTypeId": targetTypeId }, { "departmentId": departmentId }, { "tagArray": tag }] };
+        console.log("resourceId: " + resourceId + " / targetType " + targetTypeId + " / departmentId " + departmentId + " / isPinned " + isPinned + " / tag: " + tag);
+        var myquery = {};
+
+        let tmp = [];
+        if (resourceId !== "0")
+            tmp.push({ "resourceId": resourceId })
+        if (departmentId !== "0")
+            tmp.push({ "departmentId": departmentId })
+        if (targetTypeId !== "0")
+            tmp.push({ "targetTypeId": targetTypeId })
+        if (tag !== "0")
+            tmp.push({ "tag": tag })
+        if (isPosted !== "true")
+            tmp.push({ "datetimePost": { $lte: today } })
+        if (isPinned !== "0")
+            tmp.push({ "isPinned": isPinned })
+        myquery = { $and: tmp };
+
+        //$and: [{ "resourceId": resourceId }, { "targetTypeId": targetTypeId }, { "departmentId": departmentId }, { "tag": tag }]
+
         var projection = {}
-
-        if (resourceId == "0" && departmentId == "0" && tag == "0" && targetTypeId == "0" && isPosted == "false")
-            myquery = {}
-        else if (resourceId == "0" && departmentId == "0" && targetTypeId == "0" && isPosted == "false")
-            myquery = { "tagArray": tag }
-        else if (resourceId == "0" && tag == "0" && targetTypeId == "0" && isPosted == "false")
-            myquery = { "departmentId": departmentId }
-        else if (departmentId == "0" && tag == "0" && targetTypeId == "0" && isPosted == "false")
-            myquery = { "resourceId": resourceId }
-        else if (resourceId == "0" && targetTypeId == "0" && isPosted == "false")
-            myquery = { $and: [{ "departmentId": departmentId }, { "tagArray": tag }] }
-        else if (departmentId == "0" && targetTypeId == "0" && isPosted == "false")
-            myquery = { $and: [{ "resourceId": resourceId }, { "tagArray": tag }] }
-        else if (tag == "0" && targetTypeId == "0" && isPosted == "false")
-            myquery = { $and: [{ "resourceId": resourceId }, { "departmentId": departmentId }] }
-
-        else if (resourceId == "0" && departmentId == "0" && targetTypeId == "0" && tag == "0" && isPosted == "false")
-            myquery = { "targetTypeId": targetTypeId }
-        else if (resourceId == "0" && departmentId == "0" && targetTypeId == "0" && isPosted == "false")
-            myquery = { $and: [{ "tagArray": tag, "targetTypeId": targetTypeId }] }
-        else if (resourceId == "0" && tag == "0" && targetTypeId == "0" && isPosted == "false")
-            myquery = { $and: [{ "departmentId": departmentId, "targetTypeId": targetTypeId }] }
-        else if (departmentId == "0" && tag == "0" && targetTypeId == "0" && isPosted == "false")
-            myquery = { $and: [{ "resourceId": resourceId, "targetTypeId": targetTypeId }] }
-        else if (resourceId == "0" && targetTypeId == "0" && isPosted == "false")
-            myquery = { $and: [{ "departmentId": departmentId }, { "tagArray": tag }, { "targetTypeId": targetTypeId }] }
-        else if (departmentId == "0" && targetTypeId == "0" && isPosted == "false")
-            myquery = { $and: [{ "resourceId": resourceId }, { "tagArray": tag }, { "targetTypeId": targetTypeId }] }
-        else if (tag == "0" && targetTypeId == "0" && isPosted == "false")
-            myquery = { $and: [{ "resourceId": resourceId }, { "departmentId": departmentId }, { "targetTypeId": targetTypeId }] }
-
-        else if (resourceId == "0" && departmentId == "0" && tag == "0" && isPosted == "true")
-            myquery = { "datetimePost": { $lte: today } }
-        else if (resourceId == "0" && departmentId == "0" && isPosted == "true")
-            myquery = { $and: [{ "tagArray": tag }, { "datetimePost": { $lte: today } }] }
-        else if (resourceId == "0" && tag == "0" && isPosted == "true")
-            myquery = { $and: [{ "departmentId": departmentId }, { "datetimePost": { $lte: today } }] }
-        else if (departmentId == "0" && tag == "0" && isPosted == "true")
-            myquery = { $and: [{ "resourceId": resourceId }, { "datetimePost": { $lte: today } }] }
-        else if (resourceId == "0" && isPosted == "true")
-            myquery = { $and: [{ "departmentId": departmentId }, { "tagArray": tag }, { "datetimePost": { $lte: today } }] }
-        else if (departmentId == "0" && isPosted == "true")
-            myquery = { $and: [{ "resourceId": resourceId }, { "tagArray": tag }, { "datetimePost": { $lte: today } }] }
-        else if (tag == "0" && isPosted == "true")
-            myquery = { $and: [{ "resourceId": resourceId }, { "departmentId": departmentId }, { "datetimePost": { $lte: today } }] }
-
-        else if (resourceId == "0" && departmentId == "0" && tag == "0" && isPosted == "true")
-            myquery = { $and: [{ "datetimePost": { $lte: today } }, { "targetTypeId": targetTypeId }] }
-        else if (resourceId == "0" && departmentId == "0" && isPosted == "true")
-            myquery = { $and: [{ "tagArray": tag }, { "datetimePost": { $lte: today } }, { "targetTypeId": targetTypeId }] }
-        else if (resourceId == "0" && tag == "0" && isPosted == "true")
-            myquery = { $and: [{ "departmentId": departmentId }, { "datetimePost": { $lte: today } }, { "targetTypeId": targetTypeId }] }
-        else if (departmentId == "0" && tag == "0" && isPosted == "true")
-            myquery = { $and: [{ "resourceId": resourceId }, { "datetimePost": { $lte: today } }, { "targetTypeId": targetTypeId }] }
-        else if (resourceId == "0" && isPosted == "true")
-            myquery = { $and: [{ "departmentId": departmentId }, { "tagArray": tag }, { "datetimePost": { $lte: today } }, { "targetTypeId": targetTypeId }] }
-        else if (departmentId == "0" && isPosted == "true")
-            myquery = { $and: [{ "resourceId": resourceId }, { "tagArray": tag }, { "datetimePost": { $lte: today } }, { "targetTypeId": targetTypeId }] }
-        else if (tag == "0" && isPosted == "true")
-            myquery = { $and: [{ "resourceId": resourceId }, { "departmentId": departmentId }, { "datetimePost": { $lte: today } }, { "targetTypeId": targetTypeId }] }
-
         if (isPreview == "true") {
-            projection = { "_id": true, "topicShort": true, "targetTypeId": true, "detailShort": true, "topicPicture": true, "readCount": true, "isPinned": true, "resourceId": true, "departmentId": true, "tagArray": true };
+            projection = { "_id": true, "topicShort": true, "targetTypeId": true, "detailShort": true, "topicPicture": true, "readCount": true, "isPinned": true, "resourceId": true, "departmentId": true, "tag": true };
         }
 
-        News.find(myquery, projection, { sort: { isPinned: -1, datetimePost: -1 }, limit: limitNum }, function (error, newsGetResult) { 	// return error into 'err' and response into 'bear'
+        News.find(myquery, projection, { sort: { datetimePost: -1 }, limit: limitNum }, function (error, newsGetResult) { 	// return error into 'err' and response into 'bear'
             if (error) {
                 var alert = "Error in getAllNews , Error : " + error.message;
                 console.log(alert);
@@ -153,7 +110,7 @@ module.exports = {
                 callback("122", null, newsGetResult)
             }
             else {
-                var alert = "No News with resourceId: " + resourceId + " and departmentId: " + departmentId + " was found";
+                var alert = "No News with resourceId: " + resourceId + " / departmentId: " + departmentId + " / targetTypeId: " + targetTypeId + " / isPinned " + isPinned + " / tag: " + tag + " was found";
                 console.log(alert);
                 callback("123", alert, null)
             }
@@ -189,24 +146,39 @@ module.exports = {
             }
         });
     },
+
     joinNewsData: function (news, callback) {
-        var counterArray = []
-        var forCallback = []
+        let forCallback = [];
+        console.log("news.length >> " + news.length)
+        let j = 0;
         for (let i = 0; i < news.length; i++) {
-            counterArray.push(i)
+            getFullNews(news[i], function (a) {
+                //console.log("a >> " + JSON.stringify(a))
+                forCallback.push(a);
+                if (j == news.length - 1)
+                    callback("...", null, forCallback);
+                else
+                    j++;
+            });
         }
 
-        let currentPos = 0;
-        flow.serialForEach(counterArray, function (pos) {
-            currentPos = pos;
-            //console.log("historyArray[currentPos] " + historyArray[currentPos]);
-            getFullNews(news[currentPos], this);
-        }, function (functionCallback) {
-            forCallback.push(functionCallback);
-        }, function () {
-            //console.log("callback")
-            callback("421", null, forCallback);
-        });
+        // var counterArray = []
+        // var forCallback = []
+        // for (let i = 0; i < news.length; i++) {
+        //     counterArray.push(i)
+        // }
+
+        // let currentPos = 0;
+        // flow.serialForEach(counterArray, function (pos) {
+        //     currentPos = pos;
+        //     //console.log("historyArray[currentPos] " + historyArray[currentPos]);
+        //     getFullNews(news[currentPos], this);
+        // }, function (functionCallback) {
+        //     forCallback.push(functionCallback);
+        // }, function () {
+        //     //console.log("callback")
+        //     callback("421", null, forCallback);
+        // });
 
     }
 };
@@ -215,6 +187,11 @@ module.exports = {
 
 function getFullNews(news, callback) {
     let tmp = JSON.parse(JSON.stringify(news));
+    let tmp = news.tag;
+    news.tag = []
+    for (let i = 0; i < tmp.length; i++)
+        news.tag.push({text: tmp[i]});
+
     flow.exec(
         function () {
             //console.log("history.requestId: "+history.requestID)
@@ -242,7 +219,7 @@ function getFullNews(news, callback) {
             else {
                 tmp["targetTypeName"] = null;
             }
-            
+
             callback(tmp)
         }
     );

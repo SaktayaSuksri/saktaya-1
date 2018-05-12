@@ -15,7 +15,7 @@ var News_Schema = new Schema({
     resourceId: { type: String, required: true },
     targetTypeId: { type: String, required: true },
     departmentId: { type: String, required: true },
-    tagArray: { type: [String] }
+    tag: { type: [String] }
 });
 
 module.exports = mongoose.model('News', News_Schema);

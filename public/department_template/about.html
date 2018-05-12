@@ -1,3 +1,40 @@
+    <style>
+    
+    .carousel .carousel-indicators li{
+
+
+  position: relative;
+  flex: 0 1 auto;
+  width: 30px;
+  height: 10px;
+  border-radius: 25px;
+  margin-right: 3px;
+  margin-left: 3px;
+  text-indent: -999px;
+  background-color: rgb(243, 151, 37);
+}
+
+.carousel-control-prev-icon{
+    height: 10%;
+    width: 37%;
+    background-color: #ffc107;
+    background-size: 41%, 51%;
+    border-radius: 50%;
+    border-color: rgba(0,0,0,0);
+}
+
+.carousel-control-next-icon{
+
+  height: 10%;
+    width: 37%;
+    background-color: #ffc107;
+    background-size: 41%, 51%;
+    border-radius: 50%;
+    border-color: rgba(0,0,0,0);
+}
+
+</style>
+    
     <div class="page-header header-filter header-small" data-parallax="true" style=" overflow: hidden; background-image: url(&apos;http://www.comsci.science.kmitl.ac.th/cs/upload/content/Nm3YfWT6LaFri42534.jpg&apos;);">
         <div class="container">
             <div class="row">
@@ -28,7 +65,7 @@
                     <img class="d-block w-100" ng-src="{{news_list_1[0].topicPicture}}" alt="First slide">
                     <div class="carousel-caption d-none d-md-block">
                             <h4>
-                                    <a  ng-href="./news_each/{{news_list_1[0]._id}}" class="btn btn-primary">อ่านต่อ</a>
+                                    <a  ng-href="http://localhost:2001/news_each/{{news_list_1[0]._id}}" class="btn btn-primary">อ่านต่อ</a>
                                     
                             </h4>
                         </div>
@@ -39,7 +76,7 @@
                   
                     <div class="carousel-caption d-none d-md-block">
                             <h4>
-                                    <a  ng-href="./news_each/{{news_list_1[1]._id}}" class="btn btn-primary">อ่านต่อ</a>
+                                    <a  ng-href="http://localhost:2001/news_each/{{news_list_1[1]._id}}" class="btn btn-primary">อ่านต่อ</a>
                                     
                             </h4>
                         </div>
@@ -49,7 +86,7 @@
                     <img class="d-block w-100"  ng-src="{{news_list_1[2].topicPicture}}" alt="Third slide">
                     <div class="carousel-caption d-none d-md-block">
                             <h4>
-                                    <a  ng-href="./news_each/{{news_list_1[2]._id}}" class="btn btn-primary">อ่านต่อ</a>
+                                    <a  ng-href="http://localhost:2001/news_each/{{news_list_1[2]._id}}" class="btn btn-primary">อ่านต่อ</a>
                                     
                             </h4>
                         </div>
@@ -70,11 +107,11 @@
       <div class="row">
           <div class="col-md-4" ng-repeat="item in news_list_2" >
             <div class="card" style="width: 100%;">
-                <img class="card-img-top" ng-src="{{item.topicPicture}}"  onerror="this.src='./assets/img/image_placeholder.jpg';" alt="not found">
+                <img class="card-img-top" ng-src="{{item.topicPicture}}"  onerror="this.src='http://localhost:2001/assets/img/image_placeholder.jpg';" alt="not found">
                 <div class="card-body">
                   <h4 class="card-title">{{item.topicShort  | limitTo:100}}</h4>
                   <p class="card-text"> &ensp; &ensp; {{item.detailShort | limitTo:300}}.... </p>
-                  <a  ng-href="./news_each/{{item._id}}" class="btn btn-primary">อ่านต่อ</a>
+                  <a  ng-href="http://localhost:2001/news_each/{{item._id}}" class="btn btn-primary">อ่านต่อ</a>
                 </div>
             </div>
           </div>
@@ -102,9 +139,11 @@
 
         <div class="row">
             <div class="col-md-4 ml-auto mr-auto text-center">
-              <button class="btn btn-primary btn-round">
+              <a class="btn btn-primary btn-round"  href="http://localhost:2001/page/news_container/{{search.targetTypeName}}/5a8470c028d2e92a0c753011" target="_blank" >
                   อ่านทั้งหมด <i class="material-icons">forward</i>
-              </button>
+            </a>
+
+          
             </div>
         </div>
     </div>
@@ -197,7 +236,7 @@
       </div>
       </div>
 
-      <div class="" style="background-image:  url(&apos;../assets/img/bg-slogan.jpg&apos;);     height: 209px;
+      <div class="" style="background-image:  url(&apos;http://localhost:2001/assets/img/bg-slogan.jpg&apos;);     height: 209px;
 
       background-repeat: repeat-x;
       margin: 0px 0;
@@ -227,8 +266,10 @@
 
 
        <!--     *********    CONTACT US 2     *********      -->
+      
        <div class="contactus-2">
-        <div id="contactUs2Map" class="map" style="width:100%;height:400px;"></div>
+        
+        <div id="contactUs2Map" class="map" style="width:100%;height:600px;"></div>
         <div class="col-md-6">
             <div class="card card-contact card-raised">
                 <form id="contact-form2" method="post">
@@ -236,7 +277,7 @@
                         <h4 class="card-title">Contact Us</h4>
                     </div>
                     <div class="card-body">
-                        <div class="container">
+                        <div class="container main main-raise">
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="info info-horizontal">
@@ -244,7 +285,7 @@
                                         <i class="material-icons">phone</i>
                                     </div>
                                     <div class="description">
-                                        <h5 class="info-title">Give us a ring</h5>
+                                        <h5 class="info-title">ติดต่อ</h5>
                                    
                                             โทร.02-329-8400 ถึง 8411 
                                             <br> โทรสาร.02-329-8412
@@ -272,12 +313,25 @@
                             </div>
                         </div>
                     </div>
+                 
                     </div>
                 
                 </form>
             </div>
         </div>
     </div>
-
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCmLFmzc7yiD6kjh9TS9xb-Ei_ldzqVL14&callback=initMap"
+    async defer></script>
+ 
+    <script>
+       var map;
+       function initMap() {
+         map = new google.maps.Map(document.getElementById('contactUs2Map'), {
+           center: {lat: 13.7169504, lng: 100.7602926},
+           zoom: 14
+         });
+       }
+     </script>
+ 
    
     <!--     *********    END CONTACT US 2      *********      -->

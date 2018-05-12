@@ -74,13 +74,23 @@ angular.module('app').controller('news', function ($sce,$scope, $filter, $q,$htt
     $scope.init = function(){
 
             //  quill_title  quill_detail      quill_title_yo  quill_detail_yo
+    
 
-
+            $scope.search = {};
+            $scope.search.targetTypeName = "0";
             $scope.get_news();
+        
 
 
         }
 
+        $scope.news_filter = function(filter){
+
+            $scope.search.targetTypeName = filter
+   
+            $scope.get_news();
+
+        }
         $scope.news_detail_href= function(id){
 
 
@@ -114,6 +124,7 @@ $scope.init_news_modal = function(id){
                     }
                     else
                     {
+                        document.querySelector("#loading").style.display = "none";
                     console.log(data);
                     $scope.modal_news  = data.message;
                     console.log('$scope.news_list  =  '+ JSON.stringify($scope.news_list))
@@ -130,16 +141,16 @@ $scope.init_news_modal = function(id){
 }
 
 $scope.get_news = function(){
-
+    document.querySelector("#loading").style.display = "";
     $scope.news_list_1 =[];
     $scope.news_list_2 =[];
     $scope.news_list_3 =[];
     let dataObj = {
 
-
+     filterTargetTypeName : $scope.search.targetTypeName,
       resourceId : "0",
       departmentId:"0",
-      tagId:"0",
+      tag:"0",
       limit:6,
       isPosted:"false",
       isPreview:"true",
@@ -156,13 +167,15 @@ $scope.get_news = function(){
           }
           else
           {
-          console.log(data);
+          console.log(" get_news  "+ JSON.stringify(data));
           $scope.news_list_1[0] = data.message[1];
           $scope.news_list_1[1] = data.message[0];
           $scope.news_list_2[0] = data.message[2];
           $scope.news_list_2[1] = data.message[3];
           $scope.news_list_3[0] = data.message[4];
           $scope.news_list_3[1] = data.message[5];
+
+          document.querySelector("#loading").style.display = "none";
        //   console.log('$scope.news_list  =  '+ JSON.stringify($scope.news_list))
         //  $scope.news_table= new NgTableParams({count: 10 ,  sorting: { resourceName: "desc" }  }, { counts: [10,20, 100], dataset: $scope.news_list });
 

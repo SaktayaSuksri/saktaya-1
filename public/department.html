@@ -54,30 +54,30 @@
             </div>
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item" >
-                        <a ui-sref="about" class="btn btn-warning btn-raised btn-round">
+                    <li class="nav-item" style="font-size:0.8rem;padding:15px;">
+                        <a ui-sref="about" ng-class="{'btn btn-warning btn-raised btn-round':navstep == '1'}" ng-click="change_navstep('1')" class="">
                             <i class="material-icons">apps</i> หน้าแรก
                         </a>
                     </li>
                     <!-- ng-click = "gotoEnroll();" -->
-                    <li class="dropdown active nav-item "  >
-                        <a ui-sref="enroll" class="nav-link">
+                    <li class="dropdown  nav-item "  style="font-size:0.8rem;padding:15px;">
+                        <a ui-sref="enroll" class="" ng-class="{'btn btn-warning btn-raised btn-round':navstep == '2'}" ng-click="change_navstep('2')">
                             <i class="material-icons">view_day</i> สมัครเข้าศึกษา
                         </a>
                     </li>
-                    <li class="dropdown nav-item">
-                        <a ui-sref="course" class="nav-link" >
+                    <li class="dropdown nav-item" style="font-size:0.8rem;padding:15px;">
+                        <a ui-sref="course" class="" ng-class="{'btn btn-warning btn-raised btn-round':navstep == '3'}" ng-click="change_navstep('3')">
                             <i class="material-icons">view_carousel</i> หลักสูตร
                         </a>
                     </li>
-                    <li class="dropdown nav-item">
-                        <a ui-sref="scollarship" class="nav-link">
+                    <li class="dropdown nav-item" style="font-size:0.8rem;padding:15px;">
+                        <a ui-sref="scollarship" class="" ng-class="{'btn btn-warning btn-raised btn-round':navstep == '4'}" ng-click="change_navstep('4')">
                             <i class="material-icons">view_day</i> ทุนการศึกษา
                         </a>
                     </li>
 
-                    <li class="dropdown nav-item">
-                        <a ui-sref="professor" class="nav-link" >
+                    <li class="dropdown nav-item" style="font-size:0.8rem;padding:15px;">
+                        <a ui-sref="professor" class="" ng-class="{'btn btn-warning btn-raised btn-round':navstep == '5'}" ng-click="change_navstep('5')">
                             <i class="material-icons">view_carousel</i> คณาจารย์และบุคคลากร
                         </a>
                     </li>
@@ -116,10 +116,6 @@
    <script src="../assets/assets-for-demo/js/modernizr.js"></script>
    <script src="../assets/assets-for-demo/js/vertical-nav.js"></script>
    <!--  Google Maps Plugin    -->
-   <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
-
-
-
 
 <script type="text/javascript" src="//code.angularjs.org/1.5.8/angular.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular-sanitize.js"></script>
