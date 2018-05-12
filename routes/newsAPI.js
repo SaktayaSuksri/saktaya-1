@@ -103,7 +103,11 @@ router.post('/newNews/', function (request, response) {
                     news.resourceId = request.body.resourceId;
                     news.targetTypeId = request.body.targetTypeId;
                     news.departmentId = request.body.departmentId;
-                    news.tag = request.body.tag;
+
+                    for(let i=0 ; i<request.body.tag.length; i++)
+                        news.tag.push(request.body.tag[i].text);
+                    
+                    //    news.tag = request.body.tag;
                     News_Control.newNews(news, this);
                 }
             }, function (code, err, saveResult) {
