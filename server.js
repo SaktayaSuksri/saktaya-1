@@ -163,6 +163,7 @@ app.use('/api', linkAPI);
 app.use('/api', userAPI);
 app.use('/api', formInstanceAPI);
 app.use('/api', divisionAPI);
+app.use('/api', targetTypeAPI);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
