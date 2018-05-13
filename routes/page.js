@@ -17,6 +17,22 @@ router.get('/page', function(req, res) {
 });
 
 
+router.get('/department/', function(req, res) {
+    
+
+  
+    res.sendfile('public/department.html'); 
+});
+
+router.get('/graduate/', function(req, res) {
+    
+
+  
+    res.render('template_graduate.ejs'); 
+});
+
+
+
 router.get('/page/', function(req, res) {
     
 
