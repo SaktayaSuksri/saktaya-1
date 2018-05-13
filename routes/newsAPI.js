@@ -280,8 +280,6 @@ router.post('/getNews/', function (request, response) {
     else {
         flow.exec(
             function () {
-                TargetType_Control.getTargetTypeIdArrayFromTargetTypeName(request.body.filterTargetTypeName, this)
-            }, function (code, err, result) {
                 console.log("OKAY!!!")
                 let resource = "0"
                 let department = "0"
