@@ -280,8 +280,6 @@ router.post('/getNews/', function (request, response) {
     else {
         flow.exec(
             function () {
-                TargetType_Control.getTargetTypeIdArrayFromTargetTypeName(request.body.filterTargetTypeName, this)
-            }, function (code, err, result) {
                 console.log("OKAY!!!")
                 let resource = "0"
                 let department = "0"
@@ -292,7 +290,7 @@ router.post('/getNews/', function (request, response) {
                     department = new ObjectId(request.body.departmentId);
                 if (ObjectId.isValid(request.body.targetTypeId))
                     targetTypeId = new ObjectId(request.body.targetTypeId);
-                News_Control.getAllNews(resource, result, department,targetTypeId, request.body.tag, request.body.isPreview, parseInt(request.body.limit), request.body.isPosted, request.body.isPinned, this);
+                News_Control.getAllNews(resource, department,targetTypeId, request.body.tag, request.body.isPreview, parseInt(request.body.limit), request.body.isPosted, request.body.isPinned, this);
             }, function (code, err, result) {
                 if (err) {
                     Return_control.responseWithCode(ReturnCode.serviceError + methodCode + code, err, response);
