@@ -250,17 +250,68 @@ var force_com = [
 
 var select_computer_sci = [
   {
-    id : "05506002",
-    course_TName : "กรรมวิธีคำนวณเชิงตัวเลข",
-    course_EName : "MATHODS OF NUMERICAL COMPUTATION",
+    id : "05506045",
+    course_TName : "การเรียนรู้ของเครื่องจักร",
+    course_EName : "MACHINE LEARNING",
     beforeCourse : "ไม่มี",
     credit : 3,
     hours : "(3-0-6)"
   },
   {
-    id : "05506020",
-    course_TName : "การจำลองแบบ",
-    course_EName : "SIMULATION",
+    id : "05506048",
+    course_TName : "โครงข่ายประสาทเทียมเบื้องต้น",
+    course_EName : "INTRODUCTION TO ARTIFICIAL NEURAL NETWORKS ",
+    beforeCourse : "ไม่มี",
+    credit : 3,
+    hours : "(3-0-6)"
+  },
+  {
+    id : "05506049",
+    course_TName : "หัวข้อพิเศษทางวิทยาการคอมพิวเตอร์ 1",
+    course_EName : "SPECIAL TOPIC IN COMPUTER SCIENCE 1",
+    beforeCourse : "ไม่มี",
+    credit : 3,
+    hours : "(3-0-6)"
+  },
+  {
+    id : "05506050",
+    course_TName : "หัวข้อพิเศษทางวิทยาการคอมพิวเตอร์ 2",
+    course_EName : "SPECIAL TOPIC IN COMPUTER SCIENCE 2",
+    beforeCourse : "ไม่มี",
+    credit : 3,
+    hours : "(3-0-6)"
+  }
+];
+
+var select_se = [
+  {
+    id : "05506051",
+    course_TName : "การออกแบบสถาปัตยกรรมซอฟต์แวร์",
+    course_EName : "SOFTWARE ARCHITECTURAL DESIGN",
+    beforeCourse : "ไม่มี",
+    credit : 3,
+    hours : "(3-0-6)"
+  },
+  {
+    id : "05506052",
+    course_TName : "ข้อกําหนดลักษณะเฉพาะเชิงรูปนัย",
+    course_EName : "FORMAL SPECIFICATIO",
+    beforeCourse : "ไม่มี",
+    credit : 3,
+    hours : "(3-0-6)"
+  },
+  {
+    id : "05506053",
+    course_TName : "วิศวกรรมซอฟต์แวร์เชิงประจักษ์",
+    course_EName : "EMPIRICAL SOFTWARE ENGINEERING",
+    beforeCourse : "ไม่มี",
+    credit : 3,
+    hours : "(3-0-6)"
+  },
+  {
+    id : "05506054",
+    course_TName : "การปรับปรุงกระบวนการซอฟต์แวร์",
+    course_EName : "SOFTWARE PROCESS IMPROVEMENT",
     beforeCourse : "ไม่มี",
     credit : 3,
     hours : "(3-0-6)"
