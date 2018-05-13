@@ -1,0 +1,14 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\public",
+    "\\public\\admin",
+    "\\public\\admin\\admin-department",
+    "\\public\\admin\\admin-department\\assets",
+    "\\public\\admin\\admin-department\\assets\\js",
+    "\\public\\partial",
+    "\\public\\partial\\navbar_template"
+  ],
+  "SelectedNode": "\\public\\template_front.ejs",
+  "PreviewInSolutionExplorer": false
+}

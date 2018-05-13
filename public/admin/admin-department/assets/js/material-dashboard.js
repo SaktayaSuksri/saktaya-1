@@ -140,7 +140,7 @@ md = {
                 $('.navbar-color-on-scroll').addClass('navbar-transparent');
             }
         }
-    }, 17),
+    },),
 
     initSidebarsCheck: function() {
         if ($(window).width() <= 991) {
