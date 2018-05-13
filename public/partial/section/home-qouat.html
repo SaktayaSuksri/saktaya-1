@@ -1,5 +1,7 @@
     <!--qouat-->
-    <div class="subscribe-line subscribe-line-image" style="background-image: url('http://www.science.kmitl.ac.th/wp-content/themes/personalTheme/assets/images/bangkok.jpg');">
+
+    <!--
+    <div class="subscribe-line subscribe-line-image"  data-parallax="true"  style="background-image: url('http://www.science.kmitl.ac.th/wp-content/themes/personalTheme/assets/images/bangkok.jpg');">
         <div class="container">
             <div class="row">
                 <div class="col-md-12 ml-auto mr-auto">
@@ -9,15 +11,12 @@
                         <br/>
                         <br/>
                         <h3 class="title">เพราะเราเชื่อว่า  </h3>
-                        <h3  class="title"> <b>"</b>การศึกษา วิจัย ด้านวิทยาศาสตร์และเทคโนโลยีเป็นรากฐานที่ดีของการพัฒนาประเทศ<b>"</b></h3>
+                        <h3  class="title"> <b>"</b><b>"</b></h3>
                             <br/>
                             <br/>
                             <br/>
                             <br/>
-                      <!-- <p class="description">
-                            Join our newsletter and get news in your inbox every week! We hate spam too, so no worries about this.
-                        </p>
-                        --> 
+               
 
                     </div>
 
@@ -26,4 +25,121 @@
             </div>
         </div>
     </div>
+-->
     <!--end quoat-->
+
+
+    <style>
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,400i,700");
+* {
+  box-sizing: border-box;
+}
+
+
+.subscribe-line.subscribe-line-image:after {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    display: block;
+    left: 0;
+    top: 0;
+    content: "";
+    background-color: rgba(102, 94, 94, 0);
+}
+.parallax-section {
+  height: 100vh;
+  max-height: 100vh;
+  background: #fbfbfb;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.parallax-section h1 {
+  margin-top: 0;
+}
+.parallax-section .image-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+.parallax-section .image-block.parallax1 {
+  background-image: url("https://images.unsplash.com/photo-1486596156859-6904e4dff8bb?ixlib=rb-0.3.5&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjE0NTg5fQ&s=7119f7ae64dae07c7bd0a1f6d60d7942");
+}
+.parallax-section .image-block.parallax2 {
+  background-image: url("http://www.science.kmitl.ac.th/wp-content/themes/personalTheme/assets/images/bangkok.jpg");
+  background-attachment: fixed;
+}
+
+.text-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  min-height: 50vh;
+  padding: 20%;
+}
+
+@media only screen and (max-width: 768px) {
+    h1 {
+    font-size: 40px;
+  }
+  h3 {
+    font-size: 25px;
+  }
+}
+
+@media only screen and (max-width: 320px) {
+    h1 {
+        font-size:25px;
+      }
+      h3 {
+        font-size: 15px;
+      }
+}
+
+    </style>
+
+    <script>
+    
+    var parallaxNode1 = document.getElementsByClassName('parallax1');
+let textBlock = parallaxNode1[0].children[0];
+ let speed = parallaxNode1[0].getAttribute('data-speed');
+window.addEventListener('scroll', function (e) {
+    parallaxNode1[0].style.backgroundPosition = '0px '+ (window.scrollY * speed) + 'px';  
+  textBlock.style.transform = 'translateY('+ window.scrollY*.25 +'px)';
+});
+
+</script>
+    <div>
+        
+        <section class="parallax-section ">
+          <div class=" image-block parallax2 "  data-speed=".5">
+              <div style="position: absolute;
+            
+              height:30%;
+              background: rgba(0,0,0,0.3);
+              color: #fff;
+              z-index: 15;
+              ">
+              
+
+
+              <br><br>
+            <h1 style=" z-index: 10;">เพราะเราเชื่อว่า</h1>
+            <h3  style=" z-index: 10;" >" การศึกษา วิจัย ด้านวิทยาศาสตร์และเทคโนโลยีเป็นรากฐานที่ดีของการพัฒนาประเทศ "</h3>
+        </div>
+          </div>
+        </section>
+   
+      </div>

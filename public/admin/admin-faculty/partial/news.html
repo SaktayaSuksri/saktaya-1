@@ -1,4 +1,230 @@
 <style>
+    h1 {
+  font-family: "Courgette", cursive;
+  color: #C66211;
+}
+
+p {
+  max-width: 250px;
+  margin-left: auto;
+  margin-right: auto;
+  color: #BCD0C9;
+}
+
+.paper {
+  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  align: center;
+  background: #fffdf2;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  height: 100px;
+  width: 25%;
+  min-width: 300px;
+}
+
+/* Shadow and Pin are the same for all three.  Don't forget to copy these styles in. */
+
+.rhp-shadow {
+  position: absolute;
+  top: 17px;
+  left: 8px;
+  width: 18px;
+  height: 18px;
+  background: #000000;
+  opacity: 0.15;
+  -moz-border-radius: 100px;
+  -webkit-border-radius: 100px;
+  border-radius: 100px;
+}
+
+.rhp-needle {
+  position: absolute;
+  top: 24px;
+  left: 17px;
+  width: 6px;
+  height: 6px;
+  background: #787878;
+  -moz-border-radius: 100px;
+  -webkit-border-radius: 100px;
+  border-radius: 100px;
+}
+
+.round-head-pin-yellow {
+  position: relative;
+  display: block;
+  float: left;
+  margin: 25px;
+  width: 50px;
+  height: 50px;
+}
+
+.rhp-y-main {
+  position: absolute;
+  top: 9px;
+  left: 18px;
+  width: 23px;
+  height: 23px;
+  background: #efe188;
+  -moz-border-radius: 100px;
+  -webkit-border-radius: 100px;
+  border-radius: 100px;
+}
+
+.rhp-y-lowlight {
+  position: absolute;
+  top: 10px;
+  left: 18px;
+  width: 21px;
+  height: 21px;
+  background: #d9c171;
+  -moz-border-radius: 100px;
+  -webkit-border-radius: 100px;
+  border-radius: 100px;
+}
+
+.rhp-y-secondary-highlight {
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  width: 20px;
+  height: 20px;
+  background: #f7eeb5;
+  -moz-border-radius: 100px;
+  -webkit-border-radius: 100px;
+  border-radius: 100px;
+}
+
+.rhp-y-highlight {
+  position: absolute;
+  top: 13px;
+  left: 28px;
+  width: 8px;
+  height: 8px;
+  background: #fffbe4;
+  -moz-border-radius: 100px;
+  -webkit-border-radius: 100px;
+  border-radius: 100px;
+}
+
+/* Start Red Pin */
+
+.round-head-pin-red {
+  position: relative;
+  display: block;
+  float: left;
+  margin: 25px;
+  width: 50px;
+  height: 50px;
+}
+
+.rhp-r-main {
+  position: absolute;
+  top: 9px;
+  left: 18px;
+  width: 23px;
+  height: 23px;
+  background: #AF4E17;
+  -moz-border-radius: 100px;
+  -webkit-border-radius: 100px;
+  border-radius: 100px;
+}
+
+.rhp-r-lowlight {
+  position: absolute;
+  top: 10px;
+  left: 18px;
+  width: 21px;
+  height: 21px;
+  background: #6E2900;
+  -moz-border-radius: 100px;
+  -webkit-border-radius: 100px;
+  border-radius: 100px;
+}
+
+.rhp-r-secondary-highlight {
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  width: 20px;
+  height: 20px;
+  background: #C66211;
+  -moz-border-radius: 100px;
+  -webkit-border-radius: 100px;
+  border-radius: 100px;
+}
+
+.rhp-r-highlight {
+  position: absolute;
+  top: 13px;
+  left: 28px;
+  width: 8px;
+  height: 8px;
+  background: #FFD0A3;
+  -moz-border-radius: 100px;
+  -webkit-border-radius: 100px;
+  border-radius: 100px;
+}
+
+/* Start Blue Pin */
+
+.round-head-pin-blue {
+  position: relative;
+  display: block;
+  float: left;
+  margin: 25px;
+  width: 50px;
+  height: 50px;
+}
+
+.rhp-b-main {
+  position: absolute;
+  top: 9px;
+  left: 18px;
+  width: 23px;
+  height: 23px;
+  background: #99BAB0;
+  -moz-border-radius: 100px;
+  -webkit-border-radius: 100px;
+  border-radius: 100px;
+}
+
+.rhp-b-lowlight {
+  position: absolute;
+  top: 10px;
+  left: 18px;
+  width: 21px;
+  height: 21px;
+  background: #778B85;
+  -moz-border-radius: 100px;
+  -webkit-border-radius: 100px;
+  border-radius: 100px;
+}
+
+.rhp-b-secondary-highlight {
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  width: 20px;
+  height: 20px;
+  background: #A1CCBD;
+  -moz-border-radius: 100px;
+  -webkit-border-radius: 100px;
+  border-radius: 100px;
+}
+
+.rhp-b-highlight {
+  position: absolute;
+  top: 13px;
+  left: 28px;
+  width: 8px;
+  height: 8px;
+  background: #E9FFF9;
+  -moz-border-radius: 100px;
+  -webkit-border-radius: 100px;
+  border-radius: 100px;
+}
+
     #form-container {
         width: 500px;
     }
@@ -112,33 +338,54 @@
 
                                 </td>
                                 <td title="'datetimePost'" filter="{datetimePost: 'text'}" sortable="'datetimePost'" width="5%">
-                                    {{item.datetimePost}}</td>
+                                    {{item.datetimePost | date:"MM/dd/yyyy 'at' h:mma"}} </td>
                                 <td title="'author'" filter="{author: 'text'}" sortable="'author'" width="5%">
                                     {{item.author}}</td>
                                 <td title="'readCount'" filter="{readCount: 'text'}" sortable="'readCount'" width="5%">
                                     {{item.readCount}}</td>
                                 <td title="'isPinned'" filter="{isPinned: 'text'}" sortable="'isPinned'" width="5%">
 
-                                    <div ng-if="!item.isPinned">
+                                    <div ng-if="item.isPinned == false || item.isPinned == 'false'">
                                         {{item.isPinned}}
                                     </div>
-                                    <div ng-if="item.isPinned">
-                                        <img src="./assets/img/pin-icon.png" class="img-circle" alt="cannot to load" style="height:30px; width:25px">
+                                    <div ng-if="item.isPinned == true || item.isPinned == 'true'" >
+                        <!--                <img src="./assets/img/pin-icon.png" class="img-circle" alt="cannot to load" style="height:30px; width:25px">
+                        -->
 
+                         <!--   Start Red Pin -->
+  <div class="round-head-pin-red">
+        <div class="rhp-shadow">
+        </div>
+        <div class="rhp-needle">
+        </div>
+        <div class="rhp-r-main">
+        </div>
+        <div class="rhp-r-lowlight">
+        </div>
+        <div class="rhp-r-secondary-highlight">
+        </div>
+        <div class="rhp-r-highlight">
+        </div>
+      </div>
+    
                                     </div>
 
                                 </td>
 
 
-                                <td title="'tagId'" width="5%">
-                                    <button ng-repeat="itemitem in item.tagId" class="btn btn-primary btn-xs">{{itemitem}}
-                                                                                    </button>
+          
 
-                                </td>
+                                <td title="'ภาควิชา / หน่วยงาน'" filter="{departmentName: 'text'}" sortable="'departmentName'" width="5%">
+                                    {{item.departmentName}}</td>
 
-                                <td title="'departmentId'" filter="{departmentId: 'text'}" sortable="'departmentId'" width="5%">
-                                    {{item.departmentId}}</td>
-
+                                    <td title="'Tags'" filter="{tag: 'text'}" sortable="'tag'" width="5%">
+                                            <span class="badge" ng-repeat="tag_it in item.tag2">
+                                                {{tag_it.text}}
+                                            
+                                            </span>
+                                        
+                                    
+                                    </td>
 
                                 <td class="" width="10%">
                                     <button type="button" ng-click="modal_update_news(item)" rel="tooltip" title="Edit Task" class="btn btn-primary btn-simple btn-xs">
@@ -194,20 +441,38 @@
 
                                         </div>
                                         <div class="col-xs-8">
-
                                             <div class="form-group">
-                                                <label for="exampleSelect1">ประเภท </label>
-                                                <select class="form-control" ng-model="modal_update_news_data.resourceId">
-                              <option ng-repeat="item in catagory_list" value="{{item._id}}">{{item.resourceName}}</option>
+                                                <label for="exampleSelect1">ภาควิชา / หน่วยงาน </label>
+                                                <select class="form-control" ng-model="modal_update_news_data.departmentId">
+                              <option ng-repeat="item in department_list" value="{{item._id}}">{{item.departmentName}}</option>
 
                             </select>
                                             </div>
 
 
+                                            <div class="form-group">
+                                                <label for="exampleSelect1">เป้าหมาย </label>
+                                                <select class="form-control" ng-model="modal_update_news_data.targetTypeId">
+                              <option ng-repeat="item in traget_list" value="{{item._id}}">{{item.targetTypeName}}</option>
+
+                            </select>
+                            
+                                            </div>
+
+
 
                                             <div class="form-group">
-                                                <label for="location">Tag</label>
-                                                <input class="form-control" name="location" type="text" value="Earth">
+                                                    <label for="location">Tags</label>
+                                                    <tags-input class="form-control"  ng-model="modal_update_news_data.tag">
+                                                            <auto-complete ></auto-complete>
+                                                        </tags-input>
+
+                                                    </div>
+                                                    {{show_tags}}
+
+                                     
+                                             
+                                             
                                             </div>
                                         </div>
                                     </div>
@@ -276,6 +541,12 @@
 
                             </div>
                                     <div class="row">
+                                            <div class="checkbox">
+                                                    <label>
+                                                      <input type="checkbox" ng-model="modal_update_news_data.isPinned" > ปักหมุด 
+                                                    </label>
+                                                  </div>
+
                                         <button class="btn btn-primary" ng-click="update_news()" type="submit">Save</button>
                                     </div>
 

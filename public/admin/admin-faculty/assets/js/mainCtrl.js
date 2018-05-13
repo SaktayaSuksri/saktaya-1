@@ -70,7 +70,7 @@ $provide.decorator('taOptions', ['taRegisterTool', '$delegate', function(taRegis
 });
 
 angular.module('app').config(function($stateProvider, $urlRouterProvider) {
-    $urlRouterProvider.otherwise('/home');
+    $urlRouterProvider.otherwise('/news');
 
         $stateProvider
 
@@ -114,6 +114,7 @@ angular.module('app').config(function($stateProvider, $urlRouterProvider) {
                 url: '/person',
                 templateUrl : "./partial/person.html"
             })
+
 
 
 
@@ -457,16 +458,7 @@ angular.module('app').controller('content_management', function ($scope,NgTableP
 
 angular.module('app').controller('form_management', function ($scope,NgTableParams, $filter, $q,$http,api_manage){
 
-    //alert('form_management');
-/* $scope.tags = [
-                    { text: 'just' },
-                    { text: 'some' },
-                    { text: 'cool' },
-                    { text: 'tags' }
-                ];
-                $scope.loadTags = function(query) {
-                     return $http.get('/tags?query=' + query);
-                };*/
+   
   $scope.init = function(){
     $scope.modal_form_data = {
 
@@ -1017,11 +1009,26 @@ console.log("str = "+string)
     };
 
 
+    function show_loader()
+    {
+      document.querySelector('#loader').style.display=""
+      
+    }
+    function hide_loader()
+    {
+      document.querySelector('#loader').style.display="none"
+      
+    }
+
+   
   $scope.init = function(){
 
     //  quill_title  quill_detail      quill_title_yo  quill_detail_yo
-
-    $scope.get_catagory();
+    show_loader();
+    $scope.news_table= null;
+    $scope.get_catagory();  //getResourceType
+    $scope.get_department();
+    $scope.get_traget();
     $scope.get_news();
 
     $scope.quill_title ='';
@@ -1044,16 +1051,21 @@ $scope.get_news = function(){
 
   let dataObj = {
 
-
+    filterTargetTypeName : "0",
     resourceId : "0",
+ 
     departmentId:"0",
     targetTypeId:"0",
-    tagId:"0",
+    tag:"0",
+    isPinned: "0",
     limit:0,
     isPosted:"false",
     isPreview:"false"
 
+ 
+
   }
+
     api_manage.get_news(dataObj)
     .success(function(data, status, headers, config) {
         //$scope.message = data;
@@ -1066,15 +1078,20 @@ $scope.get_news = function(){
         {
       //  console.log(data);
         $scope.news_list  = data.message;
-      //  console.log('$scope.news_list  =  '+ JSON.stringify($scope.news_list))
-        $scope.news_table= new NgTableParams({count: 10 ,  sorting: { resourceName: "desc" }  }, { counts: [10,20, 100], dataset: $scope.news_list });
 
+        console.log('$scope.news_list  =  '+ JSON.stringify($scope.news_list))
+  
+          $scope.news_table= new NgTableParams({count: 10 ,  sorting: { datetimePost: "desc" }  }, { counts: [10,20, 100], dataset: $scope.news_list });
+          
+   
+        hide_loader();
       }
 
     })
     .error(function(data, status, headers, config) {
         alert( "failure message: " + JSON.stringify({data: data}) +"ไม่สามารถติดต่อเซิฟเวอร์ได้ ติดต่อแอดมิน");
         console.log(status+headers);
+        hide_loader();
     });
   }
 
@@ -1103,13 +1120,64 @@ $scope.get_catagory = function(){
   });
 }
 
+$scope.get_traget = function(){
+  
+  
+    api_manage.get_traget()
+    .success(function(data, status, headers, config) {
+        //$scope.message = data;
+        if(data.code != "999999")
+        {
+          alert(data.message);
+        }
+        else
+        {
+        console.log(data);
+        $scope.traget_list  = data.message;
+        console.log('$scope.traget_list  =  '+ JSON.stringify($scope.traget_list))
+        //$scope.catagory_table= new NgTableParams({count: 10 ,  sorting: { resourceName: "desc" }  }, { counts: [10,20, 100], dataset: $scope.catagory_list });
+        }
+  
+    })
+    .error(function(data, status, headers, config) {
+        alert( "failure message: " + JSON.stringify({data: data}) +"ไม่สามารถติดต่อเซิฟเวอร์ได้ ติดต่อแอดมิน");
+        console.log(status+headers);
+      
+    });
+  }
+  
+$scope.get_department = function(){
+  
+  
+    api_manage.get_department()
+    .success(function(data, status, headers, config) {
+        //$scope.message = data;
+        if(data.code != "999999")
+        {
+          alert(data.message);
+        }
+        else
+        {
+        console.log(data);
+        $scope.department_list  = data.message;
+        console.log('$scope.department_list  =  '+ JSON.stringify($scope.department_list))
+        //$scope.catagory_table= new NgTableParams({count: 10 ,  sorting: { resourceName: "desc" }  }, { counts: [10,20, 100], dataset: $scope.catagory_list });
+        }
+  
+    })
+    .error(function(data, status, headers, config) {
+        alert( "failure message: " + JSON.stringify({data: data}) +"ไม่สามารถติดต่อเซิฟเวอร์ได้ ติดต่อแอดมิน");
+        console.log(status+headers);
+    });
+  }
+
 $scope.update_news = function(){
 
 
 
 
 
-
+  show_loader();
     $scope.modal_update_news_data.topicFull   = $scope.quill_title;
     $scope.modal_update_news_data.detailFull  =  $scope.quill_detail;
     $scope.modal_update_news_data.topicShort  = $scope.quill_title_yo;
@@ -1120,7 +1188,17 @@ $scope.update_news = function(){
     $scope.quill_title_yo.setText("");
     $scope.quill_detail_yo.setText("");*/
 
-    $scope.modal_update_news_data.isPinned = "false"
+    //แปลง boolean เปน string
+     if($scope.modal_update_news_data.isPinned == true)
+     {
+      $scope.modal_update_news_data.isPinned = "true"
+     }
+     else if($scope.modal_update_news_data.isPinned == false)
+     {
+      $scope.modal_update_news_data.isPinned = "false"
+     }
+
+
     console.log("beforsend update_news   = "+ JSON.stringify($scope.modal_update_news_data ));
     if($scope.modal_update_news_data.aiswitch != 'create')
 {
@@ -1136,16 +1214,28 @@ $scope.update_news = function(){
             }
             else{
 
-              $scope.get_news();
 
+              $scope.news_list.forEach(function(item){
+                
+                if(item._id==$scope.modal_update_news_data._id)
+                {
+                  item = $scope.modal_update_news_data;
+                }
+
+              })
+              
+              $scope.news_table.reload();
+              hide_loader();
               $("#modal_update_news .close").click()
 
+              
             }
 
     })
     .error(function(data, status, headers, config) {
         alert( "failure message: " + JSON.stringify({data: data}) +"ไม่สามารถติดต่อเซิฟเวอร์ได้ ติดต่อแอดมิน");
         console.log(status+headers);
+        hide_loader();
     });
 
 }
@@ -1153,7 +1243,9 @@ else{
     $scope.create_news( $scope.modal_update_news_data);
     console.log("Pond log test >>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
     console.log($scope.modal_update_news_data);
+
 }
+
 
 
 
@@ -1175,10 +1267,10 @@ $scope.modal_create_news = function(){
                     topicPicture: '',
                     datetimePost: null,
                     author: 'testAuthor',
-                    isPinned: '',
-                    resourceId: '',
+                    isPinned: false,
+                    resourceId: '5a8f0856f9bb232d7442ff04',
                     departmentId: '5a8470b228d2e92a0c753010',
-                    tagId: '',
+                    tag: '',
                     aiswitch: 'create',
                     targetTypeId:'5ade1b9ef36d2856dd57f399'
     }
@@ -1209,7 +1301,7 @@ $scope.create_news = function(item)
 
         $scope.news_table.reload();
 
-
+        hide_loader();
         $("#modal_update_news .close").click()
 
 
@@ -1218,7 +1310,7 @@ $scope.create_news = function(item)
     })
     .error(function(data, status, headers, config) {
         alert( "failure message: " + JSON.stringify({data: data}) +"ไม่สามารถติดต่อเซิฟเวอร์ได้ ติดต่อแอดมิน");
-
+        hide_loader();
     });
 
 
@@ -1230,7 +1322,8 @@ $scope.create_news = function(item)
 
 
 $scope.delete_news = function(item){
-    alert("delete news")
+ 
+  show_loader();
       let dataObj = {
           newsId:item._id
           };
@@ -1244,7 +1337,12 @@ $scope.delete_news = function(item){
           alert(data.message)
         }
         else{
+
+        
+
+
           $scope.get_news();
+          hide_loader();
         }
       })
       .error(function(data, status, headers, config) {

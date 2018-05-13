@@ -393,7 +393,11 @@ router.post('/getNewsfromID/', function (request, response) {
                     obj.isPinned = result.isPinned;
                     obj.tag = []
                     for (let i = 0; i < result.tag.length; i++)
+<<<<<<< HEAD
                     obj.tag.push({ text: result.tag[i] });
+=======
+                    obj.tag.push({text: result.tag[i]});
+>>>>>>> 641e2f74cabb1d456c65e80cce0d75823cd7adf4
 
                     Department_Control.checkDepartmentByID(new ObjectId(thisNews.departmentId), this);
                 }

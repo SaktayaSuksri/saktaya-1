@@ -16,6 +16,12 @@ angular.module('api_service', [])
                 delete_catagory : function (data) {
                     return $http.post('/api/deleteResourceType',data);
                     },
+
+
+                    get_department : function () {
+                        return $http.get('/api/getDepartmentsAll/');
+                    },
+
                                 get_tag : function () {
                                     return $http.get('/api/getTag/');
                                 },

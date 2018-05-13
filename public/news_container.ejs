@@ -130,9 +130,9 @@ font-weight: 400;
 <body class="landing-page " ng-app="app" ng-controller="global" ng-init="showtranparent = true" > 
         
         <script>
-                traget="<%=traget%>";
+                resourceId="<%=resourceId%>";
            
-                  department="<%=department%>";
+                departmentId="<%=departmentId%>";
                 
           
                 </script>
@@ -188,18 +188,10 @@ font-weight: 400;
                                  
                                
                                     <div class="form-group">
-                                          
-                                            <select class="form-control" id="select_catagory" ng-model="search.targetTypeName">
-                                              <option value="0">ทั้งหมด</option>
-                                              <option value="ประชาสัมพันธ์" >ข่าวประชาสัมพันธ์</option>
-                                              <option value="ปริญญาตรี">สำหรับนักศึกษา</option>
-                                              <option value="ทุนการศึกษา">ทุนวิจัย</option>
-                                              <option value="วารสารประจำเดือน">วารสารประจำเดือน</option>
-                                              <option value="กิจกรรม">กิจกรรมต่างๆ</option>
-                                              
-                                    
-
-                                            </select>
+                                            <select class="form-control" id="select_catagory" ng-options="item as item.resourceName for item in catagory_list track by item._id" ng-model="selected"></select>
+                                            
+                                            <br>
+                        
                                           </div>
                                 </div>
                             </div>
@@ -214,7 +206,7 @@ font-weight: 400;
                                     <div class="col-sm-6">
                                             <div class="form-group">
                                                     
-                                                      <select class="form-control" id="select_catagory" ng-model="search.department">
+                                                      <select class="form-control" id="select_catagory" ng-model="search.departmentId">
                                                         <option value="5a8470b228d2e92a0c753010">ทั้งหมด</option>
                                                         <option value="5a8470c028d2e92a0c753011" >ภาควิชาวิทยาการคอมพิวเตอร์</option>
                                                         <option value="5a8470d328d2e92a0c753012">ภาควิชาสถิติประยุกต์</option>
@@ -224,7 +216,8 @@ font-weight: 400;
                                                         <option value="5af33314d5a1d72578f0d9a6">ภาควิชาฟิสิกส์</option>
                                                         <option value="5af33320d5a1d72578f0d9a7">ภาควิชาสถิติ</option>
                                             
-          
+                                                   
+
                                                       </select>
                                                     </div>
                                                 
@@ -237,10 +230,10 @@ font-weight: 400;
                     <div class="row">
                         
                         <div class="col-sm-6">
-                            <div class="t-input2f">Keyword</div>
+                            <div class="t-input2f">Tag</div>
                         </div>
                         <div class="col-sm-6">
-                            <div class="input2f"><input value=""  class="form-control" ng-model="filter_tag" name="q" placeholder="keyword" type="text"></div>
+                            <div class="input2f"><input value=""  class="form-control" ng-model="filter_tag" name="q" placeholder="tag" type="text"></div>
                         </div>
                     </div>
                 </div>
