@@ -71,7 +71,7 @@ module.exports = {
             callback("043", null, null)
         }
     },
-    getAllNews: function (resourceId, targetTypeId, departmentId, tag, isPreview, limitNum, isPosted, isPinned, callback) {
+    getAllNews: function (resourceId, targetTypeId, departmentId, targetTypeId, tag, isPreview, limitNum, isPosted, isPinned, callback) {
         var today = new Date();
         console.log("resourceId: " + resourceId + " / targetType " + targetTypeId + " / departmentId " + departmentId + " / isPinned " + isPinned + " / tag: " + tag);
         var myquery = {};

@@ -235,7 +235,7 @@ router.post('/getNews/', function (request, response) {
     requiredData.push(request.body.isPosted);
     requiredData.push(request.body.isPreview);
     requiredData.push(request.body.isPinned);
-    requiredData.push(request.body.filterTargetTypeName);
+    requiredData.push(request.body.targetTypeId);
     var requiredReady = Validate.requiredData_Check(requiredData)
 
     var booleanData = [];
@@ -249,6 +249,8 @@ router.post('/getNews/', function (request, response) {
         objectIdData.push(request.body.resourceId);
     if (request.body.departmentId != "0")
         objectIdData.push(request.body.departmentId);
+    if (request.body.targetTypeId != "0")
+        objectIdData.push(request.body.targetTypeId);
     var objectIdReady = Validate.objectIDData_Check(objectIdData)
 
     var numberData = [];
@@ -283,11 +285,14 @@ router.post('/getNews/', function (request, response) {
                 console.log("OKAY!!!")
                 let resource = "0"
                 let department = "0"
+                let targetTypeId = "0"
                 if (ObjectId.isValid(request.body.resourceId))
                     resource = new ObjectId(request.body.resourceId);
                 if (ObjectId.isValid(request.body.departmentId))
                     department = new ObjectId(request.body.departmentId);
-                News_Control.getAllNews(resource, result, department, request.body.tag, request.body.isPreview, parseInt(request.body.limit), request.body.isPosted, request.body.isPinned, this);
+                if (ObjectId.isValid(request.body.targetTypeId))
+                    targetTypeId = new ObjectId(request.body.targetTypeId);
+                News_Control.getAllNews(resource, result, department,targetTypeId, request.body.tag, request.body.isPreview, parseInt(request.body.limit), request.body.isPosted, request.body.isPinned, this);
             }, function (code, err, result) {
                 if (err) {
                     Return_control.responseWithCode(ReturnCode.serviceError + methodCode + code, err, response);
@@ -302,25 +307,25 @@ router.post('/getNews/', function (request, response) {
     }
 });
 
-router.post('/getNewsForHomeSlide/', function (request, response) {
-    var news = new News();
-    var methodCode = "06";
-    flow.exec(
-        function () {
-            News_Control.getAllNews(new ObjectId("5a8f0856f9bb232d7442ff04"), "0", new ObjectId("5a8470b228d2e92a0c753010"), "0", "true", 3, "true", this);
-        }, function (code, err, result) {
-            if (err) {
-                Return_control.responseWithCode(ReturnCode.serviceError + methodCode + code, err, response);
-            }
-            else {
-                News_Control.joinNewsData(result, this)
-            }
-        }, function (code, err, result) {
-            Return_control.responseWithCode("999999", result, response)
-        }
-    );
+// router.post('/getNewsForHomeSlide/', function (request, response) {
+//     var news = new News();
+//     var methodCode = "06";
+//     flow.exec(
+//         function () {
+//             News_Control.getAllNews(new ObjectId("5a8f0856f9bb232d7442ff04"), "0", new ObjectId("5a8470b228d2e92a0c753010"), "0", "true", 3, "true", this);
+//         }, function (code, err, result) {
+//             if (err) {
+//                 Return_control.responseWithCode(ReturnCode.serviceError + methodCode + code, err, response);
+//             }
+//             else {
+//                 News_Control.joinNewsData(result, this)
+//             }
+//         }, function (code, err, result) {
+//             Return_control.responseWithCode("999999", result, response)
+//         }
+//     );
 
-});
+// });
 
 
 router.post('/getNewsfromID/', function (request, response) {
@@ -388,7 +393,7 @@ router.post('/getNewsfromID/', function (request, response) {
                     obj.isPinned = result.isPinned;
                     obj.tag = []
                     for (let i = 0; i < result.tag.length; i++)
-                        news.tag.push({text: result.tag[i]});
+                    obj.tag.push({ text: result.tag[i] });
 
                     Department_Control.checkDepartmentByID(new ObjectId(thisNews.departmentId), this);
                 }
