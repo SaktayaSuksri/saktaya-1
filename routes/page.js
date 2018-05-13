@@ -26,12 +26,12 @@ router.get('/page/', function(req, res) {
 
 
 
-router.get('/page/news_container/:traget/:department', function(request, response) {
-    const traget = request.params.traget 
-    const department = request.params.department 
+router.get('/page/news_container/:resourceId/:departmentId', function(request, response) {
+    const resourceId = request.params.resourceId 
+    const departmentId = request.params.departmentId 
 
-    console.log(traget + department);
-    response.render('news_container.ejs', {'traget':traget,"department":department}); // load the index.ejs file
+    console.log(resourceId + departmentId);
+    response.render('news_container.ejs', {'resourceId':resourceId,"departmentId":departmentId}); // load the index.ejs file
    
     
  });

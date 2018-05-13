@@ -148,15 +148,19 @@ angular.module('app').controller('news_container', function($scope, $http, api_m
 
 
   $scope.init = function() {
-
-    let traget = window.traget;
-    let department = window.department;
-
-    $scope.tag = "0";
     $scope.search = {};
-    $scope.search.targetTypeName = traget;
-    $scope.search.department = department;
-    $scope.get_news();
+    $scope.search.resourceId = window.resourceId;
+    $scope.search.departmentId = window.departmentId;
+    $scope.get_catagory();
+    $scope.tag = "0";
+ 
+
+
+    
+    
+  
+  
+
   }
   $scope.news_filter = function(){
     
@@ -166,20 +170,67 @@ angular.module('app').controller('news_container', function($scope, $http, api_m
                 $scope.get_news();
     
             }
+
+  
+$scope.get_catagory = function(){
+  
+  
+    api_manage.get_catagory()
+    .success(function(data, status, headers, config) {
+        //$scope.message = data;
+        if(data.code != "999999")
+        {
+          alert(data.message);
+        }
+        else
+        {
+        console.log(data);
+        $scope.catagory_list  = data.message;
+        $scope.catagory_list.push({"_id":"0","resourceName":"ทั้งหมด"})
+        $scope.catagory_list.forEach(function(item){
+          if(item._id == $scope.search.resourceId)
+          {
+   
+            $scope.selected = item;
+      
+            $scope.get_news();
+          }
+
+
+
+        })
+        
+        
+      //  $scope.catagory_list.push({"_id":"0","resourceName":"ทั้งหมด"})
+        console.log('$scope.catagory_list  =  '+ JSON.stringify($scope.catagory_list))
+        //$scope.catagory_table= new NgTableParams({count: 10 ,  sorting: { resourceName: "desc" }  }, { counts: [10,20, 100], dataset: $scope.catagory_list });
+        }
+  
+    })
+    .error(function(data, status, headers, config) {
+        alert( "failure message: " + JSON.stringify({data: data}) +"ไม่สามารถติดต่อเซิฟเวอร์ได้ ติดต่อแอดมิน");
+        console.log(status+headers);
+    });
+  }
+
+
   $scope.get_news = function() {
 
     let dataObj = {
       tag: $scope.tag,
-      filterTargetTypeName : $scope.search.targetTypeName,
-      resourceId : "0",
-      departmentId:$scope.search.department,
+      filterTargetTypeName : "0",
+     // resourceId :  $scope.search.resourceId,
+     resourceId : $scope.selected._id,
+      departmentId: $scope.search.departmentId,
       targetTypeId:"0",
-      
+      tag:"0",
       limit:0,
       isPinned :"0",
       isPosted:"false",
       isPreview:"true"
     }
+    console.log('before get_news  =  '+ JSON.stringify(dataObj))
+
     api_manage.get_news(dataObj)
       .success(function(data, status, headers, config) {
         //$scope.message = data;

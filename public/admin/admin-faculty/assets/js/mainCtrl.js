@@ -1026,7 +1026,7 @@ console.log("str = "+string)
     //  quill_title  quill_detail      quill_title_yo  quill_detail_yo
     show_loader();
     $scope.news_table= null;
-   // $scope.get_catagory();  //getResourceType
+    $scope.get_catagory();  //getResourceType
     $scope.get_department();
     $scope.get_traget();
     $scope.get_news();

@@ -107,15 +107,27 @@
 
 
                                         <ul class="nav nav-pills nav-pills-warning nav-pills-lg">
-                                            <li class="nav-item"><a class="nav-link active" href="#pill1" ng-click="news_filter('0')" data-toggle="tab">ทั้งหมด</a></li>
+                                        <!--    <li class="nav-item"><a class="nav-link active" href="#pill1" ng-click="news_filter('0')" data-toggle="tab">ทั้งหมด</a></li>
                                             <li class="nav-item"><a class="nav-link"  ng-click="news_filter('ประชาสัมพันธ์')" data-toggle="tab">ข่าวประชาสัมพันธ์</a></li>
                                             <li class="nav-item"><a class="nav-link" ng-click="news_filter('ปริญญาตรี')" data-toggle="tab">สำหรับนักศึกษา</a></li>
                                             <li class="nav-item"><a class="nav-link"  ng-click="news_filter('ทุนการศึกษา')" data-toggle="tab">ทุนวิจัย</a></li>
                                             <li class="nav-item"><a class="nav-link"  ng-click="news_filter('วารสารประจำเดือน')" data-toggle="tab">วารสารประจำเดือน</a></li>
                                             <li class="nav-item"><a class="nav-link"   ng-click="news_filter('กิจกรรม')" data-toggle="tab">กิจกรรมต่างๆ</a></li>
+                                        -->  
+                                        <li class="nav-item"><a class="nav-link active" href="#pill1" ng-click="news_filter('0')" data-toggle="tab">ทั้งหมด</a></li>
+                                        <li ng-repeat="item in catagory_list" class="nav-item" ng-click="news_filter(item._id)">
+                                                    <a class="nav-link"  data-toggle="tab" >
+                                                                        {{item.resourceName}}
+                                                                 
+                                                                    </a>
+                                                </li>
+                
+                                     
+                                     
                                         </ul>
 
                                         
+
                                     </div>
                                 </div>
                                 
@@ -275,7 +287,7 @@
 
                                                         </div>
 
-                                                        <a style="float: right;" href="./page/news_container/{{search.targetTypeName}}/5a8470b228d2e92a0c753010" target="_blank" class="btn btn-warning btn-raised btn-lg">
+                                                        <a style="float: right;" href="./page/news_container/{{search.resourceId}}/5a8470b228d2e92a0c753010" target="_blank" class="btn btn-warning btn-raised btn-lg">
                                                             <i class="material-icons">view_module</i>
                                                             
                                                             

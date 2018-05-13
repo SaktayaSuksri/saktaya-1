@@ -388,7 +388,7 @@ router.post('/getNewsfromID/', function (request, response) {
                     obj.isPinned = result.isPinned;
                     obj.tag = []
                     for (let i = 0; i < result.tag.length; i++)
-                        news.tag.push({text: result.tag[i]});
+                    obj.tag.push({text: result.tag[i]});
 
                     Department_Control.checkDepartmentByID(new ObjectId(thisNews.departmentId), this);
                 }

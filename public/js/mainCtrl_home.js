@@ -65,7 +65,7 @@ $scope.get_news = function(){
     //document.querySelector("#loading").style.display = "";
      $scope.news_list_slide = [];
 
-     alert();
+ 
     let dataObj = {
 
      filterTargetTypeName : $scope.search.targetTypeName,
@@ -148,6 +148,8 @@ angular.module('app').controller('news', function ($sce,$scope, $filter, $q,$htt
 
             $scope.search = {};
             $scope.search.targetTypeName = "0";
+            $scope.search.resourceId = "0";
+            $scope.get_catagory();  //getResourceType
             $scope.get_news();
         
 
@@ -156,7 +158,8 @@ angular.module('app').controller('news', function ($sce,$scope, $filter, $q,$htt
 
         $scope.news_filter = function(filter){
 
-            $scope.search.targetTypeName = filter
+            $scope.search.resourceId= filter;
+       
    
             $scope.get_news();
 
@@ -210,7 +213,34 @@ $scope.init_news_modal = function(id){
 
 }
 
+$scope.get_catagory = function(){
+    
+    
+      api_manage.get_catagory()
+      .success(function(data, status, headers, config) {
+          //$scope.message = data;
+          if(data.code != "999999")
+          {
+            alert(data.message);
+          }
+          else
+          {
+          console.log(data);
+          $scope.catagory_list  = data.message;
+          console.log('$scope.catagory_list  =  '+ JSON.stringify($scope.catagory_list))
+          //$scope.catagory_table= new NgTableParams({count: 10 ,  sorting: { resourceName: "desc" }  }, { counts: [10,20, 100], dataset: $scope.catagory_list });
+          }
+    
+      })
+      .error(function(data, status, headers, config) {
+          alert( "failure message: " + JSON.stringify({data: data}) +"ไม่สามารถติดต่อเซิฟเวอร์ได้ ติดต่อแอดมิน");
+          console.log(status+headers);
+      });
+    }
+
 $scope.get_news = function(){
+
+
     document.querySelector("#loading").style.display = "";
     $scope.news_list_1 =[];
     $scope.news_list_2 =[];
@@ -218,7 +248,7 @@ $scope.get_news = function(){
     let dataObj = {
 
      filterTargetTypeName : $scope.search.targetTypeName,
-      resourceId : "0",
+      resourceId : $scope.search.resourceId,
       departmentId:"0",
       tag:"0",
       limit:6,
@@ -227,7 +257,14 @@ $scope.get_news = function(){
       isPreview:"true",
       targetTypeId:"0"
 
+      
+  
+
+
     }
+
+    console.log(" before get_news  "+ JSON.stringify(dataObj));
+
       api_manage.get_news(dataObj)
       .success(function(data, status, headers, config) {
           //$scope.message = data;
