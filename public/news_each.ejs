@@ -58,8 +58,118 @@
 </style>
 <body class="landing-page " ng-app="app" ng-controller="news_each" ng-init="showtranparent = true" > 
         
-        <div ng-include src="'http://localhost:2001/partial/navbar_template/for_front.html'"></div>
+        <nav class="navbar     fixed-top   navbar-expand-lg   bg-warning"    >
+                <div class="container-fluid">
+                        <div class="navbar-translate">
+                            <a href="./">
+                            <img class=" mr-0 mr-md-2 navbar-absolute-logo" src="http://www.science.kmitl.ac.th/wp-content/themes/personalTheme/assets/images/science-logo.png"  style="width: 62%; height: auto;">
+                            </a>
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                                <span class="navbar-toggler-icon"></span>
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                        </div>
+                        <div class="collapse navbar-collapse">
+                            <ul class="justify-content-center navbar-nav ml-auto">
+                                <li class="nav-item">
+                                        <a href="./" class=" nav-link" >
+                                            <i class="material-icons">view_day</i> หน้าแรก
+                                        </a>
+                
+                                    </li>
+                
+                                <li class="dropdown nav-item">
+                                    <a  class="dropdown-toggle nav-link" data-toggle="dropdown">
+                                        <i class="material-icons">view_day</i> หลักสูตร
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right dropdown-with-icons">
+                                        <a href="/page#/course-tee" class="dropdown-item">
+                                            <i class="material-icons">dns</i> ปริญญาตรี
+                                        </a>
+                                        <a href="/page#/course-tor" class="dropdown-item">
+                                                <i class="material-icons">build</i> ปริญญาโท
+                                            </a>
+                                        <a href="/page#/course-aek"class="dropdown-item">
+                                            <i class="material-icons">build</i> ปริญญาเอก
+                                        </a>
+                
+                                    </div>
+                                </li>
+                                <li class="dropdown nav-item">
+                                    <a  class="dropdown-toggle nav-link" data-toggle="dropdown">
+                                        <i class="material-icons">view_carousel</i> เกี่ยวกับคณะ
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right dropdown-with-icons">
+                                        <a href="/page#/history" class="dropdown-item">
+                                            <i class="material-icons">account_balance</i> ประวัติความเป็นมา
+                                        </a>
+                                        <a  href="/page#/resolution" class="dropdown-item">
+                                            <i class="material-icons">art_track</i> ปรัชญา-ปณิธาน-วิสัยทัศน์-พันธกิจ
+                                        </a>
+                                        <a href="/page#/structure" class="dropdown-item">
+                                            <i class="material-icons">view_day</i>  โครงสร้างองค์กร
+                                        </a>
+                                        <a  href="/page#/yearly-report" class="dropdown-item">
+                                            <i class="material-icons">store</i> รายงานประจำปี
+                                        </a>
+                                    </div>
+                                </li>
+                
+                                <li class="dropdown nav-item">
+                                    <a  class="dropdown-toggle nav-link " data-toggle="dropdown">
+                                        <i class="material-icons">view_carousel</i> ภาควิชา
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right dropdown-with-icons">
+                                            <!-- <a href="" class="dropdown-item">
+                                                    <i class="material-icons">account_balance</i> ศูนย์เครื่องมือวิทยาศาสตร์
+                                                </a> -->
+                                        <a href="http://www.math.sci.kmitl.ac.th/" class="dropdown-item">
+                                            <i class="material-icons">account_balance</i> ภาควิชาคณิตศาสตร์
+                                        </a>
+                                        <a href="http://www.science.kmitl.ac.th/oldweb/links/department/bio/" class="dropdown-item">
+                                            <i class="material-icons">art_track</i> ภาควิชาชีววิทยา
+                                        </a>
+                                        <a href="http://physics.kmitl.ac.th/" class="dropdown-item">
+                                            <i class="material-icons">view_quilt</i>  ภาควิชาฟิสิกส์
+                                        </a>
+                                        <a href="./department.html" class="dropdown-item">
+                                            <i class="material-icons">location_on</i> ภาควิชาวิทยาการคอมพิวเตอร์
+                                        </a>
+                                        <a href="http://www.science.kmitl.ac.th/oldweb/links/department/Webstat59/index.html" class="dropdown-item">
+                                            <i class="material-icons">view_day</i> ภาควิชาสถิติ
+                                        </a>
+                                        <a href="http://www.science.kmitl.ac.th/oldweb/links/department/chem/" class="dropdown-item">
+                                            <i class="material-icons">fingerprint</i> ภาควิชาเคมี
+                                        </a>
+                                    </div>
+                                </li>
+                                    <li class="nav-item">
+                                      <a class="nav-link active" href="#">ปริญญาตรี</a>
+                                    </li>
+                                    <li class="nav-item">
+                                      <a class="nav-link" href="./graduate">บัณทิต</a>
+                                    </li>
+                                    <li class="nav-item">
+                                      <a class="nav-link" href="/page#/personel">บุคคลากร</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link active" href="http://www.science.kmitl.ac.th:8080/sic/index.php/CHome">ศูนย์เครื่องมือวิทยาศาสตร์</a>
+                                      </li>
+                                    <li class="nav-item">
+                                      <a class="nav-link " href="http://alumni.kmitlsci.org/">ศิษย์เก่า</a>
+                                    </li>
+                
+                            </ul>
+                
+                
+                        </div>
+                
+                    </div>
+                  
+                </nav>
 
+                
         
 
     

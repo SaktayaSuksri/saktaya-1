@@ -242,9 +242,16 @@
                             </div>-->
                             <div class="data">
                               <div class="content">
-                         <!--       <span class="author">Jane Doe</span>-->
-                                <h4 class="title"><a ng-href="./news_each/{{item._id}}" > {{item.topicShort}}</a></h4>
+                         
+                                <h3 class="title"><a ng-href="./news_each/{{item._id}}" > {{item.topicShort}}</a></h3>
                                 <p class="text">{{item.detailShort}}</p>
+                                <span class="author">Tag : 
+                                    <span class="badge" ng-repeat="tag_it in item.tag2">
+                                        {{tag_it.text}}
+                                    
+                                    </span>
+
+                                </span>
                                 <label for="show-menu" class="menu-button"><span></span></label>
                               </div>
                              
