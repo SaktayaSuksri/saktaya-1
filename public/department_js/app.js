@@ -342,6 +342,12 @@ app.controller("course_detailCtrl", function($scope, $location) {
    else if(nameCouse == "force_com"){
      $scope.deailCouse = force_com;
    }
+   else if(nameCouse == "select_comsci"){ 
+    $scope.deailCouse = select_computer_sci;
+  }
+  else if(nameCouse == "select_se"){ 
+    $scope.deailCouse = select_se;
+  }
    else{
 
    }
@@ -485,6 +491,9 @@ $scope.get_news_bundit = function(){
    else if(nameCouse == "force_com"){
      $scope.deailCouse = force_com;
    }
+   else if(nameCouse == "select_comsci"){
+    $scope.deailCouse = select_computer_sci;
+  }
    else{
 
    }
