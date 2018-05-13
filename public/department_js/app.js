@@ -341,17 +341,9 @@ app.controller("course_detailCtrl", function($scope, $location) {
 
 });
 
-app.controller("scollarshipCtrl", function($scope, $location) {
+app.controller("scollarshipCtrl", function($scope, $location,api_manage) {
   
-  $scope.init = function(){
- 
-    $scope.get_news();
-    
-}
-
-
-$scope.init();
-
+  
 
 
 $scope.get_news_tee = function(){
@@ -360,14 +352,14 @@ $scope.get_news_tee = function(){
     let dataObj = {
   
      filterTargetTypeName : "0",
-      resourceId : "0",
+      resourceId : "5a8f08b8f9bb232d7442ff0a",
       departmentId:"5a8470c028d2e92a0c753011",
       tag:"0",
       limit:6,
       isPinned : "0",
       isPosted:"false",
       isPreview:"true",
-      targetTypeId:"5af34b56734d1d64dbec343c"
+      targetTypeId:"5af33d279e09ec2a242de439"
   
     }
       api_manage.get_news(dataObj)
@@ -381,7 +373,7 @@ $scope.get_news_tee = function(){
           else
           {
           console.log(" get_news tee  "+ JSON.stringify(data));
-          $scope.news_list_tee = data.message
+          $scope.news_list_tee = data.message;
         
        //   console.log('$scope.news_list  =  '+ JSON.stringify($scope.news_list))
         //  $scope.news_table= new NgTableParams({count: 10 ,  sorting: { resourceName: "desc" }  }, { counts: [10,20, 100], dataset: $scope.news_list });
@@ -403,14 +395,14 @@ $scope.get_news_bundit = function(){
     let dataObj = {
   
      filterTargetTypeName : "0",
-      resourceId : "0",
-      departmentId:"5a8470c028d2e92a0c753011",
+     resourceId : "5a8f08b8f9bb232d7442ff0a",
+     departmentId:"5a8470c028d2e92a0c753011",
       tag:"0",
       limit:6,
       isPinned : "0",
       isPosted:"false",
       isPreview:"true",
-      targetTypeId:"5af34b7a734d1d64dbec346a"
+      targetTypeId:"5af33d3e9e09ec2a242de43a"
   
     }
       api_manage.get_news(dataObj)
@@ -439,7 +431,18 @@ $scope.get_news_bundit = function(){
     }
   
   
-
+    
+    $scope.init = function(){
+      
+      $scope.get_news_tee();
+      $scope.get_news_bundit();
+      
+      
+  }
+  
+  
+  $scope.init();
+  
 
   });
   
