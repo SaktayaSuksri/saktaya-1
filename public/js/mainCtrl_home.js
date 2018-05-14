@@ -68,7 +68,7 @@ $scope.get_news = function(){
  
     let dataObj = {
 
-     filterTargetTypeName : $scope.search.targetTypeName,
+     filterTargetTypeName : "0",
       resourceId : "0",
       departmentId:"0",
       tag:"0",

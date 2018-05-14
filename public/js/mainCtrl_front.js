@@ -310,108 +310,6 @@ angular.module('app').controller('youtube_box', function($scope, $filter, $q, $h
 });
 
 
-angular.module('app').controller('news', function($sce, $scope, $filter, $q, $http, api_manage, global_service) {
-  $scope.trustAsHtml = function(string) {
-    console.log("str = " + string)
-    return $sce.trustAsHtml(string);
-  };
-
-  $scope.init = function() {
-    //  quill_title  quill_detail      quill_title_yo  quill_detail_yo
-    $scope.search = {};
-    $scope.search.targetTypeName = "0";
-    $scope.get_news();
-
-  }
-
-  $scope.news_detail_href = function(id) {
-
-
-    $scope.init_news_modal(id);
-    $('#myModal').modal('show');
-
-
-
-
-  }
-
-  $scope.news_filter = function(){
-    
-              
-       
-                $scope.get_news();
-    
-            }
-
-
-
-  $scope.init_news_modal = function(id) {
-    alert("new detail = " + id)
-
-    let dataObj = {
-
-
-      newsID: id,
-      readCount: "true",
-
-
-    }
-    api_manage.get_news_fromID(dataObj)
-      .success(function(data, status, headers, config) {
-        //$scope.message = data;
-        console.log("-----------" + JSON.stringify(data));
-        if (data.code != "999999") {
-          alert("modal_news " + data.message);
-        } else {
-          console.log(data);
-          $scope.modal_news = data.message;
-          console.log('$scope.news_list  =  ' + JSON.stringify($scope.news_list))
-          //    $scope.news_table= new NgTableParams({count: 10 ,  sorting: { resourceName: "desc" }  }, { counts: [10,20, 100], dataset: $scope.news_list });
-        }
-
-      })
-      .error(function(data, status, headers, config) {
-        alert("failure message: " + JSON.stringify({
-          data: data
-        }) + "ไม่สามารถติดต่อเซิฟเวอร์ได้ ติดต่อแอดมิน");
-        console.log(status + headers);
-      });
-  }
-
-  $scope.get_news = function() {
-
-    let dataObj = {
-      filterTargetTypeName : $scope.search.targetTypeName,
-      resourceId: "0",
-      departmentId: "0",
-      tagId: "0",
-      limit: 6,
-      isPosted: "false",
-      isPreview: "true"
-    }
-
-    api_manage.get_news(dataObj)
-      .success(function(data, status, headers, config) {
-        //$scope.message = data;
-        console.log("-----------" + JSON.stringify(data));
-        if (data.code != "999999") {
-          alert(data.message);
-        } else {
-          console.log(data);
-          $scope.news_list = data.message;
-          console.log('$scope.news_list  =  ' + JSON.stringify($scope.news_list))
-          //  $scope.news_table= new NgTableParams({count: 10 ,  sorting: { resourceName: "desc" }  }, { counts: [10,20, 100], dataset: $scope.news_list });
-        }
-      })
-      .error(function(data, status, headers, config) {
-        alert("failure message: " + JSON.stringify({
-          data: data
-        }) + "ไม่สามารถติดต่อเซิฟเวอร์ได้ ติดต่อแอดมิน");
-        console.log(status + headers);
-      });
-  }
-});
-
 
 
 //MrPondS created 21-03-2018
@@ -443,4 +341,95 @@ angular.module('app').controller('personelCtrl', function($scope, $filter, $q, $
       }) + "ไม่สามารถติดต่อเซิฟเวอร์ได้ ติดต่อแอดมิน");
       console.log(status + headers);
     });
+});
+
+
+angular.module('app').controller('graduateCtrl', function($scope, $filter, $q, $http, youtubeFactory) {
+
+$scope.init = function(){
+
+  $scope.get_news();
+}
+  
+  $scope.get_news = function() {
+    
+        let dataObj = {
+          tag: $scope.tag,
+          filterTargetTypeName : "0",
+         // resourceId :  $scope.search.resourceId,
+         resourceId : "0",
+          departmentId: "0",
+          targetTypeId:"5af33d3e9e09ec2a242de43a",
+          tag:"0",
+          limit:0,
+          isPinned :"false",
+          isPosted:"false",
+          isPreview:"true"
+
+          
+        }
+    
+        api_manage.get_news(dataObj)
+          .success(function(data, status, headers, config) {
+            //$scope.message = data;
+            console.log("-----------" + JSON.stringify(data));
+            if (data.code != "999999") {
+              alert(data.message);
+            } else {
+              console.log(data);
+              $scope.news_list = data.message;
+              console.log('$scope.news_list  =  ' + JSON.stringify($scope.news_list))
+              //  $scope.news_table= new NgTableParams({count: 10 ,  sorting: { resourceName: "desc" }  }, { counts: [10,20, 100], dataset: $scope.news_list });
+            }
+          })
+          .error(function(data, status, headers, config) {
+            alert("failure message: " + JSON.stringify({
+              data: data
+            }) + "ไม่สามารถติดต่อเซิฟเวอร์ได้ ติดต่อแอดมิน");
+            console.log(status + headers);
+          });
+      }
+
+
+      
+  $scope.get_news_slide = function() {
+    
+        let dataObj = {
+          tag: $scope.tag,
+          filterTargetTypeName : "0",
+         // resourceId :  $scope.search.resourceId,
+         resourceId : "0",
+          departmentId: "0",
+          targetTypeId:"5af33d3e9e09ec2a242de43a",
+          tag:"0",
+          limit:0,
+          isPinned :"true",
+          isPosted:"false",
+          isPreview:"true"
+
+          
+        }
+    
+        api_manage.get_news(dataObj)
+          .success(function(data, status, headers, config) {
+            //$scope.message = data;
+            console.log("-----------" + JSON.stringify(data));
+            if (data.code != "999999") {
+              alert(data.message);
+            } else {
+              console.log(data);
+              $scope.news_list_slide = data.message;
+              console.log('$scope.news_list  =  ' + JSON.stringify($scope.news_list))
+              //  $scope.news_table= new NgTableParams({count: 10 ,  sorting: { resourceName: "desc" }  }, { counts: [10,20, 100], dataset: $scope.news_list });
+            }
+          })
+          .error(function(data, status, headers, config) {
+            alert("failure message: " + JSON.stringify({
+              data: data
+            }) + "ไม่สามารถติดต่อเซิฟเวอร์ได้ ติดต่อแอดมิน");
+            console.log(status + headers);
+          });
+      }
+
+
 });

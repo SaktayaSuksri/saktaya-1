@@ -91,6 +91,13 @@ app.config(function($stateProvider, $urlRouterProvider) {
 ,controller: 'course_detailCtrl'
 })
 
+.state('course_detail_graduate', {
+  url: '/course_detail_graduate',
+  templateUrl : "./department_template/course_detail_graduate.html"
+,controller: 'course_detail_graduate_Ctrl'
+})
+
+
   });
 
 // ===================== start controller ===========================
@@ -291,8 +298,10 @@ app.controller("enrollCtrl", function($scope, $location) {
 
 
 
-app.controller("courseCtrl", function($scope, $location) {
-
+app.controller("courseCtrl", function($scope, $location , $state) {   
+  $scope.goto_detail = function(){
+        $state.go("course_detail_graduate");
+       }
 });
 
 
@@ -333,6 +342,12 @@ app.controller("course_detailCtrl", function($scope, $location) {
    else if(nameCouse == "force_com"){
      $scope.deailCouse = force_com;
    }
+   else if(nameCouse == "select_comsci"){ 
+    $scope.deailCouse = select_computer_sci;
+  }
+  else if(nameCouse == "select_se"){ 
+    $scope.deailCouse = select_se;
+  }
    else{
 
    }
@@ -446,3 +461,42 @@ $scope.get_news_bundit = function(){
 
   });
   
+
+
+  app.controller("course_detail_graduate_Ctrl", function($scope, $location) {
+    $scope.tab = 1;
+ $scope.deailCouse = [];
+
+ $scope.clickMenu = function (index) {
+   $scope.tab = index;
+ }
+
+ $scope.clickList = function (nameCouse) {
+   //console.log(nameCouse);
+   if(nameCouse == "social"){
+     $scope.deailCouse = com_social;
+   }
+   else if(nameCouse == "human"){
+     $scope.deailCouse = com_human;
+   }
+   else if(nameCouse == "language"){
+     $scope.deailCouse = com_language;
+   }
+   else if(nameCouse == "science"){
+     $scope.deailCouse = com_science;
+   }
+   else if(nameCouse == "force_math"){
+     $scope.deailCouse = force_math;
+   }
+   else if(nameCouse == "force_com"){
+     $scope.deailCouse = force_com;
+   }
+   else if(nameCouse == "select_comsci"){
+    $scope.deailCouse = select_computer_sci;
+  }
+   else{
+
+   }
+  }
+    
+  });
