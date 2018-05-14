@@ -1,4 +1,4 @@
-angular.module('api_service', ['ui.bootstrap', 'jtt_youtube', 'ui.router', "api_service", 'ngSanitize'])
+angular.module('api_service', [])
 
     // super simple service
     // each function returns a promise object 
