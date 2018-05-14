@@ -131,9 +131,6 @@ module.exports = {
                 }
             });
         }
-        else {
-            callback("133", null, null)
-        }
     },
     deleteNews: function (newsId, callback) {
         News.remove({ "_id": newsId }, function (error, newsCallback) {
@@ -188,9 +185,10 @@ module.exports = {
 function getFullNews(news, callback) {
     let tmp = JSON.parse(JSON.stringify(news));
     let tmpTag = tmp.tag;
-    tmp.tag2 = []
+
+    tmp.tag = []
     for (let i = 0; i < tmpTag.length; i++)
-        tmp.tag2.push({ text: tmpTag[i] });
+        tmp.tag.push({ text: tmpTag[i] });
 
     flow.exec(
         function () {

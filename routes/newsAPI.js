@@ -389,6 +389,7 @@ router.post('/getNewsfromID/', function (request, response) {
                     obj.author = result.author;
                     obj.readCount = result.readCount;
                     obj.isPinned = result.isPinned;
+                    
                     obj.tag = []
                     for (let i = 0; i < result.tag.length; i++)
                     obj.tag.push({ text: result.tag[i] });
