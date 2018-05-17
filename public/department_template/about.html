@@ -300,8 +300,10 @@
 <br>
       <div class="row">
           <div class="col-md-4" ng-repeat="item in news_list" >
-            <div class="card" style="width: 100%;">
-                <img style="width:330px; height:186px" class="card-img-top" ng-src="{{item.topicPicture}}"  onerror="this.src='./assets/img/image_placeholder.jpg';" alt="not found">
+            
+            <div  class="card" style="width: 100%;">
+                <img ng-if="item.topicPicture == ''" style="width:100%; height:186px" ng-src="./admin/admin-faculty/assets/img/image_placeholder.jpg" onerror="this.src='./assets/img/image_placeholder.jpg';" alt="not found">
+                <img ng-if="item.topicPicture != ''" style="width:100%; height:auto" class="card-img-top" ng-src="{{item.topicPicture}}"  onerror="this.src='./assets/img/image_placeholder.jpg';" alt="not found">
                 <div class="card-body">
                   <h4 class="card-title">{{item.topicShort  | limitTo:100}}</h4>
                   <p class="card-text"> &ensp; &ensp; {{item.detailShort | limitTo:300}}.... </p>
