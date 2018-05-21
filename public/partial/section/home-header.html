@@ -83,12 +83,143 @@
 @media all and (max-width: 500px) {
 .vid-info .acronym { display: none; }
 }
-</style>
-  
-  <div class="page-header " data-parallax="true" 
-  style=" overflow: hidden; background-image: url(&apos;../assets/img/slide2.jpg&apos;);">
-  
 
+/* Reset. */
+* {
+    box-sizing: border-box;
+}
+
+/* Panels. */
+.splitview {
+    position: relative;
+    width: 100%;
+    min-height: 45vw;
+    overflow: hidden;
+}
+
+.panel {
+    position: absolute;
+    width: 100vw;
+    min-height: 45vw;
+    overflow: hidden;
+}
+
+    .panel .content {
+        position: absolute;
+        width: 100vw;
+        min-height: 45vw;
+        color: #FFF;
+    }
+
+    .panel .description {
+        width: 25%;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        text-align: center;
+    }
+
+    .panel img {
+        box-shadow: 0 0 20px 20px rgba(0, 0, 0, 0.15);
+        width: 35%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+
+.bottom {
+    background-color: rgb(44, 44, 44);
+    z-index: 1;
+}
+
+    .bottom .description {
+        right: 5%;
+    }
+
+.top {
+    background-color: rgb(77, 69, 173);
+    z-index: 2;
+    width: 50vw;
+
+    /*-webkit-clip-path: polygon(60% 0, 100% 0, 100% 100%, 40% 100%);
+    clip-path: polygon(60% 0, 100% 0, 100% 100%, 40% 100%);*/
+}
+
+    .top .description {
+        left: 5%;
+    }
+
+/* Handle. */
+.handle {
+    height: 100%;
+    position: absolute;
+    display: block;
+    background-color:rgba(253, 171, 0, 0);
+    width: 5px;
+    top: 0;
+    left: 50%;
+    z-index: 3;
+}
+
+/* Skewed. */
+.skewed .handle {
+    top: 50%;
+    transform: rotate(30deg) translateY(-50%);
+    height: 200%;
+    -webkit-transform-origin: top;
+    -moz-transform-origin: top;
+    transform-origin: top;
+}
+
+.skewed .top {
+    transform: skew(-30deg);
+    margin-left: -1000px;
+    width: calc(50vw + 1000px);
+}
+
+.skewed .top .content {
+    transform: skew(30deg);
+    margin-left: 1000px;
+}
+</style>
+<script>
+ 
+</script>
+
+<div ng-controller="homeHeaderCtrl" class="splitview skewed">
+    <div class="panel bottom">
+        <div class="content">
+            <div class="description">
+                <!-- <h1>The original image.</h1> -->
+                <!-- <p>This is how the image looks like before applying a duotone effect.</p> -->
+            </div>
+
+            <img style="width:100%" src="../assets/img/head_bg5.jpg" alt="Original">
+        </div>
+    </div>
+
+    <div class="panel top">
+        <div class="content">
+            <div class="description">
+                <!-- <h1>The duotone image.</h1> -->
+                <!-- <p>This is how the image looks like after applying a duotone effect.</p> -->
+            </div>
+
+            <img style="width:100%" src="../assets/img/head_bg6.jpg" alt="Duotone">
+        </div>
+    </div>
+
+    <div class="handle"></div>
+</div>
+
+
+
+
+  <!-- <div class="page-header " data-parallax="true" style=" overflow: hidden; background-image: url(&apos;../assets/img/slide2.jpg&apos;);"> -->
+  
+    
 
     
    <!-- <div id="vidtop-content">
@@ -102,10 +233,10 @@
 
 
 
-    <div class="angularjs-chat-bubble-white bubble-two"></div>
-    <div class="angularjs-chat-bubble-white bubble-six"></div>
-    <div class="angularjs-chat-bubble-white bubble-seven"></div>
-    <div class="angularjs-chat-bubble-white bubble-eight"></div>
+    <!-- <div class="angularjs-chat-bubble-white bubble-two" style="overflow: hidden;"></div>
+    <div class="angularjs-chat-bubble-white bubble-six" style="overflow: hidden;"></div>
+    <div class="angularjs-chat-bubble-white bubble-seven" style="overflow: hidden;"></div>
+    <div class="angularjs-chat-bubble-white bubble-eight" style="overflow: hidden;"></div>
     <div class="container" style="margin-top:-9rem;">
         <div class="row">
             <div class="col-md-6 ml-auto text-right">
@@ -119,4 +250,4 @@
         </div>
     </div>
    
-</div>
+</div> -->
