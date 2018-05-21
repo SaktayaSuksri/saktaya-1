@@ -417,7 +417,7 @@ router.post('/getNewsWithPicture/', function (request, response) {
 //     response.render('news_container.ejs', {'resourceId':resourceId,"departmentId":departmentId}); // load the index.ejs file
 //  });
 
-router.get('/getPictureFromNewsId:newsID/', function (request, response) {
+router.get('/getPictureFromNewsId/:newsID/', function (request, response) {
     var personel = new Personel();
     var methodCode = "07";
 
@@ -453,14 +453,13 @@ router.get('/getPictureFromNewsId:newsID/', function (request, response) {
                     Return_control.responseWithCode(ReturnCode.serviceError + methodCode + code, err, response);
                 }
                 else {
-                    Return_control.responseWithCodeAndData("999999","Get Picture Completed", result.topicPicture, response)
+                    response.send(result.topicPicture)
+                    //Return_control.responseWithCodeAndData("999999","Get Picture Completed", result.topicPicture, response)
                 }
             }
         );
     }
 });
-
-
 
 router.post('/getNewsfromID/', function (request, response) {
     var personel = new Personel();
