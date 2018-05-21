@@ -54,7 +54,7 @@ angular.module('app').controller('header_first', function ($scope,$http,api_mana
                     $scope.search = {};
                     $scope.search.targetTypeName = "0";
                     $scope.get_news();
-                    $scope.get_news_news_academic_service();
+                    
         
         
                 }
@@ -144,6 +144,7 @@ $scope.get_news = function(){
           }
           else
           {
+            $scope.get_news_news_academic_service();
           console.log(" get_news for slide  "+ JSON.stringify(data));
           $scope.news_list_slide = data.message;
          
@@ -254,8 +255,7 @@ angular.module('app').controller('news', function ($sce,$scope, $filter, $q,$htt
 
 
 $scope.init_news_modal = function(id){
-    alert("new detail = "+id)
-
+    
         let dataObj = {
 
 
@@ -506,13 +506,13 @@ $scope.get_news = function(){
 
 angular.module('app').controller('homeHeaderCtrl', function ($sce,$scope, $filter, $q,$http,api_manage,global_service){
 
-    alert("home Header ctrl");
+
 
     $(function() {
         console.log( "ready!" );
  
         
-        alert("home Header ctrl");
+  
         var parent = document.querySelector('.splitview'),
             topPanel = parent.querySelector('.top'),
             handle = parent.querySelector('.handle'),
