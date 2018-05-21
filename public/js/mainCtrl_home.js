@@ -506,13 +506,8 @@ $scope.get_news = function(){
 
 angular.module('app').controller('homeHeaderCtrl', function ($sce,$scope, $filter, $q,$http,api_manage,global_service){
 
-
-
     $(function() {
-        console.log( "ready!" );
- 
-        
-  
+       // console.log( "ready!" );
         var parent = document.querySelector('.splitview'),
             topPanel = parent.querySelector('.top'),
             handle = parent.querySelector('.handle'),
