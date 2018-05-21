@@ -14,54 +14,35 @@ var ReturnCode = require('../model/returnCode.js');
 
 var nodemailer = require('nodemailer');
 
-
-var transporter = nodemailer.createTransport({
-  service: 'gmail',
-  auth: {
-    user: 'saktayasuksri@gmail.com',
-    pass: 'sddssdsdsda'
-  }
-});
-
-var mailOptions = {
-  from: 'saktayasuksri@gmail.com',
-  to: 'livelivelivework@gmail.com',
-  subject: 'Sending Email using Node.js',
-  text: 'That was easy!'
-};
-
-transporter.sendMail(mailOptions, function(error, info){
-  if (error) {
-    console.log(error);
-  } else {
-    console.log('Email sent: ' + info.response);
-  }
-});
 router.post('/deanMailer/', function (request, response) {
-    // request.body.name
-    // request.body.email 
-    // request.body.phone  
-    // request.body.topic  
-    // request.body.detail
+    var methodCode = "65"
 
-    //mail to admin and investor when admin create  C  S  S+
-    // mail({
-    //     from: "Admin ghb-npl2560 <tum@discoverym.com>", // sender address
-    //     bcc: "", // list of receivers
-    //     subject: "มีชุดคำถาม-ตอบ ใหม่จากระบบ", // Subject line
-    //     text: "✔", // plaintext body
-    //     html: "<h5> สถานะ : " + status + "</h5> สามารถเข้าดูได้ที่ <a href='http://www.ghb-npl2560.com'>ghb-npl2560.com</a>"
+    request.body.name
 
-    // });
-
-    mail({
-        from: '"KLEAR" <krystallizer26@gmail.com>', // sender address
-        bcc: 'krystallizer26@gmail.com', // list of receivers
-        subject: 'Hello ✔', // Subject line
-        text: 'Hello world?', // plain text body
-        html: "<h5> สถานะ : 555555 </h5> สามารถเข้าดูได้ที่ <a href='http://www.ghb-npl2560.com'>ghb-npl2560.com</a>"
+    var transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            user: 'webmaster.kmitl@gmail.com',
+            pass: 'kmitlWebmaster2018'
+        }
     });
-    Return_control.responseWithCode(ReturnCode.success, "Email is being sent...", response);
+
+    var mailOptions = {
+        from: 'webmaster.kmitl@gmail.com',
+        to: 'webmaster.kmitl@gmail.com',  //DEAN's EMAIL
+        subject: "คณะบดีพบประชาชน: " + request.body.topic, //หัวเมลล์จ้า
+        text: "From: " + request.body.name + " (" + request.body.email + ")\n\nTopic: " + request.body.topic + "\nDetail: " + request.body.detail + "\n\nContact: " + request.body.phone
+    };
+
+    transporter.sendMail(mailOptions, function (error, info) {
+        if (error) {
+            console.log(error);
+            Return_control.responseWithCode(ReturnCode.serviceError + methodCode + "001", error, response);
+        } else {
+            console.log('Email sent: ' + info.response);
+            Return_control.responseWithCode(ReturnCode.success, "Sending E-mail, please wait...", response);
+        }
+    });
 });
 
 module.exports = router;
