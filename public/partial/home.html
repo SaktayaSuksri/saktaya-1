@@ -42,6 +42,9 @@
 <div class="main  main-raised">   
         <div ng-include src="'./partial/section/home-person.html'"></div>
     </div>
+
+
+    
         <div ng-include src="'./partial/section/home-qouat.html'"></div>
 
             <!--หลักสูตร-->
@@ -99,5 +102,74 @@
             </div>
 -->
             <!--end contact-->
+
+
+
+            
+       <!--     *********    CONTACT US 2     *********      -->
+       <div class="contactus-2">
+            
+            <div id="contactUs2Map" class="map" style="width:100%;height:600px;"></div>
+            <div class="col-md-6">
+                <div class="card card-contact card-raised" style="margin-left: 0px; margin-right: 0px;">
+                    <form id="contact-form2" method="post">
+                        <div class="card-header card-header-warning text-center">
+                            <h4 class="card-title"> ช่องทางติดต่อ</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="container main main-raise">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="info info-horizontal">
+                                        <div class="icon icon-warning">
+                                            <i class="material-icons">phone</i>
+                                        </div>
+                                        <div class="description">
+                                            <h5 class="info-title">ติดต่อ</h5>
+                                       
+                                                โทร.02-329-8400 ถึง 8411 
+                                                <br> โทรสาร.02-329-8412
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container">
+                                <div class="row">
+                                <div class="col-md-12">
+                                    <div class="info info-horizontal">
+                                        <div class="icon icon-warning">
+                                            <i class="material-icons">pin_drop</i>
+                                        </div>
+                                        <div class="description">
+                                            <h5 class="info-title"> คณะวิทยาศาสตร์</h5>
+                                         คณะวิทยาศาสตร์ สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง
+                                            <br/>ถนนฉลองกรุง เขตลาดกระบัง กรุงเทพ 10520
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                     
+                        </div>
+                    
+                    </form>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCmLFmzc7yiD6kjh9TS9xb-Ei_ldzqVL14&callback=initMap"
+        async defer></script>
+     
+        <script>
+           var map;
+           function initMap() {
+             map = new google.maps.Map(document.getElementById('contactUs2Map'), {
+               center: {lat: 13.7169504, lng: 100.7602926},
+               zoom: 14
+             });
+           }
+         </script>
        
    
