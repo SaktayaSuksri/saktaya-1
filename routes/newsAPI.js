@@ -409,7 +409,15 @@ router.post('/getNewsWithPicture/', function (request, response) {
 
 // });
 
-router.post('/getPictureFromNewsId/', function (request, response) {
+// router.get('/page/news_container/:resourceId/:departmentId', function(request, response) {
+//     const resourceId = request.params.resourceId 
+//     const departmentId = request.params.departmentId 
+
+//     console.log(resourceId + departmentId);
+//     response.render('news_container.ejs', {'resourceId':resourceId,"departmentId":departmentId}); // load the index.ejs file
+//  });
+
+router.get('/getPictureFromNewsId:newsID/', function (request, response) {
     var personel = new Personel();
     var methodCode = "07";
 
@@ -419,11 +427,11 @@ router.post('/getPictureFromNewsId/', function (request, response) {
     var thisTargetType;
 
     var requiredData = [];
-    requiredData.push(request.body.newsID);
+    requiredData.push(request.params.newsID);
     var requiredReady = Validate.requiredData_Check(requiredData)
 
     var objectIdData = [];
-    objectIdData.push(request.body.newsID);
+    objectIdData.push(request.params.newsID);
     var objectIdReady = Validate.objectIDData_Check(objectIdData)
 
     if (!requiredReady) {
@@ -439,7 +447,7 @@ router.post('/getPictureFromNewsId/', function (request, response) {
     else {
         flow.exec(
             function () {
-                News_Control.checkNewsByID(new ObjectId(request.body.newsID), this);
+                News_Control.checkNewsByID(new ObjectId(request.params.newsID), this);
             }, function (code, err, result) {
                 if (err) {
                     Return_control.responseWithCode(ReturnCode.serviceError + methodCode + code, err, response);
