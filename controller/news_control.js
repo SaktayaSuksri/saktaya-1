@@ -96,7 +96,7 @@ module.exports = {
         var projection = {}
         if (needPicture){
             if (isPreview == "true") {
-                projection = { "_id": true, "topicShort": true, "targetTypeId": true, "detailShort": true, "topicPicture": true, "readCount": true, "isPinned": true, "resourceId": true, "departmentId": true, "tag": true };
+                projection = { "_id": true, "topicShort": true, "datetimePost": true,"targetTypeId": true, "detailShort": true, "topicPicture": true, "readCount": true, "isPinned": true, "resourceId": true, "departmentId": true, "tag": true };
             }
             else{
                 projection = {}
@@ -104,7 +104,7 @@ module.exports = {
         }
         else{
             if (isPreview == "true") {
-                projection = { "_id": true, "topicShort": true, "targetTypeId": true, "detailShort": true, "readCount": true, "isPinned": true, "resourceId": true, "departmentId": true, "tag": true };
+                projection = { "_id": true, "topicShort": true, "datetimePost": true,"targetTypeId": true, "detailShort": true, "readCount": true, "isPinned": true, "resourceId": true, "departmentId": true, "tag": true };
             }
             else{
                 projection = {"topicPicture": false}
