@@ -89,12 +89,20 @@ angular.module('app').controller('header_first', function ($scope,$http,api_mana
                               }
                               else
                               {
-                              console.log(" get_news_news_academic_service for slide  "+ JSON.stringify(data));
-                              $scope.news_academic_service = data.message[0];
-                              console.log(" get_news_news_academic_service for slide  ---------------");
+                          $scope.news_academic_service = data.message[0];
 
-                              console.log("  "+ JSON.stringify( $scope.news_academic_service));
-                    
+                          $scope.news_academic_service.topicPicture  = './assets/img/image_placeholder.jpg';
+                         
+                                        
+                          api_manage.get_img_news( $scope.news_academic_service._id)
+                          .success(function(data, status, headers, config) {
+                            $scope.news_academic_service.topicPicture = data;
+                
+                            })
+                        .error(function(data, status, headers, config) {
+                            
+                         });
+        
                          //     document.querySelector("#loading").style.display = "none";
                            //   console.log('$scope.news_list  =  '+ JSON.stringify($scope.news_list))
                             //  $scope.news_table= new NgTableParams({count: 10 ,  sorting: { resourceName: "desc" }  }, { counts: [10,20, 100], dataset: $scope.news_list });
@@ -139,6 +147,28 @@ $scope.get_news = function(){
           console.log(" get_news for slide  "+ JSON.stringify(data));
           $scope.news_list_slide = data.message;
          
+
+
+          $scope.news_list_slide[0].topicPicture  = './assets/img/image_placeholder.jpg';
+         
+          $scope.news_list_slide[1].topicPicture  = './assets/img/image_placeholder.jpg';
+          $scope.news_list_slide.forEach(function(item){
+            
+                        
+          api_manage.get_img_news(item._id)
+          .success(function(data, status, headers, config) {
+            item.topicPicture = data;
+
+            })
+        .error(function(data, status, headers, config) {
+            
+         });
+        
+                        })
+          
+
+
+
 
      //     document.querySelector("#loading").style.display = "none";
        //   console.log('$scope.news_list  =  '+ JSON.stringify($scope.news_list))
@@ -298,7 +328,7 @@ $scope.get_news = function(){
       resourceId : $scope.search.resourceId,
       departmentId:"0",
       tag:"0",
-      limit:6,
+      limit:9,
       isPinned : "false",
       isPosted:"false",
       isPreview:"true",
@@ -324,13 +354,136 @@ $scope.get_news = function(){
           {
           console.log(" get_news  "+ JSON.stringify(data));
           $scope.news_list_1[0] = data.message[1];
+          $scope.news_list_1[0].topicPicture  = './assets/img/image_placeholder.jpg';
+          
+
           $scope.news_list_1[1] = data.message[0];
+          $scope.news_list_1[1].topicPicture  = './assets/img/image_placeholder.jpg';
+          
+
+
           $scope.news_list_2[0] = data.message[2];
+          $scope.news_list_2[0].topicPicture  = './assets/img/image_placeholder.jpg';
+          
+
           $scope.news_list_2[1] = data.message[3];
+          $scope.news_list_2[1].topicPicture  = './assets/img/image_placeholder.jpg';
+          
+
           $scope.news_list_3[0] = data.message[4];
+          $scope.news_list_3[0].topicPicture  = './assets/img/image_placeholder.jpg';
+          
           $scope.news_list_3[1] = data.message[5];
+          $scope.news_list_3[1].topicPicture  = './assets/img/image_placeholder.jpg';
+          
+
+          $scope.news_list_1[2] = data.message[6];
+          $scope.news_list_1[2].topicPicture  = './assets/img/image_placeholder.jpg';
+          
+
+          
+          $scope.news_list_2[2] = data.message[7];
+          $scope.news_list_2[2].topicPicture  = './assets/img/image_placeholder.jpg';
+
+          
+          $scope.news_list_3[2] = data.message[8];
+          $scope.news_list_3[2].topicPicture  = './assets/img/image_placeholder.jpg';
 
           document.querySelector("#loading").style.display = "none";
+
+
+          
+
+          api_manage.get_img_news(data.message[1]._id)
+          .success(function(data, status, headers, config) {
+            $scope.news_list_1[0].topicPicture = data;
+
+            })
+        .error(function(data, status, headers, config) {
+            
+         });
+
+         api_manage.get_img_news(data.message[0]._id)
+         .success(function(data, status, headers, config) {
+           $scope.news_list_1[1].topicPicture = data;
+
+           })
+       .error(function(data, status, headers, config) {
+           
+        });
+
+        api_manage.get_img_news(data.message[2]._id)
+        .success(function(data, status, headers, config) {
+          $scope.news_list_2[0].topicPicture = data;
+
+          })
+      .error(function(data, status, headers, config) {
+          
+       });
+
+       api_manage.get_img_news(data.message[3]._id)
+       .success(function(data, status, headers, config) {
+         $scope.news_list_2[1].topicPicture = data;
+
+         })
+     .error(function(data, status, headers, config) {
+         
+      });
+
+      api_manage.get_img_news(data.message[4]._id)
+      .success(function(data, status, headers, config) {
+        $scope.news_list_3[0].topicPicture = data;
+
+        })
+    .error(function(data, status, headers, config) {
+        
+     });
+
+     api_manage.get_img_news(data.message[5]._id)
+     .success(function(data, status, headers, config) {
+       $scope.news_list_3[1].topicPicture = data;
+
+       })
+   .error(function(data, status, headers, config) {
+       
+    });
+
+    api_manage.get_img_news(data.message[6]._id)
+    .success(function(data, status, headers, config) {
+      $scope.news_list_1[2].topicPicture = data;
+
+      })
+  .error(function(data, status, headers, config) {
+      
+   });
+
+
+
+   api_manage.get_img_news(data.message[7]._id)
+   .success(function(data, status, headers, config) {
+     $scope.news_list_2[2].topicPicture = data;
+
+     })
+ .error(function(data, status, headers, config) {
+     
+  });
+
+
+
+  api_manage.get_img_news(data.message[8]._id)
+  .success(function(data, status, headers, config) {
+    $scope.news_list_3[2].topicPicture = data;
+
+    })
+.error(function(data, status, headers, config) {
+    
+ });
+
+
+
+        
+
+
        //   console.log('$scope.news_list  =  '+ JSON.stringify($scope.news_list))
         //  $scope.news_table= new NgTableParams({count: 10 ,  sorting: { resourceName: "desc" }  }, { counts: [10,20, 100], dataset: $scope.news_list });
 
@@ -342,6 +495,10 @@ $scope.get_news = function(){
           console.log(status+headers);
       });
     }
+
+
+
+    
 
 
 });

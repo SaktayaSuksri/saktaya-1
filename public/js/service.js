@@ -34,6 +34,11 @@ angular.module('api_service', [])
                                         delete_tag : function (data) {
                                             return $http.post('/api/deleteTag/',data);
                                             },
+
+                                          
+                                            get_img_news : function (data) {
+                                                return $http.get('/api/getPictureFromNewsId/'+data);
+                                            },
                                                         get_news : function (data) {
                                                             return $http.post('/api/getNews/',data);
                                                         },
