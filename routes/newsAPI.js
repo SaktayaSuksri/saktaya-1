@@ -453,11 +453,7 @@ router.get('/getPictureFromNewsId/:newsID/', function (request, response) {
                     Return_control.responseWithCode(ReturnCode.serviceError + methodCode + code, err, response);
                 }
                 else {
-<<<<<<< HEAD
                     response.send(result.topicPicture);
-=======
-                    response.send(result.topicPicture)
->>>>>>> fe692c89ef3baecc1e8c6df3eb734999fedea62a
                     //Return_control.responseWithCodeAndData("999999","Get Picture Completed", result.topicPicture, response)
                 }
             }

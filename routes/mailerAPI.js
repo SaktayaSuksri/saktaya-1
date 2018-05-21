@@ -2,7 +2,7 @@
 
 var express = require('express');
 var router = express.Router();
-var mail = require('nodemailer').mail;
+
 
 var Return_control = require('../controller/return_control.js');
 var ReturnCode = require('../model/returnCode.js');
@@ -12,6 +12,31 @@ var ReturnCode = require('../model/returnCode.js');
 //มิดเดิ้ลแว อยุ่ข้างบนเสมอ ก่อน get ไว้ทำ log  // เฉพาะ ที่ accessเข้าไฟล์นี้  ดูจากต้นทาง app.ut(/???,....);
 // middleware to use for all requests
 
+var nodemailer = require('nodemailer');
+
+
+var transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: 'saktayasuksri@gmail.com',
+    pass: 'sddssdsdsda'
+  }
+});
+
+var mailOptions = {
+  from: 'saktayasuksri@gmail.com',
+  to: 'livelivelivework@gmail.com',
+  subject: 'Sending Email using Node.js',
+  text: 'That was easy!'
+};
+
+transporter.sendMail(mailOptions, function(error, info){
+  if (error) {
+    console.log(error);
+  } else {
+    console.log('Email sent: ' + info.response);
+  }
+});
 router.post('/deanMailer/', function (request, response) {
     // request.body.name
     // request.body.email 
