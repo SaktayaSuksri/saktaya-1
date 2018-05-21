@@ -3,7 +3,10 @@
    body{ background: linear-gradient(60deg,rgba(248, 231, 149, 0.82),rgba(248, 99, 28, 0.95));
    }
 </style>
-
+  <script>
+    
+        
+    </script>
 
 <div style="height: 24vh; width: 100%;"></div>
         <div class="">
@@ -79,9 +82,15 @@
                                             หรือเพื่อแจ้งผลให้ท่านทราบ ถ้าหากท่านไม่ประสงค์จะให้ติดต่อกลับหรือไม่ต้องการเปิดเผย ก็ไม่จำเป็นต้องกรอกข้อมูลดังกล่าว
                                         </p>
                                        
-                                            <form class="container" style="    border: solid;
+                                        <div id="messages" class="hide" role="alert">
+                                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                <div id="messages_content"></div>
+                                              </div>
+
+                                              
+                                            <form  class="container" style="    border: solid;
                                             border-color: #e85e2a;
-                                            border-radius: 28px;" role="form" id="contact-form" method="post" action="/deanMailer">
+                                            border-radius: 28px;" role="form" id="form123" method="post" action="/api/deanMailer" target="dummyframe">
                                                 <div class="form-group bmd-form-group">
                                                     <label for="name" class="bmd-label-floating">ชื่อ-สกุล</label>
                                                     <input type="text" class="form-control" id="name" name="name">
@@ -105,10 +114,13 @@
                                                 </div>
                                                
                                                 <div class="submit text-center">
-                                                    <input type="submit" class="btn btn-warning btn-raised btn-round" style="font-size: 16px;" value="ติดต่อ คณบดี">
-                                                    
+                                                    <input type="submit" id="submit" class="btn btn-warning btn-raised btn-round" style="font-size: 16px;" value="ส่งข้อความถึง คณบดี">
                                                 </div>
-                                                <br>
+                                                <iframe  border="0" height="50px" name="dummyframe" id="dummyframe" style="    border: #fff;"></iframe>
+                                                
+                                                    
+   
+                                                
                                             </form>
                                         </div>
                           
