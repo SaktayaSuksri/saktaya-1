@@ -647,7 +647,7 @@
         <div class="col-md-6">
             <div class="card card-contact card-raised" style="margin-left: 0px; margin-right: 0px;">
                 <form id="contact-form2" method="post">
-                    <div class="card-header card-header-rose text-center">
+                    <div class="card-header card-header-warning text-center">
                         <h4 class="card-title"> ช่องทางติดต่อ</h4>
                     </div>
                     <div class="card-body">
@@ -655,7 +655,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="info info-horizontal">
-                                    <div class="icon icon-rose">
+                                    <div class="icon icon-warning">
                                         <i class="material-icons">phone</i>
                                     </div>
                                     <div class="description">
@@ -673,7 +673,7 @@
                             <div class="row">
                             <div class="col-md-12">
                                 <div class="info info-horizontal">
-                                    <div class="icon icon-rose">
+                                    <div class="icon icon-warning">
                                         <i class="material-icons">pin_drop</i>
                                     </div>
                                     <div class="description">
@@ -704,6 +704,16 @@
            center: {lat: 13.7169504, lng: 100.7602926},
            zoom: 14
          });
+
+         var marker = new google.maps.Marker({
+          position: {lat: 13.7169504, lng: 100.7602926},
+          map: map,
+          icon: 'http://www.kmitl.ac.th/frontend/images/logo-insite.png',
+          title: 'KMITL'
+        });
+
+
+        
        }
      </script>
  

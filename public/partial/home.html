@@ -161,7 +161,7 @@
         </div>
         <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCmLFmzc7yiD6kjh9TS9xb-Ei_ldzqVL14&callback=initMap"
         async defer></script>
-     
+        <script type="text/javascript" charset="UTF-8" src="https://maps.googleapis.com/maps-api-v3/api/js/33/0/marker.js"></script>
         <script>
            var map;
            function initMap() {
@@ -169,6 +169,16 @@
                center: {lat: 13.7169504, lng: 100.7602926},
                zoom: 14
              });
+
+
+             var marker = new google.maps.Marker({
+          position: {lat: 13.7169504, lng: 100.7602926},
+          map: map,
+          icon: 'http://www.kmitl.ac.th/frontend/images/logo-insite.png',
+          title: 'KMITL'
+        });
+
+
            }
          </script>
        
