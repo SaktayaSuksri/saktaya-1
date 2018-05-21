@@ -172,7 +172,7 @@
 
                                                                             <div  ng-if="item.topicPicture != ''" class="card-header card-header-image">
                                                                                     <a href="">
-                                                                                        <img  ng-src="{{item.topicPicture}}"  onerror="this.src='./assets/img/image_placeholder.jpg';" alt="not found">
+                                                                                        <img  ng-src="./getPictureFromNewsId/{{item._id}}"  onerror="this.src='./assets/img/image_placeholder.jpg';" alt="not found">
                                                                                     </a>
                                                                                 <div class="colored-shadow"
                                                                                  style="background-image:url({{item.topicPicture}}); opacity: 1;">

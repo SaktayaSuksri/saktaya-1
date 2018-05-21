@@ -12,8 +12,58 @@
                             <div class="contact-content">
                                 <div class="section container">
                                     <h2 class="title">"Meet the Dean Online : มีปัญหา .. เชิญปรึกษาคณบดี"</h2>
+                                    <hr>
                                     <div class="row">
-                                        <div class="col-md-6">
+                                            <div class="col-md-4 ml-auto">
+                                                    
+                                                    <br>
+                                                    <br>
+                                                    
+                                                    
+                                                                                                    <div class="card-header card-header-image">
+                                                                                                            <a href="#pablo">
+                                                                                                                <img class="img" style="height: 450px;width:300px; 
+                                                                                                                border-radius: 30px; box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
+                                                                                                            " src="http://www.science.kmitl.ac.th/wp-content/uploads/2018/01/DSC_4805-683x1024.jpg">
+                                                                                                            </a>
+                                                                                                        <div class="colored-shadow" style="background-image: url(&quot;assets/img/faces/card-profile1-square.jpg&quot;); opacity: 1;"></div></div>
+                                                    
+                                                                                                    </div>
+                                                                                                        <div class="col-md-3 ml-auto">
+                                                                                                <div class="info info-horizontal">
+                                                    
+                                                    
+                                                                                                    <div class="icon icon-primary">
+                                                                                                        <i class="material-icons">pin_drop</i>
+                                                                                                    </div>
+                                                                                                    <div class="description">
+                                                                                                        <h4 class="info-title">สถานที่ทำงาน</h4>
+                                                                                                        <p> Bld Mihail Kogalniceanu, nr. 8,
+                                                                                                            <br> 7652 Bucharest,
+                                                                                                            <br> Romania
+                                                                                                        </p>
+                                                                                                    </div>
+                                                                                        
+                                                                                                    <div class="icon icon-primary">
+                                                                                                        <i class="material-icons">email</i>
+                                                                                                    </div>
+                                                                                                    <div class="description">
+                                                                                                        <h4 class="info-title">E-mail</h4>
+                                                                                                        <p> 
+                                                                                                            <br> VAT · EN2341241
+                                                                                                            <br> IBAN · EN8732ENGB2300099123
+                                                                                                            <br> 
+                                                                                                        </p>
+                                                                                                    </div>
+                                                    
+                                                    
+                                                    
+                                                                                                </div>
+                                                    
+                                                    
+                                                    
+                                                                                            </div>
+                                        <div class="col-md-5 section">
                                             <p class="description">
                                                 
                                                     ขอเชิญชาวคณะวิทยาศาสตร์ทุกท่าน เสนอแนะความคิดเห็น ปรึกษาปัญหา และแจ้งเรื่องราว
@@ -28,77 +78,40 @@
                                             ***ข้อมูลเกี่ยวกับ ชื่อ-สกุล, โทรศัพท์ และ E-mail ของท่าน จะมีประโยชน์สำหรับการติดต่อกลับเพื่อขอข้อมูลเพิ่มเติม 
                                             หรือเพื่อแจ้งผลให้ท่านทราบ ถ้าหากท่านไม่ประสงค์จะให้ติดต่อกลับหรือไม่ต้องการเปิดเผย ก็ไม่จำเป็นต้องกรอกข้อมูลดังกล่าว
                                         </p>
-                                            <form role="form" id="contact-form" method="post">
+                                       
+                                            <form class="container" style="    border: solid;
+                                            border-color: #e85e2a;
+                                            border-radius: 28px;" role="form" id="contact-form" method="post" action="/deanMailer">
                                                 <div class="form-group bmd-form-group">
-                                                    <label for="name" class="bmd-label-floating">Your name</label>
-                                                    <input type="text" class="form-control" id="name">
+                                                    <label for="name" class="bmd-label-floating">ชื่อ-สกุล</label>
+                                                    <input type="text" class="form-control" id="name" name="name">
                                                 </div>
                                                 <div class="form-group bmd-form-group">
-                                                    <label for="exampleInputEmails" class="bmd-label-floating">Email address</label>
-                                                    <input type="email" class="form-control" id="exampleInputEmails">
+                                                    <label for="exampleInputEmails" class="bmd-label-floating">E- mail </label>
+                                                    <input type="email" class="form-control" id="exampleInputEmails" name="email">
                                                     <span class="bmd-help">We'll never share your email with anyone else.</span>
                                                 </div>
                                                 <div class="form-group bmd-form-group">
-                                                    <label for="phone" class="bmd-label-floating">Phone</label>
-                                                    <input type="text" class="form-control" id="phone">
+                                                    <label for="phone" class="bmd-label-floating">โทรศัพท์</label>
+                                                    <input type="text" class="form-control" id="phone" name="phone">
                                                 </div>
+                                                <div class="form-group bmd-form-group">
+                                                        <label for="topic" class="bmd-label-floating">หัวข้อ</label>
+                                                        <input type="text" class="form-control" id="topic" name="topic">
+                                                    </div>
                                                 <div class="form-group label-floating bmd-form-group">
-                                                    <label class="form-control-label bmd-label-floating" for="message"> Your message</label>
-                                                    <textarea class="form-control" rows="6" id="message"></textarea>
+                                                    <label class="form-control-label bmd-label-floating" for="message"> รายละเอียด</label>
+                                                    <textarea class="form-control" rows="6" id="message" name="detail"></textarea>
                                                 </div>
+                                               
                                                 <div class="submit text-center">
-                                                    <input type="submit" class="btn btn-primary btn-raised btn-round" value="Contact Us">
+                                                    <input type="submit" class="btn btn-warning btn-raised btn-round" style="font-size: 16px;" value="ติดต่อ คณบดี">
+                                                    
                                                 </div>
+                                                <br>
                                             </form>
                                         </div>
-                                        <div class="col-md-4 ml-auto">
-
-
-
-
-                                                <div class="card-header card-header-image">
-                                                        <a href="#pablo">
-                                                            <img class="img" src="assets/img/faces/card-profile1-square.jpg">
-                                                        </a>
-                                                    <div class="colored-shadow" style="background-image: url(&quot;assets/img/faces/card-profile1-square.jpg&quot;); opacity: 1;"></div></div>
-
-
-
-                                            <div class="info info-horizontal">
-
-
-                                                <div class="icon icon-primary">
-                                                    <i class="material-icons">pin_drop</i>
-                                                </div>
-                                                <div class="description">
-                                                    <h4 class="info-title">สถานที่ทำงาน</h4>
-                                                    <p> Bld Mihail Kogalniceanu, nr. 8,
-                                                        <br> 7652 Bucharest,
-                                                        <br> Romania
-                                                    </p>
-                                                </div>
-                                            </div>
-                                       
-                                            <div class="info info-horizontal">
-                                                <div class="icon icon-primary">
-                                                    <i class="material-icons">email</i>
-                                                </div>
-                                                <div class="description">
-                                                    <h4 class="info-title">E-mail</h4>
-                                                    <p> Creative Tim Ltd.
-                                                        <br> VAT · EN2341241
-                                                        <br> IBAN · EN8732ENGB2300099123
-                                                        <br> Bank · Great Britain Bank
-                                                    </p>
-                                                </div>
-
-
-
-                                            </div>
-
-
-
-                                        </div>
+                          
                                     </div>
                                 </div>
                             </div>
