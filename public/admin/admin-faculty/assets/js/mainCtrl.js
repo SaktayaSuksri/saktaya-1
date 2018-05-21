@@ -1078,7 +1078,27 @@ $scope.get_news = function(){
         {
       //  console.log(data);
         $scope.news_list  = data.message;
+        $scope.news_list.forEach(function(item){
+          
+           item.topicPicture  = 'http://161.246.35.182:2001/assets/img/image_placeholder.jpg';
+           
+                       
+         });
 
+         $scope.news_list.forEach(function(item){
+           api_manage.get_img_news(item._id)
+           .success(function(data, status, headers, config) {
+             item.topicPicture = data;
+ 
+             })
+         .error(function(data, status, headers, config) {
+             
+          });
+         
+                       
+         });
+
+         
         console.log('$scope.news_list  =  '+ JSON.stringify($scope.news_list))
   
           $scope.news_table= new NgTableParams({count: 10 ,  sorting: { datetimePost: "desc" }  }, { counts: [10,20, 100], dataset: $scope.news_list });

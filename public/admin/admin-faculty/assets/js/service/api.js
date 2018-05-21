@@ -28,7 +28,9 @@ angular.module('api_service', [])
             return $http.get('/api/getTargetTypesAll/');
         },
 
-
+        get_img_news : function (data) {
+            return $http.get('/api/getPictureFromNewsId/'+data);
+        },
 
 
         get_tag: function() {
