@@ -67,8 +67,7 @@ var formInstanceAPI = require('./routes/formInstanceAPI');
 var page = require('./routes/page');
 var divisionAPI = require('./routes/divisionAPI');
 var targetTypeAPI = require('./routes/targetTypeAPI');
-
-
+var mailerAPI = require('./routes/mailerAPI');
 
 // configuration ===============================================================
 
@@ -164,6 +163,7 @@ app.use('/api', userAPI);
 app.use('/api', formInstanceAPI);
 app.use('/api', divisionAPI);
 app.use('/api', targetTypeAPI);
+app.use('/api', mailerAPI);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

@@ -8,3 +8,12 @@ module.exports = {
 	consumerKey: 'my_twitter_consumer_key',
     consumerSecret: 'my_twitter_consumer_key'
 }
+
+/*
+
+ืneed to npm install;
+
+npm install nodemailer --save
+npm install cryptoJS --save
+
+*/
