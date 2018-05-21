@@ -211,20 +211,25 @@
 }
 
 .carousel .carousel-indicators {
-    bottom: -75px;
+    bottom: 488px;;
 }
+
 
 </style>
 
+
+
 <div class="row " ng-controller="header_first" ng-init="init()">
-    <!-- <div class="col-md-1 ml-auto mr-auto">
+
+
+        <!-- <div class="col-md-1 ml-auto mr-auto">
         </div> -->
 
 
-<div class="col-md-8 ml-auto mr-auto" style="margin: 0px !important; padding: 0px !important;">
+<div class="col-md-12 ml-auto mr-auto" style="margin: 0px !important; padding: 0px !important;">
 
 <div class="">
- <div class="card card-raised card-carousel " style="width:100% ;height:150%!important;">
+ <div class="card card-raised card-carousel " style="width:100% ;height:100%!important;">
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">
                   <li data-target="#carouselExampleIndicators"  ng-repeat="item in news_list_slide" ng-class="{'active': $index == 0}" data-slide-to="{{$index}}"></li>
@@ -289,7 +294,7 @@
 <!-- <div class="col-md-1 ml-auto mr-auto">
 </div> -->
 <div class="col-md-4 ml-auto mr-auto" style="margin: 0px !important;">
-<div class="card" ng-controller="youtube_box" style="width: 100%;">
+<div class="card" ng-controller="youtube_box" style="width: 100%;min-height: 324px!important; max-height:324px; ">
 
     <iframe class="card-img-top" ng-src="https://www.youtube.com/embed/gchO9xm8Qxs" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
     </iframe>
@@ -306,8 +311,9 @@
           <img class="card-img" style="width:100px; height:130;" src="http://www.science.kmitl.ac.th/oldweb/images/sciNews/scienceNews92.jpg">
         </div>
     </div> -->
-
-    <div class="card" style="width: 100%;">
+  </div>
+    <div class="col-md-4 ml-auto mr-auto" style="margin: 0px !important;">
+    <div class="card" style="width: 100%;min-height: 324px!important; max-height:324px; ">
 
         <script>(function(d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
@@ -318,31 +324,50 @@
       }(document, 'script', 'facebook-jssdk'));</script>
       <div class="fb-page" data-href="https://www.facebook.com/Faculty-of-Science-KMITL-145367872869812/"  data-tabs="events,messages" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/Faculty-of-Science-KMITL-145367872869812/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/Faculty-of-Science-KMITL-145367872869812/">Faculty of Science, KMITL</a></blockquote>
       </div>
-<!--
-    <div class="">
-        <div class="row"style="margin: 0px;"><h4>  กิจกรรมที่กำลังจะมาถึง</h4></div>
-       
 
-
-        <div>
-            <div class="row" style="background-color: #ff9800;color: #fff;margin: 0px;padding: 15px;">
-                <div class="col-xs-4" ><b style="font-size: 20px;">23</b><br>มี.ค.</div>
-                <div class="col-xs-8" style="text-align: left;">โครงการมหาวิทยาลัยเด็ก ประเทศไทย “เครื่องกลพลังงานไฟฟ้า”   <br><a style="float: right;padding-top: 4px;">รายละเอียด...</a></div>
-      
-              </div>
-      
-        </div>
-        <div>
-        
-        </div>
-       
-      </div>
-    -->
    
     </div>
 
 
 
+
+
+</div>
+
+
+<div class="col-md-4 ml-auto mr-auto" style="margin: 0px !important;">
+<div class="example-1 card-news d-block w-100" >
+  
+    <div class="wrapper" style=" background: url({{news_academic_service.topicPicture}}) 20% 1%/cover no-repeat;min-height: 330px!important; max-height:330px; ">
+    <!--  <div class="date">
+        <span class="day">12</span>
+        <span class="month">Aug</span>
+        <span class="year">2016</span>
+      </div>-->
+      <div class="data">
+        <div class="content">
+   
+          <h3 class="title"><a ng-href="./page/news_container/5b02922a3c00fe2450c31ed8/5a8470b228d2e92a0c753010" > {{news_academic_service.topicShort}}</a></h3>
+          <p class="text">{{news_academic_service.detailShort}}</p>
+          <span class="author">Tags : 
+              <span class="badge" ng-repeat="tag_it in news_academic_service.tag2">
+                  {{news_academic_service.text}}
+              
+              </span>
+
+          </span>
+          <label for="show-menu" class="menu-button"><span>
+
+          </span></label>
+         
+        </div>
+       
+      </div>
+
+    </div>
+  </div>
+
+ 
 
 
 </div>

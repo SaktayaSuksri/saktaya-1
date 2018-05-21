@@ -7,6 +7,11 @@ angular.module('app').config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
 
 
+  
+  .state('dean', {
+    url: '/dean',
+    templateUrl: "./partial/dean.html"
+  })
 
     .state('course-tee', {
       url: '/course-tee',

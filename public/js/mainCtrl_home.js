@@ -54,12 +54,59 @@ angular.module('app').controller('header_first', function ($scope,$http,api_mana
                     $scope.search = {};
                     $scope.search.targetTypeName = "0";
                     $scope.get_news();
-                
+                    $scope.get_news_news_academic_service();
         
         
                 }
 
+
                 
+                $scope.get_news_news_academic_service = function(){
+                    
+                        //document.querySelector("#loading").style.display = "";
+                        $scope.news_academic_service = {};
+                         console.log(" get_news_news_academic_service for slide ");
+                        let dataObj = {
+                    
+                         filterTargetTypeName : "0",
+                          resourceId : "5b02922a3c00fe2450c31ed8",
+                          departmentId:"0",
+                          tag:"0",
+                          limit:1,
+                          isPinned : "0",
+                          isPosted:"false",
+                          isPreview:"true",
+                          targetTypeId:"0"
+                    
+                        }
+                          api_manage.get_news(dataObj)
+                          .success(function(data, status, headers, config) {
+                              //$scope.message = data;
+                            //  console.log("-----------"+ JSON.stringify(data));
+                              if(data.code != "999999")
+                              {
+                                alert(data.message);
+                              }
+                              else
+                              {
+                              console.log(" get_news_news_academic_service for slide  "+ JSON.stringify(data));
+                              $scope.news_academic_service = data.message[0];
+                              console.log(" get_news_news_academic_service for slide  ---------------");
+
+                              console.log("  "+ JSON.stringify( $scope.news_academic_service));
+                    
+                         //     document.querySelector("#loading").style.display = "none";
+                           //   console.log('$scope.news_list  =  '+ JSON.stringify($scope.news_list))
+                            //  $scope.news_table= new NgTableParams({count: 10 ,  sorting: { resourceName: "desc" }  }, { counts: [10,20, 100], dataset: $scope.news_list });
+                    
+                            }
+                    
+                          })
+                          .error(function(data, status, headers, config) {
+                              alert( "failure message: " + JSON.stringify({data: data}) +"ไม่สามารถติดต่อเซิฟเวอร์ได้ ติดต่อแอดมิน");
+                              console.log(status+headers);
+                          });
+                        }        
 $scope.get_news = function(){
 
     //document.querySelector("#loading").style.display = "";
