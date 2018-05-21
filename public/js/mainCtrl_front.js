@@ -230,7 +230,7 @@ $scope.get_catagory = function(){
      resourceId : $scope.selected._id,
       departmentId: $scope.search.departmentId,
       targetTypeId:"0",
-      tag: $scope.filter_tag,
+     
       limit:0,
       isPinned :"0",
       isPosted:"false",
