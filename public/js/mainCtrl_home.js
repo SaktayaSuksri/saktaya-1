@@ -349,6 +349,7 @@ $scope.get_news = function(){
           if(data.code != "999999")
           {
             alert(data.message);
+            
           }
           else
           {
@@ -457,6 +458,7 @@ $scope.get_news = function(){
       
    });
 
+   
 
 
    api_manage.get_img_news(data.message[7]._id)
@@ -479,7 +481,7 @@ $scope.get_news = function(){
     
  });
 
-
+ document.querySelector("#loading").style.display = "none";
 
         
 
