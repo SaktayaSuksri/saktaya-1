@@ -402,7 +402,7 @@ font-weight: 400;
                     <div class="card card-blog"   >
 
                          
-
+                         
                             <div  ng-if="item.topicPicture != ''" class="card-header card-header-image">
                                     <a href="#pablo">
                                         <img style="height:186px" ng-src="{{item.topicPicture}}"  onerror="this.src='http://161.246.35.182:2001/assets/img/image_placeholder.jpg';" alt="not found">
@@ -427,12 +427,13 @@ font-weight: 400;
                           
 
                             <div class="card-body">
-                                <h4 class="card-category text-warning text-left">{{item.topicShort  | limitTo:100}}</h4>
+                                    <h6 class="card-category  text-left"> {{item.resourceName}}</h6>
+                                <h4 class="card-category text-warning text-left"> <b>{{item.topicShort  | limitTo:100}}</b></h4>
                            
                                 <p class="card-description text-left">
                                         &ensp; &ensp; {{item.detailShort | limitTo:300}}.... </p>
                                         <div class="row pull-right">
-                                <a ng-href="http://161.246.35.182:2001/news_each/{{item._id}}" class="btn btn-info btn-round" sty>อ่านต่อ</a>
+                                <a ng-href="http://161.246.35.182:2001/news_each/{{item._id}}" class="btn btn-warning btn-raised btn-round" sty>อ่านต่อ</a>
                             </div>
                     </div>
                            
