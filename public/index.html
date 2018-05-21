@@ -81,6 +81,24 @@ font-weight: 400;
     background-size: 100%;
     background-repeat: no-repeat;
 }
+
+/* On screens that are 992px or less, set the background color to blue */
+@media screen and (max-width: 992px) {
+  h1 {
+    font-size: 30px;
+  }
+}
+
+/* On screens that are 600px or less, set the background color to olive */
+@media screen and (max-width: 600px) {
+    h1 {
+    font-size: 25px;
+  }
+}
+
+
+
+
 </style>
 <body class="landing-page " ng-app="app" ng-controller="global" ng-init="showtranparent = true" >
 
@@ -177,14 +195,14 @@ font-weight: 400;
                                         </a>
                                     </div>
                                 </li>
-                                    <li class="nav-item">
+                                    <!-- <li class="nav-item">
                                       <a class="nav-link active" href="#">ปริญญาตรี</a>
-                                    </li>
+                                    </li> -->
                                     <li class="nav-item">
                                       <a class="nav-link" href="./graduate">บัณทิต</a>
                                     </li>
                                     <li class="nav-item">
-                                      <a class="nav-link" href="/page#/personel">บุคคลากร</a>
+                                      <a class="nav-link" href="/page#/personel">บุคลากร</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link active" href="http://www.science.kmitl.ac.th:8080/sic/index.php/CHome">ศูนย์เครื่องมือวิทยาศาสตร์</a>

@@ -300,8 +300,10 @@
 <br>
       <div class="row">
           <div class="col-md-4" ng-repeat="item in news_list" >
-            <div class="card" style="width: 100%;">
-                <img style="width:330px; height:186px" class="card-img-top" ng-src="{{item.topicPicture}}"  onerror="this.src='./assets/img/image_placeholder.jpg';" alt="not found">
+            
+            <div  class="card" style="width: 100%;">
+                <img ng-if="item.topicPicture == ''" style="width:100%; height:186px" ng-src="./admin/admin-faculty/assets/img/image_placeholder.jpg" onerror="this.src='./assets/img/image_placeholder.jpg';" alt="not found">
+                <img ng-if="item.topicPicture != ''" style="width:100%; height:auto" class="card-img-top" ng-src="{{item.topicPicture}}"  onerror="this.src='./assets/img/image_placeholder.jpg';" alt="not found">
                 <div class="card-body">
                   <h4 class="card-title">{{item.topicShort  | limitTo:100}}</h4>
                   <p class="card-text"> &ensp; &ensp; {{item.detailShort | limitTo:300}}.... </p>
@@ -609,7 +611,7 @@
 
     -->
 
-      <div class="" style="background-image:  url(&apos;http://localhost:2001/assets/img/bg-slogan.jpg&apos;);     height: 209px;
+      <div class="" style="background-image:  url(&apos;../assets/img/bg-slogan.jpg&apos;);     height: 209px;
 
       background-repeat: repeat-x;
       margin: 0px 0;
@@ -639,12 +641,11 @@
 
 
        <!--     *********    CONTACT US 2     *********      -->
-      
        <div class="contactus-2">
         
         <div id="contactUs2Map" class="map" style="width:100%;height:600px;"></div>
         <div class="col-md-6">
-            <div class="card card-contact card-raised">
+            <div class="card card-contact card-raised" style="margin-left: 0px; margin-right: 0px;">
                 <form id="contact-form2" method="post">
                     <div class="card-header card-header-rose text-center">
                         <h4 class="card-title"> ช่องทางติดต่อ</h4>

@@ -35,12 +35,12 @@
 /* ตัวปกติ */
 @font-face {
     font-family: 'noto_sans_thai';
-    src: url('http://localhost:2001/assets/fonts/notosansthai-regular-webfont.eot');
-    src: url('http://localhost:2001/assets/fonts/notosansthai-regular-webfont.eot?#iefix') format('embedded-opentype'),
-    url('http://localhost:2001/assets/fonts/notosansthai-regular-webfont.woff2') format('woff2'),
-    url('http://localhost:2001/assets/fonts/notosansthai-regular-webfont.woff') format('woff'),
-    url('http://localhost:2001/assets/fonts/notosansthai-regular-webfont.ttf') format('truetype'),
-    url('http://localhost:2001/assets/fonts/notosansthai-regular-webfont.svg#noto_sans_thairegular') format('svg');
+    src: url('../assets/fonts/notosansthai-regular-webfont.eot');
+    src: url('../assets/fonts/notosansthai-regular-webfont.eot?#iefix') format('embedded-opentype'),
+    url('../assets/fonts/notosansthai-regular-webfont.woff2') format('woff2'),
+    url('../assets/fonts/notosansthai-regular-webfont.woff') format('woff'),
+    url('../assets/fonts/notosansthai-regular-webfont.ttf') format('truetype'),
+    url('../assets/fonts/notosansthai-regular-webfont.svg#noto_sans_thairegular') format('svg');
     font-weight: normal;
     font-style: normal;
     }
@@ -75,6 +75,19 @@ font-weight: 400;
     background-size: 100%;
     background-repeat: no-repeat;
 }
+
+@media screen and (max-width: 992px) {
+  h1 {
+    font-size: 30px;
+  }
+}
+
+/* On screens that are 600px or less, set the background color to olive */
+@media screen and (max-width: 600px) {
+    h1 {
+    font-size: 20px;
+  }
+}
 </style>
 <body class="landing-page " ng-app="app" ng-controller="global" > 
       
@@ -82,7 +95,7 @@ font-weight: 400;
     <nav class="navbar     fixed-top   navbar-expand-lg   bg-warning"    >
                 <div class="container-fluid">
                         <div class="navbar-translate">
-                            <a href="./">
+                            <a href="http://161.246.35.182:2001">
                             <img class=" mr-0 mr-md-2 navbar-absolute-logo" src="http://www.science.kmitl.ac.th/wp-content/themes/personalTheme/assets/images/science-logo.png"  style="width: 62%; height: auto;">
                             </a>
                             <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -94,7 +107,7 @@ font-weight: 400;
                         <div class="collapse navbar-collapse">
                             <ul class="justify-content-center navbar-nav ml-auto">
                                 <li class="nav-item">
-                                        <a href="./" class=" nav-link" >
+                                        <a href="http://161.246.35.182:2001" class=" nav-link" >
                                             <i class="material-icons">view_day</i> หน้าแรก
                                         </a>
                 
@@ -165,14 +178,14 @@ font-weight: 400;
                                         </a>
                                     </div>
                                 </li>
-                                    <li class="nav-item">
+                                    <!-- <li class="nav-item">
                                       <a class="nav-link active" href="#">ปริญญาตรี</a>
-                                    </li>
+                                    </li> -->
                                     <li class="nav-item">
                                       <a class="nav-link" href="/graduate">บัณทิต</a>
                                     </li>
                                     <li class="nav-item">
-                                      <a class="nav-link" href="/page#/personel">บุคคลากร</a>
+                                      <a class="nav-link" href="/page#/personel">บุคลากร</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link active" href="http://www.science.kmitl.ac.th:8080/sic/index.php/CHome">ศูนย์เครื่องมือวิทยาศาสตร์</a>

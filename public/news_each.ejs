@@ -55,13 +55,26 @@
     background-size: 100%;
     background-repeat: no-repeat;
 }
+
+@media screen and (max-width: 992px) {
+  h1 {
+    font-size: 30px;
+  }
+}
+
+/* On screens that are 600px or less, set the background color to olive */
+@media screen and (max-width: 600px) {
+    h1 {
+    font-size: 25px;
+  }
+}
 </style>
 <body class="landing-page " ng-app="app" ng-controller="news_each" ng-init="showtranparent = true" > 
         
         <nav class="navbar     fixed-top   navbar-expand-lg   bg-warning"    >
                 <div class="container-fluid">
                         <div class="navbar-translate">
-                            <a href="./">
+                            <a href="http://161.246.35.182:2001">
                             <img class=" mr-0 mr-md-2 navbar-absolute-logo" src="http://www.science.kmitl.ac.th/wp-content/themes/personalTheme/assets/images/science-logo.png"  style="width: 62%; height: auto;">
                             </a>
                             <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -73,7 +86,7 @@
                         <div class="collapse navbar-collapse">
                             <ul class="justify-content-center navbar-nav ml-auto">
                                 <li class="nav-item">
-                                        <a href="./" class=" nav-link" >
+                                        <a href="http://161.246.35.182:2001" class=" nav-link" >
                                             <i class="material-icons">view_day</i> หน้าแรก
                                         </a>
                 
@@ -144,14 +157,14 @@
                                         </a>
                                     </div>
                                 </li>
-                                    <li class="nav-item">
+                                    <!-- <li class="nav-item">
                                       <a class="nav-link active" href="#">ปริญญาตรี</a>
-                                    </li>
+                                    </li> -->
                                     <li class="nav-item">
                                       <a class="nav-link" href="/graduate">บัณทิต</a>
                                     </li>
                                     <li class="nav-item">
-                                      <a class="nav-link" href="/page#/personel">บุคคลากร</a>
+                                      <a class="nav-link" href="/page#/personel">บุคลากร</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link active" href="http://www.science.kmitl.ac.th:8080/sic/index.php/CHome">ศูนย์เครื่องมือวิทยาศาสตร์</a>
@@ -187,7 +200,7 @@
                
                 <div class="container">
 
-                        <h1 style="    font-size: 50px;
+                        <h1 style="
                         line-height: 50px;
                         color: #ff7c1c;
                         position: relative;">  <%= data.topicFull %></h1>
@@ -198,7 +211,7 @@
                     font-size: 22px;
                     line-height: 28px;"><strong >    <%=  data.topicShort %>   </strong></p>
 
-                    <img  src='<%=data.topicPicture%>' >
+                    <img  src='<%=data.topicPicture%>' style="width: 100%">
                     <p style="color: #7d7f80;
                     font-size: 18px;
                     line-height: 28px;">&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 

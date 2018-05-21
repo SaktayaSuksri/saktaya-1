@@ -97,16 +97,16 @@
                                         <div class="home-staff-left2f"><span> News</span></div>
                                     </div>
                                     <div class="col-sm-9">
-                                        <div class="home-staff-right2f">
+                                        <div class="">
                                 
                                             
                         <div class="row justify-content-md-center">
 
-                                <div class="col-12 col-md-auto">
+                                <!-- <div class="col-12 col-md-auto"><div class="col-12 col-md-auto"></div> -->
 
 
                                    
-                                        <ul class="nav nav-pills nav-pills-warning nav-pills-lg">
+                                        <ul class="nav nav-pills nav-pills-warning nav-pills-lg" style="padding: 8%;">
                                         <!--    <li class="nav-item"><a class="nav-link active" href="#pill1" ng-click="news_filter('0')" data-toggle="tab">ทั้งหมด</a></li>
                                             <li class="nav-item"><a class="nav-link"  ng-click="news_filter('ประชาสัมพันธ์')" data-toggle="tab">ข่าวประชาสัมพันธ์</a></li>
                                             <li class="nav-item"><a class="nav-link" ng-click="news_filter('ปริญญาตรี')" data-toggle="tab">สำหรับนักศึกษา</a></li>
@@ -128,7 +128,7 @@
 
                                     
 
-                                    </div>
+                                    <!-- </div> -->
                                 </div>
                                 
                             </div>
@@ -160,7 +160,7 @@
 
 
                                                                             <div  ng-if="item.topicPicture != ''" class="card-header card-header-image">
-                                                                                    <a href="#pablo">
+                                                                                    <a href="">
                                                                                         <img style="height:186px;" ng-src="{{item.topicPicture}}"  onerror="this.src='./assets/img/image_placeholder.jpg';" alt="not found">
                                                                                     </a>
                                                                                 <div class="colored-shadow"
@@ -171,7 +171,7 @@
 
 
                                                                             <div  ng-if="item.topicPicture == ''" class="card-header card-header-image">
-                                                                                    <a href="#pablo">
+                                                                                    <a href="">
                                                                                         <img style=" height:186px;" ng-src="./admin/admin-faculty/assets/img/image_placeholder.jpg" onerror="this.src='./assets/img/image_placeholder.jpg';" alt="not found">
                                                                                     </a>
                                                                                 <div class="colored-shadow"
@@ -182,16 +182,16 @@
 
 
                                                                             <div class="card-body">
-                                                                                    <h4 class="card-category text-warning text-left"> ข่าวทุนการศึกษา</h4>
+                                                                                    <h6 class="card-category text-warning text-left"> {{item.resourceName}}</h6>
                                                                                     <h4 class="card-title">
-                                                                                            <a href="#pablo">{{item.topicShort  | limitTo:100}}</a>
+                                                                                            <a href="">{{item.topicShort  | limitTo:100}}</a>
                                                                                         </h4>
                                                                                     <p class="card-description text-left">
                                                                                             &ensp; &ensp; {{item.detailShort | limitTo:300}}.... </p>
                                                                                             <div class="row pull-right">
-                                                                                    <a ng-href="./news_each/{{item._id}}" class="btn  btn-round" sty>อ่านต่อ</a>
+                                                                                    <a ng-href="./news_each/{{item._id}}" class="btn btn-info btn-round" sty>อ่านต่อ</a>
                                                                                 </div>
-                                                                                </div>
+                                                                            </div>
 
 
 
@@ -226,9 +226,9 @@
 
 
                                                                             <div class="card-body">
-                                                                                    <h6 class="card-category text-warning text-left"> ข่าวทุนการศึกษา</h6>
+                                                                                    <h6 class="card-category text-warning text-left"> {{item.resourceName}}</h6>
                                                                                     <h4 class="card-title">
-                                                                                            <a href="#pablo">{{item.topicShort  | limitTo:100}}</a>
+                                                                                            <a href="">{{item.topicShort  | limitTo:100}}</a>
                                                                                         </h4>
                                                                                     <p class="card-description text-left">
                                                                                             &ensp; &ensp; {{item.detailShort | limitTo:300}}.... </p>
@@ -270,7 +270,10 @@
 
 
                                                                             <div class="card-body">
-                                                                                    <h4 class="card-category text-warning text-left">{{item.topicShort  | limitTo:100}}</h4>
+                                                                                    <h6 class="card-category text-warning text-left"> {{item.resourceName}}</h6>
+                                                                                    <h4 class="card-title">
+                                                                                        {{item.topicShort  | limitTo:100}}
+                                                                                    </h4>
 
                                                                                     <p class="card-description text-left">
                                                                                             &ensp; &ensp; {{item.detailShort | limitTo:300}}.... </p>

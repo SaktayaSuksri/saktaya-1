@@ -11,25 +11,33 @@
                                 <b>บุคคลากรคณะวิทยาศาสตร์</b>
                             </h2><hr>
                         </center>
-                        <div class="row">
-                          <div class=".col-8 .col-sm-12" style="padding: 14px" ng-repeat = "personel_item in personel_list">
-                            <div class="card card-profile " style="max-width: 250px" data-toggle="modal" ng-click = "showDetail();">
-                              <div class="card-header card-header-image">
-                                  <img class="img" style = "width: 222px; height: 252px;" ng-if = "personel_item.picture == null" src="assets\img\image_placeholder.jpg">
-                                  <img class="img" style = "width: 222px; height: 252px;" ng-if = "personel_item.picture != null"src="{{personel_item.picture}}" >
-                              </div>
 
-                              <div class="card-body">
-                                <h4 class="card-title">{{personel_item.personelName}}</h4>
-                                <h6 class="card-category text-gray">{{personel_item.position}}</h6>
-                              </div>
+
+                        <div class="row">
+                                <div class="col-md-3" ng-repeat = "personel_item in personel_list">
+                                  <center>
+                                  <div class="card card-profile " style="max-width: 250px" data-toggle="modal" ng-click = "showDetail();" >
+                                    <div class="card-header card-header-image">
+                                        <img class="img" style = "width: 222px; height: 252px;" ng-if = "personel_item.picture == null" src="assets\img\image_placeholder.jpg">
+                                        <img class="img" style = "width: 222px; height: 252px;" ng-if = "personel_item.picture != null"src="{{personel_item.picture}}">                                        
+                                    </div>
+                        
+                                    <div class="card-body ">
+                                      <h4 class="card-title">{{personel_item.personelName}}</h4>
+                                      <h6 class="card-category text-gray">{{personel_item.position}}</h6>
+                                    </div>
+                                  </div>
+                                </center>
+                                </div>
                             </div>
-                          </div>
-                        </div>
+
+
                     </div>
                     <hr>
+
                     <!-- body -->
                 </div>
+
             </div>
         </div>
 </div>
