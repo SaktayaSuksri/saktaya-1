@@ -28,7 +28,10 @@
 
 
 
+nav {
 
+    font-size: 16px;
+}
 
 .footerai {
     background-color: orange;
@@ -46,51 +49,163 @@
 }
 </style>
 <body class="about-us " ng-app ="department_app">
-  <nav class="navbar      navbar-default fixed-top  navbar-expand-lg" style="background-color:#ffffffcf !important" color-on-scroll="100" id="sectionsNav" ng-controller = "navCtrl">
-      <div class="container-fluid">
-          <div class="navbar-translate">
-
-              <img class=" mr-0 mr-md-2 navbar-absolute-logo" src="http://www.comsci.science.kmitl.ac.th/cs/images/logo.png" width="60%" height="auto">
-              <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
-                  <span class="navbar-toggler-icon"></span>
-                  <span class="navbar-toggler-icon"></span>
-              </button>
-          </div>
-            </div>
-            <div class="collapse navbar-collapse">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item" style="font-size:0.8rem;padding:15px;">
-                        <a ui-sref="about" ng-class="{'btn btn-warning btn-raised btn-round':navstep == '1'}" ng-click="change_navstep('1')" class="">
-                            <i class="material-icons">apps</i> หน้าแรก
-                        </a>
-                    </li>
-                    <!-- ng-click = "gotoEnroll();" -->
-                    <li class="dropdown  nav-item "  style="font-size:0.8rem;padding:15px;">
-                        <a ui-sref="enroll" class="" ng-class="{'btn btn-warning btn-raised btn-round':navstep == '2'}" ng-click="change_navstep('2')">
-                            <i class="material-icons">view_day</i> สมัครเข้าศึกษา
-                        </a>
-                    </li>
-                    <li class="dropdown nav-item" style="font-size:0.8rem;padding:15px;">
-                        <a ui-sref="course" class="" ng-class="{'btn btn-warning btn-raised btn-round':navstep == '3'}" ng-click="change_navstep('3')">
-                            <i class="material-icons">view_carousel</i> หลักสูตร
-                        </a>
-                    </li>
-                    <li class="dropdown nav-item" style="font-size:0.8rem;padding:15px;">
-                        <a ui-sref="scollarship" class="" ng-class="{'btn btn-warning btn-raised btn-round':navstep == '4'}" ng-click="change_navstep('4')">
-                            <i class="material-icons">view_day</i> ทุนการศึกษา
-                        </a>
-                    </li>
-
-                    <li class="dropdown nav-item" style="font-size:0.8rem;padding:15px;">
-                        <a ui-sref="professor" class="" ng-class="{'btn btn-warning btn-raised btn-round':navstep == '5'}" ng-click="change_navstep('5')">
-                            <i class="material-icons">view_carousel</i> คณาจารย์และบุคคลากร
-                        </a>
-                    </li>
-                </ul>
-            </div>
+  <nav class="navbar   fixed-top    navbar-default navbar-expand-lg" style="z-index:100;    opacity: 0.95;
+  background-color: #f15c22 !important;
+  box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 12px -5px rgba(255, 152, 0, 0.46);     color: #fff;" color-on-scroll="100" id="sectionsNav" ng-controller = "navCtrl">
+  <div class="container-fluid">
+        <div class="navbar-translate">
+            <a href="./">
+            <img class=" mr-0 mr-md-2 navbar-absolute-logo" src="http://www.science.kmitl.ac.th/wp-content/themes/personalTheme/assets/images/science-logo.png"  style="width: 62%; height: auto;">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon"></span>
+            </button>
         </div>
+        <div class="collapse navbar-collapse">
+            <ul class="justify-content-center navbar-nav ml-auto">
+                <li class="nav-item">
+                        <a href="./" class=" nav-link" >
+                            <i class="material-icons">view_day</i> หน้าแรก
+                        </a>
+
+                    </li>
+
+                <li class="dropdown nav-item">
+                    <a  class="dropdown-toggle nav-link" data-toggle="dropdown">
+                        <i class="material-icons">view_day</i> หลักสูตร
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right dropdown-with-icons">
+                        <a href="/page#/course-tee" class="dropdown-item">
+                            <i class="material-icons">dns</i> ปริญญาตรี
+                        </a>
+                        <a href="/page#/course-tor" class="dropdown-item">
+                                <i class="material-icons">build</i> ปริญญาโท
+                            </a>
+                        <a href="/page#/course-aek"class="dropdown-item">
+                            <i class="material-icons">build</i> ปริญญาเอก
+                        </a>
+
+                    </div>
+                </li>
+                <li class="dropdown nav-item">
+                    <a  class="dropdown-toggle nav-link" data-toggle="dropdown">
+                        <i class="material-icons">view_carousel</i> เกี่ยวกับคณะ
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right dropdown-with-icons">
+                        <a href="/page#/history" class="dropdown-item">
+                            <i class="material-icons">account_balance</i> ประวัติความเป็นมา
+                        </a>
+                        <a  href="/page#/resolution" class="dropdown-item">
+                            <i class="material-icons">art_track</i> ปรัชญา-ปณิธาน-วิสัยทัศน์-พันธกิจ
+                        </a>
+                        <a href="/page#/structure" class="dropdown-item">
+                            <i class="material-icons">view_day</i>  โครงสร้างองค์กร
+                        </a>
+                        <a  href="/page#/yearly-report" class="dropdown-item">
+                            <i class="material-icons">store</i> รายงานประจำปี
+                        </a>
+                    </div>
+                </li>
+
+                <li class="dropdown nav-item">
+                    <a  class="dropdown-toggle nav-link " data-toggle="dropdown">
+                        <i class="material-icons">view_carousel</i> ภาควิชา
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right dropdown-with-icons">
+                            <!-- <a href="" class="dropdown-item">
+                                    <i class="material-icons">account_balance</i> ศูนย์เครื่องมือวิทยาศาสตร์
+                                </a> -->
+                        <a href="http://www.math.sci.kmitl.ac.th/" class="dropdown-item">
+                            <i class="material-icons">account_balance</i> ภาควิชาคณิตศาสตร์
+                        </a>
+                        <a href="http://www.science.kmitl.ac.th/oldweb/links/department/bio/" class="dropdown-item">
+                            <i class="material-icons">art_track</i> ภาควิชาชีววิทยา
+                        </a>
+                        <a href="http://physics.kmitl.ac.th/" class="dropdown-item">
+                            <i class="material-icons">view_quilt</i>  ภาควิชาฟิสิกส์
+                        </a>
+                        <a href="./department.html" class="dropdown-item">
+                            <i class="material-icons">location_on</i> ภาควิชาวิทยาการคอมพิวเตอร์
+                        </a>
+                        <a href="http://www.science.kmitl.ac.th/oldweb/links/department/Webstat59/index.html" class="dropdown-item">
+                            <i class="material-icons">view_day</i> ภาควิชาสถิติ
+                        </a>
+                        <a href="http://www.science.kmitl.ac.th/oldweb/links/department/chem/" class="dropdown-item">
+                            <i class="material-icons">fingerprint</i> ภาควิชาเคมี
+                        </a>
+                    </div>
+                </li>
+                    <!-- <li class="nav-item">
+                      <a class="nav-link active" href="#">ปริญญาตรี</a>
+                    </li> -->
+                    <li class="nav-item">
+                      <a class="nav-link" href="./graduate">บัณทิต</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="/page#/personel">บุคลากร</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="http://www.science.kmitl.ac.th:8080/sic/index.php/CHome">ศูนย์เครื่องมือวิทยาศาสตร์</a>
+                      </li>
+                    <li class="nav-item">
+                      <a class="nav-link " href="http://alumni.kmitlsci.org/">ศิษย์เก่า</a>
+                    </li>
+
+            </ul>
+
+
+        </div>
+
+    </div>
     </nav>
+    <nav class="navbar      navbar-default fixed-top  navbar-expand-lg" style="    background-color: #f5d004 !important;background: linear-gradient(to bottom right, #e75b25, #f3cd0142); top: 60px !important;  top: 92px !important;
+    height: 60px;  z-index: 99;" color-on-scroll="100" id="sectionsNav" ng-controller = "navCtrl">
+            <div class="container-fluid">
+                <div class="navbar-translate">
+      
+                    <img class=" mr-0 mr-md-2 navbar-absolute-logo" width="60%" height="auto">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                        <span class="navbar-toggler-icon"></span>
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </div>
+                  </div>
+                  <div class="collapse navbar-collapse">
+                      <ul class="navbar-nav ml-auto">
+                          <li class="nav-item" style="font-size:0.8rem;padding:15px;">
+                              <a ui-sref="about" ng-class="{'btn btn-warning btn-raised btn-round':navstep == '1'}" ng-click="change_navstep('1')" class="">
+                                  <i class="material-icons">apps</i> หน้าแรก
+                              </a>
+                          </li>
+                          <!-- ng-click = "gotoEnroll();" -->
+                          <li class="dropdown  nav-item "  style="font-size:0.8rem;padding:15px;">
+                              <a ui-sref="enroll" class="" ng-class="{'btn btn-warning btn-raised btn-round':navstep == '2'}" ng-click="change_navstep('2')">
+                                  <i class="material-icons">view_day</i> สมัครเข้าศึกษา
+                              </a>
+                          </li>
+                          <li class="dropdown nav-item" style="font-size:0.8rem;padding:15px;">
+                              <a ui-sref="course" class="" ng-class="{'btn btn-warning btn-raised btn-round':navstep == '3'}" ng-click="change_navstep('3')">
+                                  <i class="material-icons">view_carousel</i> หลักสูตร
+                              </a>
+                          </li>
+                          <li class="dropdown nav-item" style="font-size:0.8rem;padding:15px;">
+                              <a ui-sref="scollarship" class="" ng-class="{'btn btn-warning btn-raised btn-round':navstep == '4'}" ng-click="change_navstep('4')">
+                                  <i class="material-icons">view_day</i> ทุนการศึกษา
+                              </a>
+                          </li>
+      
+                          <li class="dropdown nav-item" style="font-size:0.8rem;padding:15px;">
+                              <a ui-sref="professor" class="" ng-class="{'btn btn-warning btn-raised btn-round':navstep == '5'}" ng-click="change_navstep('5')">
+                                  <i class="material-icons">view_carousel</i> คณาจารย์และบุคคลากร
+                              </a>
+                          </li>
+                      </ul>
+                  </div>
+              </div>
+          </nav>
 
     <div ui-view></div>
 
