@@ -290,7 +290,7 @@ router.post('/getNews/', function (request, response) {
                     department = new ObjectId(request.body.departmentId);
                 if (ObjectId.isValid(request.body.targetTypeId))
                     targetTypeId = new ObjectId(request.body.targetTypeId);
-                News_Control.getAllNews(resource, department,targetTypeId, request.body.tag, request.body.isPreview, parseInt(request.body.limit), request.body.isPosted, request.body.isPinned, this);
+                News_Control.getAllNews(resource, department,targetTypeId, request.body.tag, request.body.isPreview, parseInt(request.body.limit), request.body.isPosted, request.body.isPinned, false, this);
             }, function (code, err, result) {
                 if (err) {
                     Return_control.responseWithCode(ReturnCode.serviceError + methodCode + code, err, response);
@@ -299,6 +299,90 @@ router.post('/getNews/', function (request, response) {
                     News_Control.joinNewsData(result, this)
                 }
             }, function (code, err, result) {
+                console.log();
+                Return_control.responseWithCode("999999", result, response)
+            }
+        );
+    }
+});
+
+router.post('/getNewsWithPicture/', function (request, response) {
+    var news = new News();
+    var methodCode = "06";
+
+    var requiredData = [];
+    requiredData.push(request.body.resourceId);
+    requiredData.push(request.body.departmentId);
+    requiredData.push(request.body.tag);
+    requiredData.push(request.body.limit);
+    requiredData.push(request.body.isPosted);
+    requiredData.push(request.body.isPreview);
+    requiredData.push(request.body.isPinned);
+    requiredData.push(request.body.targetTypeId);
+    var requiredReady = Validate.requiredData_Check(requiredData)
+
+    var booleanData = [];
+    booleanData.push(request.body.isPosted);
+    booleanData.push(request.body.isPreview);
+    requiredData.push(request.body.isPinned);
+    var booleanReady = Validate.booleanData_Check(booleanData)
+
+    var objectIdData = [];
+    if (request.body.resourceId != "0")
+        objectIdData.push(request.body.resourceId);
+    if (request.body.departmentId != "0")
+        objectIdData.push(request.body.departmentId);
+    if (request.body.targetTypeId != "0")
+        objectIdData.push(request.body.targetTypeId);
+    var objectIdReady = Validate.objectIDData_Check(objectIdData)
+
+    var numberData = [];
+    numberData.push(request.body.limit);
+    var numberReady = Validate.numberData_Check(numberData)
+
+    if (!requiredReady) {
+        var alert = "Input Not Valid, check if some data is required."
+        console.log(alert);
+        Return_control.responseWithCode(ReturnCode.clientError + methodCode + "001", alert, response)
+    }
+    else if (!booleanReady) {
+        var alert = "Input Not Valid, check if some data is not boolean."
+        console.log(alert);
+        Return_control.responseWithCode(ReturnCode.clientError + methodCode + "002", alert, response)
+    }
+    else if (!objectIdReady) {
+        var alert = "Input Not Valid, check if some data is not ObjectID for MongoDB."
+        console.log(alert);
+        Return_control.responseWithCode(ReturnCode.clientError + methodCode + "003", alert, response)
+    }
+    else if (!numberReady) {
+        var alert = "Input Not Valid, check if some data is not Number."
+        console.log(alert);
+        Return_control.responseWithCode(ReturnCode.clientError + methodCode + "004", alert, response)
+    }
+    else {
+        flow.exec(
+            function () {
+                console.log("OKAY!!!")
+                let resource = "0"
+                let department = "0"
+                let targetTypeId = "0"
+                if (ObjectId.isValid(request.body.resourceId))
+                    resource = new ObjectId(request.body.resourceId);
+                if (ObjectId.isValid(request.body.departmentId))
+                    department = new ObjectId(request.body.departmentId);
+                if (ObjectId.isValid(request.body.targetTypeId))
+                    targetTypeId = new ObjectId(request.body.targetTypeId);
+                News_Control.getAllNews(resource, department,targetTypeId, request.body.tag, request.body.isPreview, parseInt(request.body.limit), request.body.isPosted, request.body.isPinned, true, this);
+            }, function (code, err, result) {
+                if (err) {
+                    Return_control.responseWithCode(ReturnCode.serviceError + methodCode + code, err, response);
+                }
+                else {
+                    News_Control.joinNewsData(result, this)
+                }
+            }, function (code, err, result) {
+                console.log();
                 Return_control.responseWithCode("999999", result, response)
             }
         );
@@ -324,6 +408,50 @@ router.post('/getNews/', function (request, response) {
 //     );
 
 // });
+
+router.post('/getPictureFromNewsId/', function (request, response) {
+    var personel = new Personel();
+    var methodCode = "07";
+
+    var thisNews;
+    var thisDepartment;
+    var thisResourceType;
+    var thisTargetType;
+
+    var requiredData = [];
+    requiredData.push(request.body.newsID);
+    var requiredReady = Validate.requiredData_Check(requiredData)
+
+    var objectIdData = [];
+    objectIdData.push(request.body.newsID);
+    var objectIdReady = Validate.objectIDData_Check(objectIdData)
+
+    if (!requiredReady) {
+        var alert = "Input Not Valid, check if some data is required."
+        console.log(alert);
+        Return_control.responseWithCode(ReturnCode.clientError + methodCode + "001", alert, response)
+    }
+    else if (!objectIdReady) {
+        var alert = "Input Not Valid, check if some data is not ObjectID for MongoDB."
+        console.log(alert);
+        Return_control.responseWithCode(ReturnCode.clientError + methodCode + "003", alert, response)
+    }
+    else {
+        flow.exec(
+            function () {
+                News_Control.checkNewsByID(new ObjectId(request.body.newsID), this);
+            }, function (code, err, result) {
+                if (err) {
+                    Return_control.responseWithCode(ReturnCode.serviceError + methodCode + code, err, response);
+                }
+                else {
+                    Return_control.responseWithCodeAndData("999999","Get Picture Completed", result.topicPicture, response)
+                }
+            }
+        );
+    }
+});
+
 
 
 router.post('/getNewsfromID/', function (request, response) {
@@ -389,7 +517,7 @@ router.post('/getNewsfromID/', function (request, response) {
                     obj.author = result.author;
                     obj.readCount = result.readCount;
                     obj.isPinned = result.isPinned;
-                    
+
                     obj.tag = []
                     for (let i = 0; i < result.tag.length; i++)
                     obj.tag.push({ text: result.tag[i] });
