@@ -222,7 +222,7 @@ $scope.get_catagory = function(){
 
   $scope.get_news = function() {
 
-    alert( $scope.filter_tag);
+ 
     let dataObj = {
       tag: $scope.tag,
       filterTargetTypeName : "0",
