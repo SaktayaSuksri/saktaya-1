@@ -717,12 +717,22 @@
            zoom: 14
          });
 
-         var marker = new google.maps.Marker({
-          position: {lat: 13.7169504, lng: 100.7602926},
-          map: map,
-          icon: 'http://www.kmitl.ac.th/frontend/images/logo-insite.png',
-          title: 'KMITL'
-        });
+         var icon = {
+            url: './assets/img/pin-kmit.png', // url
+            scaledSize: new google.maps.Size(100, 140), // scaled size
+            origin: new google.maps.Point(0,0), // origin
+            anchor: new google.maps.Point(0, 0) // anchor
+        };
+        
+        
+                     var marker = new google.maps.Marker({
+                  position: {lat: 13.7169504, lng: 100.7602926},
+                  map: map,
+        
+                  icon: icon,
+                  scaledSize: new google.maps.Size(25, 25),
+                  title: 'KMITL'
+                });
 
 
         
