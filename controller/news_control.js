@@ -71,7 +71,7 @@ module.exports = {
             callback("043", null, null)
         }
     },
-    getAllNews: function (resourceId, departmentId, targetTypeId, tag, isPreview, limitNum, isPosted, isPinned, callback) {
+    getAllNews: function (resourceId, departmentId, targetTypeId, tag, isPreview, limitNum, isPosted, isPinned, needPicture, callback) {
         var today = new Date();
         console.log("resourceId: " + resourceId + " / targetType " + targetTypeId + " / departmentId " + departmentId + " / isPinned " + isPinned + " / tag: " + tag);
         var myquery = {};
@@ -94,9 +94,23 @@ module.exports = {
         //$and: [{ "resourceId": resourceId }, { "targetTypeId": targetTypeId }, { "departmentId": departmentId }, { "tag": tag }]
 
         var projection = {}
-        if (isPreview == "true") {
-            projection = { "_id": true, "topicShort": true, "targetTypeId": true, "detailShort": true, "topicPicture": true, "readCount": true, "isPinned": true, "resourceId": true, "departmentId": true, "tag": true };
+        if (needPicture){
+            if (isPreview == "true") {
+                projection = { "_id": true, "topicShort": true, "targetTypeId": true, "detailShort": true, "topicPicture": true, "readCount": true, "isPinned": true, "resourceId": true, "departmentId": true, "tag": true };
+            }
+            else{
+                projection = {}
+            }
         }
+        else{
+            if (isPreview == "true") {
+                projection = { "_id": true, "topicShort": true, "targetTypeId": true, "detailShort": true, "readCount": true, "isPinned": true, "resourceId": true, "departmentId": true, "tag": true };
+            }
+            else{
+                projection = {"topicPicture": false}
+            }
+        }
+        
 
         News.find(myquery, projection, { sort: { datetimePost: -1 }, limit: limitNum }, function (error, newsGetResult) { 	// return error into 'err' and response into 'bear'
             if (error) {
