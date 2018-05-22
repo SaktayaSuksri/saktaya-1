@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="theme-color" content="#f1642d">
     <!-- Favicons -->
     <link rel="apple-touch-icon" href="./assets/img/apple-icon.png">
     <link rel="icon" href="./assets/img/favicon.png">
@@ -127,6 +128,13 @@ hr{
 .nbs-flexisel-item img{
 
     max-width: 200%;
+}
+.product-page .flexi-nav>li a{
+    width: 100%;
+    max-width: 47%;
+    padding: 0px;
+    display: block;
+    border: none !important;
 }
 </style>
 <body class="product-page" ng-app="app" ng-controller="graduateCtrl" ng-init="init()" > 
@@ -261,8 +269,8 @@ hr{
         <div class="container">
             <div class="main main-raised main-product">
                 <div class="row">
-                    <div class="col-md-8 col-sm-12">
-                        
+                    <div class="col">
+                        <h2 class="title"> ข่าวประชาสัมพันธ์</h2>
                         <div class="tab-content">
                             <div class="tab-pane" id="product-page1">
                                 <img  style="max-width: 700px important;" style="width:200%; height:150%;" src="http://www.science.kmitl.ac.th/wp-content/themes/personalTheme/images/news/048.jpg">
@@ -300,9 +308,9 @@ hr{
                             </li>
                         </ul>
                     </div>
-                    <div class="col-md-4 col-sm-12">
+                    <!-- <div class="col-md-4 col-sm-12">
                         <h2 class="title"> ข่าวประชาสัมพันธ์</h2>
-                        <!--<h3 class="main-price">กิจกรรมต่างๆ</h3>-->
+                       
                         <div id="accordion" role="tablist">
                             <div class="card card-collapse">
                                 <div class="card-header" role="tab" id="headingOne">
@@ -354,13 +362,13 @@ hr{
                                         </ul>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                      
                         <br>
-                        <div class="row pull-right">
+                        <!-- <div class="row pull-right">
                             <button class="btn btn-rose btn-round"> อ่านทั้งหมด &#xA0;<i class="material-icons">shopping_cart</i></button>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
