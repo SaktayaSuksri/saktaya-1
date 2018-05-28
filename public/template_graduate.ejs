@@ -1,27 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="utf-8">
-    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta name="theme-color" content="#f1642d">
-    <!-- Favicons -->
-    <link rel="apple-touch-icon" href="./assets/img/apple-icon.png">
-    <link rel="icon" href="./assets/img/favicon.png">
-    <title>
-       Demo ai
-    </title>
-    <!--     Fonts and icons     -->
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
-    <link rel="stylesheet" href="./assets/css/material-kit.css?v=2.0.0">
-    <!-- Documentation extras -->
-    <!-- CSS Just for demo purpose, don't include it in your project -->
-    <link href="./assets/assets-for-demo/demo.css" rel="stylesheet" />
-    <link href="./assets/assets-for-demo/vertical-nav.css" rel="stylesheet" />
-    <link href="./assets/assets-for-demo/timeline.css" rel="stylesheet" />
-</head>
+        <head>
+                <meta name="theme-color" content="#f1642d">
+                <meta charset="utf-8">
+                <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+                <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+                
+                <!-- Favicons -->
+                <link rel="apple-touch-icon" href="../assets/img/apple-icon.png">
+                <link rel="icon" href="../assets/img/favicon.png">
+                <title>
+                   Demo aichans
+                </title>
+                <!--     Fonts and icons        -->
+                <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+            
+                 <link href='http://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic,700italic&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+            
+                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
+                <link rel="stylesheet" href="../assets/css/material-kit.css?v=2.0.0">
+                <!-- Documentation extras -->
+                <!-- CSS Just for demo purpose, don't include it in your project -->
+                <link href="../assets/assets-for-demo/demo.css" rel="stylesheet" />
+                <link href="../assets/assets-for-demo/vertical-nav.css" rel="stylesheet" />
+                <link href="../assets/assets-for-demo/timeline.css" rel="stylesheet" />
+            
+                <!-- Pond css -->
+                <link href="../css/app.css" rel="stylesheet" />
+            
+            </head>
 
 
 
@@ -64,7 +72,11 @@ body {
     .navbar .navbar-nav .nav-item .nav-link{
         font-family: "Athiti", sans-serif;
         font-size: 18px !important;
+        /* font-color: #ffffff; */
     }
+    .nav-link{
+        color: #ffffff;
+    } 
     .title {
         font-family: "Athiti", sans-serif;
     }
@@ -78,7 +90,14 @@ body {
     .info-title{
         font-family: "Athiti", sans-serif;
     }
-
+    a:hover{
+        color: #ffe004;
+        text-decoration: underline;
+   }
+   .dropdown-item{
+    font-family: "Athiti", sans-serif;
+    font-size: 18px !important;
+   }
 
 
 hr{
@@ -136,9 +155,26 @@ hr{
     display: block;
     border: none !important;
 }
+
+.header-filter[filter-color="rose"]:after {
+    background: rgba(248, 187, 208, 0.56);
+    background: -webkit-linear-gradient(60deg, rgba(248, 187, 208, 0.56), rgba(240, 98, 146, 0.95));
+    background: -o-linear-gradient(60deg, rgba(248, 187, 208, 0.56), rgba(240, 98, 146, 0.95));
+    background: -moz-linear-gradient(60deg, rgba(248, 187, 208, 0.56), rgba(240, 98, 146, 0.95));
+    background: linear-gradient(60deg, #ff9800, rgba(240, 98, 98, 0.95));
+}
+
+.card .card-header-mycolor, .card.bg-mycolor, .card.card-rotate.bg-mycolor .front, .card.card-rotate.bg-mycolor .back {
+    background: linear-gradient(60deg, #f2642d, #ff4700);
+}
+
+
+
+        </style>
+
 </style>
 <body class="product-page" ng-app="app" ng-controller="graduateCtrl" ng-init="init()" > 
-        <nav class="navbar   navbar-color-on-scroll  fixed-top   navbar-expand-lg   bg-warning"  color-on-scroll="100"  >
+    <nav class="navbar    fixed-top   navbar-expand-lg   bg-warning"   >
                 
                            <div class="container-fluid">
                                <div class="navbar-translate">
@@ -154,7 +190,7 @@ hr{
                    
                                          
                                                <li class="nav-item">
-                                                   <a href="/graduate/home" class=" nav-link" >
+                                                   <a href="/graduate" class=" nav-link" >
                                                        <i class="material-icons">view_day</i> หน้าแรก
                                                    </a>
                        
@@ -166,78 +202,45 @@ hr{
                                            </a>
                                            <div class="dropdown-menu dropdown-menu-right dropdown-with-icons">
                                           
-                                               <a href="/page#/course-tor" class="dropdown-item">
-                                                       <i class="material-icons">build</i> ปริญญาโท
+                                               <a target="_blank" href="http://www.reg.kmitl.ac.th/curriculum/index.php" class="dropdown-item">
+                                                       <i class="material-icons">build</i> ข้อมูลหลักสูตร
                                                    </a>
-                                               <a href="/page#/course-aek"class="dropdown-item">
-                                                   <i class="material-icons">build</i> ปริญญาเอก
+                                               <a target="_blank" href="http://www.reg.kmitl.ac.th/filecontainer/files/2559_new.pdf"class="dropdown-item">
+                                                   <i class="material-icons">build</i> ระเบียบและข้อบังคับ
                                                </a>
-                                               <a href="/page#/course-aek"class="dropdown-item">
-                                                   <i class="material-icons">build</i> กรอบมาตรฐานคุณวุฒิระดับอุดมศึกษา
+                                               <a target="_blank" href="https://docs.google.com/spreadsheets/d/1VWdVEXa2BwGUOW4cRueP7HIVwSx9HyoEc2zZ5nyhYH0/edit#gid=1951273862"class="dropdown-item">
+                                                   <i class="material-icons">build</i>รายชื่ออาจารย์บัณฑิตประจำ
                                                </a>
+                                               <a target="_blank" href="https://docs.google.com/spreadsheets/d/1QLT7FSOTsFQO10u8jbmGRY-LcFzGs6hcTruj1NWj41Y/edit#gid=239364879"class="dropdown-item">
+                                                <i class="material-icons">build</i>รายชื่ออาจารย์บัณฑิตพิเศษ
+                                                </a>
                    
                                            </div>
                                        </li>
                           
                                        
-                                       <li class="dropdown nav-item">
-                                           <a  class="dropdown-toggle nav-link " data-toggle="dropdown">
-                                               <i class="material-icons">view_carousel</i> การเข้าศึกษา
+                                       <li class="nav-item">
+                                           <a  class="nav-link " target="_blank" href="http://www.reg.kmitl.ac.th/graduate/">
+                                               <i class="material-icons">view_carousel</i> สมัครเข้าศึกษาต่อ
                                            </a>
-                                           <div class="dropdown-menu dropdown-menu-right dropdown-with-icons">
-                                                   <a href="" class="dropdown-item">
-                                                           <i class="material-icons">account_balance</i> ปฎิทินการศึกษา
-                                                       </a>
-                                               <a href="" class="dropdown-item">
-                                                   <i class="material-icons">account_balance</i> ระเบียบ-ข้อบังคับ
-                                               </a>
-                                               <a href="" class="dropdown-item">
-                                                   <i class="material-icons">art_track</i> รายชื่อาจารย์บัณฑิต
-                                               </a>
-                                               <a href="" class="dropdown-item">
-                                                   <i class="material-icons">view_quilt</i>  การสอบวัดคุณสมบัติ (QE)
-                                               </a>
-                                               <a href="./department.html" class="dropdown-item">
-                                                   <i class="material-icons">location_on</i> ตารางเรียน-ตารางสอบ
-                                               </a>
-                                               <a href="" class="dropdown-item">
-                                                   <i class="material-icons">view_day</i> แบบฟอร์ม
-                                               </a>
-                                  
-                                           </div>
                                        </li>
                                        <li class="nav-item">
-                                           <a href="" class=" nav-link" >
-                                               <i class="material-icons">view_day</i> วิทยานิพนธ์
+                                           <a target="_blank" href="https://drive.google.com/file/d/18VGxxcxZWMz4pOr5O8Ab7SRnl3L_RCBi/view" class=" nav-link" >
+                                               <i class="material-icons">view_day</i> ทุนอุดหนุนการศึกษาและวิจัย
                                            </a>
-               
                                        </li>
                                        <li class="nav-item">
-                                           <a href="" class=" nav-link" >
-                                               <i class="material-icons">view_day</i> ทุนอุดหนุน                            </a>
+                                           <a target="_blank" href="https://docs.google.com/spreadsheets/d/1P9SDx678hj_SOvki4XkxvdHSJFuM3eo8UebqsNR_x9Y/edit#gid=540317732" class=" nav-link" >
+                                               <i class="material-icons">view_day</i> รายชื่อวารสาร/งานประชุมวิชาการที่ผ่านการรับรอง                            </a>
                
                                        </li>
+                                       
+                                       <li class="nav-item">
+                                            <a target="_blank" href="http://localhost:2001/page#/docs_container" class=" nav-link" >
+                                                <i class="material-icons">view_day</i> โหลดแบบฟอร์ม  </a>
+                                        </li>
                
-                                       <li class="dropdown nav-item">
-                                           <a  class="dropdown-toggle nav-link" data-toggle="dropdown">
-                                               <i class="material-icons">view_carousel</i> อื่นๆ
-                                           </a>
-                                           <div class="dropdown-menu dropdown-menu-right dropdown-with-icons">
-                                               <a href="/page#/history" class="dropdown-item">
-                                                   <i class="material-icons">account_balance</i> รายชื่อวารสารของคณะวิทย์
-                                               </a>
-                                               <a  href="/page#/resolution" class="dropdown-item">
-                                                   <i class="material-icons">art_track</i> รายชื่อวารสารของสถาบัน
-                                               </a>
-                                               <a href="/page#/structure" class="dropdown-item">
-                                                   <i class="material-icons">view_day</i>  วารสารติด BEALL’S LIST 2015 – 2016
-                                               </a>
-                                               <a  href="/page#/yearly-report" class="dropdown-item">
-                                                   <i class="material-icons">store</i> แหล่งฐานข้อมูลวารสาร/บทความ
-                                               </a>
-                                           </div>
-                                       </li>
-               
+                                       
                                        <li class="button-container nav-item">
                                           <!-- <a href="http://www.creative-tim.com/buy/material-kit-pro?ref=presentation" target="_blank" class="btn  btn-rose   btn-round btn-block">
                                                <i class="material-icons">shopping_cart</i> Buy Now
@@ -253,11 +256,11 @@ hr{
                        </nav>
     
                     
-    <div class="page-header header-filter" data-parallax="true" filter-color="rose" style="background-image: url(&quot;http://demos.creative-tim.com/material-kit-pro/assets/img/kit/pro/bg6.jpg&quot;); transform: translate3d(0px, 0px, 0px);">
+    <div class="page-header header-filter" data-parallax="true" filter-color="rose" style="background-image: url(&quot;&quot;); transform: translate3d(0px, 0px, 0px);" >
         <div class="container">
             <div class="row title-row">
                 <div class="col-md-4 ml-auto">
-                    <button class="btn btn-white float-right"><i class="material-icons">shopping_cart</i> 0 Items</button>
+                    <!-- <button class="btn btn-white float-right"><i class="material-icons">shopping_cart</i> 0 Items</button> -->
                 </div>
             </div>
         </div>
@@ -267,24 +270,24 @@ hr{
    
     <div class="section section-gray">
         <div class="container">
-            <div class="main main-raised main-product">
+            <div class="main main-raised main-product" style="padding: 10px !important;">
                 <div class="row">
-                    <div class="col">
-                        <h2 class="title"> ข่าวประชาสัมพันธ์</h2>
+                        <h2 class="title" style="padding-left: 4%;"> ข่าวประชาสัมพันธ์ บัณฑิตศึกษา</h2>
                         <div class="tab-content">
                             <div class="tab-pane" id="product-page1">
-                                <img  style="max-width: 700px important;" style="width:200%; height:150%;" src="http://www.science.kmitl.ac.th/wp-content/themes/personalTheme/images/news/048.jpg">
+                                <img  style="width:100%; height:auto;" style="width:100%; height:auto;" src="http://www.science.kmitl.ac.th/wp-content/themes/personalTheme/images/news/048.jpg">
                             </div>
                             <div class="tab-pane active" id="product-page2">
-                                <img  style="width:200%; height:150%;"src="http://www.science.kmitl.ac.th/wp-content/themes/personalTheme/images/news/045.jpg">
+                                <img  style="width:100%; height:auto;"src="http://www.science.kmitl.ac.th/wp-content/themes/personalTheme/images/news/045.jpg">
                             </div>
                             <div class="tab-pane" id="product-page3">
-                                <img style="width:200%; height:150%;" src="http://www.science.kmitl.ac.th/wp-content/themes/personalTheme/images/news/044.jpg">
+                                <img style="width:100%; height:auto;" src="http://www.science.kmitl.ac.th/wp-content/themes/personalTheme/images/news/044.jpg">
                             </div>
                             <div class="tab-pane" id="product-page4">
-                                <img style="width:200%; height:150%;" src="http://www.science.kmitl.ac.th/wp-content/themes/personalTheme/images/news/042.jpg">
+                                <img style="width:100%; height:auto;" src="http://www.science.kmitl.ac.th/wp-content/themes/personalTheme/images/news/042.jpg">
                             </div>
-                        </div>
+                        </div></div>
+                        <!-- <div class="row" style="margin: 0 6% 0;"> -->
                         <ul class="nav flexi-nav" data-tabs="tabs" id="flexiselDemo1">
                             <li class="nav-item">
                                 <a href="#product-page1" class="nav-link" data-toggle="tab">
@@ -307,68 +310,11 @@ hr{
                                 </a>
                             </li>
                         </ul>
-                    </div>
-                    <!-- <div class="col-md-4 col-sm-12">
-                        <h2 class="title"> ข่าวประชาสัมพันธ์</h2>
-                       
-                        <div id="accordion" role="tablist">
-                            <div class="card card-collapse">
-                                <div class="card-header" role="tab" id="headingOne">
-                                    <h5 class="mb-0">
-                                        <a data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                            กิจกรรมที่ 1
-                                            <i class="material-icons">keyboard_arrow_down</i>
-                                        </a>
-                                    </h5>
-                                </div>
-                                <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
-                                    <div class="card-body">
-                                        <p>Eres&apos; daring &apos;Grigri Fortune&apos; swimsuit has the fit and coverage of a bikini in a one-piece silhouette. This fuchsia style is crafted from the label&apos;s sculpting peau douce fabric and has flattering cutouts through the torso and back. Wear yours with mirrored sunglasses on vacation.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card card-collapse">
-                                <div class="card-header" role="tab" id="headingTwo">
-                                    <h5 class="mb-0">
-                                        <a class="collapsed" data-toggle="collapse" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                            กิจกรรม 2
-                                            <i class="material-icons">keyboard_arrow_down</i>
-                                        </a>
-                                    </h5>
-                                </div>
-                                <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordion">
-                                    <div class="card-body">
-                                        An infusion of West Coast cool and New York attitude, Rebecca Minkoff is synonymous with It girl style. Minkoff burst on the fashion scene with her best-selling &apos;Morning After Bag&apos; and later expanded her offering with the Rebecca Minkoff Collection - a range of luxe city staples with a &quot;downtown romantic&quot; theme.
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card card-collapse">
-                                <div class="card-header" role="tab" id="headingThree">
-                                    <h5 class="mb-0">
-                                        <a class="collapsed" data-toggle="collapse" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                            กิจกรรม 3
-                                            <i class="material-icons">keyboard_arrow_down</i>
-                                        </a>
-                                    </h5>
-                                </div>
-                                <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree" data-parent="#accordion">
-                                    <div class="card-body">
-                                        <ul>
-                                            <li>Storm and midnight-blue stretch cotton-blend</li>
-                                            <li>Notch lapels, functioning buttoned cuffs, two front flap pockets, single vent, internal pocket</li>
-                                            <li>Two button fastening</li>
-                                            <li>84% cotton, 14% nylon, 2% elastane</li>
-                                            <li>Dry clean</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div> -->
+                  
                         </div>
                      
                         <br>
-                        <!-- <div class="row pull-right">
-                            <button class="btn btn-rose btn-round"> อ่านทั้งหมด &#xA0;<i class="material-icons">shopping_cart</i></button>
-                        </div> -->
+                        
                     </div>
                 </div>
             </div>
@@ -376,100 +322,138 @@ hr{
         
   
         </div>
-        <br>  <br>  <br>
+    
+
+        <div class= "container-fluid">
         <div class="row">
                 <div class="col-md-2 col-sm-4">
-                    <div class="card bg-rose" >
+                    <div class="card bg-mycolor" >
                             <div class="card-body">
                                 <h5 class="card-category card-category-social text-center">
                                         <i class="material-icons">info_outline</i>
                                 </h5>
                                 <h4 class="card-title text-center">
-                                    <a href="#pablo">สมัครเข้าศึกษา</a>
+                                    <a target="_blank" href="http://www.reg.kmitl.ac.th/curriculum/index.php">หลักสูตร</a>
                                 </h4>
                             </div>
                      
                         </div>
                     </div>
                     <div class="col-md-2 col-sm-4">
-                            <div class="card bg-rose" >
+                            <div class="card bg-mycolor" >
                                     <div class="card-body">
                                         <h5 class="card-category card-category-social text-center">
                                                 <i class="material-icons">info_outline</i>
                                         </h5>
                                         <h4 class="card-title text-center">
-                                            <a href="#pablo">ทุนการศึกษา</a>
+                                            <a target="_blank" href="http://www.reg.kmitl.ac.th/graduate/">สมัครเข้าศึกษาต่อ</a>
                                         </h4>
                                     </div>
                              
                                 </div>
                             </div>
                             <div class="col-md-2 col-sm-4">
-                                    <div class="card  bg-rose" >
+                                    <div class="card  bg-mycolor" >
                                             <div class="card-body">
                                                 <h5 class="card-category card-category-social text-center">
                                                         <i class="material-icons">info_outline</i>
                                                 </h5>
                                                 <h4 class="card-title text-center">
-                                                    <a href="#pablo">วิทยานิพนธ์</a>
+                                                    <a target="_blank" href="https://drive.google.com/file/d/18VGxxcxZWMz4pOr5O8Ab7SRnl3L_RCBi/view">ทุนอุดหนุนการศึกษาและวิจัย</a>
                                                 </h4>
                                             </div>
                                      
                                         </div>
                                     </div>
                                     <div class="col-md-2 col-sm-4">
-                                            <div class="card bg-rose" >
+                                            <div class="card bg-mycolor" >
                                                     <div class="card-body">
                                                         <h5 class="card-category card-category-social text-center">
                                                                 <i class="material-icons">info_outline</i>
                                                         </h5>
                                                         <h4 class="card-title text-center">
-                                                            <a href="#pablo">อักขราวิสุทธิ์</a>
+                                                            <a target="_blank" href="https://docs.google.com/spreadsheets/d/1P9SDx678hj_SOvki4XkxvdHSJFuM3eo8UebqsNR_x9Y/edit#gid=540317732">รายชื่อวารสาร/งานประชุมวิชาการที่ผ่านการรับรอง</a>
                                                         </h4>
                                                     </div>
                                              
                                                 </div>
                                             </div>
                                             <div class="col-md-2 col-sm-4">
-                                                    <div class="card bg-rose" >
+                                                    <div class="card bg-mycolor" >
                                                             <div class="card-body">
                                                                 <h5 class="card-category card-category-social text-center">
                                                                         <i class="material-icons">info_outline</i>
                                                                 </h5>
                                                                 <h4 class="card-title text-center">
-                                                                    <a href="">Download</a>
+                                                                    <a target="_blank" href="http://localhost:2001/page#/docs_container">โหลดแบบฟอร์ม</a>
                                                                 </h4>
                                                             </div>
                                                      
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2 col-sm-4">
-                                                            <div class="card bg-rose" >
+                                                            <div class="card bg-mycolor" >
                                                                     <div class="card-body">
                                                                         <h5 class="card-category card-category-social text-center">
                                                                                 <i class="material-icons">info_outline</i>
                                                                         </h5>
                                                                         <h4 class="card-title text-center">
-                                                                            <a href="">E-Office</a>
+                                                                            <a target="_blank" href="http://www.reg.kmitl.ac.th/filecontainer/files/2559_new.pdf">ระเบียบและข้อบังคับ</a>
                                                                         </h4>
                                                                     </div>
                                                              
                                                                 </div>
                                                             </div>
+                                                            </div>
+
+                                                            <div class="row justify-content-center">
+                                                                    <div class="col-md-2 col-sm-4">
+                                                                            <div class="card bg-mycolor" >
+                                                                                    <div class="card-body">
+                                                                                        <h5 class="card-category card-category-social text-center">
+                                                                                                <i class="material-icons">info_outline</i>
+                                                                                        </h5>
+                                                                                        <h4 class="card-title text-center">
+                                                                                            <a target="_blank" href="https://docs.google.com/spreadsheets/d/1VWdVEXa2BwGUOW4cRueP7HIVwSx9HyoEc2zZ5nyhYH0/edit#gid=1951273862">รายชื่ออาจารย์บัณฑิตประจำ</a>
+                                                                                        </h4>
+                                                                                    </div>
+                                                                             
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-2 col-sm-4">
+                                                                                    <div class="card bg-mycolor" >
+                                                                                            <div class="card-body">
+                                                                                                <h5 class="card-category card-category-social text-center">
+                                                                                                        <i class="material-icons">info_outline</i>
+                                                                                                </h5>
+                                                                                                <h4 class="card-title text-center">
+                                                                                                    <a target="_blank" href="https://docs.google.com/spreadsheets/d/1QLT7FSOTsFQO10u8jbmGRY-LcFzGs6hcTruj1NWj41Y/edit#gid=239364879">รายชื่ออาจารย์บัณฑิตพิเศษ</a>
+                                                                                                </h4>
+                                                                                            </div>
+                                                                                     
+                                                                                        </div>
+                                                                                    </div>
+                                                                  </div>
+
+                                                           
                     </div>
-              
+                </div>
     </div>
         <footer class="footer footer-black footer-big">
             <div class="container">
                 <div class="content">
                     <div class="row">
-                        <div class="col-md-12">
-                            <h5>ติดต่อเรา</h5>
-                      <p>ตึกวิทยาศาสตร์ ชั้น 1 งานบัณฑิตศึกษาคณะวิทยาศาสตร์
+                        <div class="col-md-2">
+                            <img src="./assets/img/QRGraduate.png" style="width: 83%; float: right;">
+                        </div>
+                        <div class="col-md-10">
+                            <h5 style="font-family: inherit;">ติดต่อเรา</h5>
+                            <p>ตึกวิทยาศาสตร์ ชั้น 1 งานบัณฑิตศึกษาคณะวิทยาศาสตร์
                             สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง
                             เลขที่ 3 หมู่ 2 เขตลาดกระบัง แขวงลำปลาทิว ถนนฉลองกรุง กทม.10520
-                            02-329-8000 ถึง 8099 ต่อ 3596 , 02-329-8412 เบอร์ภายใน 293
-                        </p>></div>
+                            <br/>เบอร์โทร : 02-3298400 ถึง 8411 ต่อ 293, 210 <br/>แฟกซ์ : 02-3298412 
+
+                        </p></div>
                         
                     </div>
                 </div>
@@ -524,6 +508,7 @@ hr{
 <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/ng-quill/2.2.1/ng-quill.min.js"></script>
 
 <script src="https://unpkg.com/ng-table@2.0.2/bundles/ng-table.min.js"></script>
+
 <script>
     $(document).ready(function() {
         $("#flexiselDemo1").flexisel({
@@ -547,6 +532,9 @@ hr{
             }
         });
     });
+
+
+
 </script>
 </body>
 
