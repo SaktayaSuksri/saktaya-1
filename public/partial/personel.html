@@ -47,17 +47,55 @@
 <!--end หลักสูตร-->
 
 <style>
+@import url("https://fonts.googleapis.com/css?family=Athiti");
+@font-face {
+  font-family: "TH Sarabun New Regular";
+  src: url("./assets/fonts/thsarabunnew.eot");
+  src: url("./assets/fonts/thsarabunnew.eot") format("embedded-opentype"), url("./assets/fonts/thsarabunnew.woff") format("woff"), url("./assets/fonts/thsarabunnew.ttf") format("truetype"), url("../fonts/thsarabunnew.svg#THSarabunNewRegular") format("svg"); }
 
-@import url('https://fonts.googleapis.com/css?family=Muli');
-* {
+/*!
+ *  Font Awesome 4.7.0 by @davegandy - http://fontawesome.io - @fontawesome
+ *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
+ */
+/* FONT PATH
+ * -------------------------- */
+@font-face {
+  font-family: 'FontAwesome';
+  src: url("./assets/fonts/fontawesome-webfont.eot?v=4.7.0");
+  src: url("./assets/fonts/fontawesome-webfont.eot?#iefix&v=4.7.0") format("embedded-opentype"), url("./assets/fonts/fontawesome-webfont.woff2?v=4.7.0") format("woff2"), url("./assets/fonts/fontawesome-webfont.woff?v=4.7.0") format("woff"), url("./assets/fonts/fontawesome-webfont.ttf?v=4.7.0") format("truetype"), url("./assets/fonts/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular") format("svg");
+  font-weight: bold;
+  font-style: normal; }
+  
 
-  font-family: 'Muli', sans-serif;
-}
+
+  
+  h1,h2,h3,h4,h5,h6{
+    font-family: "Athiti", sans-serif;
+  }
+
+
+    .navbar .navbar-nav .nav-item .nav-link{
+        font-family: "Athiti", sans-serif;
+        font-size: 18px !important;
+    }
+    .title {
+        font-family: "Athiti", sans-serif;
+    }
+    .card .card-title{
+        font-family: "Athiti", sans-serif;
+    }
+    p{
+        font-family: "Athiti", sans-serif;
+        font-size: 16px !important;
+    }
+    .info-title{
+        font-family: "Athiti", sans-serif;
+    }
 html,
 body,
 .block-card {
 
-  min-width: 500px;
+  min-width: auto;
   
 }
 .four {
@@ -213,9 +251,9 @@ body,
 }
 
 </style>
-<div class="main main-raised"ng-controller="personelCtrl">
+
     
-<section class="block-card">
+<!-- <section class="block-card">
         <div class="left"> </div>
         <div class="right"></div>
       </section>
@@ -233,7 +271,9 @@ body,
         <br>
         <br>
 
-        <div class='card' ng-repeat = "personel_item in personel_list" data-toggle="modal" ng-click = "showDetail();" >
+        <div class="row justify-content-center">
+          <div class = "col-md-3" ng-repeat = "personel_item in personel_list" data-toggle="modal">
+        <div class='card'  ng-click = "showDetail();" >
           <div class='front'>
             <img  class='contact' ng-if = "personel_item.picture == null" src="assets\img\image_placeholder.jpg">
             <img class='contact' ng-if = "personel_item.picture != null"src="{{personel_item.picture}}">                                        
@@ -244,12 +284,48 @@ body,
             </span>
           
           </div>
+          </div>
+          </div>
        
 
-    </div>
+    </div> -->
 
-
-         
+        
+        <!-- <div style="height: 20vh; width: 100%;"></div> -->
+        
+        <div class="main main-raised" ng-controller="personelCtrl">
+            <div class="contact-content">
+                <div class="  cd-section text-center">
+        
+        
+        <div class="">
+                        <div class="col-md-8 ml-auto mr-auto text-center">
+                            <br><h2 class="title">บุคลากร</h2>
+                        </div>
+                        <hr>
+                        <br>  <br>
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class = "col-md-3" ng-repeat = "personel_item in personel_list" data-toggle="modal">
+                              <div class='card'  ng-click = "showDetail();" >
+                                <div class='front'>
+                                  <img  class='contact' ng-if = "personel_item.picture == null" src="assets\img\image_placeholder.jpg">
+                                  <img class='contact' ng-if = "personel_item.picture != null"src="{{personel_item.picture}}">                                        
+                                  <span class='name'>{{personel_item.personelName}}</span>
+                                  <hr>
+                                  <span class='job container'>{{personel_item.position}}
+                              
+                                  </span>
+                                
+                                </div>
+                                </div>
+                                </div>
+                        </div><br>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
+        
                               </div>
-                            </div>
                     
