@@ -148,7 +148,7 @@ $scope.get_news = function(){
           console.log(" get_news for slide  "+ JSON.stringify(data));
           $scope.news_list_slide = data.message;
          
-
+          document.querySelector("#loader").style.display = 'none';
 
           $scope.news_list_slide[0].topicPicture  = './assets/img/image_placeholder.jpg';
          

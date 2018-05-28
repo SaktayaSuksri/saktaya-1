@@ -1089,6 +1089,8 @@ $scope.get_news = function(){
            api_manage.get_img_news(item._id)
            .success(function(data, status, headers, config) {
              item.topicPicture = data;
+
+            
  
              })
          .error(function(data, status, headers, config) {
