@@ -161,8 +161,10 @@ hr{
     background: -webkit-linear-gradient(60deg, rgba(248, 187, 208, 0.56), rgba(240, 98, 146, 0.95));
     background: -o-linear-gradient(60deg, rgba(248, 187, 208, 0.56), rgba(240, 98, 146, 0.95));
     background: -moz-linear-gradient(60deg, rgba(248, 187, 208, 0.56), rgba(240, 98, 146, 0.95));
-    background: linear-gradient(60deg, #ff9800, rgba(240, 98, 98, 0.95));
-}
+    background: -webkit-linear-gradient(bottom, #ffb547, #f15d23);
+    background-image: url(http://www.bmekmitl.org/wp-content/uploads/2017/02/GRAD.jpg);
+   
+   }
 
 .card .card-header-mycolor, .card.bg-mycolor, .card.card-rotate.bg-mycolor .front, .card.card-rotate.bg-mycolor .back {
     background: linear-gradient(60deg, #f2642d, #ff4700);
@@ -178,7 +180,7 @@ hr{
                 
                            <div class="container-fluid">
                                <div class="navbar-translate">
-                                   <img class=" mr-0 mr-md-2 navbar-absolute-logo" src="http://www.science.kmitl.ac.th/wp-content/themes/personalTheme/assets/images/science-logo.png" style="width: 62%; height: auto;">
+                                   <img class=" mr-0 mr-md-2 navbar-absolute-logo"  src="./assets/img/26696144_1787994021264861_526769390_n.png"  style="width: 40%; height: auto;">
                                    <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
                                        <span class="navbar-toggler-icon"></span>
                                        <span class="navbar-toggler-icon"></span>
@@ -267,48 +269,86 @@ hr{
     </div>
 
 
-   
-    <div class="section section-gray">
+ 
+    <div class="section section-gray" style="    background: -webkit-linear-gradient(right, #ffb547, #f2642d);">
         <div class="container">
             <div class="main main-raised main-product" style="padding: 10px !important;">
                 <div class="row">
-                        <h2 class="title" style="padding-left: 4%;"> ข่าวประชาสัมพันธ์ บัณฑิตศึกษา</h2>
+                        <h2 class="title" style="padding-left: 4%;"> ข่าวประชาสัมพันธ์ บัณฑิตศึกษา
+                                
+                        </h2>
+                    <div class="container-fluid">
+                            <hr>
+                    </div>
                         <div class="tab-content">
-                            <div class="tab-pane" id="product-page1">
-                                <img  style="width:100%; height:auto;" style="width:100%; height:auto;" src="http://www.science.kmitl.ac.th/wp-content/themes/personalTheme/images/news/048.jpg">
+                            <div class="tab-pane active" id="product-page1" >
+                                <img  style="width:100%; height:auto;"  ng-src="{{news_list[0].topicPicture}}">
                             </div>
-                            <div class="tab-pane active" id="product-page2">
-                                <img  style="width:100%; height:auto;"src="http://www.science.kmitl.ac.th/wp-content/themes/personalTheme/images/news/045.jpg">
+                            <div class="tab-pane " id="product-page2">
+                                <img  style="width:100%; height:auto;" ng-src="{{news_list[1].topicPicture}}">
                             </div>
                             <div class="tab-pane" id="product-page3">
-                                <img style="width:100%; height:auto;" src="http://www.science.kmitl.ac.th/wp-content/themes/personalTheme/images/news/044.jpg">
+                                <img style="width:100%; height:auto;" ng-src="{{news_list[2].topicPicture}}">
                             </div>
                             <div class="tab-pane" id="product-page4">
-                                <img style="width:100%; height:auto;" src="http://www.science.kmitl.ac.th/wp-content/themes/personalTheme/images/news/042.jpg">
+                                <img style="width:100%; height:auto;" ng-src="{{news_list[3].topicPicture}}">
                             </div>
+                            <div class="tab-pane" id="product-page5">
+                                    <img style="width:100%; height:auto;" ng-src="{{news_list[4].topicPicture}}">
+                                </div>
+                                <div class="tab-pane" id="product-page6">
+                                        <img style="width:100%; height:auto;" ng-src="{{news_list[5].topicPicture}}">
+                                    </div>
+                                    <div class="tab-pane" id="product-page7">
+                                            <img style="width:100%; height:auto;" ng-src="{{news_list[6].topicPicture}}">
+                                        </div>
+                                        <div class="tab-pane" id="product-page8">
+                                                <img style="width:100%; height:auto;" ng-src="{{news_list[7].topicPicture}}">
+                                            </div>
+                                         
                         </div></div>
                         <!-- <div class="row" style="margin: 0 6% 0;"> -->
                         <ul class="nav flexi-nav" data-tabs="tabs" id="flexiselDemo1">
                             <li class="nav-item">
                                 <a href="#product-page1" class="nav-link" data-toggle="tab">
-                                    <img src="http://www.science.kmitl.ac.th/wp-content/themes/personalTheme/images/news/048.jpg">
+                                    <img ng-src="{{news_list[0].topicPicture}}">
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="#product-page2" class="nav-link" data-toggle="tab">
-                                    <img src="http://www.science.kmitl.ac.th/wp-content/themes/personalTheme/images/news/045.jpg">
+                                    <img ng-src="{{news_list[1].topicPicture}}">
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="#product-page3" class="nav-link" data-toggle="tab">
-                                    <img src="http://www.science.kmitl.ac.th/wp-content/themes/personalTheme/images/news/044.jpg">
+                                    <img ng-src="{{news_list[2].topicPicture}}">
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="#product-page4" class="nav-link" data-toggle="tab">
-                                    <img src="http://www.science.kmitl.ac.th/wp-content/themes/personalTheme/images/news/042.jpg">
+                                    <img ng-src="{{news_list[3].topicPicture}}">
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                    <a href="#product-page5" class="nav-link" data-toggle="tab">
+                                        <img ng-src="{{news_list[4].topicPicture}}">
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                        <a href="#product-page6" class="nav-link" data-toggle="tab">
+                                            <img ng-src="{{news_list[5].topicPicture}}">
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                            <a href="#product-page7" class="nav-link" data-toggle="tab">
+                                                <img ng-src="{{news_list[6].topicPicture}}">
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                                <a href="#product-page8" class="nav-link" data-toggle="tab">
+                                                    <img ng-src="{{news_list[7].topicPicture}}">
+                                                </a>
+                                            </li>
                         </ul>
                   
                         </div>

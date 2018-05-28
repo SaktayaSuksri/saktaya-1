@@ -371,7 +371,7 @@ angular.module('app').controller('personelCtrl', function($scope, $filter, $q, $
 });
 
 
-angular.module('app').controller('graduateCtrl', function($scope, $filter, $q, $http, youtubeFactory) {
+angular.module('app').controller('graduateCtrl', function(api_manage,$scope, $filter, $q, $http, youtubeFactory) {
 
 $scope.init = function(){
 
@@ -381,14 +381,19 @@ $scope.init = function(){
   $scope.get_news = function() {
     
         let dataObj = {
-          tag: $scope.tag,
+          
           filterTargetTypeName : "0",
          // resourceId :  $scope.search.resourceId,
          resourceId : "0",
           departmentId: "0",
           targetTypeId:"5af33d3e9e09ec2a242de43a",
+
+
+
+
+
           tag:"0",
-          limit:0,
+          limit:8,
           isPinned :"false",
           isPosted:"false",
           isPreview:"true"
@@ -405,9 +410,33 @@ $scope.init = function(){
             } else {
               console.log(data);
               $scope.news_list = data.message;
-              console.log('$scope.news_list  =  ' + JSON.stringify($scope.news_list))
+              console.log('$scope.news_list graduate  =  ' + JSON.stringify($scope.news_list))
               //  $scope.news_table= new NgTableParams({count: 10 ,  sorting: { resourceName: "desc" }  }, { counts: [10,20, 100], dataset: $scope.news_list });
-            }
+              $scope.news_list.forEach(function(item){
+                
+                 item.topicPicture  = './assets/img/image_placeholder.jpg';
+                 
+                             
+               });
+     
+               $scope.news_list.forEach(function(item){
+                 api_manage.get_img_news(item._id)
+                      .success(function(data, status, headers, config) {
+                        item.topicPicture = data;
+            
+                        })
+                    .error(function(data, status, headers, config) {
+                        
+                      });
+                    });
+
+
+          
+          
+
+          }
+
+
           })
           .error(function(data, status, headers, config) {
             alert("failure message: " + JSON.stringify({
