@@ -84,21 +84,66 @@
         </style>
 
 <style>
-/* ตัวปกติ */
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css?family=Athiti");
 @font-face {
-    font-family: 'noto_sans_thai';
-    src: url('http://161.246.35.182:2001/assets/fonts/notosansthai-regular-webfont.eot');
-    src: url('http://161.246.35.182:2001/assets/fonts/notosansthai-regular-webfont.eot?#iefix') format('embedded-opentype'),
-    url('http://161.246.35.182:2001/assets/fonts/notosansthai-regular-webfont.woff2') format('woff2'),
-    url('http://161.246.35.182:2001/assets/fonts/notosansthai-regular-webfont.woff') format('woff'),
-    url('http://161.246.35.182:2001/assets/fonts/notosansthai-regular-webfont.ttf') format('truetype'),
-    url('http://161.246.35.182:2001/assets/fonts/notosansthai-regular-webfont.svg#noto_sans_thairegular') format('svg');
-    font-weight: normal;
-    font-style: normal;
-    }
+  font-family: "TH Sarabun New Regular";
+  src: url("./assets/fonts/thsarabunnew.eot");
+  src: url("./assets/fonts/thsarabunnew.eot") format("embedded-opentype"), url("./assets/fonts/thsarabunnew.woff") format("woff"), url("./assets/fonts/thsarabunnew.ttf") format("truetype"), url("../fonts/thsarabunnew.svg#THSarabunNewRegular") format("svg"); }
+
+/*!
+ *  Font Awesome 4.7.0 by @davegandy - http://fontawesome.io - @fontawesome
+ *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
+ */
+/* FONT PATH
+ * -------------------------- */
+@font-face {
+  font-family: 'FontAwesome';
+  src: url("./assets/fonts/fontawesome-webfont.eot?v=4.7.0");
+  src: url("./assets/fonts/fontawesome-webfont.eot?#iefix&v=4.7.0") format("embedded-opentype"), url("./assets/fonts/fontawesome-webfont.woff2?v=4.7.0") format("woff2"), url("./assets/fonts/fontawesome-webfont.woff?v=4.7.0") format("woff"), url("./assets/fonts/fontawesome-webfont.ttf?v=4.7.0") format("truetype"), url("./assets/fonts/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular") format("svg");
+  font-weight: bold;
+  font-style: normal; }
+  
+@media screen{
 body {
-font-family: "Noto Sans","noto_sans_thai", sans-serif;
-font-weight: 400;
+  font-family: "Athiti", sans-serif;
+  font-size: 18px !important;
+  background: linear-gradient(to bottom right, #fed20266, #f2642d);
+  /* line-height: 1em; */
+  }
+
+  
+  h1,h2,h3,h4,h5,h6{
+    font-family: "Athiti", sans-serif;
+  }
+  
+}
+
+
+    .navbar .navbar-nav .nav-item .nav-link{
+        font-family: "Athiti", sans-serif;
+        font-size: 18px !important;
+    }
+    .title {
+        font-family: "Athiti", sans-serif;
+    }
+    .card .card-title{
+        font-family: "Athiti", sans-serif;
+    }
+    p{
+        font-family: "Athiti", sans-serif;
+        font-size: 16px !important;
+    }
+    .info-title{
+        font-family: "Athiti", sans-serif;
+    }
+
+
+
+hr{
+
+    border-top: 2px solid #ff9800a6;
+    box-shadow: 0 2px 2px 0 #ffc64587, 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
 }
 .bg-kmitl {
     background: rgba(244,117,33,1);
@@ -128,23 +173,7 @@ font-weight: 400;
     background-repeat: no-repeat;
 }
 
-@media screen and (max-width: 992px) {
-  h1 {
-    font-size: 30px;
-  }
-}
 
-/* On screens that are 600px or less, set the background color to olive */
-@media screen and (max-width: 600px) {
-    h1 {
-    font-size: 25px;
-  }
-}
-
-.dropdown-item{
-    font-family: "Athiti", sans-serif;
-    font-size: 18px !important;
-   }
 </style>
 <body class="landing-page " ng-app="app" ng-controller="global" ng-init="showtranparent = true" > 
         
@@ -155,7 +184,9 @@ font-weight: 400;
                 
           
                 </script>
-  <nav class="navbar navbar-  navbar-color-on-scroll navbar-transparent  fixed-top   navbar-expand-lg   bg-warning"  color-on-scroll="100"    >
+  
+
+  <nav class="navbar fixed-top   navbar-expand-lg   bg-warning" >
                 
         <div class="container-fluid">
 
@@ -288,6 +319,26 @@ font-weight: 400;
     
         </div>
     </nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     
                     
 
