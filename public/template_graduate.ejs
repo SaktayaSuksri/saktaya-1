@@ -172,11 +172,89 @@ hr{
 
 
 
-        </style>
 
+
+        body {
+            font-family: "Lato", sans-serif;
+            transition: background-color .5s;
+        }
+        
+        .sidenav {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 100;
+            top: 0;
+            left: 0;
+            background-color: #f1632cf0;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+        }
+        
+        .sidenav a {
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            color: #ffffff;
+            display: block;
+            transition: 0.3s;
+            font-family: "Athiti", sans-serif;
+            font-size: 20px !important;
+            font-weight: 1000;
+        }
+        
+        .sidenav a:hover {
+            color: #cecccc;
+        }
+        
+        .sidenav .closebtn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+        }
+        
+        #main {
+            transition: margin-left .5s;
+            padding: 0px;
+        }
+        
+        @media screen and (max-height: 450px) {
+          .sidenav {padding-top: 15px;}
+          .sidenav a {font-size: 18px;}
+        }
+
+        .dropdown-menu .dropdown-item:hover, .dropdown-menu .dropdown-item:focus, .dropdown-menu a:hover, .dropdown-menu a:focus, .dropdown-menu a:active {
+    box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px #f44336;
+    background-color: rgba(244,117,33,1);
+    color: #FFFFFF;
+}
 </style>
-<body class="product-page" ng-app="app" ng-controller="graduateCtrl" ng-init="init()" > 
-    <nav class="navbar    fixed-top   navbar-expand-lg   bg-warning"   >
+<script>
+    
+        function openNav() {
+        
+                document.getElementById("mySidenav").style.width = "60%";
+                document.getElementById("main").style.marginLeft = "60%";
+                document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+          
+        }
+        
+        function closeNav() {
+          
+        
+                document.getElementById("mySidenav").style.width = "0";
+                document.getElementById("main").style.marginLeft= "0";
+                document.body.style.backgroundColor = "white";
+           
+        }
+</script>
+
+
+
+<body class="product-page" ng-app="app" ng-controller="graduateCtrl" ng-init="init()"> 
+    <!-- <nav class="navbar    fixed-top   navbar-expand-lg   bg-warning"   >
                 
                            <div class="container-fluid">
                                <div class="navbar-translate">
@@ -238,16 +316,10 @@ hr{
                                        </li>
                                        
                                        <li class="nav-item">
-                                            <a target="_blank" href="http://localhost:2001/page#/docs_container" class=" nav-link" >
+                                            <a target="_blank" href="./page#/docs_container" class=" nav-link" >
                                                 <i class="material-icons">view_day</i> โหลดแบบฟอร์ม  </a>
                                         </li>
-               
-                                       
-                                       <li class="button-container nav-item">
-                                          <!-- <a href="http://www.creative-tim.com/buy/material-kit-pro?ref=presentation" target="_blank" class="btn  btn-rose   btn-round btn-block">
-                                               <i class="material-icons">shopping_cart</i> Buy Now
-                                           </a>-->
-                                       </li>
+
                                    </ul>
                    
                               
@@ -255,8 +327,66 @@ hr{
                                </div>
                    
                            </div>
-                       </nav>
+                       </nav> -->
     
+
+                 
+
+                            <div id="mySidenav" class="sidenav">
+                             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()" style="font-size: 36px !important;">&times;</a>
+                              
+                              <a href="/graduate">หน้าแรก</a>
+                              
+                              <a  class="dropdown-toggle nav-link" data-toggle="dropdown" style="color: #ffffff;">
+                                    หลักสูตร
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right dropdown-with-icons warning">
+                               
+                                    <a target="_blank" href="http://www.reg.kmitl.ac.th/curriculum/index.php" class="dropdown-item">
+                                            <i class="material-icons">school</i> ข้อมูลหลักสูตร
+                                        </a>
+                                    <a target="_blank" href="http://www.reg.kmitl.ac.th/filecontainer/files/2559_new.pdf"class="dropdown-item">
+                                        <i class="material-icons">school</i> ระเบียบและข้อบังคับ
+                                    </a>
+                                    <a target="_blank" href="https://docs.google.com/spreadsheets/d/1VWdVEXa2BwGUOW4cRueP7HIVwSx9HyoEc2zZ5nyhYH0/edit#gid=1951273862"class="dropdown-item">
+                                        <i class="material-icons">school</i>รายชื่ออาจารย์บัณฑิตประจำ
+                                    </a>
+                                    <a target="_blank" href="https://docs.google.com/spreadsheets/d/1QLT7FSOTsFQO10u8jbmGRY-LcFzGs6hcTruj1NWj41Y/edit#gid=239364879"class="dropdown-item">
+                                     <i class="material-icons">school</i>รายชื่ออาจารย์บัณฑิตพิเศษ
+                                     </a>
+                                     </div>
+                              
+                               <a href="http://www.reg.kmitl.ac.th/graduate/" target="_blank">สมัครเข้าศึกษาต่อ</a>
+                              <a href="https://drive.google.com/file/d/18VGxxcxZWMz4pOr5O8Ab7SRnl3L_RCBi/view" target="_blank">ทุนอุดหนุนการศึกษาและวิจัย</a>
+                              <a href="https://docs.google.com/spreadsheets/d/1P9SDx678hj_SOvki4XkxvdHSJFuM3eo8UebqsNR_x9Y/edit#gid=540317732">รายชื่อวารสาร/งานประชุมวิชาการที่ผ่านการรับรอง</a>
+                              <a href="./page#/docs_container" target="_blank">โหลดแบบฟอร์ม</a>
+                            </div>
+                            
+                            <!-- <div id="main">
+                              <h2>Sidenav Push Example</h2>
+                              <p>Click on the element below to open the side navigation menu, and push this content to the right. Notice that we add a black see-through background-color to body when the sidenav is opened.</p>
+                              <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
+                            </div>
+                             -->
+                            <!-- <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span> -->
+                                
+                            <nav class="navbar navbar-dark bg-warning" style="margin: 0px; padding: 12px;border-radius: 0px;"
+                                    <a class="navbar-brand" href="#"><img class=" mr-0 mr-md-2 navbar-absolute-logo"  src="./assets/img/26696144_1787994021264861_526769390_n.png"  style="width: 22%; height: auto;"></a>
+                                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample01" aria-controls="navbarsExample01" aria-expanded="false" aria-label="Toggle navigation" onclick="openNav()">
+                                      <span class="navbar-toggler-icon"></span><span class="navbar-toggler-icon"></span><span class="navbar-toggler-icon"></span>
+                                    </button>
+                    
+                                  </nav>
+
+
+
+
+
+
+
+
+
+
                     
     <div class="page-header header-filter" data-parallax="true" filter-color="rose" style="background-image: url(&quot;&quot;); transform: translate3d(0px, 0px, 0px);" >
         <div class="container">
