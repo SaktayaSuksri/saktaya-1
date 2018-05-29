@@ -290,13 +290,10 @@ router.post('/getNews/', function (request, response) {
                     department = new ObjectId(request.body.departmentId);
                 if (ObjectId.isValid(request.body.targetTypeId))
                     targetTypeId = new ObjectId(request.body.targetTypeId);
-                News_Control.getAllNews(resource, department, targetTypeId, request.body.tag, request.body.isPreview, parseInt(request.body.limit), request.body.isPosted, request.body.isPinned, false, this);
+                News_Control.getAllNews(resource, department,targetTypeId, request.body.tag, request.body.isPreview, parseInt(request.body.limit), request.body.isPosted, request.body.isPinned, false, this);
             }, function (code, err, result) {
-                if (code == "111") {
+                if (err) {
                     Return_control.responseWithCode(ReturnCode.serviceError + methodCode + code, err, response);
-                }
-                else if (code == "112") {
-                    Return_control.responseWithCode("999999", [], response)
                 }
                 else {
                     News_Control.joinNewsData(result, this)
@@ -376,7 +373,7 @@ router.post('/getNewsWithPicture/', function (request, response) {
                     department = new ObjectId(request.body.departmentId);
                 if (ObjectId.isValid(request.body.targetTypeId))
                     targetTypeId = new ObjectId(request.body.targetTypeId);
-                News_Control.getAllNews(resource, department, targetTypeId, request.body.tag, request.body.isPreview, parseInt(request.body.limit), request.body.isPosted, request.body.isPinned, true, this);
+                News_Control.getAllNews(resource, department,targetTypeId, request.body.tag, request.body.isPreview, parseInt(request.body.limit), request.body.isPosted, request.body.isPinned, true, this);
             }, function (code, err, result) {
                 if (err) {
                     Return_control.responseWithCode(ReturnCode.serviceError + methodCode + code, err, response);
@@ -530,7 +527,7 @@ router.post('/getNewsfromID/', function (request, response) {
 
                     obj.tag = []
                     for (let i = 0; i < result.tag.length; i++)
-                        obj.tag.push({ text: result.tag[i] });
+                    obj.tag.push({ text: result.tag[i] });
 
                     Department_Control.checkDepartmentByID(new ObjectId(thisNews.departmentId), this);
                 }
