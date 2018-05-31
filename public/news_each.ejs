@@ -166,7 +166,7 @@ body {
                 </a>
                     </li> -->
                     <li class="nav-item">
-                            <a href="./" class=" nav-link" >
+                            <a href="http://161.246.35.182:2001/" class=" nav-link" >
                                 <i class="material-icons">home</i> หน้าแรก
                             </a>
     
@@ -278,13 +278,13 @@ body {
                 <br>
               
                
-                <div class="container">
+                <!--<div class="container">
 
                         <h1 style="
                         line-height: 50px;
                         color: #ff7c1c;
                         position: relative;">  <%= data.topicFull %></h1>
-                    <!--content -->
+                    <!--content
 
 
                     <p style="color: #7d7f80;
@@ -296,13 +296,13 @@ body {
                     font-size: 18px;
                     line-height: 28px;">&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
                   
-                    <div ta-bind="text" ng-model="trustAsHtml('<%= data.detailFull %>')" ta-readonly='disabled'></div>
-                    
+                    <div  data-ng-bind-html="trustAsHtml('<%= data.detailFull %>')"></div>
+                    <!-- <p><%= data.detailFull %><p> 
          
                     
                 </p>
 
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
