@@ -296,6 +296,7 @@ body {
                     font-size: 18px;
                     line-height: 28px;">&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
                   
+                    <div ng-bind-html="<%= data.detailFull %> | trustAsHtml"></div>
                     <div ta-bind="text" ng-model="trustAsHtml('<%= data.detailFull %>')" ta-readonly='disabled'></div>
                     
          
