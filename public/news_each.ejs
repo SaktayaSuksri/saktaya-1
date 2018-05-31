@@ -296,8 +296,14 @@ body {
                     font-size: 18px;
                     line-height: 28px;">&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
                   
+<<<<<<< HEAD
                     <div  data-ng-bind-html="trustAsHtml('<%= data.detailFull %>')"></div>
                     <!-- <p><%= data.detailFull %><p> 
+=======
+                    <div ng-bind-html="<%= data.detailFull %> | trustAsHtml"></div>
+                    <div ta-bind="text" ng-model="trustAsHtml('<%= data.detailFull %>')" ta-readonly='disabled'></div>
+                    
+>>>>>>> ddbd2a085a2bb6ac575637b74b02e690557dae69
          
                     
                 </p>
