@@ -173,7 +173,7 @@ angular.module('app').controller('news_container', function($scope, $http, api_m
     if($scope.filter_tag)
     $scope.tag = $scope.filter_tag;
     else
-    $scope.tag = 0;
+    $scope.tag = '0';
     document.querySelector("#loading").style.display = "";
                 $scope.get_news();
     
