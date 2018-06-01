@@ -21,6 +21,10 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
     <link rel="stylesheet" href="../assets/css/material-kit.css?v=2.0.0">
     <!-- Documentation extras -->
+    <!-- CSS Just for demo purpose, don't include it in your project -->
+    <link href="../assets/assets-for-demo/demo.css" rel="stylesheet" />
+    <link href="../assets/assets-for-demo/vertical-nav.css" rel="stylesheet" />
+    <link href="../assets/assets-for-demo/timeline.css" rel="stylesheet" />
 
     <!-- Pond css -->
     <link href="../css/app.css" rel="stylesheet" />
@@ -99,7 +103,9 @@ body {
         font-family: "Athiti", sans-serif;
     }
 
-
+.dropdown-menu .dropdown-item, .dropdown-menu li>a{
+    overflow: visible;
+}
 
 hr{
 
@@ -204,7 +210,7 @@ hr{
    
 }
 
-@media (max-width : 600px) {
+@media (max-width : 322px) {
     .loading {
     position: fixed;
     z-index: 999;
