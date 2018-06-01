@@ -360,7 +360,7 @@ $scope.get_news = function(){
           $scope.news_list_1[0] = data.message[0];
           $scope.news_list_1[0].topicPicture  = './assets/img/image_placeholder.jpg';
           
-          api_manage.get_img_news(data.message[1]._id)
+          api_manage.get_img_news(data.message[0]._id)
           .success(function(data, status, headers, config) {
             $scope.news_list_1[0].topicPicture = data;
 
@@ -376,7 +376,7 @@ $scope.get_news = function(){
           $scope.news_list_1[1] = data.message[1];
           $scope.news_list_1[1].topicPicture  = './assets/img/image_placeholder.jpg';
           
-          api_manage.get_img_news(data.message[0]._id)
+          api_manage.get_img_news(data.message[1]._id)
           .success(function(data, status, headers, config) {
             $scope.news_list_1[1].topicPicture = data;
  
