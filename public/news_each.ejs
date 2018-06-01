@@ -125,6 +125,9 @@ body {
     font-family: "Athiti", sans-serif;
     font-size: 18px !important;
    }
+   .content-news img{
+       width: 100% !important;
+   }
 </style>
 <body class="landing-page " ng-app="app" ng-controller="news_each" ng-init="showtranparent = true" > 
         
@@ -304,7 +307,7 @@ body {
                   
 
                
-                    <div ta-bind="text" ng-model="trustAsHtml('<%= data.detailFull %>')" ta-readonly='disabled'></div>
+                    <div class="content-news"ta-bind="text" ng-model="trustAsHtml('<%= data.detailFull %>')" ta-readonly='disabled'></div>
                     
 
          
