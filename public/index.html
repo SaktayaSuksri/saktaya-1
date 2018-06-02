@@ -223,8 +223,22 @@ hr{
     left: 0;
     bottom: 0;
     right: 0;
-}
-}
+    }}
+
+@media (max-width : 360px) {
+    .loading {
+    position: fixed;
+    z-index: 999;
+    height: 25%;
+    width: 45%;
+
+    overflow: show;
+    margin: auto;
+    top: 0;
+    left: -8%;
+    bottom: 0;
+    right: 0;
+    }}
 
 
 
@@ -289,6 +303,14 @@ hr{
     font-weight: 600;
     color: #ffff;
 }
+
+/* fixbug navbar-collapse*/
+@media (max-width: 991px){
+.navbar-collapse {
+    overflow-x: scroll;
+    background-color: #fffffff5;
+}}
+
 </style>
 <body class="landing-page " ng-app="app" ng-controller="global" ng-init="showtranparent = true"  >
 
@@ -314,7 +336,7 @@ hr{
                 
                     <div class="container-fluid">
             
-                        <div class="navbar-translate d-none d-sm-block" style=" width: 24%;">
+                        <div class="navbar-translate d-none d-sm-block" style=" width: 40%;">
                             <a href="./">
                             <img class=" mr-0 mr-md-2 navbar-absolute-logo" src="./assets/img/26696144_1787994021264861_526769390_n.png"  style="width: 100%; height: auto;">
                             </a>
@@ -336,7 +358,7 @@ hr{
                                     <span class="navbar-toggler-icon"></span>
                                     <span class="navbar-toggler-icon"></span>
                                 </button>
-                        <div class="collapse navbar-collapse">
+                        <div class="collapse navbar-collapse flex-md-column">
                             <ul class="justify-content-center navbar-nav ml-auto">
                                     <!-- <li class="nav-item" style="
                                     width: 18%;
@@ -427,17 +449,34 @@ hr{
                                       <a class="nav-link" href="/page#/personel"> <i class="material-icons">view_day</i> บุคลากร</a>
                                     </li>
                                     <li class="nav-item">
-                                            <a class="nav-link" href="./graduate"><i class="material-icons">link</i> บัณทิต</a>
+                                        <a class="nav-link" href="page#/docs_container"> <i class="material-icons">view_day</i> ฟอร์ม</a>
                                           </li>
-                                    <li class="nav-item">
+                                    <!-- <li class="nav-item">
                                         <a class="nav-link active" href="http://www.science.kmitl.ac.th:8080/sic/index.php/CHome"> <i class="material-icons">link</i> ศูนย์เครื่องมือ</a>
                                       </li>
                                     <li class="nav-item">
                                       <a class="nav-link " href="http://alumni.kmitlsci.org/"> <i class="material-icons">link</i> ศิษย์เก่า</a>
-                                    </li>
+                                    </li> -->
                 
                             </ul>
-                
+
+                            
+                                <ul class="navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="./graduate"><i class="material-icons">link</i> บัณทิต</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="http://www.science.kmitl.ac.th:8080/sic/index.php/CHome"> <i class="material-icons">link</i> ศูนย์เครื่องมือ</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link " href="http://alumni.kmitlsci.org/"> <i class="material-icons">link</i> ศิษย์เก่า</a>
+                            </li>
+                            <!-- <li class="nav-item">
+                                <a class="nav-link " href="http://alumni.kmitlsci.org/"> <i class="material-icons">link</i> ศูนย์วิจัย</a>
+                            </li> -->
+                           
+                            </ul>
+                       
                 
                         </div>
                 
