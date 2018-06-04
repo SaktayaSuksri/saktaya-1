@@ -89,30 +89,28 @@ module.exports = {
             tmp.push({ "datetimePost": { $lte: today } })
         if (isPinned !== "0")
             tmp.push({ "isPinned": isPinned })
-
-        if (tmp.length > 0)
-            myquery = { $and: tmp };
+        myquery = { $and: tmp };
 
         //$and: [{ "resourceId": resourceId }, { "targetTypeId": targetTypeId }, { "departmentId": departmentId }, { "tag": tag }]
 
         var projection = {}
-        if (needPicture) {
+        if (needPicture){
             if (isPreview == "true") {
-                projection = { "_id": true, "topicShort": true, "datetimePost": true, "targetTypeId": true, "detailShort": true, "topicPicture": true, "readCount": true, "isPinned": true, "resourceId": true, "departmentId": true, "tag": true };
+                projection = { "_id": true, "topicShort": true, "datetimePost": true,"targetTypeId": true, "detailShort": true, "topicPicture": true, "readCount": true, "isPinned": true, "resourceId": true, "departmentId": true, "tag": true };
             }
-            else {
+            else{
                 projection = {}
             }
         }
-        else {
+        else{
             if (isPreview == "true") {
-                projection = { "_id": true, "topicShort": true, "datetimePost": true, "targetTypeId": true, "detailShort": true, "readCount": true, "isPinned": true, "resourceId": true, "departmentId": true, "tag": true };
+                projection = { "_id": true, "topicShort": true, "datetimePost": true,"targetTypeId": true, "detailShort": true, "readCount": true, "isPinned": true, "resourceId": true, "departmentId": true, "tag": true };
             }
-            else {
-                projection = { "topicPicture": false }
+            else{
+                projection = {"topicPicture": false}
             }
         }
-
+        
 
         News.find(myquery, projection, { sort: { datetimePost: -1 }, limit: limitNum }, function (error, newsGetResult) { 	// return error into 'err' and response into 'bear'
             if (error) {
@@ -167,8 +165,7 @@ module.exports = {
         for (let i = 0; i < news.length; i++) {
             getFullNews(news[i], function (a) {
                 //console.log("a >> " + JSON.stringify(a))
-                //forCallback.push(a);
-                forCallback[i] = a;
+                forCallback.push(a);
                 if (j == news.length - 1)
                     callback("...", null, forCallback);
                 else

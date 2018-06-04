@@ -16,7 +16,6 @@
     "protractor": "~0.17.0"
   },
   "dependencies": {
-    "assert": "^1.4.1",
     "bson": "^1.0.4",
     "connect-flash": "^0.1.1",
     "connect-mongodb-session": "^1.4.0",
