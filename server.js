@@ -6,6 +6,7 @@ var logger = require('morgan');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
+var  assert = require('assert');
 var  passport = require('passport');
 var flash = require('connect-flash');
 
