@@ -165,7 +165,7 @@ module.exports = {
         for (let i = 0; i < news.length; i++) {
             getFullNews(news[i], function (a) {
                 //console.log("a >> " + JSON.stringify(a))
-                forCallback.push(a);
+                forCallback[i] = a;
                 if (j == news.length - 1)
                     callback("...", null, forCallback);
                 else
