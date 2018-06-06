@@ -8,6 +8,7 @@ var News_Schema = new Schema({
     detailFull: { type: String, required: true },
     topicPicture: { type: String, default: null },
     datetimePost: { type: Date, default: Date.now },
+    datetimeExpire: { type: Date, default: null },
     datetimeEdit: { type: Date, default: Date.now },
     author: { type: String, default: "N/A" },
     readCount: { type: Number, default: 0 },

@@ -104,6 +104,9 @@ router.post('/newNews/', function (request, response) {
                     news.targetTypeId = request.body.targetTypeId;
                     news.departmentId = request.body.departmentId;
 
+                    news.datetimePost = request.body.datetimePost;
+                    news.datetimeExpire = request.body.datetimeExpire;
+
                     news.tag = []
                     for (let i = 0; i < request.body.tag.length; i++)
                         news.tag.push(request.body.tag[i].text);
@@ -204,6 +207,9 @@ router.post('/editNews/', function (request, response) {
                     news.resourceId = request.body.resourceId;
                     news.targetTypeId = request.body.targetTypeId;
                     news.departmentId = request.body.departmentId;
+
+                    news.datetimePost = request.body.datetimePost;
+                    news.datetimeExpire = request.body.datetimeExpire;
 
                     news.tag = []
                     for (let i = 0; i < request.body.tag.length; i++)
@@ -485,6 +491,7 @@ router.post('/getNewsfromID/', function (request, response) {
     obj.detailFull = "N/A";
     obj.topicPicture = "N/A";
     obj.datetimePost = "N/A";
+    obj.datetimeExpire = "N/A";
     obj.datetimeEdit = "N/A";
     obj.author = "N/A";
     obj.readCount = "N/A";
@@ -520,6 +527,7 @@ router.post('/getNewsfromID/', function (request, response) {
                     obj.detailFull = result.detailFull;
                     obj.topicPicture = result.topicPicture;
                     obj.datetimePost = result.datetimePost;
+                    obj.datetimeExpire = result.datetimeExpire;
                     obj.datetimeEdit = result.datetimeEdit;
                     obj.author = result.author;
                     obj.readCount = result.readCount;

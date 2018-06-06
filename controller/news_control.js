@@ -22,7 +22,22 @@ module.exports = {
     },
     updateNewsByID: function (newsID, news, callback) {
         var myquery = { "_id": newsID };
-        var newvalues = { $set: { "topicShort": news.topicShort, "topicFull": news.topicFull, "detailShort": news.detailShort, "detailFull": news.detailFull, "topicPicture": news.topicPicture, "author": news.author, "isPinned": news.isPinned, "resourceId": news.resourceId, "tag": news.tag, "datetimeEdit": Date.now() } };
+        var newvalues = {
+            $set: {
+                "topicShort": news.topicShort,
+                "topicFull": news.topicFull,
+                "detailShort": news.detailShort,
+                "detailFull": news.detailFull,
+                "topicPicture": news.topicPicture,
+                "author": news.author,
+                "isPinned": news.isPinned,
+                "resourceId": news.resourceId,
+                "tag": news.tag,
+                "datetimePost": news.datetimePost,
+                "datetimeExpire": news.datetimeExpire,
+                "datetimeEdit": Date.now()
+            }
+        };
         News.updateOne(myquery, newvalues, function (error, updateResponse) {
             if (error) {
                 var alert = "Error in finding News with _id: " + newsID + "\nError: " + error.message;
@@ -94,23 +109,22 @@ module.exports = {
         //$and: [{ "resourceId": resourceId }, { "targetTypeId": targetTypeId }, { "departmentId": departmentId }, { "tag": tag }]
 
         var projection = {}
-        if (needPicture){
+        if (needPicture) {
             if (isPreview == "true") {
-                projection = { "_id": true, "topicShort": true, "datetimePost": true,"targetTypeId": true, "detailShort": true, "topicPicture": true, "readCount": true, "isPinned": true, "resourceId": true, "departmentId": true, "tag": true };
+                projection = { "_id": true, "topicShort": true, "datetimePost": true, "datetimeExpire": true, "targetTypeId": true, "detailShort": true, "topicPicture": true, "readCount": true, "isPinned": true, "resourceId": true, "departmentId": true, "tag": true };
             }
-            else{
+            else {
                 projection = {}
             }
         }
-        else{
+        else {
             if (isPreview == "true") {
-                projection = { "_id": true, "topicShort": true, "datetimePost": true,"targetTypeId": true, "detailShort": true, "readCount": true, "isPinned": true, "resourceId": true, "departmentId": true, "tag": true };
+                projection = { "_id": true, "topicShort": true, "datetimePost": true, "targetTypeId": true, "detailShort": true, "readCount": true, "isPinned": true, "resourceId": true, "departmentId": true, "tag": true };
             }
-            else{
-                projection = {"topicPicture": false}
+            else {
+                projection = { "topicPicture": false }
             }
         }
-        
 
         News.find(myquery, projection, { sort: { datetimePost: -1 }, limit: limitNum }, function (error, newsGetResult) { 	// return error into 'err' and response into 'bear'
             if (error) {
@@ -231,7 +245,8 @@ function getFullNews(news, callback) {
             else {
                 tmp["targetTypeName"] = null;
             }
-
+            
+            //check datetimeExpire
             callback(tmp)
         }
     );
