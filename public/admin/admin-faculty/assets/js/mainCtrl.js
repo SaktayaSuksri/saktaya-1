@@ -1030,6 +1030,7 @@ console.log("str = "+string)
     $scope.get_department();
     $scope.get_traget();
     $scope.get_news();
+    
 
     $scope.quill_title ='';
     $scope.quill_detail = '';
@@ -1222,7 +1223,17 @@ $scope.update_news = function(){
 
 
     console.log("beforsend update_news   = "+ JSON.stringify($scope.modal_update_news_data ));
-    if($scope.modal_update_news_data.aiswitch != 'create')
+    
+    //check date
+    $scope.checkDate = "";
+    if ($scope.modal_update_news_data.datetimePost.getTime() > $scope.modal_update_news_data.datetimeExpire.getTime()) {
+     $scope.checkDate = "invalid date !!!!!";
+     hide_loader();
+     
+    }
+   
+
+    if($scope.modal_update_news_data.aiswitch != 'create' && $scope.checkDate == "")
 {
     $scope.modal_update_news_data.newsID = $scope.modal_update_news_data._id;
 
@@ -1261,9 +1272,9 @@ $scope.update_news = function(){
     });
 
 }
-else{
+else if ($scope.modal_update_news_data.aiswitch == 'create' && $scope.checkDate == ""){
     $scope.create_news( $scope.modal_update_news_data);
-    console.log("Pond log test >>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+    
     console.log($scope.modal_update_news_data);
 
 }
