@@ -92,19 +92,34 @@ module.exports = {
         var myquery = {};
 
         let tmp = [];
-        if (resourceId !== "0")
+        let queryFlag = false;
+        if (resourceId !== "0") {
+            queryFlag = true;
             tmp.push({ "resourceId": resourceId })
-        if (departmentId !== "0")
+        }
+        if (departmentId !== "0") {
+            queryFlag = true;
             tmp.push({ "departmentId": departmentId })
-        if (targetTypeId !== "0")
+        }
+        if (targetTypeId !== "0") {
+            queryFlag = true;
             tmp.push({ "targetTypeId": targetTypeId })
-        if (tag !== "0")
+        }
+        if (tag !== "0") {
+            queryFlag = true;
             tmp.push({ "tag": tag })
-        if (isPosted !== "true")
+        }
+        if (isPosted !== "true") {
+            queryFlag = true;
             tmp.push({ "datetimePost": { $lte: today } })
-        if (isPinned !== "0")
+        }
+        if (isPinned !== "0") {
+            queryFlag = true;
             tmp.push({ "isPinned": isPinned })
-        myquery = { $and: tmp };
+        }
+
+        if (queryFlag)
+            myquery = { $and: tmp };
 
         //$and: [{ "resourceId": resourceId }, { "targetTypeId": targetTypeId }, { "departmentId": departmentId }, { "tag": tag }]
 
@@ -119,7 +134,7 @@ module.exports = {
         }
         else {
             if (isPreview == "true") {
-                projection = { "_id": true, "topicShort": true, "datetimePost": true, "targetTypeId": true, "detailShort": true, "readCount": true, "isPinned": true, "resourceId": true, "departmentId": true, "tag": true };
+                projection = { "_id": true, "topicShort": true, "datetimePost": true, "datetimeExpire": true, "targetTypeId": true, "detailShort": true, "readCount": true, "isPinned": true, "resourceId": true, "departmentId": true, "tag": true };
             }
             else {
                 projection = { "topicPicture": false }
@@ -245,8 +260,23 @@ function getFullNews(news, callback) {
             else {
                 tmp["targetTypeName"] = null;
             }
-            
-            //check datetimeExpire
+
+            tmp["isExpired"] = "...";
+            console.log(news._id + " >> " + news.datetimeExpire)
+            if (news.datetimeExpire) {
+                let now = new Date();
+                let expire = new Date(news.datetimeExpire);
+                if (expire < now)
+                    tmp["isExpired"] = "Yes";
+                else {
+                    let hourLeft = (expire - now) / 3.6e6;
+                    tmp["isExpired"] = Math.floor(hourLeft / 24) + " days " + (Math.floor(hourLeft % 24) + 1) + " hours left";
+                }
+            }
+            else {
+                tmp["isExpired"] = "Not Expire";
+            }
+
             callback(tmp)
         }
     );

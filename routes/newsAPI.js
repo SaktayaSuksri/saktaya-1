@@ -296,7 +296,7 @@ router.post('/getNews/', function (request, response) {
                     department = new ObjectId(request.body.departmentId);
                 if (ObjectId.isValid(request.body.targetTypeId))
                     targetTypeId = new ObjectId(request.body.targetTypeId);
-                News_Control.getAllNews(resource, department,targetTypeId, request.body.tag, request.body.isPreview, parseInt(request.body.limit), request.body.isPosted, request.body.isPinned, false, this);
+                News_Control.getAllNews(resource, department, targetTypeId, request.body.tag, request.body.isPreview, parseInt(request.body.limit), request.body.isPosted, request.body.isPinned, false, this);
             }, function (code, err, result) {
                 if (err) {
                     Return_control.responseWithCode(ReturnCode.serviceError + methodCode + code, err, response);
@@ -379,7 +379,7 @@ router.post('/getNewsWithPicture/', function (request, response) {
                     department = new ObjectId(request.body.departmentId);
                 if (ObjectId.isValid(request.body.targetTypeId))
                     targetTypeId = new ObjectId(request.body.targetTypeId);
-                News_Control.getAllNews(resource, department,targetTypeId, request.body.tag, request.body.isPreview, parseInt(request.body.limit), request.body.isPosted, request.body.isPinned, true, this);
+                News_Control.getAllNews(resource, department, targetTypeId, request.body.tag, request.body.isPreview, parseInt(request.body.limit), request.body.isPosted, request.body.isPinned, true, this);
             }, function (code, err, result) {
                 if (err) {
                     Return_control.responseWithCode(ReturnCode.serviceError + methodCode + code, err, response);
@@ -394,34 +394,6 @@ router.post('/getNewsWithPicture/', function (request, response) {
         );
     }
 });
-
-// router.post('/getNewsForHomeSlide/', function (request, response) {
-//     var news = new News();
-//     var methodCode = "06";
-//     flow.exec(
-//         function () {
-//             News_Control.getAllNews(new ObjectId("5a8f0856f9bb232d7442ff04"), "0", new ObjectId("5a8470b228d2e92a0c753010"), "0", "true", 3, "true", this);
-//         }, function (code, err, result) {
-//             if (err) {
-//                 Return_control.responseWithCode(ReturnCode.serviceError + methodCode + code, err, response);
-//             }
-//             else {
-//                 News_Control.joinNewsData(result, this)
-//             }
-//         }, function (code, err, result) {
-//             Return_control.responseWithCode("999999", result, response)
-//         }
-//     );
-
-// });
-
-// router.get('/page/news_container/:resourceId/:departmentId', function(request, response) {
-//     const resourceId = request.params.resourceId 
-//     const departmentId = request.params.departmentId 
-
-//     console.log(resourceId + departmentId);
-//     response.render('news_container.ejs', {'resourceId':resourceId,"departmentId":departmentId}); // load the index.ejs file
-//  });
 
 router.get('/getPictureFromNewsId/:newsID/', function (request, response) {
     var personel = new Personel();
@@ -493,6 +465,7 @@ router.post('/getNewsfromID/', function (request, response) {
     obj.datetimePost = "N/A";
     obj.datetimeExpire = "N/A";
     obj.datetimeEdit = "N/A";
+    obj.isExpired = "No";
     obj.author = "N/A";
     obj.readCount = "N/A";
     obj.isPinned = "N/A";
@@ -533,9 +506,25 @@ router.post('/getNewsfromID/', function (request, response) {
                     obj.readCount = result.readCount;
                     obj.isPinned = result.isPinned;
 
+                    if (result.datetimeExpire) {
+                        let now = new Date();
+                        let expire = new Date(result.datetimeExpire);
+                        console.log("now " + now)
+                        console.log("expire " + expire)
+                        if (expire < now)
+                            obj.isExpired = "Yes";
+                        else {
+                            let hourLeft = (expire - now) / 3.6e6;
+                            obj.isExpired = Math.floor(hourLeft / 24) + " days " + (Math.floor(hourLeft % 24) + 1) + " hours left";
+                        }
+                    }
+                    else {
+                        obj.isExpired = "Not Expire";
+                    }
+
                     obj.tag = []
                     for (let i = 0; i < result.tag.length; i++)
-                    obj.tag.push({ text: result.tag[i] });
+                        obj.tag.push({ text: result.tag[i] });
 
                     Department_Control.checkDepartmentByID(new ObjectId(thisNews.departmentId), this);
                 }
