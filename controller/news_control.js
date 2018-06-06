@@ -261,20 +261,20 @@ function getFullNews(news, callback) {
                 tmp["targetTypeName"] = null;
             }
 
-            tmp["isExpired"] = "...";
+            tmp["isExpired"] = false;
             console.log(news._id + " >> " + news.datetimeExpire)
             if (news.datetimeExpire) {
                 let now = new Date();
                 let expire = new Date(news.datetimeExpire);
                 if (expire < now)
-                    tmp["isExpired"] = "Yes";
+                    tmp["isExpired"] = true;
                 else {
                     let hourLeft = (expire - now) / 3.6e6;
-                    tmp["isExpired"] = Math.floor(hourLeft / 24) + " days " + (Math.floor(hourLeft % 24) + 1) + " hours left";
+                    tmp["isExpired"] = false;
                 }
             }
             else {
-                tmp["isExpired"] = "Not Expire";
+                tmp["isExpired"] = false;
             }
 
             callback(tmp)
