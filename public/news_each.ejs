@@ -23,115 +23,341 @@
     <link href="../assets/assets-for-demo/timeline.css" rel="stylesheet" />
 </head>
 
-
-
-
+<style>
+        
+        
+    .spinner {
+      content: "";
+      box-sizing: border-box;
+      height: 60px;
+      width: 60px;
+      border-radius: 50%;
+      margin-right: 30px;
+    }
+    
+    .spinner-1 {
+      border: 3px solid lightgray;
+      border-top-color: coral;
+      -webkit-animation: spinner 0.7s linear infinite;
+              animation: spinner 0.7s linear infinite;
+    }
+    
+    /* Spinner 2 */
+    .spinner-2 {
+      border: 3px solid transparent;
+      border-top-color: coral;
+      border-bottom-color: coral;
+      -webkit-animation: spinner 0.7s ease infinite;
+              animation: spinner 0.7s ease infinite;
+    }
+    
+    /* Spinner 3 */
+    .spinner-3 {
+      border-top: 3px solid coral;
+      border-right: 3px solid transparent;
+      -webkit-animation: spinner 0.7s linear infinite;
+              animation: spinner 0.7s linear infinite;
+    }
+    
+    @-webkit-keyframes spinner {
+      100% {
+        -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
+      }
+    }
+    
+    @keyframes spinner {
+      100% {
+        -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
+      }
+    }
+    
+    .pagination{display:inline-block;padding-left:0;margin:20px 0;border-radius:4px}.pagination>li{display:inline}.pagination>li>a,.pagination>li>span{position:relative;float:left;padding:6px 12px;line-height:1.42857143;text-decoration:none;color:#428bca;background-color:#fff;border:1px solid #ddd;margin-left:-1px}.pagination>li:first-child>a,.pagination>li:first-child>span{margin-left:0;border-bottom-left-radius:4px;border-top-left-radius:4px}.pagination>li:last-child>a,.pagination>li:last-child>span{border-bottom-right-radius:4px;border-top-right-radius:4px}.pagination>li>a:hover,.pagination>li>span:hover,.pagination>li>a:focus,.pagination>li>span:focus{color:#2a6496;background-color:#eee;border-color:#ddd}.pagination>.active>a,.pagination>.active>span,.pagination>.active>a:hover,.pagination>.active>span:hover,.pagination>.active>a:focus,.pagination>.active>span:focus{z-index:2;color:#fff;background-color:#428bca;border-color:#428bca;cursor:default}.pagination>.disabled>span,.pagination>.disabled>span:hover,.pagination>.disabled>span:focus,.pagination>.disabled>a,.pagination>.disabled>a:hover,.pagination>.disabled>a:focus{color:#999;background-color:#fff;border-color:#ddd;cursor:not-allowed}.pagination-lg>li>a,.pagination-lg>li>span{padding:10px 16px;font-size:18px}.pagination-lg>li:first-child>a,.pagination-lg>li:first-child>span{border-bottom-left-radius:6px;border-top-left-radius:6px}.pagination-lg>li:last-child>a,.pagination-lg>li:last-child>span{border-bottom-right-radius:6px;border-top-right-radius:6px}.pagination-sm>li>a,.pagination-sm>li>span{padding:5px 10px;font-size:12px}.pagination-sm>li:first-child>a,.pagination-sm>li:first-child>span{border-bottom-left-radius:3px;border-top-left-radius:3px}.pagination-sm>li:last-child>a,.pagination-sm>li:last-child>span{border-bottom-right-radius:3px;border-top-right-radius:3px}
+    </style>
 
 <style>
 @import url("https://fonts.googleapis.com/css?family=Athiti");
 @font-face {
-  font-family: "TH Sarabun New Regular";
-  src: url("./assets/fonts/thsarabunnew.eot");
-  src: url("./assets/fonts/thsarabunnew.eot") format("embedded-opentype"), url("./assets/fonts/thsarabunnew.woff") format("woff"), url("./assets/fonts/thsarabunnew.ttf") format("truetype"), url("../fonts/thsarabunnew.svg#THSarabunNewRegular") format("svg"); }
+font-family: "TH Sarabun New Regular";
+src: url("./assets/fonts/thsarabunnew.eot");
+src: url("./assets/fonts/thsarabunnew.eot") format("embedded-opentype"), url("./assets/fonts/thsarabunnew.woff") format("woff"), url("./assets/fonts/thsarabunnew.ttf") format("truetype"), url("../fonts/thsarabunnew.svg#THSarabunNewRegular") format("svg"); }
 
 /*!
- *  Font Awesome 4.7.0 by @davegandy - http://fontawesome.io - @fontawesome
- *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
- */
+*  Font Awesome 4.7.0 by @davegandy - http://fontawesome.io - @fontawesome
+*  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
+*/
 /* FONT PATH
- * -------------------------- */
+* -------------------------- */
 @font-face {
-  font-family: 'FontAwesome';
-  src: url("./assets/fonts/fontawesome-webfont.eot?v=4.7.0");
-  src: url("./assets/fonts/fontawesome-webfont.eot?#iefix&v=4.7.0") format("embedded-opentype"), url("./assets/fonts/fontawesome-webfont.woff2?v=4.7.0") format("woff2"), url("./assets/fonts/fontawesome-webfont.woff?v=4.7.0") format("woff"), url("./assets/fonts/fontawesome-webfont.ttf?v=4.7.0") format("truetype"), url("./assets/fonts/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular") format("svg");
-  font-weight: bold;
-  font-style: normal; }
-  
+font-family: 'FontAwesome';
+src: url("./assets/fonts/fontawesome-webfont.eot?v=4.7.0");
+src: url("./assets/fonts/fontawesome-webfont.eot?#iefix&v=4.7.0") format("embedded-opentype"), url("./assets/fonts/fontawesome-webfont.woff2?v=4.7.0") format("woff2"), url("./assets/fonts/fontawesome-webfont.woff?v=4.7.0") format("woff"), url("./assets/fonts/fontawesome-webfont.ttf?v=4.7.0") format("truetype"), url("./assets/fonts/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular") format("svg");
+font-weight: bold;
+font-style: normal; }
+
 @media screen{
 body {
-  font-family: "Athiti", sans-serif;
-  font-size: 18px !important;
-  
-  /* line-height: 1em; */
-  }
+font-family: "Athiti", sans-serif;
+font-size: 18px !important;
 
-  
-  h1,h2,h3,h4,h5,h6{
+/* line-height: 1em; */
+}
+
+
+h1,h2,h3,h4,h5,h6{
+font-family: "Athiti", sans-serif;
+}
+
+}
+
+
+
+.navbar .navbar-nav .nav-item .nav-link{
     font-family: "Athiti", sans-serif;
-  }
-  
+    font-size: 18px !important;
+}
+.title {
+    font-family: "Athiti", sans-serif;
+}
+.card .card-title{
+    font-family: "Athiti", sans-serif;
+}
+p{
+    font-family: "Athiti", sans-serif;
+    font-size: 16px !important;
+}
+.info-title{
+    font-family: "Athiti", sans-serif;
+}
+
+.dropdown-menu .dropdown-item, .dropdown-menu li>a{
+overflow: visible;
 }
 
 
-    .navbar .navbar-nav .nav-item .nav-link{
-        font-family: "Athiti", sans-serif;
-        font-size: 18px !important;
-    }
-    .title {
-        font-family: "Athiti", sans-serif;
-    }
-    .card .card-title{
-        font-family: "Athiti", sans-serif;
-    }
-    p{
-        font-family: "Athiti", sans-serif;
-        font-size: 16px !important;
-    }
-    .info-title{
-        font-family: "Athiti", sans-serif;
-    }
 
+hr{
+
+border-top: 2px solid #ff9800a6;
+box-shadow: 0 2px 2px 0 #ffc64587, 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+}
 .bg-kmitl {
-    background: rgba(244,117,33,1);
-    background: -moz-linear-gradient(45deg, rgba(244,117,33,1) 0%, rgba(244,117,33,1) 53%, rgba(244,117,33,1) 70%, rgba(242,142,34,1) 86%, rgba(240,175,62,1) 93%, rgba(255,213,150,1) 100%);
-    background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(244,117,33,1)), color-stop(53%, rgba(244,117,33,1)), color-stop(70%, rgba(244,117,33,1)), color-stop(86%, rgba(242,142,34,1)), color-stop(93%, rgba(240,175,62,1)), color-stop(100%, rgba(255,213,150,1)));
-    background: -webkit-linear-gradient(45deg, rgba(244,117,33,1) 0%, rgba(244,117,33,1) 53%, rgba(244,117,33,1) 70%, rgba(242,142,34,1) 86%, rgba(240,175,62,1) 93%, rgba(255,213,150,1) 100%);
-    background: -o-linear-gradient(45deg, rgba(244,117,33,1) 0%, rgba(244,117,33,1) 53%, rgba(244,117,33,1) 70%, rgba(242,142,34,1) 86%, rgba(240,175,62,1) 93%, rgba(255,213,150,1) 100%);
-    background: -ms-linear-gradient(45deg, rgba(244,117,33,1) 0%, rgba(244,117,33,1) 53%, rgba(244,117,33,1) 70%, rgba(242,142,34,1) 86%, rgba(240,175,62,1) 93%, rgba(255,213,150,1) 100%);
-    background: linear-gradient(45deg, rgba(244,117,33,1) 0%, rgba(244,117,33,1) 53%, rgba(244,117,33,1) 70%, rgba(242,142,34,1) 86%, rgba(240,175,62,1) 93%, rgba(255,213,150,1) 100%);
- 
+background: rgba(244,117,33,1);
+background: -moz-linear-gradient(45deg, rgba(244,117,33,1) 0%, rgba(244,117,33,1) 53%, rgba(244,117,33,1) 70%, rgba(242,142,34,1) 86%, rgba(240,175,62,1) 93%, rgba(255,213,150,1) 100%);
+background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(244,117,33,1)), color-stop(53%, rgba(244,117,33,1)), color-stop(70%, rgba(244,117,33,1)), color-stop(86%, rgba(242,142,34,1)), color-stop(93%, rgba(240,175,62,1)), color-stop(100%, rgba(255,213,150,1)));
+background: -webkit-linear-gradient(45deg, rgba(244,117,33,1) 0%, rgba(244,117,33,1) 53%, rgba(244,117,33,1) 70%, rgba(242,142,34,1) 86%, rgba(240,175,62,1) 93%, rgba(255,213,150,1) 100%);
+background: -o-linear-gradient(45deg, rgba(244,117,33,1) 0%, rgba(244,117,33,1) 53%, rgba(244,117,33,1) 70%, rgba(242,142,34,1) 86%, rgba(240,175,62,1) 93%, rgba(255,213,150,1) 100%);
+background: -ms-linear-gradient(45deg, rgba(244,117,33,1) 0%, rgba(244,117,33,1) 53%, rgba(244,117,33,1) 70%, rgba(242,142,34,1) 86%, rgba(240,175,62,1) 93%, rgba(255,213,150,1) 100%);
+background: linear-gradient(45deg, rgba(244,117,33,1) 0%, rgba(244,117,33,1) 53%, rgba(244,117,33,1) 70%, rgba(242,142,34,1) 86%, rgba(240,175,62,1) 93%, rgba(255,213,150,1) 100%);
+
 }
 
-    .bubble-six { top: 8vh; left: 75vw; width: 23px; height: 23px; opacity: 0.2; transform-origin: 80% 200%; animation: bubble-move 2s ease-in-out 0s infinite alternate; }
-    .bubble-eight { top: 72vh; left: 85vw; width: 360px; height: 360px; opacity: 0.2; transform-origin: -100% 100%; animation: bubble-move 7s ease-in-out 0s infinite alternate; } 
+.bubble-six { top: 8vh; left: 75vw; width: 23px; height: 23px; opacity: 0.2; transform-origin: 80% 200%; animation: bubble-move 2s ease-in-out 0s infinite alternate; }
+.bubble-eight { top: 72vh; left: 85vw; width: 360px; height: 360px; opacity: 0.2; transform-origin: -100% 100%; animation: bubble-move 7s ease-in-out 0s infinite alternate; } 
 .bubble-seven { top: 33vh; left: 84vw; width: 120px; height: 120px; opacity: 0.2; transform-origin: 100% 90%; animation: bubble-move 6s ease-in-out 0s infinite alternate; }
 .bubble-two { top: 44vh; left: 6vw; width: 100px; height: 100px; opacity: 0.1; transform-origin: 60% 400%; animation: bubble-move 4s ease-in-out 0s infinite alternate; }
 @keyframes bubble-move { 0% { opacity: 0.6; transform: scale(1.0) rotate(-8deg) translate(-1px,-2px); } 70% { opacity: 0.6; transform: scale(1.04) rotate(10deg) translate(2px,1px); } 100% { opacity: 0.4; transform: scale(0.94) rotate(-18deg) translate(-3px,-1px); } }
 
 .angularjs-chat-bubble-white {
-   
-    position: absolute;
-    display: inline-block;
-  
-    border-image: transparent;
-    background: transparent url(../assets/img/85dad3324df40961c16639a9aecb7f4a.png);
-    background-size: 100%;
-    background-repeat: no-repeat;
+
+position: absolute;
+display: inline-block;
+
+border-image: transparent;
+background: transparent url(http://161.246.35.182:2001/assets/img/85dad3324df40961c16639a9aecb7f4a.png);
+background-size: 100%;
+background-repeat: no-repeat;
 }
 
-@media screen and (max-width: 992px) {
-  h1 {
-    font-size: 30px;
-  }
-}
-
-/* On screens that are 600px or less, set the background color to olive */
-@media screen and (max-width: 600px) {
-    h1 {
-    font-size: 25px;
-  }
-}
 .dropdown-item{
-    font-family: "Athiti", sans-serif;
-    font-size: 18px !important;
-   }
-   .content-news img{
-       width: 100% !important;
-   }
+font-family: "Athiti", sans-serif;
+font-size: 18px !important;
+}
+
+.card-description{
+font-family: "Athiti", sans-serif;
+font-size: 18px !important;
+}
+a{
+font-family: "Athiti", sans-serif;
+font-size: 18px !important;
+}
+.nav-pills .nav-item .nav-link {
+font-size: 18px!important;
+font-weight: 600;
+color: #ffff;
+}
+
+/* fixbug navbar-collapse*/
+@media (max-width: 991px){
+.navbar-collapse {
+overflow-x: scroll;
+background-color: #fffffff5;
+}}
+
+.navbar .dropdown.show .dropdown-menu, .navbar .dropdown .dropdown-menu {
+    height: auto;
+}
+
 </style>
-<body class="landing-page " ng-app="app" ng-controller="news_each" ng-init="showtranparent = true" > 
+ <body class="landing-page " ng-app="app" ng-controller="news_each" ng-init="showtranparent = true" > 
+<nav class="navbar fixed-top   navbar-expand-lg   bg-warning" >
+            
+    <div class="container-fluid">
+
+        <div class="navbar-translate d-none d-sm-block" style=" width: 40%;">
+            <a href="http://161.246.35.182:2001/">
+            <img class=" mr-0 mr-md-2 navbar-absolute-logo" src="http://161.246.35.182:2001/assets/img/26696144_1787994021264861_526769390_n.png"  style="width: 100%; height: auto;">
+            </a>
+            <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon"></span>
+            </button> -->
+        </div>
+
+        <div class="navbar-translate d-block d-sm-none" style="max-width: 80%;">
+                <a href="http://161.246.35.182:2001/">
+                <img class=" mr-0 mr-md-2 navbar-absolute-logo" src="http://161.246.35.182:2001/assets/img/26696144_1787994021264861_526769390_n.png"  style="width: 100%; height: auto;">
+                </a>
+               
+            </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                    <span class="navbar-toggler-icon"></span>
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+        <div class="collapse navbar-collapse flex-md-column">
+            <ul class="justify-content-center navbar-nav ml-auto">
+                    <!-- <li class="nav-item" style="
+                    width: 18%;
+                    margin-left:  12px;
+                    margin-right: 4%;
+                ">   
+                <a href="./">
+            <img class=" mr-0 mr-md-2 navbar-absolute-logo" src="./assets/img/26696144_1787994021264861_526769390_n.png"  style="width: 100%; height: auto;">
+            </a>
+                </li> -->
+                <li class="nav-item">
+                        <a href="http://161.246.35.182:2001/" class=" nav-link" >
+                            <i class="material-icons">home</i> หน้าแรก
+                        </a>
+
+                    </li>
+
+                <li class="dropdown nav-item">
+                    <a  class="dropdown-toggle nav-link" data-toggle="dropdown">
+                        <i class="material-icons">view_day</i> หลักสูตร
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right dropdown-with-icons">
+                        <a href="/page#/course-tee" class="dropdown-item">
+                            <i class="material-icons">school</i> ปริญญาตรี
+                        </a>
+                        <a href="/page#/course-tor" class="dropdown-item">
+                                <i class="material-icons">school</i> ปริญญาโท
+                            </a>
+                        <a href="/page#/course-aek"class="dropdown-item">
+                            <i class="material-icons">school</i> ปริญญาเอก
+                        </a>
+
+                    </div>
+                </li>
+                <li class="dropdown nav-item">
+                    <a  class="dropdown-toggle nav-link" data-toggle="dropdown">
+                        <i class="material-icons">view_day</i> เกี่ยวกับคณะ
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right dropdown-with-icons">
+                        <a href="/page#/history" class="dropdown-item">
+                            <i class="material-icons">info</i> ประวัติความเป็นมา
+                        </a>
+                        <a  href="/page#/resolution" class="dropdown-item">
+                            <i class="material-icons">info</i> ปรัชญา-ปณิธาน-วิสัยทัศน์-พันธกิจ
+                        </a>
+                        <a href="/page#/structure" class="dropdown-item">
+                            <i class="material-icons">info</i>  โครงสร้างองค์กร
+                        </a>
+                        <a  href="/page#/yearly-report" class="dropdown-item">
+                            <i class="material-icons">info</i> รายงานประจำปี
+                        </a>
+                    </div>
+                </li>
+
+                <li class="dropdown nav-item">
+                    <a  class="dropdown-toggle nav-link " data-toggle="dropdown">
+                        <i class="material-icons">view_day</i> ภาควิชา
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right dropdown-with-icons">
+                            <!-- <a href="" class="dropdown-item">
+                                    <i class="material-icons">account_balance</i> ศูนย์เครื่องมือวิทยาศาสตร์
+                                </a> -->
+                        <a href="http://www.math.sci.kmitl.ac.th/" class="dropdown-item">
+                            <i class="material-icons">business</i> ภาควิชาคณิตศาสตร์
+                        </a>
+                        <a href="http://www.science.kmitl.ac.th/oldweb/links/department/bio/" class="dropdown-item">
+                            <i class="material-icons">business</i> ภาควิชาชีววิทยา
+                        </a>
+                        <a href="http://physics.kmitl.ac.th/" class="dropdown-item">
+                            <i class="material-icons">business</i>  ภาควิชาฟิสิกส์
+                        </a>
+                        <a href="./department.html" class="dropdown-item">
+                            <i class="material-icons">business</i> ภาควิชาวิทยาการคอมพิวเตอร์
+                        </a>
+                        <a href="http://www.science.kmitl.ac.th/oldweb/links/department/Webstat59/index.html" class="dropdown-item">
+                            <i class="material-icons">business</i> ภาควิชาสถิติ
+                        </a>
+                        <a href="http://www.science.kmitl.ac.th/oldweb/links/department/chem/" class="dropdown-item">
+                            <i class="material-icons">business</i> ภาควิชาเคมี
+                        </a>
+                    </div>
+                </li>
+                    <!-- <li class="nav-item">
+                      <a class="nav-link active" href="#">ปริญญาตรี</a>
+                    </li> -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://161.246.35.182:2001/page#/personel"> <i class="material-icons">view_day</i> บุคลากร</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link" href="http://161.246.35.182:2001/page#/docs_container"> <i class="material-icons">view_day</i> ฟอร์ม</a>
+                            </li>
+                      <!-- <li class="nav-item">
+                          <a class="nav-link active" href="http://www.science.kmitl.ac.th:8080/sic/index.php/CHome"> <i class="material-icons">link</i> ศูนย์เครื่องมือ</a>
+                        </li>
+                      <li class="nav-item">
+                        <a class="nav-link " href="http://alumni.kmitlsci.org/"> <i class="material-icons">link</i> ศิษย์เก่า</a>
+                      </li> -->
+  
+              </ul>
+
+              
+                  <ul class="navbar-nav ml-auto">
+              <li class="nav-item">
+                  <a class="nav-link" href="http://161.246.35.182:2001/graduate"><i class="material-icons">link</i> บัณทิต</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link active" href="http://www.science.kmitl.ac.th:8080/sic/index.php/CHome"> <i class="material-icons">link</i> ศูนย์เครื่องมือ</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link " href="http://alumni.kmitlsci.org/"> <i class="material-icons">link</i> ศิษย์เก่า</a>
+              </li>
+              <!-- <li class="nav-item">
+                  <a class="nav-link " href="http://alumni.kmitlsci.org/"> <i class="material-icons">link</i> ศูนย์วิจัย</a>
+              </li> -->
+             
+              </ul>
+
+
+        </div>
+
+    </div>
+</nav>
+
+
+
+
+
         
-    <div ng-include src="'http://161.246.35.182:2001/nav_noscroll.html'"></div>
+  
 
         
 
@@ -149,7 +375,7 @@ body {
                 <br>
               
                
-            <div class="container">
+            <div class="container" style="overflow-x: hidden;">
                         <center>
                         <h1 style="
                         font-size: 50px;
@@ -199,7 +425,7 @@ body {
 
  <footer class="footer ">
        
-    
+   
     </footer>
     <!--   Core JS Files   -->
     
