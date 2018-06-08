@@ -473,16 +473,23 @@
                             
                                             <div class="form-group">
                                                 <label for="exampleSelect1">วันเริ่มกิจกรรม </label>
-                                                <input id="date" type="date" ng-model="modal_update_news_data.datetimePost">
+                                                <input id="date" type="date" ng-model="modal_update_news_data.datetimePost"> {{modal_update_news_data.datetimePost | date:"dd/MM/yyyy 'at' h:mma"}}
                                             </div>
                                            
 
-                                            <div class="form-group">
+                                            <div class="form-group" ng-hide = "isDatetimeExpire">
                                                 <label for="exampleSelect1">วันสิ้นสุดกิจกรรม </label>
-                                                <input id="date" type="date" ng-model="modal_update_news_data.datetimeExpire">
+                                                <input id="date" type="date" ng-model="modal_update_news_data.datetimeExpire"> {{modal_update_news_data.datetimeExpire | date:"dd/MM/yyyy 'at' h:mma"}}
                                             </div>
                                            
                                             <div style="color: #ff0000">{{checkDate}}</div>
+
+                                            <div class="checkbox">
+                                                <label>
+                                                  <input type="checkbox" ng-model="isDatetimeExpire" > ไม่วันสิ้นสุดกิจกรรม
+                                                </label>
+                                               
+                                              </div>
 
 
                                             <div class="form-group">
