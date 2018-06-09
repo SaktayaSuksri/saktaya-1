@@ -507,10 +507,10 @@ router.post('/getNewsfromID/', function (request, response) {
                     obj.isPinned = result.isPinned;
 
                     obj.isExpired = false;
-                    console.log(news._id + " >> " + news.datetimeExpire)
-                    if (news.datetimeExpire) {
+                    console.log(result._id + " >> " + result.datetimeExpire)
+                    if (result.datetimeExpire) {
                         let now = new Date();
-                        let expire = new Date(news.datetimeExpire);
+                        let expire = new Date(result.datetimeExpire);
                         if (expire < now)
                         obj.isExpired = true;
                         else {
