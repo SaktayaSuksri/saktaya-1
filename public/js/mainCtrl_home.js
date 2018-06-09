@@ -152,12 +152,13 @@ $scope.get_news = function(){
 
           $scope.news_list_slide[0].topicPicture  = './assets/img/image_placeholder.jpg';
          
-          $scope.news_list_slide[1].topicPicture  = './assets/img/image_placeholder.jpg';
+        //  $scope.news_list_slide[1].topicPicture  = './assets/img/image_placeholder.jpg';
           $scope.news_list_slide.forEach(function(item){
             
                         
           api_manage.get_img_news(item._id)
           .success(function(data, status, headers, config) {
+            console.log("ddata  =  " + data)
             item.topicPicture = data;
 
             })
@@ -354,8 +355,37 @@ $scope.get_news = function(){
           else
           {
           console.log(" get_news  "+ JSON.stringify(data));
+          $scope.news_list_1 = [];
+          data.message.forEach(function(item){
+              item.topicPicture  = './assets/img/image_placeholder.jpg';
+            $scope.news_list_1.push(item)
 
-          if(data.message[0])
+
+          
+
+          })
+
+       
+  
+          for(let i = 0 ; i <  data.message.length;i++)
+          {
+
+            api_manage.get_img_news(data.message[i]._id)
+            .success(function(data, status, headers, config) {
+              $scope.news_list_1[i].topicPicture = data;
+  
+              })
+          .error(function(data, status, headers, config) {
+              
+           });
+  
+          }
+
+
+        
+
+         
+         /* if(data.message[0])
           {
           $scope.news_list_1[0] = data.message[0];
           $scope.news_list_1[0].topicPicture  = './assets/img/image_placeholder.jpg';
@@ -501,7 +531,7 @@ if(data.message[8])
         .error(function(data, status, headers, config) {
             
          });
-}
+}*/
 
           document.querySelector("#loading").style.display = "none";
 

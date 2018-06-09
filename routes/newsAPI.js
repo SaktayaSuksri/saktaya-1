@@ -506,20 +506,20 @@ router.post('/getNewsfromID/', function (request, response) {
                     obj.readCount = result.readCount;
                     obj.isPinned = result.isPinned;
 
-                    tmp["isExpired"] = false;
-                    console.log(news._id + " >> " + news.datetimeExpire)
-                    if (news.datetimeExpire) {
+                    obj.isExpired = false;
+                    console.log(result._id + " >> " + result.datetimeExpire)
+                    if (result.datetimeExpire) {
                         let now = new Date();
-                        let expire = new Date(news.datetimeExpire);
+                        let expire = new Date(result.datetimeExpire);
                         if (expire < now)
-                            tmp["isExpired"] = true;
+                        obj.isExpired = true;
                         else {
                             let hourLeft = (expire - now) / 3.6e6;
-                            tmp["isExpired"] = false;
+                            obj.isExpired = false;
                         }
                     }
                     else {
-                        tmp["isExpired"] = false;
+                        obj.isExpired = false;
                     }
 
                     obj.tag = []
