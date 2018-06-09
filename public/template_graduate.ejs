@@ -98,6 +98,34 @@ body {
     font-family: "Athiti", sans-serif;
     font-size: 18px !important;
    }
+   .dropdown-menu .dropdown-item, .dropdown-menu li>a{
+    overflow: visible;
+}
+.dropdown-item{
+    font-family: "Athiti", sans-serif;
+    font-size: 18px !important;
+   }
+
+   .card-description{
+    font-family: "Athiti", sans-serif;
+    font-size: 18px !important;
+   }
+   a{
+    font-family: "Athiti", sans-serif;
+    font-size: 18px !important;
+   }
+   .nav-pills .nav-item .nav-link {
+    font-size: 18px!important;
+    font-weight: 600;
+    color: #ffff;
+}
+
+/* fixbug navbar-collapse*/
+@media (max-width: 991px){
+.navbar-collapse {
+    overflow-x: scroll;
+    background-color: #fffffff5;
+}}
 
 
 hr{
@@ -230,6 +258,11 @@ hr{
     background-color: rgba(244,117,33,1);
     color: #FFFFFF;
 }
+
+
+
+
+
 </style>
 <script>
     
@@ -254,85 +287,12 @@ hr{
 
 
 <body class="product-page" ng-app="app" ng-controller="graduateCtrl" ng-init="init()"> 
-    <!-- <nav class="navbar    fixed-top   navbar-expand-lg   bg-warning"   >
-                
-                           <div class="container-fluid">
-                               <div class="navbar-translate">
-                                   <img class=" mr-0 mr-md-2 navbar-absolute-logo"  src="./assets/img/26696144_1787994021264861_526769390_n.png"  style="width: 40%; height: auto;">
-                                   <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
-                                       <span class="navbar-toggler-icon"></span>
-                                       <span class="navbar-toggler-icon"></span>
-                                       <span class="navbar-toggler-icon"></span>
-                                   </button>
-                               </div>
-                               <div class="collapse navbar-collapse">
-                                   <ul class="nav justify-content-center ml-auto">
-                   
-                                         
-                                               <li class="nav-item">
-                                                   <a href="/graduate" class=" nav-link" >
-                                                       <i class="material-icons">view_day</i> หน้าแรก
-                                                   </a>
-                       
-                                               </li>
-                                         
-                                       <li class="dropdown nav-item">
-                                           <a  class="dropdown-toggle nav-link" data-toggle="dropdown">
-                                               <i class="material-icons">view_day</i> หลักสูตร
-                                           </a>
-                                           <div class="dropdown-menu dropdown-menu-right dropdown-with-icons">
-                                          
-                                               <a target="_blank" href="http://www.reg.kmitl.ac.th/curriculum/index.php" class="dropdown-item">
-                                                       <i class="material-icons">build</i> ข้อมูลหลักสูตร
-                                                   </a>
-                                               <a target="_blank" href="http://www.reg.kmitl.ac.th/filecontainer/files/2559_new.pdf"class="dropdown-item">
-                                                   <i class="material-icons">build</i> ระเบียบและข้อบังคับ
-                                               </a>
-                                               <a target="_blank" href="https://docs.google.com/spreadsheets/d/1VWdVEXa2BwGUOW4cRueP7HIVwSx9HyoEc2zZ5nyhYH0/edit#gid=1951273862"class="dropdown-item">
-                                                   <i class="material-icons">build</i>รายชื่ออาจารย์บัณฑิตประจำ
-                                               </a>
-                                               <a target="_blank" href="https://docs.google.com/spreadsheets/d/1QLT7FSOTsFQO10u8jbmGRY-LcFzGs6hcTruj1NWj41Y/edit#gid=239364879"class="dropdown-item">
-                                                <i class="material-icons">build</i>รายชื่ออาจารย์บัณฑิตพิเศษ
-                                                </a>
-                   
-                                           </div>
-                                       </li>
-                          
-                                       
-                                       <li class="nav-item">
-                                           <a  class="nav-link " target="_blank" href="http://www.reg.kmitl.ac.th/graduate/">
-                                               <i class="material-icons">view_carousel</i> สมัครเข้าศึกษาต่อ
-                                           </a>
-                                       </li>
-                                       <li class="nav-item">
-                                           <a target="_blank" href="https://drive.google.com/file/d/18VGxxcxZWMz4pOr5O8Ab7SRnl3L_RCBi/view" class=" nav-link" >
-                                               <i class="material-icons">view_day</i> ทุนอุดหนุนการศึกษาและวิจัย
-                                           </a>
-                                       </li>
-                                       <li class="nav-item">
-                                           <a target="_blank" href="https://docs.google.com/spreadsheets/d/1P9SDx678hj_SOvki4XkxvdHSJFuM3eo8UebqsNR_x9Y/edit#gid=540317732" class=" nav-link" >
-                                               <i class="material-icons">view_day</i> รายชื่อวารสาร/งานประชุมวิชาการที่ผ่านการรับรอง                            </a>
-               
-                                       </li>
-                                       
-                                       <li class="nav-item">
-                                            <a target="_blank" href="./page#/docs_container" class=" nav-link" >
-                                                <i class="material-icons">view_day</i> โหลดแบบฟอร์ม  </a>
-                                        </li>
+   
+<!-- =============================================on xl screen only================================================= -->
+<div class = "d-none d-xl-block">
 
-                                   </ul>
-                   
-                              
-                   
-                               </div>
-                   
-                           </div>
-                       </nav> -->
-    
-
-                 
-
-                            <div id="mySidenav" class="sidenav">
+   
+                            <!-- <div id="mySidenav" class="sidenav">
                              <a href="javascript:void(0)" class="closebtn" onclick="closeNav()" style="font-size: 36px !important;">&times;</a>
                               
                               <a href="/graduate">หน้าแรก</a>
@@ -360,31 +320,458 @@ hr{
                               <a href="https://drive.google.com/file/d/18VGxxcxZWMz4pOr5O8Ab7SRnl3L_RCBi/view" target="_blank">ทุนอุดหนุนการศึกษาและวิจัย</a>
                               <a href="https://docs.google.com/spreadsheets/d/1P9SDx678hj_SOvki4XkxvdHSJFuM3eo8UebqsNR_x9Y/edit#gid=540317732">รายชื่อวารสาร/งานประชุมวิชาการที่ผ่านการรับรอง</a>
                               <a href="./page#/docs_container" target="_blank">โหลดแบบฟอร์ม</a>
-                            </div>
+                            </div> -->
                             
-                            <!-- <div id="main">
-                              <h2>Sidenav Push Example</h2>
-                              <p>Click on the element below to open the side navigation menu, and push this content to the right. Notice that we add a black see-through background-color to body when the sidenav is opened.</p>
-                              <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
-                            </div>
-                             -->
-                            <!-- <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span> -->
-                                
-                            <nav class="navbar navbar-dark bg-warning" style="margin: 0px; padding: 12px;border-radius: 0px;"
+                            <!-- <nav class="navbar navbar-dark bg-warning" style="margin: 0px; padding: 12px;border-radius: 0px;"
                                     <a class="navbar-brand" href="#"><img class=" mr-0 mr-md-2 navbar-absolute-logo"  src="./assets/img/26696144_1787994021264861_526769390_n.png"  style="width: 22%; height: auto;"></a>
                                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample01" aria-controls="navbarsExample01" aria-expanded="false" aria-label="Toggle navigation" onclick="openNav()">
                                       <span class="navbar-toggler-icon"></span><span class="navbar-toggler-icon"></span><span class="navbar-toggler-icon"></span>
                                     </button>
-                    
-                                  </nav>
+                            </nav> -->
 
+                            <nav class="navbar fixed-top   navbar-expand-lg   bg-warning" >
+                
+                                <div class="container-fluid">
+                        
+                                    <div class="navbar-translate d-none d-sm-block" style=" width: 40%;">
+                                        <a href="http://161.246.35.182:2001/">
+                                        <img class=" mr-0 mr-md-2 navbar-absolute-logo" src="http://161.246.35.182:2001/assets/img/26696144_1787994021264861_526769390_n.png"  style="width: 100%; height: auto;">
+                                        </a>
+                                        <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
+                                            <span class="navbar-toggler-icon"></span>
+                                            <span class="navbar-toggler-icon"></span>
+                                            <span class="navbar-toggler-icon"></span>
+                                        </button> -->
+                                    </div>
+                        
+                                    <div class="navbar-translate d-block d-sm-none" style="max-width: 80%;">
+                                            <a href="http://161.246.35.182:2001/">
+                                            <img class=" mr-0 mr-md-2 navbar-absolute-logo" src="http://161.246.35.182:2001/assets/img/26696144_1787994021264861_526769390_n.png"  style="width: 100%; height: auto;">
+                                            </a>
+                                           
+                                        </div>
+                                        <button class="navbar-toggler" type="button"  aria-expanded="false" aria-label="Toggle navigation" ddata-toggle="collapse" data-target="#navbar1">
+                                                <span class="navbar-toggler-icon"></span>
+                                                <span class="navbar-toggler-icon"></span>
+                                                <span class="navbar-toggler-icon"></span>
+                                            </button>
+                                    <div class="collapse navbar-collapse flex-md-column"  id="navbar1">
+                                        <ul class="justify-content-center navbar-nav ml-auto">
+                                             
+                                            <li class="nav-item">
+                                                    <a href="http://161.246.35.182:2001/" class=" nav-link" >
+                                                        <i class="material-icons">home</i> หน้าแรก
+                                                    </a>
+                            
+                                                </li>
+                            
+                                            <li class="dropdown nav-item">
+                                                <a  class="dropdown-toggle nav-link" data-toggle="dropdown">
+                                                    <i class="material-icons">view_day</i> หลักสูตร
+                                                </a>
+                                                <div class="dropdown-menu dropdown-menu-right dropdown-with-icons">
+                                                    <a href="/page#/course-tee" class="dropdown-item">
+                                                        <i class="material-icons">school</i> ปริญญาตรี
+                                                    </a>
+                                                    <a href="/page#/course-tor" class="dropdown-item">
+                                                            <i class="material-icons">school</i> ปริญญาโท
+                                                        </a>
+                                                    <a href="/page#/course-aek"class="dropdown-item">
+                                                        <i class="material-icons">school</i> ปริญญาเอก
+                                                    </a>
+                            
+                                                </div>
+                                            </li>
+                                            <li class="dropdown nav-item">
+                                                <a  class="dropdown-toggle nav-link" data-toggle="dropdown">
+                                                    <i class="material-icons">view_day</i> เกี่ยวกับคณะ
+                                                </a>
+                                                <div class="dropdown-menu dropdown-menu-right dropdown-with-icons">
+                                                    <a href="/page#/history" class="dropdown-item">
+                                                        <i class="material-icons">info</i> ประวัติความเป็นมา
+                                                    </a>
+                                                    <a  href="/page#/resolution" class="dropdown-item">
+                                                        <i class="material-icons">info</i> ปรัชญา-ปณิธาน-วิสัยทัศน์-พันธกิจ
+                                                    </a>
+                                                    <a href="/page#/structure" class="dropdown-item">
+                                                        <i class="material-icons">info</i>  โครงสร้างองค์กร
+                                                    </a>
+                                                    <a  href="/page#/yearly-report" class="dropdown-item">
+                                                        <i class="material-icons">info</i> รายงานประจำปี
+                                                    </a>
+                                                </div>
+                                            </li>
+                            
+                                            <li class="dropdown nav-item">
+                                                <a  class="dropdown-toggle nav-link " data-toggle="dropdown">
+                                                    <i class="material-icons">view_day</i> ภาควิชา
+                                                </a>
+                                                <div class="dropdown-menu dropdown-menu-right dropdown-with-icons">
+                                                        <!-- <a href="" class="dropdown-item">
+                                                                <i class="material-icons">account_balance</i> ศูนย์เครื่องมือวิทยาศาสตร์
+                                                            </a> -->
+                                                    <a href="http://www.math.sci.kmitl.ac.th/" class="dropdown-item">
+                                                        <i class="material-icons">business</i> ภาควิชาคณิตศาสตร์
+                                                    </a>
+                                                    <a href="http://www.science.kmitl.ac.th/oldweb/links/department/bio/" class="dropdown-item">
+                                                        <i class="material-icons">business</i> ภาควิชาชีววิทยา
+                                                    </a>
+                                                    <a href="http://physics.kmitl.ac.th/" class="dropdown-item">
+                                                        <i class="material-icons">business</i>  ภาควิชาฟิสิกส์
+                                                    </a>
+                                                    <a href="./department.html" class="dropdown-item">
+                                                        <i class="material-icons">business</i> ภาควิชาวิทยาการคอมพิวเตอร์
+                                                    </a>
+                                                    <a href="http://www.science.kmitl.ac.th/oldweb/links/department/Webstat59/index.html" class="dropdown-item">
+                                                        <i class="material-icons">business</i> ภาควิชาสถิติ
+                                                    </a>
+                                                    <a href="http://www.science.kmitl.ac.th/oldweb/links/department/chem/" class="dropdown-item">
+                                                        <i class="material-icons">business</i> ภาควิชาเคมี
+                                                    </a>
+                                                </div>
+                                            </li>
+                                                <!-- <li class="nav-item">
+                                                  <a class="nav-link active" href="#">ปริญญาตรี</a>
+                                                </li> -->
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="http://161.246.35.182:2001/page#/personel"> <i class="material-icons">view_day</i> บุคลากร</a>
+                                                  </li>
+                                                  <li class="nav-item">
+                                                      <a class="nav-link" href="http://161.246.35.182:2001/page#/docs_container"> <i class="material-icons">view_day</i> ฟอร์ม</a>
+                                                        </li>
+                                                  <!-- <li class="nav-item">
+                                                      <a class="nav-link active" href="http://www.science.kmitl.ac.th:8080/sic/index.php/CHome"> <i class="material-icons">link</i> ศูนย์เครื่องมือ</a>
+                                                    </li>
+                                                  <li class="nav-item">
+                                                    <a class="nav-link " href="http://alumni.kmitlsci.org/"> <i class="material-icons">link</i> ศิษย์เก่า</a>
+                                                  </li> -->
+                              
+                                          </ul>
+                        
+                                          
+                                              <ul class="navbar-nav ml-auto">
+                                          <li class="nav-item">
+                                              <a class="nav-link" href="http://161.246.35.182:2001/graduate"><i class="material-icons">link</i> บัณทิต</a>
+                                          </li>
+                                          <li class="nav-item">
+                                              <a class="nav-link active" href="http://www.science.kmitl.ac.th:8080/sic/index.php/CHome"> <i class="material-icons">link</i> ศูนย์เครื่องมือ</a>
+                                          </li>
+                                          <li class="nav-item">
+                                              <a class="nav-link " href="http://alumni.kmitlsci.org/"> <i class="material-icons">link</i> ศิษย์เก่า</a>
+                                          </li>
+                                          <!-- <li class="nav-item">
+                                              <a class="nav-link " href="http://alumni.kmitlsci.org/"> <i class="material-icons">link</i> ศูนย์วิจัย</a>
+                                          </li> -->
+                                         
+                                          </ul>
+                            
+                            
+                                    </div>
+                            
+                                </div>
+                            </nav>
+                                        
+๋Jump 1
+                            
+                            <nav class="navbar fixed-top   navbar-expand-lg   bg-warning" style="  margin-top: 7.5%; z-index:100;    opacity: 0.95;
+                            background-color: #f5d004 !important;background: linear-gradient(to bottom right, #e75b25, #f3cd0142);color: #350e02">
+                
+                                <div class="container-fluid">
+                        
+                                    <div class="navbar-translate d-none d-sm-block" style=" width: 0%;">
+                                        
+                                        <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
+                                            <span class="navbar-toggler-icon"></span>
+                                            <span class="navbar-toggler-icon"></span>
+                                            <span class="navbar-toggler-icon"></span>
+                                        </button> -->
+                                    </div>
+                        
+                                    <div class="navbar-translate d-block d-sm-none" style="max-width: 80%;">
+                                            
+                                           
+                                        </div>
+                                        <button class="navbar-toggler" type="button"  aria-expanded="false" aria-label="Toggle navigation" data-toggle="collapse" data-target="#navbar2">
+                                                <span class="navbar-toggler-icon"></span>
+                                                <span class="navbar-toggler-icon"></span>
+                                                <span class="navbar-toggler-icon"></span>
+                                            </button>
+                                    <div class="collapse navbar-collapse flex-md-column" id="navbar2">
+                                        <ul class="justify-content-center navbar-nav ml-auto">
+                                      
+                                          
+                        
+                                            <li class="dropdown nav-item">
+                                                <a  class="dropdown-toggle nav-link" data-toggle="dropdown">
+                                                    <i class="material-icons">school</i> หลักสูตร
+                                                </a>
+                                                <div class="dropdown-menu dropdown-menu-right dropdown-with-icons">
+                                                    <a target="_blank" href="http://www.reg.kmitl.ac.th/curriculum/index.php" class="dropdown-item">
+                                                        <i class="material-icons">link</i> ข้อมูลหลักสูตร
+                                                    </a>
+                                                    <a target="_blank" href="http://www.reg.kmitl.ac.th/filecontainer/files/2559_new.pdf" class="dropdown-item">
+                                                            <i class="material-icons">link</i> ระเบียบและข้อบังคับ
+                                                        </a>
+                                                    <a  target="_blank"href="https://docs.google.com/spreadsheets/d/1VWdVEXa2BwGUOW4cRueP7HIVwSx9HyoEc2zZ5nyhYH0/edit#gid=1951273862"class="dropdown-item">
+                                                        <i class="material-icons">link</i> รายชื่ออาจารย์บัณฑิตประจำ
+                                                    </a>
+                                                    <a  target="_blank"href="https://docs.google.com/spreadsheets/d/1QLT7FSOTsFQO10u8jbmGRY-LcFzGs6hcTruj1NWj41Y/edit#gid=239364879"class="dropdown-item">
+                                                        <i class="material-icons">link</i> รายชื่ออาจารย์บัณฑิตพิเศษ
+                                                    </a>
+                            
+                                                </div>
+                                            </li>
+                                            
+                                                <li class="nav-item">
+                                                    <a target="_blank" class="nav-link" href="http://www.reg.kmitl.ac.th/graduate/"> <i class="material-icons">school</i> สมัครเข้าศึกษาต่อ</a>
+                                                  </li>
+                                                  <li class="nav-item">
+                                                        <a class="nav-link" href="https://drive.google.com/file/d/18VGxxcxZWMz4pOr5O8Ab7SRnl3L_RCBi/view"> <i class="material-icons">school</i> ทุนอุดหนุนการศึกษาและวิจัย</a>
+                                                   </li>
+                                                   <li class="nav-item">
+                                                        <a class="nav-link" href="https://docs.google.com/spreadsheets/d/1P9SDx678hj_SOvki4XkxvdHSJFuM3eo8UebqsNR_x9Y/edit#gid=540317732"> <i class="material-icons">school</i> รายชื่อวารสาร/งานประชุมวิชาการที่ผ่านการรับรอง</a>
+                                                   </li>
 
+                                                  <li class="nav-item">
+                                                      <a class="nav-link" href="http://161.246.35.182:2001/page#/docs_container"> <i class="material-icons">school</i> โหลดแบบฟอร์ม</a>
+                                                 </li>
+                                               
+                              
+                                          </ul>
 
+                            
+                                    </div>
+                            
+                                </div>
+                            </nav>
+</div>
+<!-- ========================================================================================== -->
 
+<!-- =============================================on xl screen only================================================= -->
+<div class = "d-xl-none">
+    <!-- <div id="mySidenav" class="sidenav">
+     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()" style="font-size: 36px !important;">&times;</a>
+      
+      <a href="/graduate">หน้าแรก</a>
+      
+      <a  class="dropdown-toggle nav-link" data-toggle="dropdown" style="color: #ffffff;">
+            หลักสูตร
+        </a>
+        <div class="dropdown-menu dropdown-menu-right dropdown-with-icons warning">
+       
+            <a target="_blank" href="http://www.reg.kmitl.ac.th/curriculum/index.php" class="dropdown-item">
+                    <i class="material-icons">school</i> ข้อมูลหลักสูตร
+                </a>
+            <a target="_blank" href="http://www.reg.kmitl.ac.th/filecontainer/files/2559_new.pdf"class="dropdown-item">
+                <i class="material-icons">school</i> ระเบียบและข้อบังคับ
+            </a>
+            <a target="_blank" href="https://docs.google.com/spreadsheets/d/1VWdVEXa2BwGUOW4cRueP7HIVwSx9HyoEc2zZ5nyhYH0/edit#gid=1951273862"class="dropdown-item">
+                <i class="material-icons">school</i>รายชื่ออาจารย์บัณฑิตประจำ
+            </a>
+            <a target="_blank" href="https://docs.google.com/spreadsheets/d/1QLT7FSOTsFQO10u8jbmGRY-LcFzGs6hcTruj1NWj41Y/edit#gid=239364879"class="dropdown-item">
+             <i class="material-icons">school</i>รายชื่ออาจารย์บัณฑิตพิเศษ
+             </a>
+             </div>
+      
+       <a href="http://www.reg.kmitl.ac.th/graduate/" target="_blank">สมัครเข้าศึกษาต่อ</a>
+      <a href="https://drive.google.com/file/d/18VGxxcxZWMz4pOr5O8Ab7SRnl3L_RCBi/view" target="_blank">ทุนอุดหนุนการศึกษาและวิจัย</a>
+      <a href="https://docs.google.com/spreadsheets/d/1P9SDx678hj_SOvki4XkxvdHSJFuM3eo8UebqsNR_x9Y/edit#gid=540317732">รายชื่อวารสาร/งานประชุมวิชาการที่ผ่านการรับรอง</a>
+      <a href="./page#/docs_container" target="_blank">โหลดแบบฟอร์ม</a>
+    </div> -->
+    
+    <!-- <nav class="navbar navbar-dark bg-warning" style="margin: 0px; padding: 12px;border-radius: 0px;"
+            <a class="navbar-brand" href="#"><img class=" mr-0 mr-md-2 navbar-absolute-logo"  src="./assets/img/26696144_1787994021264861_526769390_n.png"  style="width: 22%; height: auto;"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample01" aria-controls="navbarsExample01" aria-expanded="false" aria-label="Toggle navigation" onclick="openNav()">
+              <span class="navbar-toggler-icon"></span><span class="navbar-toggler-icon"></span><span class="navbar-toggler-icon"></span>
+            </button>
+    </nav> -->
 
+    <nav class="navbar fixed-top   navbar-expand-lg   bg-warning" >
 
+        <div class="container-fluid">
 
+            <div class="navbar-translate d-none d-sm-block" style=" width: 40%;">
+                <a href="http://161.246.35.182:2001/">
+                <img class=" mr-0 mr-md-2 navbar-absolute-logo" src="http://161.246.35.182:2001/assets/img/26696144_1787994021264861_526769390_n.png"  style="width: 100%; height: auto;">
+                </a>
+                <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                    <span class="navbar-toggler-icon"></span>
+                    <span class="navbar-toggler-icon"></span>
+                </button> -->
+            </div>
 
+            <div class="navbar-translate d-block d-sm-none" style="max-width: 80%;">
+                    <a href="http://161.246.35.182:2001/">
+                    <img class=" mr-0 mr-md-2 navbar-absolute-logo" src="http://161.246.35.182:2001/assets/img/26696144_1787994021264861_526769390_n.png"  style="width: 100%; height: auto;">
+                    </a>
+                   
+                </div>
+                <button class="navbar-toggler" type="button"  aria-expanded="false" aria-label="Toggle navigation" ddata-toggle="collapse" data-target="#navbar1">
+                        <span class="navbar-toggler-icon"></span>
+                        <span class="navbar-toggler-icon"></span>
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+            <div class="collapse navbar-collapse flex-md-column"  id="navbar1">
+                <ul class="justify-content-center navbar-nav ml-auto">
+                     
+                    <li class="nav-item">
+                            <a href="http://161.246.35.182:2001/" class=" nav-link" >
+                                <i class="material-icons">home</i> หน้าแรก
+                            </a>
+    
+                        </li>
+    
+                    <li class="dropdown nav-item">
+                        <a  class="dropdown-toggle nav-link" data-toggle="dropdown">
+                            <i class="material-icons">view_day</i> หลักสูตร
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-with-icons">
+                            <a href="/page#/course-tee" class="dropdown-item">
+                                <i class="material-icons">school</i> ปริญญาตรี
+                            </a>
+                            <a href="/page#/course-tor" class="dropdown-item">
+                                    <i class="material-icons">school</i> ปริญญาโท
+                                </a>
+                            <a href="/page#/course-aek"class="dropdown-item">
+                                <i class="material-icons">school</i> ปริญญาเอก
+                            </a>
+    
+                        </div>
+                    </li>
+                    <li class="dropdown nav-item">
+                        <a  class="dropdown-toggle nav-link" data-toggle="dropdown">
+                            <i class="material-icons">view_day</i> เกี่ยวกับคณะ
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-with-icons">
+                            <a href="/page#/history" class="dropdown-item">
+                                <i class="material-icons">info</i> ประวัติความเป็นมา
+                            </a>
+                            <a  href="/page#/resolution" class="dropdown-item">
+                                <i class="material-icons">info</i> ปรัชญา-ปณิธาน-วิสัยทัศน์-พันธกิจ
+                            </a>
+                            <a href="/page#/structure" class="dropdown-item">
+                                <i class="material-icons">info</i>  โครงสร้างองค์กร
+                            </a>
+                            <a  href="/page#/yearly-report" class="dropdown-item">
+                                <i class="material-icons">info</i> รายงานประจำปี
+                            </a>
+                        </div>
+                    </li>
+    
+                    <li class="dropdown nav-item">
+                        <a  class="dropdown-toggle nav-link " data-toggle="dropdown">
+                            <i class="material-icons">view_day</i> ภาควิชา
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-with-icons">
+                                <!-- <a href="" class="dropdown-item">
+                                        <i class="material-icons">account_balance</i> ศูนย์เครื่องมือวิทยาศาสตร์
+                                    </a> -->
+                            <a href="http://www.math.sci.kmitl.ac.th/" class="dropdown-item">
+                                <i class="material-icons">business</i> ภาควิชาคณิตศาสตร์
+                            </a>
+                            <a href="http://www.science.kmitl.ac.th/oldweb/links/department/bio/" class="dropdown-item">
+                                <i class="material-icons">business</i> ภาควิชาชีววิทยา
+                            </a>
+                            <a href="http://physics.kmitl.ac.th/" class="dropdown-item">
+                                <i class="material-icons">business</i>  ภาควิชาฟิสิกส์
+                            </a>
+                            <a href="./department.html" class="dropdown-item">
+                                <i class="material-icons">business</i> ภาควิชาวิทยาการคอมพิวเตอร์
+                            </a>
+                            <a href="http://www.science.kmitl.ac.th/oldweb/links/department/Webstat59/index.html" class="dropdown-item">
+                                <i class="material-icons">business</i> ภาควิชาสถิติ
+                            </a>
+                            <a href="http://www.science.kmitl.ac.th/oldweb/links/department/chem/" class="dropdown-item">
+                                <i class="material-icons">business</i> ภาควิชาเคมี
+                            </a>
+                        </div>
+                    </li>
+                        <!-- <li class="nav-item">
+                          <a class="nav-link active" href="#">ปริญญาตรี</a>
+                        </li> -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="http://161.246.35.182:2001/page#/personel"> <i class="material-icons">view_day</i> บุคลากร</a>
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link" href="http://161.246.35.182:2001/page#/docs_container"> <i class="material-icons">view_day</i> ฟอร์ม</a>
+                                </li>
+                          <!-- <li class="nav-item">
+                              <a class="nav-link active" href="http://www.science.kmitl.ac.th:8080/sic/index.php/CHome"> <i class="material-icons">link</i> ศูนย์เครื่องมือ</a>
+                            </li>
+                          <li class="nav-item">
+                            <a class="nav-link " href="http://alumni.kmitlsci.org/"> <i class="material-icons">link</i> ศิษย์เก่า</a>
+                          </li> -->
+      
+                  </ul>
+
+                  
+                      <ul class="navbar-nav ml-auto">
+                  <li class="nav-item">
+                      <a class="nav-link" href="http://161.246.35.182:2001/graduate"><i class="material-icons">link</i> บัณทิต</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link active" href="http://www.science.kmitl.ac.th:8080/sic/index.php/CHome"> <i class="material-icons">link</i> ศูนย์เครื่องมือ</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link " href="http://alumni.kmitlsci.org/"> <i class="material-icons">link</i> ศิษย์เก่า</a>
+                  </li>
+                  <!-- <li class="nav-item">
+                      <a class="nav-link " href="http://alumni.kmitlsci.org/"> <i class="material-icons">link</i> ศูนย์วิจัย</a>
+                  </li> -->
+                 
+                  </ul>
+
+                  <ul class="navbar-nav ml-auto">
+                        <li class="dropdown nav-item">
+                                <a  class="dropdown-toggle nav-link" data-toggle="dropdown">
+                                    <i class="material-icons">school</i> หลักสูตร
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right dropdown-with-icons">
+                                    <a target="_blank" href="http://www.reg.kmitl.ac.th/curriculum/index.php" class="dropdown-item">
+                                        <i class="material-icons">link</i> ข้อมูลหลักสูตร
+                                    </a>
+                                    <a target="_blank" href="http://www.reg.kmitl.ac.th/filecontainer/files/2559_new.pdf" class="dropdown-item">
+                                            <i class="material-icons">link</i> ระเบียบและข้อบังคับ
+                                        </a>
+                                    <a  target="_blank"href="https://docs.google.com/spreadsheets/d/1VWdVEXa2BwGUOW4cRueP7HIVwSx9HyoEc2zZ5nyhYH0/edit#gid=1951273862"class="dropdown-item">
+                                        <i class="material-icons">link</i> รายชื่ออาจารย์บัณฑิตประจำ
+                                    </a>
+                                    <a  target="_blank"href="https://docs.google.com/spreadsheets/d/1QLT7FSOTsFQO10u8jbmGRY-LcFzGs6hcTruj1NWj41Y/edit#gid=239364879"class="dropdown-item">
+                                        <i class="material-icons">link</i> รายชื่ออาจารย์บัณฑิตพิเศษ
+                                    </a>
+            
+                                </div>
+                            </li>
+                            
+                                <li class="nav-item">
+                                    <a target="_blank" class="nav-link" href="http://www.reg.kmitl.ac.th/graduate/"> <i class="material-icons">school</i> สมัครเข้าศึกษาต่อ</a>
+                                  </li>
+                                  <li class="nav-item">
+                                        <a class="nav-link" href="https://drive.google.com/file/d/18VGxxcxZWMz4pOr5O8Ab7SRnl3L_RCBi/view"> <i class="material-icons">school</i> ทุนอุดหนุนการศึกษาและวิจัย</a>
+                                   </li>
+                                   <li class="nav-item">
+                                        <a class="nav-link" href="https://docs.google.com/spreadsheets/d/1P9SDx678hj_SOvki4XkxvdHSJFuM3eo8UebqsNR_x9Y/edit#gid=540317732"> <i class="material-icons">school</i> รายชื่อวารสาร/งานประชุมวิชาการที่ผ่านการรับรอง</a>
+                                   </li>
+
+                                  <li class="nav-item">
+                                      <a class="nav-link" href="http://161.246.35.182:2001/page#/docs_container"> <i class="material-icons">school</i> โหลดแบบฟอร์ม</a>
+                                 </li>
+                   
+                    </ul>
+              
+    
+    
+            </div>
+    
+        </div>
+    </nav>
+                
+
+    
+    
+</div>
+<!-- ========================================================================================== -->
 
 
                     
