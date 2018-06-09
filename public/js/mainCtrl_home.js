@@ -152,12 +152,13 @@ $scope.get_news = function(){
 
           $scope.news_list_slide[0].topicPicture  = './assets/img/image_placeholder.jpg';
          
-          $scope.news_list_slide[1].topicPicture  = './assets/img/image_placeholder.jpg';
+        //  $scope.news_list_slide[1].topicPicture  = './assets/img/image_placeholder.jpg';
           $scope.news_list_slide.forEach(function(item){
             
                         
           api_manage.get_img_news(item._id)
           .success(function(data, status, headers, config) {
+            console.log("ddata  =  " + data)
             item.topicPicture = data;
 
             })
