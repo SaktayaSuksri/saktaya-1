@@ -214,6 +214,134 @@ body,
   border: 1px solid;
 }
 
+.nav-pills .nav-item .nav-link.active {
+    color: #fff;
+    background-color: #f2642d;
+
+}
+
+
+a:link,
+a:active,
+a:visited{
+  color:rgba(255,255,255,1);
+}
+
+a:hover{
+  color:rgba(255,255,255,0.6);
+}
+
+.gray {
+  color: #a5a5a5;
+}
+
+.team{
+  margin:40px;
+}
+
+.team-member {
+  margin: 15px 0;
+  padding: 0;
+}
+
+.team-member figure {
+  position: relative;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+}
+
+.team-member figure img {
+  min-width: 100%;
+}
+
+.team-member figcaption p {
+  font-size: 16px;
+}
+
+.team-member figcaption ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.team-member figcaption ul {
+  visibility: visible;
+  -webkit-transition: all 0.1s ease-in-out;
+  -moz-transition: all 0.1s ease-in-out;
+  -o-transition: all 0.1s ease-in-out;
+  transition: all 0.1s ease-in-out;
+}
+
+.team-member figcaption ul li {
+  display: inline-block;
+  padding: 10px;
+}
+
+.team-member h4 {
+  margin: 10px 0 0;
+  padding: 0;
+}
+
+.team-member figcaption {
+  padding: 50px;
+  color: transparent;
+  background-color: transparent;
+  position: absolute;
+  z-index: 996;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  overflow: hidden;
+  visibility: hidden;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.team-member figure:hover figcaption {
+  visibility: visible;
+  color: #fff;
+  background: rgba(230, 78, 62, 0.9);
+  /* Primary color, can be changed via colors.css */
+  
+  height: 100%;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.team-member figure:hover figcaption ul li a:hover {
+  color: rgba(49, 49, 49, .97);
+}
+
+.team-member figure img {
+  -webkit-transform: scale(1) rotate(0) translateY(0);
+  -moz-transform: scale(1) rotate(0) translateY(0);
+  -o-transform: scale(1) rotate(0) translateY(0);
+  -ms-transform: scale(1) rotate(0) translateY(0);
+  transform: scale(1) rotate(0) translateY(0);
+  -webkit-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+
+.team-member figure:hover img {
+  -webkit-transform: scale(1.1) rotate(1deg) translateY(12px);
+  -moz-transform: scale(1.1) rotate(1deg) translateY(12px);
+  -o-transform: scale(1.1) rotate(1deg) translateY(12px);
+  -ms-transform: scale(1.1) rotate(1deg) translateY(12px);
+  transform: scale(1.1) rotate(1deg) translateY(12px);
+  -webkit-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+
 </style>
 
     
@@ -258,17 +386,175 @@ body,
         <!-- <div style="height: 20vh; width: 100%;"></div> -->
         
         <div class="main main-raised" ng-controller="personelCtrl">
-            <div class="contact-content">
-                <div class="  cd-section text-center">
+            <div class="">
+                <div class="  ">
         
         
+      
+
+
+
+
         <div class="">
                         <div class="col-md-8 ml-auto mr-auto text-center">
-                            <br><h2 class="title">บุคลากร</h2>
+                            <br><h2 class="title">บุคลากรในคณะ</h2>
+                        </div>
+                       
+                        <div class="col-md-6 ml-auto mr-auto text-center" ng-init="step = '1'" >
+                            <ul class="nav nav-pills nav-pills-icons" role="tablist" style="    margin-left: 150px;">
+                                <!--
+                                color-classes: "nav-pills-primary", "nav-pills-info", "nav-pills-success", "nav-pills-warning","nav-pills-danger"
+                            -->
+                                <li class="nav-item">
+                                    <a class="nav-link " ng-class="{'active show ':step == '1'}"  ng-click="step=1" style="    color: #010101!important;" aria-selected="true">
+                                        <u> ผู้บริหาร </u>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" style="    color: #010101!important;"   href="http://161.246.35.182:2000" target="_blank"  aria-selected="false">
+                                      <u>    คณาจารย์ </u>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link"  ng-class="{'active show':step == '3'}"style="    color: #010101!important;"  ng-click="step=3">
+                                        <u>    บุคลากร </u>
+                                    </a>
+                                </li>
+                            </ul>
+                     
                         </div>
                         <hr>
                         <br>  <br>
-                        <div class="container">
+
+                    <!-- Our team Section -->
+<section id="team" class="team content-section" ng-show="step=='1'">
+    <div>
+      <div >
+       <!-- <div class="col-md-12">
+          <h2>Our Team</h2>
+          <h3 class="caption gray">Meet the people who make awesome stuffs</h3>
+        </div>-->
+  
+        <div class="container" style="    margin-top: -80px;">
+          <div class="row  justify-content-center">
+  
+            <div class="col-md-3">
+              <div class="team-member"  style="width:250px!important;height:294px!important;">
+                <figure   style="width:230px!important;height:294px!important;">
+                  <img  style="width:230px!important; height:294px!important; border-radius: 20px;" src="./assets/img/team/DSC_4805.jpg" alt="" class="img-responsive">
+                  <figcaption>
+                    
+                      <button type="button" class="btn btn-warning" data-toggle="modal"  data-target="#modal_1"> <b style="font-size:16px;">ข้อมูลเพิ่มเติม</b></button>
+                      
+                  </figcaption>
+                </figure>
+                <h4  class="text-center" style="color: #e25e26;"> <b>รศ. ดร.อิทธิพล     แจ้งชัด </b></h4>
+                <p class="text-center">  <b>คณบดี </b></p>
+                <h4 class="text-center" style="color: #e25e26;">  <b>Assoc.Prof.Dr. Ittipol    Jangchud </b></h4>
+                <p  class="text-center"> <b>DEAN </b></p>
+              </div><!-- /.team-member-->
+              <div style="height: 22vh; width: 100%;"></div>
+            </div><!-- /.col-md-4 -->
+  
+          
+  
+  
+          </div><!-- /.row -->
+
+          <div class="row  ">
+            
+                      <div class="col-md-4">
+                        <div class="team-member"  style="width:250px!important;height:294px!important;">
+                          <figure   style="width:230px!important;height:294px!important;">
+                            <img  style="width:230px!important; height:294px!important; border-radius: 20px;" src="./assets/img/team/DSC_4856.jpg" alt="" class="img-responsive">
+                            <figcaption>
+                              
+                                <button type="button" class="btn btn-warning" data-toggle="modal"  data-target="#modal_2"> <b style="font-size:16px;">ข้อมูลเพิ่มเติม</b></button>
+                                
+                            </figcaption>
+                          </figure>
+                          <h4 class="text-center" style="color: #e25e26;"> <b>ดร.บุญญสิทธิ์ วรจันทร์</b></h4>
+                          <p class="text-center">  <b>รองคณบดี </b></p>
+                          <h4 class="text-center" style="color: #e25e26;"> <b>Dr.Boonyasit    Warachan </b> </h4>
+                          <p  class="text-center">  <b>VICE   DEAN</b></p>
+                        </div><!-- /.team-member-->
+                      </div><!-- /.col-md-4 -->
+                      
+                      
+                      <div class="col-md-4">
+                          <div class="team-member"  style="width:250px!important;height:294px!important;">
+                            <figure   style="width:230px!important;height:294px!important;">
+                              <img  style="width:230px!important; height:294px!important; border-radius: 20px;" src="./assets/img/team/9.jpg" alt="" class="img-responsive">
+                              <figcaption>
+                                
+                                  <button type="button" class="btn btn-warning" data-toggle="modal"  data-target="#modal_3"> <b style="font-size:16px;">ข้อมูลเพิ่มเติม</b></button>
+                                  
+                              </figcaption>
+                            </figure>
+                            <h4 class="text-center" style="color: #e25e26;"> <b>ผศ. ดร.สุภารัตน์    รักชลธี</b></h4>
+                            <p class="text-center">  <b>รองคณบดี </b></p>
+                            <h4 class="text-center" style="color: #e25e26;"> <b>Asst.Prof.Dr. Suparat    Rukchonlatee </b> </h4>
+                            <p  class="text-center">  <b>VICE   DEAN</b></p>
+                          </div><!-- /.team-member-->
+                        </div><!-- /.col-md-4 -->    
+                        
+                        <div class="col-md-4">
+                            <div class="team-member"  style="width:250px!important;height:294px!important;">
+                              <figure   style="width:230px!important;height:294px!important;">
+                                <img  style="width:230px!important; height:294px!important; border-radius: 20px;" src="./assets/img/team/9.jpg" alt="" class="img-responsive">
+                                <figcaption>
+                                  
+                                    <button type="button" class="btn btn-warning" data-toggle="modal"  data-target="#modal_4"> <b style="font-size:16px;">ข้อมูลเพิ่มเติม</b></button>
+                                    
+                                </figcaption>
+                              </figure>
+                              <h4 class="text-center" style="color: #e25e26;"> <b>   ผศ. วิสันต์    ตั้งวงษ์เจริญ</b></h4>
+                              <p class="text-center">  <b>รองคณบดี </b></p>
+                              <h4 class="text-center" style="color: #e25e26;"> <b>Asst.Prof. Wisan   Tangwongcharoen </b> </h4>
+                              <p  class="text-center">  <b>VICE   DEAN</b> </p>
+                            </div><!-- /.team-member-->
+                          </div><!-- /.col-md-4 --> 
+
+                          <div style="height: 22vh; width: 100%;"></div>
+                          
+                          <div class="col-md-4">
+                              <div class="team-member"  style="width:250px!important;height:294px!important;">
+                                <figure   style="width:230px!important;height:294px!important;">
+                                  <img  style="width:230px!important; height:294px!important; border-radius: 20px;" src="./assets/img/team/9.jpg" alt="" class="img-responsive">
+                                  <figcaption>
+                                    
+                                      <button type="button" class="btn btn-warning" data-toggle="modal"  data-target="#modal_3"> <b style="font-size:16px;">ข้อมูลเพิ่มเติม</b></button>
+                                      
+                                  </figcaption>
+                                </figure>
+                                <h4 class="text-center" style="color: #e25e26;"> <b>   ผศ. วิสันต์    ตั้งวงษ์เจริญ</b></h4>
+                                <p class="text-center">  <b>รองคณบดี </b></p>
+                                <h4 class="text-center" style="color: #e25e26;"> <b>Asst.Prof. Wisan   Tangwongcharoen </b> </h4>
+                                <p  class="text-center">  <b>VICE   DEAN </b></p>
+                              </div><!-- /.team-member-->
+                            </div><!-- /.col-md-4 --> 
+
+
+          
+                    
+            
+            
+                    </div><!-- /.row -->
+
+
+        </div><!-- /.container -->
+  
+      </div><!-- /.row -->
+    </div><!-- /.container -->
+
+    <div style="height: 34vh; width: 100%;"></div>
+
+    
+  </section><!-- /.our-team -->
+
+                        <div class="container" ng-show="step=='3'">
+                          
+
                             <div class="row justify-content-center">
                                 <div class = "col-md-3" ng-repeat = "personel_item in personel_list" data-toggle="modal">
                               <div class='card'  ng-click = "showDetail();" >
@@ -287,9 +573,196 @@ body,
                         </div><br>
                     </div>
                   </div>
+
+
+
+
+
                 </div>
               </div>
             
         
                               </div>
+
+
+
+                              <div class="modal fade bd-example-modal-lg"  id= "modal_1" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                                  <div class="modal-dialog modal-lg">
+                                    <div class="modal-content" style="    padding: 30px 20px;">
+
+                                      <div class="container">
+                                        <div class="row">
+
+                                          <div class="col-md-6">
+                                              <img  style="width:250px!important; " src="./assets/img/team/DSC_4805.jpg" alt="" class="img-responsive">
+                                              
+                                          </div>
+                                          <div class="col-md-6">
+                                              <h4 style="    color: #e25e26;
+                                              font-size: 32px;"> รองศาสตราจารย์ ดร.อิทธิพล     แจ้งชัด</h4>
+                                              <h4> คณบดี</h4> 
+                                              <h4>  Assoc.Prof.Dr. Ittipol    Jangchud</h4>
+                                              <h4>  DEAN</h4> 
+                                              <p class="text-left"> คณะวิทยาศาสตร์
+                                               สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง
+                                              </p>
+                                               <p class="text-left">
+                                               Faculty of Science
+                                               KING MONGKUT’S INSTITUTE OF TECHNOLOGY LADKRABANG
+                                              </p>
+                                               <p class="text-left"> ถนนฉลองกรุง  เขตลาดกระบัง  กทม. 10520
+                                               CHALONGKRUNG RD., LADKRABANG, BANGKOK 10520, THAILAND
+                                             </p>
+                                             <hr>
+                                             <p class="text-left"> 
+                                               TEL. : +66–2-3298400-11   EXT.   267	+66–2-3298000-99  EXT. 3581   	
+                                              </p><p class="text-left"> FAX   +66–2-3298412		
+                                                </p><p class="text-left">  E-mail : ittipol@live.com  ,  ittipol.ja@kmitl.ac.th
+                                             </p>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    
+                                        
+                                    </div>
+                                  </div>
+                                </div>
+
+
+                                <div class="modal fade bd-example-modal-lg"  id= "modal_2" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                                  <div class="modal-dialog modal-lg">
+                                    <div class="modal-content" style="    padding: 30px 20px;">
+
+                                      <div class="container">
+                                        <div class="row">
+
+                                          <div class="col-md-6">
+                                              <img  style="width:250px!important; " src="./assets/img/team/DSC_4805.jpg" alt="" class="img-responsive">
+                                              
+                                          </div>
+                                          <div class="col-md-6">
+                                              <h4 style="    color: #e25e26;
+                                              font-size: 32px;"> ดร.บุญญสิทธิ์ วรจันทร์ </h4>
+                                              <h4> รองคณบดี</h4> 
+                                              <h4>              Dr.Boonyasit    Warachan</h4>
+                                              <h4>  VICE   DEAN</h4> 
+                                              <p class="text-left"> คณะวิทยาศาสตร์
+                                               สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง
+                                              </p>
+                                               <p class="text-left">
+                                               Faculty of Science
+                                               KING MONGKUT’S INSTITUTE OF TECHNOLOGY LADKRABANG
+                                              </p>
+                                               <p class="text-left"> ถนนฉลองกรุง  เขตลาดกระบัง  กทม. 10520
+                                               CHALONGKRUNG RD., LADKRABANG, BANGKOK 10520, THAILAND
+                                             </p>
+                                             <hr>
+                                             <p class="text-left"> 
+                                              TEL. : +66–2-3298400-11   EXT.  263  	    	+66–2-3298000-99  EXT.  3609	
+                                            </p><p class="text-left"> FAX   +66–2-3298412	
+                                                </p><p class="text-left">  
+                                                  
+                                                    E-mail :   boonyasit.wa@kmitl.ac.th 
+                                             </p>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    
+                                        
+                                    </div>
+                                  </div>
+                                </div>
+
+
+                                <div class="modal fade bd-example-modal-lg"  id= "modal_3" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-lg">
+                                      <div class="modal-content" style="    padding: 30px 20px;">
+  
+                                        <div class="container">
+                                          <div class="row">
+  
+                                            <div class="col-md-6">
+                                                <img  style="width:250px!important; " src="./assets/img/team/DSC_4805.jpg" alt="" class="img-responsive">
+                                                
+                                            </div>
+                                            <div class="col-md-6">
+                                                <h4 style="    color: #e25e26;
+                                                font-size: 32px;"> ผู้ช่วยศาสตราจารย์ ดร.สุภารัตน์    รักชลธี </h4>
+                                                <h4> รองคณบดี</h4> 
+                                                <h4>           Asst.Prof.Dr. Suparat    Rukchonlatee</h4>
+                                                <h4>  VICE   DEAN</h4> 
+                                                <p class="text-left"> คณะวิทยาศาสตร์
+                                                 สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง
+                                                </p>
+                                                 <p class="text-left">
+                                                 Faculty of Science
+                                                 KING MONGKUT’S INSTITUTE OF TECHNOLOGY LADKRABANG
+                                                </p>
+                                                 <p class="text-left"> ถนนฉลองกรุง  เขตลาดกระบัง  กทม. 10520
+                                                 CHALONGKRUNG RD., LADKRABANG, BANGKOK 10520, THAILAND
+                                               </p>
+                                               <hr>
+                                               <p class="text-left"> 
+                                                  TEL. : +66-2-3298400-11   EXT. 365  		+66-2-3298000-99  EXT. 6289  
+                                              </p><p class="text-left"> FAX   +66-2-3298412
+                                                  </p><p class="text-left">  
+                                                    
+                                                      E-mail :  kjsupara@gmail.com  , suparat.ru@kmitl.ac.th
+                                               </p>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      
+                                          
+                                      </div>
+                                    </div>
+                                  </div>
+
+
+                                  <div class="modal fade bd-example-modal-lg"  id= "modal_4" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                                      <div class="modal-dialog modal-lg">
+                                        <div class="modal-content" style="    padding: 30px 20px;">
+    
+                                          <div class="container">
+                                            <div class="row">
+    
+                                              <div class="col-md-6">
+                                                  <img  style="width:250px!important; " src="./assets/img/team/DSC_4805.jpg" alt="" class="img-responsive">
+                                                  
+                                              </div>
+                                              <div class="col-md-6">
+                                                  <h4 style="    color: #e25e26;
+                                                  font-size: 32px;"> ผู้ช่วยศาสตราจารย์วิสันต์    ตั้งวงษ์เจริญ </h4>
+                                                  <h4> รองคณบดี</h4> 
+                                                  <h4>          Asst.Prof. Wisan   Tangwongcharoen</h4>
+                                                  <h4>  VICE   DEAN</h4> 
+                                                  <p class="text-left"> คณะวิทยาศาสตร์
+                                                   สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง
+                                                  </p>
+                                                   <p class="text-left">
+                                                   Faculty of Science
+                                                   KING MONGKUT’S INSTITUTE OF TECHNOLOGY LADKRABANG
+                                                  </p>
+                                                   <p class="text-left"> ถนนฉลองกรุง  เขตลาดกระบัง  กทม. 10520
+                                                   CHALONGKRUNG RD., LADKRABANG, BANGKOK 10520, THAILAND
+                                                 </p>
+                                                 <hr>
+                                                 <p class="text-left"> 
+                                                    TEL. : +66–2-3298400-11   EXT. 246  	+66–2-3298000-99  EXT. 3583   	
+                                                     </p><p class="text-left"> FAX   +66–2-3298400-11   EXT. 624
+                                                    </p><p class="text-left">  
+                                                      
+                                                        E-mail :  ktwisan@kmitl.ac.th 
+                                                 </p>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        
+                                            
+                                        </div>
+                                      </div>
+                                    </div>
+  
+                      
+
                     
