@@ -161,7 +161,7 @@ module.exports = {
             });
         }
         else {
-            News.find(myquery, projection, { limit: limitNum }, function (error, newsGetResult) { 	// return error into 'err' and response into 'bear'
+            News.find(myquery, projection, function (error, newsGetResult) { 	// return error into 'err' and response into 'bear'
                 if (error) {
                     var alert = "Error in getAllNews , Error : " + error.message;
                     console.log(alert);
@@ -302,7 +302,7 @@ function getFullNews(news, callback) {
             let postedDate = posted.getDate()
             let postedMonth = convertToThaiMonth(posted.getMonth() + 1)
             let postedYear = posted.getFullYear() + 543
-            tmp["datetimepost_Preview"] = postedDate + " " +postedMonth+ " พ.ศ. " + postedYear
+            tmp["datetimepost_Preview"] = postedDate + " " + postedMonth + " พ.ศ. " + postedYear
 
             callback(tmp)
         }
