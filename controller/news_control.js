@@ -86,7 +86,7 @@ module.exports = {
             callback("043", null, null)
         }
     },
-    getAllNews: function (resourceId, departmentId, targetTypeId, tag, isPreview, limitNum, isPosted, isPinned, needPicture, callback) {
+    getAllNews: function (resourceId, departmentId, targetTypeId, tag, isPreview, limitNum, isPosted, isPinned, needPicture, needSort, callback) {
         var today = new Date();
         console.log("resourceId: " + resourceId + " / targetType " + targetTypeId + " / departmentId " + departmentId + " / isPinned " + isPinned + " / tag: " + tag);
         var myquery = {};
@@ -141,23 +141,44 @@ module.exports = {
             }
         }
 
-        News.find(myquery, projection, { sort: { datetimePost: -1 }, limit: limitNum }, function (error, newsGetResult) { 	// return error into 'err' and response into 'bear'
-            if (error) {
-                var alert = "Error in getAllNews , Error : " + error.message;
-                console.log(alert);
-                callback("121", alert, null)
-            }
-            else if (newsGetResult.length > 0) {
-                var alert = "Get News Completed! " + JSON.stringify(newsGetResult);
-                //console.log(alert);
-                callback("122", null, newsGetResult)
-            }
-            else {
-                var alert = "No News with resourceId: " + resourceId + " / departmentId: " + departmentId + " / targetTypeId: " + targetTypeId + " / isPinned " + isPinned + " / tag: " + tag + " was found";
-                console.log(alert);
-                callback("123", alert, null)
-            }
-        });
+        if (needSort) {
+            News.find(myquery, projection, { sort: { datetimePost: -1 }, limit: limitNum }, function (error, newsGetResult) { 	// return error into 'err' and response into 'bear'
+                if (error) {
+                    var alert = "Error in getAllNews , Error : " + error.message;
+                    console.log(alert);
+                    callback("121", alert, null)
+                }
+                else if (newsGetResult.length > 0) {
+                    var alert = "Get News Completed! " + JSON.stringify(newsGetResult);
+                    //console.log(alert);
+                    callback("122", null, newsGetResult)
+                }
+                else {
+                    var alert = "No News with resourceId: " + resourceId + " / departmentId: " + departmentId + " / targetTypeId: " + targetTypeId + " / isPinned " + isPinned + " / tag: " + tag + " was found";
+                    console.log(alert);
+                    callback("123", alert, null)
+                }
+            });
+        }
+        else {
+            News.find(myquery, projection, { limit: limitNum }, function (error, newsGetResult) { 	// return error into 'err' and response into 'bear'
+                if (error) {
+                    var alert = "Error in getAllNews , Error : " + error.message;
+                    console.log(alert);
+                    callback("121", alert, null)
+                }
+                else if (newsGetResult.length > 0) {
+                    var alert = "Get News Completed! " + JSON.stringify(newsGetResult);
+                    //console.log(alert);
+                    callback("122", null, newsGetResult)
+                }
+                else {
+                    var alert = "No News with resourceId: " + resourceId + " / departmentId: " + departmentId + " / targetTypeId: " + targetTypeId + " / isPinned " + isPinned + " / tag: " + tag + " was found";
+                    console.log(alert);
+                    callback("123", alert, null)
+                }
+            });
+        }
     },
     countReader: function (newsId, readCount) {
         var myquery = { "_id": newsId };
@@ -277,7 +298,41 @@ function getFullNews(news, callback) {
                 tmp["isExpired"] = false;
             }
 
+            let posted = new Date(news.datetimePost);
+            let postedDate = posted.getDate()
+            let postedMonth = convertToThaiMonth(posted.getMonth() + 1)
+            let postedYear = posted.getFullYear() + 543
+            tmp["datetimepost_Preview"] = postedDate + " " + " พ.ศ. " + postedYear
+
             callback(tmp)
         }
     );
+}
+
+function convertToThaiMonth(monthNum) {
+    if (monthNum == 1)
+        return "มกราคม"
+    else if (monthNum == 2)
+        return "กุมภาพันธ์"
+    else if (monthNum == 3)
+        return "มีนาคม"
+    else if (monthNum == 4)
+        return "เมษายน"
+    else if (monthNum == 5)
+        return "พฤษภาคม"
+    else if (monthNum == 6)
+        return "มิถุนายน"
+    else if (monthNum == 7)
+        return "กรกฎาคม"
+    else if (monthNum == 8)
+        return "สิงหาคม"
+    else if (monthNum == 9)
+        return "กันยายน"
+    else if (monthNum == 10)
+        return "ตุลาคม"
+    else if (monthNum == 11)
+        return "พฤษจิกายน"
+    else if (monthNum == 12)
+        return "ธันวาคม"
+
 }
