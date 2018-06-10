@@ -249,6 +249,7 @@ router.post('/getNews/', function (request, response) {
     booleanData.push(request.body.isPosted);
     booleanData.push(request.body.isPreview);
     requiredData.push(request.body.isPinned);
+    requiredData.push(request.body.needSort);
     var booleanReady = Validate.booleanData_Check(booleanData)
 
     var objectIdData = [];
