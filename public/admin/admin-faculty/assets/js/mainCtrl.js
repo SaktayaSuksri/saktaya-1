@@ -1050,7 +1050,8 @@ angular.module('app').controller('news', function ($scope, $sce, NgTableParams, 
       isPinned: "0",
       limit: 0,
       isPosted: "false",
-      isPreview: "false"
+      isPreview: "false",
+      needSort : 'false'
 
 
 

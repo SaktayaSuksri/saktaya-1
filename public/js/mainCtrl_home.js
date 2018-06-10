@@ -65,7 +65,7 @@ angular.module('app').controller('header_first', function ($scope,$http,api_mana
                     
                         //document.querySelector("#loading").style.display = "";
                         $scope.news_academic_service = {};
-                         console.log(" get_news_news_academic_service for slide ");
+                         //console.log(" get_news_news_academic_service for slide ");
                         let dataObj = {
                     
                          filterTargetTypeName : "0",
@@ -76,13 +76,14 @@ angular.module('app').controller('header_first', function ($scope,$http,api_mana
                           isPinned : "0",
                           isPosted:"false",
                           isPreview:"true",
-                          targetTypeId:"0"
+                          targetTypeId:"0",
+                          needSort : 'true'
                     
                         }
                           api_manage.get_news(dataObj)
                           .success(function(data, status, headers, config) {
                               //$scope.message = data;
-                            //  console.log("-----------"+ JSON.stringify(data));
+                            //  //console.log("-----------"+ JSON.stringify(data));
                               if(data.code != "999999")
                               {
                                 alert(data.message);
@@ -104,7 +105,7 @@ angular.module('app').controller('header_first', function ($scope,$http,api_mana
                          });
         
                          //     document.querySelector("#loading").style.display = "none";
-                           //   console.log('$scope.news_list  =  '+ JSON.stringify($scope.news_list))
+                           //   //console.log('$scope.news_list  =  '+ JSON.stringify($scope.news_list))
                             //  $scope.news_table= new NgTableParams({count: 10 ,  sorting: { resourceName: "desc" }  }, { counts: [10,20, 100], dataset: $scope.news_list });
                     
                             }
@@ -112,7 +113,7 @@ angular.module('app').controller('header_first', function ($scope,$http,api_mana
                           })
                           .error(function(data, status, headers, config) {
                               alert( "failure message: " + JSON.stringify({data: data}) +"ไม่สามารถติดต่อเซิฟเวอร์ได้ ติดต่อแอดมิน");
-                              console.log(status+headers);
+                              //console.log(status+headers);
                           });
                         }        
 $scope.get_news = function(){
@@ -131,13 +132,14 @@ $scope.get_news = function(){
       isPinned : "true",
       isPosted:"false",
       isPreview:"true",
-      targetTypeId:"0"
+      targetTypeId:"0",
+      needSort : 'true'
 
     }
       api_manage.get_news(dataObj)
       .success(function(data, status, headers, config) {
           //$scope.message = data;
-        //  console.log("-----------"+ JSON.stringify(data));
+        //  //console.log("-----------"+ JSON.stringify(data));
           if(data.code != "999999")
           {
             alert(data.message);
@@ -145,7 +147,7 @@ $scope.get_news = function(){
           else
           {
             $scope.get_news_news_academic_service();
-          console.log(" get_news for slide  "+ JSON.stringify(data));
+          //console.log(" get_news for slide  "+ JSON.stringify(data));
           $scope.news_list_slide = data.message;
          
           document.querySelector("#loader").style.display = 'none';
@@ -158,7 +160,7 @@ $scope.get_news = function(){
                         
           api_manage.get_img_news(item._id)
           .success(function(data, status, headers, config) {
-            console.log("ddata  =  " + data)
+            //console.log("ddata  =  " + data)
             item.topicPicture = data;
 
             })
@@ -173,7 +175,7 @@ $scope.get_news = function(){
 
 
      //     document.querySelector("#loading").style.display = "none";
-       //   console.log('$scope.news_list  =  '+ JSON.stringify($scope.news_list))
+       //   //console.log('$scope.news_list  =  '+ JSON.stringify($scope.news_list))
         //  $scope.news_table= new NgTableParams({count: 10 ,  sorting: { resourceName: "desc" }  }, { counts: [10,20, 100], dataset: $scope.news_list });
 
         }
@@ -181,7 +183,7 @@ $scope.get_news = function(){
       })
       .error(function(data, status, headers, config) {
           alert( "failure message: " + JSON.stringify({data: data}) +"ไม่สามารถติดต่อเซิฟเวอร์ได้ ติดต่อแอดมิน");
-          console.log(status+headers);
+          //console.log(status+headers);
       });
     }
 
@@ -216,7 +218,7 @@ angular.module('app').controller('youtube_box', function ($scope, $filter, $q,$h
 
 angular.module('app').controller('news', function ($sce,$scope, $filter, $q,$http,api_manage,global_service){
     $scope.trustAsHtml = function(string) {
-        console.log("str = "+string)
+        //console.log("str = "+string)
             return $sce.trustAsHtml(string);
         };
 
@@ -268,7 +270,7 @@ $scope.init_news_modal = function(id){
                 api_manage.get_news_fromID(dataObj)
                 .success(function(data, status, headers, config) {
                     //$scope.message = data;
-                    console.log("-----------"+ JSON.stringify(data));
+                    //console.log("-----------"+ JSON.stringify(data));
                     if(data.code != "999999")
                     {
                       alert("modal_news "+data.message);
@@ -276,9 +278,9 @@ $scope.init_news_modal = function(id){
                     else
                     {
                         document.querySelector("#loading").style.display = "none";
-                    console.log(data);
+                    //console.log(data);
                     $scope.modal_news  = data.message;
-                    console.log('$scope.news_list  =  '+ JSON.stringify($scope.news_list))
+                    //console.log('$scope.news_list  =  '+ JSON.stringify($scope.news_list))
                 //    $scope.news_table= new NgTableParams({count: 10 ,  sorting: { resourceName: "desc" }  }, { counts: [10,20, 100], dataset: $scope.news_list });
 
                   }
@@ -286,7 +288,7 @@ $scope.init_news_modal = function(id){
                 })
                 .error(function(data, status, headers, config) {
                     alert( "failure message: " + JSON.stringify({data: data}) +"ไม่สามารถติดต่อเซิฟเวอร์ได้ ติดต่อแอดมิน");
-                    console.log(status+headers);
+                    //console.log(status+headers);
                 });
 
 }
@@ -303,16 +305,16 @@ $scope.get_catagory = function(){
           }
           else
           {
-          console.log(data);
+          //console.log(data);
           $scope.catagory_list  = data.message;
-          console.log('$scope.catagory_list  =  '+ JSON.stringify($scope.catagory_list))
+          //console.log('$scope.catagory_list  =  '+ JSON.stringify($scope.catagory_list))
           //$scope.catagory_table= new NgTableParams({count: 10 ,  sorting: { resourceName: "desc" }  }, { counts: [10,20, 100], dataset: $scope.catagory_list });
           }
     
       })
       .error(function(data, status, headers, config) {
           alert( "failure message: " + JSON.stringify({data: data}) +"ไม่สามารถติดต่อเซิฟเวอร์ได้ ติดต่อแอดมิน");
-          console.log(status+headers);
+          //console.log(status+headers);
       });
     }
 
@@ -333,7 +335,8 @@ $scope.get_news = function(){
       isPinned : "false",
       isPosted:"false",
       isPreview:"true",
-      targetTypeId:"0"
+      targetTypeId:"0",
+      needSort : 'true'
 
       
   
@@ -341,12 +344,12 @@ $scope.get_news = function(){
 
     }
 
-    console.log(" before get_news  "+ JSON.stringify(dataObj));
+    //console.log(" before get_news  "+ JSON.stringify(dataObj));
 
       api_manage.get_news(dataObj)
       .success(function(data, status, headers, config) {
           //$scope.message = data;
-        //  console.log("-----------"+ JSON.stringify(data));
+        //  //console.log("-----------"+ JSON.stringify(data));
           if(data.code != "999999")
           {
             alert(data.message);
@@ -354,7 +357,7 @@ $scope.get_news = function(){
           }
           else
           {
-          console.log(" get_news  "+ JSON.stringify(data));
+         // ////console.log(" get_news  "+ JSON.stringify(data));
           $scope.news_list_1 = [];
           data.message.forEach(function(item){
               item.topicPicture  = './assets/img/image_placeholder.jpg';
@@ -564,7 +567,7 @@ if(data.message[8])
         
 
 
-       //   console.log('$scope.news_list  =  '+ JSON.stringify($scope.news_list))
+       //   //console.log('$scope.news_list  =  '+ JSON.stringify($scope.news_list))
         //  $scope.news_table= new NgTableParams({count: 10 ,  sorting: { resourceName: "desc" }  }, { counts: [10,20, 100], dataset: $scope.news_list });
 
         }
@@ -572,7 +575,7 @@ if(data.message[8])
       })
       .error(function(data, status, headers, config) {
           alert( "failure message: " + JSON.stringify({data: data}) +"ไม่สามารถติดต่อเซิฟเวอร์ได้ ติดต่อแอดมิน");
-          console.log(status+headers);
+          //console.log(status+headers);
       });
     }
 
@@ -587,7 +590,7 @@ if(data.message[8])
 angular.module('app').controller('homeHeaderCtrl', function ($sce,$scope, $filter, $q,$http,api_manage,global_service){
 
     $(function() {
-       // console.log( "ready!" );
+       // //console.log( "ready!" );
         var parent = document.querySelector('.splitview'),
             topPanel = parent.querySelector('.top'),
             handle = parent.querySelector('.handle'),
