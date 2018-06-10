@@ -109,7 +109,7 @@ module.exports = {
             queryFlag = true;
             tmp.push({ "tag": tag })
         }
-        if (isPosted !== "true") {
+        if (isPosted == "true") {
             queryFlag = true;
             tmp.push({ "datetimePost": { $lte: today } })
         }
