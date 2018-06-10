@@ -302,7 +302,7 @@ function getFullNews(news, callback) {
             let postedDate = posted.getDate()
             let postedMonth = convertToThaiMonth(posted.getMonth() + 1)
             let postedYear = posted.getFullYear() + 543
-            tmp["datetimepost_Preview"] = postedDate + " " + " พ.ศ. " + postedYear
+            tmp["datetimepost_Preview"] = postedDate + " " +postedMonth+ " พ.ศ. " + postedYear
 
             callback(tmp)
         }
