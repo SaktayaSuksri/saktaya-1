@@ -141,7 +141,7 @@ module.exports = {
             }
         }
 
-        if (needSort) {
+        if (needSort == "true") {
             News.find(myquery, projection, { sort: { datetimePost: -1 }, limit: limitNum }, function (error, newsGetResult) { 	// return error into 'err' and response into 'bear'
                 if (error) {
                     var alert = "Error in getAllNews , Error : " + error.message;
