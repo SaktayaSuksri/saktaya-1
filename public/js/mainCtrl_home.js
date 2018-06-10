@@ -76,7 +76,8 @@ angular.module('app').controller('header_first', function ($scope,$http,api_mana
                           isPinned : "0",
                           isPosted:"false",
                           isPreview:"true",
-                          targetTypeId:"0"
+                          targetTypeId:"0",
+                          needSort : 'true'
                     
                         }
                           api_manage.get_news(dataObj)
@@ -131,7 +132,8 @@ $scope.get_news = function(){
       isPinned : "true",
       isPosted:"false",
       isPreview:"true",
-      targetTypeId:"0"
+      targetTypeId:"0",
+      needSort : 'true'
 
     }
       api_manage.get_news(dataObj)
@@ -333,7 +335,8 @@ $scope.get_news = function(){
       isPinned : "false",
       isPosted:"false",
       isPreview:"true",
-      targetTypeId:"0"
+      targetTypeId:"0",
+      needSort : 'true'
 
       
   
