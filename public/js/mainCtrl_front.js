@@ -236,7 +236,8 @@ $scope.get_catagory = function(){
       limit:0,
       isPinned :"0",
       isPosted:"false",
-      isPreview:"true"
+      isPreview:"true",
+      needSort : 'true'
     }
     //console.log('before get_news  =  '+ JSON.stringify(dataObj))
 
@@ -398,7 +399,8 @@ $scope.init = function(){
           limit:8,
           isPinned :"false",
           isPosted:"false",
-          isPreview:"true"
+          isPreview:"true",
+          needSort : 'true'
 
           
         }
@@ -463,7 +465,8 @@ $scope.init = function(){
           limit:0,
           isPinned :"true",
           isPosted:"false",
-          isPreview:"true"
+          isPreview:"true",
+          needSort : 'true'
 
           
         }
