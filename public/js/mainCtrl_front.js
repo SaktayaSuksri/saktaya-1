@@ -126,7 +126,7 @@ angular.module('app')
 angular.module('app').controller('global', function($scope, $http, api_manage,$sce) {
 
   $scope.trustAsHtml = function(string) {
-    console.log("str = "+string)
+    //console.log("str = "+string)
         return $sce.trustAsHtml(string);
     };
 
@@ -192,7 +192,7 @@ $scope.get_catagory = function(){
         }
         else
         {
-        console.log(data);
+        //console.log(data);
         $scope.catagory_list  = data.message;
         $scope.catagory_list.push({"_id":"0","resourceName":"ทั้งหมด"})
         $scope.catagory_list.forEach(function(item){
@@ -210,14 +210,14 @@ $scope.get_catagory = function(){
         
         
       //  $scope.catagory_list.push({"_id":"0","resourceName":"ทั้งหมด"})
-        console.log('$scope.catagory_list  =  '+ JSON.stringify($scope.catagory_list))
+        //console.log('$scope.catagory_list  =  '+ JSON.stringify($scope.catagory_list))
         //$scope.catagory_table= new NgTableParams({count: 10 ,  sorting: { resourceName: "desc" }  }, { counts: [10,20, 100], dataset: $scope.catagory_list });
         }
   
     })
     .error(function(data, status, headers, config) {
         alert( "failure message: " + JSON.stringify({data: data}) +"ไม่สามารถติดต่อเซิฟเวอร์ได้ ติดต่อแอดมิน");
-        console.log(status+headers);
+        //console.log(status+headers);
     });
   }
 
@@ -238,20 +238,20 @@ $scope.get_catagory = function(){
       isPosted:"false",
       isPreview:"true"
     }
-    console.log('before get_news  =  '+ JSON.stringify(dataObj))
+    //console.log('before get_news  =  '+ JSON.stringify(dataObj))
 
     api_manage.get_news(dataObj)
       .success(function(data, status, headers, config) {
         //$scope.message = data;
-        //     console.log("-----------"+ JSON.stringify(data));
+        //     //console.log("-----------"+ JSON.stringify(data));
         if (data.code != "999999") {
           alert(data.message);
         } else {
 
           
-          console.log(data.code);
+          //console.log(data.code);
           $scope.news_list = data.message;
-          console.log('$scope.news_list  =  ' + $scope.news_list.length)
+          //console.log('$scope.news_list  =  ' + $scope.news_list.length)
           
           
           $scope.news_list.forEach(function(item){
@@ -299,7 +299,7 @@ $scope.get_catagory = function(){
         alert("failure message: " + JSON.stringify({
           data: data
         }) + "ไม่สามารถติดต่อเซิฟเวอร์ได้ ติดต่อแอดมิน");
-        console.log(status + headers);
+        //console.log(status + headers);
       });
   }
 
@@ -310,7 +310,7 @@ $scope.get_catagory = function(){
   };
 
   $scope.pageChanged = function() {
-    console.log('Page changed to: ' + $scope.currentPage);
+    //console.log('Page changed to: ' + $scope.currentPage);
   };
 
   $scope.setItemsPerPage = function(num) {
@@ -355,20 +355,20 @@ angular.module('app').controller('personelCtrl', function($scope, $filter, $q, $
     $http.post('/api/getPersonel/',dataObj)
     .success(function(data, status, headers, config) {
       //$scope.message = data;
-      console.log("-----------" + JSON.stringify(data));
+      //console.log("-----------" + JSON.stringify(data));
       if (data.code != "999999") {
         alert(data.code+" : "+data.message);
       } else {
-        console.log(data);
+        //console.log(data);
         $scope.personel_list = data.message;
-        //console.log('$scope.news_list  =  ' + JSON.stringify($scope.personel_list))
+        ////console.log('$scope.news_list  =  ' + JSON.stringify($scope.personel_list))
       }
     })
     .error(function(data, status, headers, config) {
       alert("failure message: " + JSON.stringify({
         data: data
       }) + "ไม่สามารถติดต่อเซิฟเวอร์ได้ ติดต่อแอดมิน");
-      console.log(status + headers);
+      //console.log(status + headers);
     });
 });
 
@@ -406,13 +406,13 @@ $scope.init = function(){
         api_manage.get_news(dataObj)
           .success(function(data, status, headers, config) {
             //$scope.message = data;
-            console.log("-----------" + JSON.stringify(data));
+            //console.log("-----------" + JSON.stringify(data));
             if (data.code != "999999") {
               alert(data.message);
             } else {
-              console.log(data);
+              //console.log(data);
               $scope.news_list = data.message;
-              console.log('$scope.news_list graduate  =  ' + JSON.stringify($scope.news_list))
+              //console.log('$scope.news_list graduate  =  ' + JSON.stringify($scope.news_list))
               //  $scope.news_table= new NgTableParams({count: 10 ,  sorting: { resourceName: "desc" }  }, { counts: [10,20, 100], dataset: $scope.news_list });
               $scope.news_list.forEach(function(item){
                 
@@ -444,7 +444,7 @@ $scope.init = function(){
             alert("failure message: " + JSON.stringify({
               data: data
             }) + "ไม่สามารถติดต่อเซิฟเวอร์ได้ ติดต่อแอดมิน");
-            console.log(status + headers);
+            //console.log(status + headers);
           });
       }
 
@@ -471,13 +471,13 @@ $scope.init = function(){
         api_manage.get_news(dataObj)
           .success(function(data, status, headers, config) {
             //$scope.message = data;
-            console.log("-----------" + JSON.stringify(data));
+            //console.log("-----------" + JSON.stringify(data));
             if (data.code != "999999") {
               alert(data.message);
             } else {
-              console.log(data);
+              //console.log(data);
               $scope.news_list_slide = data.message;
-              console.log('$scope.news_list  =  ' + JSON.stringify($scope.news_list))
+              //console.log('$scope.news_list  =  ' + JSON.stringify($scope.news_list))
               //  $scope.news_table= new NgTableParams({count: 10 ,  sorting: { resourceName: "desc" }  }, { counts: [10,20, 100], dataset: $scope.news_list });
             }
           })
@@ -485,7 +485,7 @@ $scope.init = function(){
             alert("failure message: " + JSON.stringify({
               data: data
             }) + "ไม่สามารถติดต่อเซิฟเวอร์ได้ ติดต่อแอดมิน");
-            console.log(status + headers);
+            //console.log(status + headers);
           });
       }
 
