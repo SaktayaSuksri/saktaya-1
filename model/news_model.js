@@ -19,6 +19,8 @@ var News_Schema = new Schema({
     tag: { type: [String] }
 });
 
+News_Schema.index({ datetimePost: 1, topicShort: -1 });
+
 module.exports = mongoose.model('News', News_Schema);
 
 // {

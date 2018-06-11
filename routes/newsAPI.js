@@ -43,6 +43,7 @@ router.post('/newNews/', function (request, response) {
     requiredData.push(request.body.targetTypeId);
     requiredData.push(request.body.departmentId);
     requiredData.push(request.body.isPinned);
+    requiredData.push(request.body.tag);
     var requiredReady = Validate.requiredData_Check(requiredData)
 
     var booleanData = [];

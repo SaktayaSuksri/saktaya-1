@@ -225,7 +225,7 @@ module.exports = {
     },
 
     createNewsIndex: function (callback) {
-        News.createIndex({ datetimePost: 1, _id: 1 }, function () {
+        News.reIndex(function () {
             callback()
         });
     }
