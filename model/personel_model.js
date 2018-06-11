@@ -18,6 +18,8 @@ var Personel_Schema = new Schema({
     departmentId: { type: String, required: true }
 });
 
+News_Schema.index({ divisionId: 1, departmentId: 1 });
+
 module.exports = mongoose.model('Personel', Personel_Schema);
 
 // {
