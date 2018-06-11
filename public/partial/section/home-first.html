@@ -299,8 +299,9 @@
                                <div class="carousel-item " ng-repeat="item in news_list_slide" ng-class="{'active': $index == 0}">
                     
                                    <div class="example-1 card-news d-block w-100">
-                                     <div class="wrapper  d-block d-sm-none" style=" background: url({{item.topicPicture}}) 20% 1%/cover no-repeat; min-height: 190px !important; box-shadow: none;">
-                                       <!-- <div class="data">
+                                     <div class="wrapper  d-block d-sm-none" style=" min-height: 156px !important; box-shadow: none; height: auto;">
+                                      <img ng-src="{{item.topicPicture}}" style="width: 100%;"> 
+                                      <!-- <div class="data">
                                          <div class="content">
                                     
                                            <h3 class="title"><a ng-href="./news_each/{{item._id}}" > {{item.topicShort}}</a></h3>
