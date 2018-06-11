@@ -522,6 +522,18 @@ router.post('/deleteNews/', function (request, response) {
     }
 });
 
+router.get('/createNewsIndex/', function (request, response) {
+
+    flow.exec(
+        function () {
+            News_Control.createNewsIndex(this);
+        }, function () {
+            Return_control.responseWithCode(ReturnCode.success, "Creating Index Completed", response);
+        }
+    );
+
+});
+
 module.exports = router;
 
 //-----------------------------------------------------------------------------

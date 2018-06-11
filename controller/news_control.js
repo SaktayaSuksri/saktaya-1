@@ -222,25 +222,12 @@ module.exports = {
                     j++;
             });
         }
+    },
 
-        // var counterArray = []
-        // var forCallback = []
-        // for (let i = 0; i < news.length; i++) {
-        //     counterArray.push(i)
-        // }
-
-        // let currentPos = 0;
-        // flow.serialForEach(counterArray, function (pos) {
-        //     currentPos = pos;
-        //     //console.log("historyArray[currentPos] " + historyArray[currentPos]);
-        //     getFullNews(news[currentPos], this);
-        // }, function (functionCallback) {
-        //     forCallback.push(functionCallback);
-        // }, function () {
-        //     //console.log("callback")
-        //     callback("421", null, forCallback);
-        // });
-
+    createNewsIndex: function (callback) {
+        News.createIndex({ datetimePost: 1, _id: 1 }, function () {
+            callback()
+        });
     }
 };
 
