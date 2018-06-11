@@ -1,5 +1,12 @@
 var Personel = require('../model/personel_model.js');
 
+var Position_Control = require("../controller/position_control.js");
+var Division_Control = require("../controller/division_control.js");
+var Department_Control = require("../controller/department_control.js");
+
+var ObjectId = require('mongodb').ObjectId;
+var flow = require('../services/flow.js')
+
 module.exports = {
     newPersonel: function (personel, callback) {
         personel.save(function (error, saveResponse) {
@@ -45,22 +52,29 @@ module.exports = {
             }
         });
     },
-    getPersonel: function (positionId, departmentId, isPreview, callback) {
-        var myquery = { $and: [{ "positionId": positionId }, { "departmentId": departmentId }] };
+    getPersonel: function (positionId, departmentId, divisionId, isPreview, callback) {
+        var myquery = {};
         var projection = {}
 
-        if (positionId == "0" && departmentId == "0")
-            myquery = {}
-        else if (positionId == "0")
-            myquery = { "departmentId": departmentId }
-        else if (departmentId == "0")
-            myquery = { "positionId": positionId }
-
-        if (isPreview == "true") {
-            projection = { "personelName": true, "picture": true, "position": true, "departmentId": true, "positionId": true };
+        let tmp = [];
+        let queryFlag = false;
+        if (positionId !== "0") {
+            queryFlag = true;
+            tmp.push({ "positionId": positionId })
+        }
+        if (departmentId !== "0") {
+            queryFlag = true;
+            tmp.push({ "departmentId": departmentId })
+        }
+        if (divisionId !== "0") {
+            queryFlag = true;
+            tmp.push({ "divisionId": divisionId })
         }
 
-        Personel.find(myquery, projection, function (error, personelCallback) { 	// return error into 'err' and response into 'bear'
+        if (queryFlag)
+            myquery = { $and: tmp };
+
+        Personel.find(myquery, projection,{ sort: { departmentId: 1, divisionId: 1  }}, function (error, personelCallback) { 	// return error into 'err' and response into 'bear'
             if (error) {
                 var alert = "Error in getPersonel , Error : " + error.message;
                 console.log(alert);
@@ -77,5 +91,61 @@ module.exports = {
                 callback("223", alert, null)
             }
         });
+    },
+
+    joinPersonelData: function (personel, callback) {
+        let forCallback = [];
+        console.log("personel.length >> " + personel.length)
+        let j = 0;
+        for (let i = 0; i < personel.length; i++) {
+            getFullPersonel(personel[i], function (a) {
+                //console.log("a >> " + JSON.stringify(a))
+                forCallback[i] = a;
+                if (j == personel.length - 1)
+                    callback("...", null, forCallback);
+                else
+                    j++;
+            });
+        }
     }
 };
+
+
+//----------------
+
+function getFullPersonel(personel, callback) {
+    let tmp = JSON.parse(JSON.stringify(personel));
+
+    flow.exec(
+        function () {
+            //console.log("history.requestId: "+history.requestID)
+            Department_Control.checkDepartmentByID(new ObjectId(personel.departmentId), this)
+        }, function (code, err, functionCallback) {
+            if (functionCallback) {
+                tmp["departmentName"] = functionCallback.departmentName;
+            }
+            else {
+                tmp["departmentName"] = "N/A";
+            }
+
+            Position_Control.checkPositionByID(new ObjectId(personel.positionId), this);
+        }, function (code, err, functionCallback) {
+            if (functionCallback) {
+                tmp["positionName"] = functionCallback.positionName;
+            }
+            else {
+                tmp["positionName"] = null;
+            }
+            Division_Control.checkDivisionByID(new ObjectId(personel.divisionId), this);
+        }, function (code, err, functionCallback) {
+            if (functionCallback) {
+                tmp["divisionName"] = functionCallback.divisionName;
+            }
+            else {
+                tmp["divisionName"] = null;
+            }
+
+            callback(tmp)
+        }
+    );
+}

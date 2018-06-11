@@ -217,21 +217,25 @@ router.post('/getPersonel/', function (request, response) {
             function () {
                 let position = "0"
                 let department = "0"
+                let division = "0"
                 if (ObjectId.isValid(request.body.positionId))
                     position = new ObjectId(request.body.positionId);
                 if (ObjectId.isValid(request.body.departmentId))
                     department = new ObjectId(request.body.departmentId);
-                if (ObjectId.isValid(request.body.divisionId))
-                    department = new ObjectId(request.body.divisionId);
+                if (ObjectId.isValid(request.body.division))
+                    division = new ObjectId(request.body.division);
 
-                Personel_Control.getPersonel(position, department, request.body.isPreview, this);
+                Personel_Control.getPersonel(position, department, division, request.body.isPreview, this);
             }, function (code, err, result) {
                 if (err) {
                     Return_control.responseWithCode(ReturnCode.serviceError + methodCode + code, err, response);
                 }
                 else {
-                    Return_control.responseWithCode("999999", result, response)
+                    Personel_Control.joinPersonelData(result, this)
                 }
+            }, function (code, err, result) {
+                console.log();
+                Return_control.responseWithCode("999999", result, response)
             }
         );
     }
@@ -318,7 +322,7 @@ router.post('/getPersonelfromID/', function (request, response) {
         );
 
         async function findDivisionByID() {
-            await Division.findById(new ObjectId(thisNews.divisionId), function(err, div) {
+            await Division.findById(new ObjectId(thisNews.divisionId), function (err, div) {
                 if (err) {
                     obj.divisionName = "N/A";
                     console.log('----- Error in finding division by ID >> ' + err.message);
