@@ -397,7 +397,7 @@ $scope.init = function(){
 
           tag:"0",
           limit:8,
-          isPinned :"false",
+          isPinned :"0",
           isPosted:"false",
           isPreview:"true",
           needSort : 'true'
