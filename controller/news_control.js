@@ -86,7 +86,7 @@ module.exports = {
             callback("043", null, null)
         }
     },
-    getAllNews: function (resourceId, departmentId, targetTypeId, tag, isPreview, limitNum, isPosted, isPinned, needPicture, needSort, callback) {
+    getAllNews: function (resourceId, departmentId, targetTypeId, tag, isPreview, limitNum, isPosted, isPinned, needPicture, callback) {
         var today = new Date();
         console.log("resourceId: " + resourceId + " / targetType " + targetTypeId + " / departmentId " + departmentId + " / isPinned " + isPinned + " / tag: " + tag);
         var myquery = {};
@@ -111,7 +111,7 @@ module.exports = {
         }
         if (isPosted == "true") {
             queryFlag = true;
-            tmp.push({ "datetimePost": { $lte: today } })
+            tmp.push({ "datetimeExpire": { $gte: today } })
         }
         if (isPinned !== "0") {
             queryFlag = true;
@@ -141,44 +141,24 @@ module.exports = {
             }
         }
 
-        if (needSort == "true") {
-            News.find(myquery, projection, { sort: { datetimePost: -1 }, limit: limitNum }, function (error, newsGetResult) { 	// return error into 'err' and response into 'bear'
-                if (error) {
-                    var alert = "Error in getAllNews , Error : " + error.message;
-                    console.log(alert);
-                    callback("121", alert, null)
-                }
-                else if (newsGetResult.length > 0) {
-                    var alert = "Get News Completed! " + JSON.stringify(newsGetResult);
-                    //console.log(alert);
-                    callback("122", null, newsGetResult)
-                }
-                else {
-                    var alert = "No News with resourceId: " + resourceId + " / departmentId: " + departmentId + " / targetTypeId: " + targetTypeId + " / isPinned " + isPinned + " / tag: " + tag + " was found";
-                    console.log(alert);
-                    callback("123", alert, null)
-                }
-            });
-        }
-        else {
-            News.find(myquery, projection, function (error, newsGetResult) { 	// return error into 'err' and response into 'bear'
-                if (error) {
-                    var alert = "Error in getAllNews , Error : " + error.message;
-                    console.log(alert);
-                    callback("121", alert, null)
-                }
-                else if (newsGetResult.length > 0) {
-                    var alert = "Get News Completed! " + JSON.stringify(newsGetResult);
-                    //console.log(alert);
-                    callback("122", null, newsGetResult)
-                }
-                else {
-                    var alert = "No News with resourceId: " + resourceId + " / departmentId: " + departmentId + " / targetTypeId: " + targetTypeId + " / isPinned " + isPinned + " / tag: " + tag + " was found";
-                    console.log(alert);
-                    callback("123", alert, null)
-                }
-            });
-        }
+        News.find(myquery, projection, { sort: { datetimePost: -1 }, limit: limitNum }, function (error, newsGetResult) { 	// return error into 'err' and response into 'bear'
+            if (error) {
+                var alert = "Error in getAllNews , Error : " + error.message;
+                console.log(alert);
+                callback("121", alert, null)
+            }
+            else if (newsGetResult.length > 0) {
+                var alert = "Get News Completed! " + JSON.stringify(newsGetResult);
+                //console.log(alert);
+                callback("122", null, newsGetResult)
+            }
+            else {
+                var alert = "No News with resourceId: " + resourceId + " / departmentId: " + departmentId + " / targetTypeId: " + targetTypeId + " / isPinned " + isPinned + " / tag: " + tag + " was found";
+                console.log(alert);
+                callback("123", alert, null)
+            }
+        });
+
     },
     countReader: function (newsId, readCount) {
         var myquery = { "_id": newsId };
