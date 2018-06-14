@@ -99,6 +99,10 @@ angular.module('app').config(function($stateProvider, $urlRouterProvider) {
       url: '/personel',
       templateUrl: "./partial/personel.html"
     })
+    .state('contact', {
+      url: '/contact',
+      templateUrl: "./partial/contact.html"
+    })
   // nested list with custom controller
 
 
