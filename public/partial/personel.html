@@ -357,6 +357,13 @@ figcaption button{
     color: #fff;
     box-shadow: 0 5px 20px 0px rgba(0, 0, 0, 0.2), 0 13px 24px -11px #ff9800;
 }
+.nav-pills .nav-item .nav-link {
+    font-size: 18px!important;
+    font-weight: 600;
+    color: #000;
+    background-color: #f1ecec;
+}
+
 </style>
 
     
@@ -414,30 +421,40 @@ figcaption button{
                         <div class="col-md-8 ml-auto mr-auto text-center">
                             <br><h2 class="title">บุคลากรในคณะ</h2>
                         </div>
-                       
-                        <div class="col-md-6 ml-auto mr-auto text-center" ng-init="step = '1'" >
-                            <ul class="nav nav-pills nav-pills-icons" role="tablist" style="    margin-left: 20%;">
-                                <!--
-                                color-classes: "nav-pills-primary", "nav-pills-info", "nav-pills-success", "nav-pills-warning","nav-pills-danger"
-                            -->
-                                <li class="nav-item">
-                                    <a class="nav-link " ng-class="{'active show ':step == '1'}"  ng-click="step=1" style="    color: #010101!important;" aria-selected="true">
-                                        <u> ผู้บริหาร </u>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" style="    color: #010101!important;"   href="http://161.246.35.182:2000" target="_blank"  aria-selected="false">
-                                      <u>    คณาจารย์ </u>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link"  ng-class="{'active show':step == '3'}"style="    color: #010101!important;"  ng-click="step=3">
-                                        <u>    บุคลากร </u>
-                                    </a>
-                                </li>
-                            </ul>
-                     
+                        <div class="row justify-content-md-center" ng-init="step = '1'">
+                          <div class="col col-lg-2">
+                         
+                          </div>
+                          <div class="col-md-auto">
+                            <ul class="nav nav-pills nav-pills-icons" role="tablist">
+                              <!--
+                              color-classes: "nav-pills-primary", "nav-pills-info", "nav-pills-success", "nav-pills-warning","nav-pills-danger"
+                          -->
+                              <li class="nav-item">
+                                  <a class="nav-link " ng-class="{'active show ':step == '1'}"  ng-click="step=1" style="    color: #010101!important;" aria-selected="true">
+                                       ผู้บริหาร 
+                                  </a>
+                              </li>
+                              <!-- <li class="nav-item">
+                                  <a class="nav-link" style="    color: #010101!important;"   href="http://161.246.35.182:2000" target="_blank"  aria-selected="false">
+                                    <u>    คณาจารย์ </u>
+                                  </a>
+                              </li> -->
+                              <li class="nav-item">
+                                  <a class="nav-link"  ng-class="{'active show':step == '3'}"style="    color: #010101!important;"  ng-click="step=3">
+                                         บุคลากร 
+                                  </a>
+                              </li>
+                          </ul>
+                          </div>
+                          <div class="col col-lg-2">
+                      
+                          </div>
                         </div>
+                        <!-- <div class="col-md-3 ml-auto mr-auto text-center" ng-init="step = '1'" >
+                          
+                      
+                        </div> -->
                         <hr>
                         <br>  <br>
 
@@ -453,7 +470,7 @@ figcaption button{
         <div class="container" style="    margin-top: -80px;">
           <div class="row  justify-content-center">
   
-            <div class="col-md-3">
+            <div class="col-6 col-md-4">
               <div class="team-member"  style="width: 100%!important; height: auto; border-radius: 20px;">
                 <figure   style="width: 100%!important; height: auto; border-radius: 20px;">
                   <img   style="width: 100%!important; height: auto; border-radius: 20px;" src="./assets/img/person/KMITL_S (1).jpg" alt="" class="img-responsive">
@@ -478,7 +495,7 @@ figcaption button{
 
           <div class="row  justify-content-center " style="padding-top: 46px;">
             
-                      <div class="col-md-3">
+                      <div class="col-6 col-md-4">
                         <div class="team-member"  style="width: 100%!important; height: auto; border-radius: 20px;">
                           <figure   style="width: 100%!important; height: auto; border-radius: 20px;">
                             <img  style="width: 100%!important; height: auto; border-radius: 20px;" src="./assets/img/person/KMITL_S (10).jpg" alt="" class="img-responsive">
@@ -496,7 +513,7 @@ figcaption button{
                       </div><!-- /.col-md-4 -->
                       
                       
-                      <div class="col-md-3">
+                      <div class="col-6 col-md-4">
                           <div class="team-member"  style="width: 100%!important; height: auto; border-radius: 20px;">
                             <figure  style="width: 100%!important; height: auto; border-radius: 20px;">
                               <img  style="width: 100%!important; height: auto; border-radius: 20px;" src="./assets/img/person/KMITL_S (15).jpg" alt="" class="img-responsive">
@@ -513,44 +530,47 @@ figcaption button{
                           </div><!-- /.team-member-->
                         </div><!-- /.col-md-4 -->    
                         
-                        <div class="col-md-3">
-                            <div class="team-member"  style="width: 100%!important; height: auto; border-radius: 20px;">
-                              <figure  style="width: 100%!important; height: auto; border-radius: 20px;">
-                                <img  style="width: 100%!important; height: auto; border-radius: 20px;" src="./assets/img/person/4.jpg" alt="" class="img-responsive">
-                                <figcaption>
-                                  
-                                    <button type="button" class="btn btn-warning" data-toggle="modal"  data-target="#modal_4"> <b style="font-size:16px;">ข้อมูลเพิ่มเติม</b></button>
-                                    
-                                </figcaption>
-                              </figure>
-                              <h4 class="text-center" style="color: #e25e26;"> <b>   ผศ.วิสันต์    ตั้งวงษ์เจริญ</b></h4>
-                              <p class="text-center">  <b>รองคณบดี </b></p>
-                              <h4 class="text-center" style="color: #e25e26;"> <b>Asst.Prof. Wisan   Tangwongcharoen </b> </h4>
-                              <p  class="text-center">  <b>VICE   DEAN</b> </p>
-                            </div><!-- /.team-member-->
-                          </div><!-- /.col-md-4 --> 
-
-                          <div class="col-md-3">
-                              <div class="team-member"  style="width: 100%!important; height: auto; border-radius: 20px;">
-                                <figure   style="width: 100%!important; height: auto; border-radius: 20px;">
-                                  <img  style="width: 100%!important; height: auto; border-radius: 20px;" src="./assets/img/person/DSC_5232-683x1024.jpg" alt="" class="img-responsive">
-                                  <figcaption>
-                                    
-                                      <button type="button" class="btn btn-warning" data-toggle="modal"  data-target="#modal_5"> <b style="font-size:16px;">ข้อมูลเพิ่มเติม</b></button>
-                                      
-                                  </figcaption>
-                                </figure>
-                                <h4 class="text-center" style="color: #e25e26;"> <b>  รศ.ดร.ตะวัน   สุขน้อย </b></h4>
-                                <p class="text-center">  <b>รองคณบดี </b></p>
-                                <h4 class="text-center" style="color: #e25e26;"> <b>Assoc.Prof.Dr. Tawan    Sooknoi </b> </h4>
-                                <p  class="text-center">  <b>VICE   DEAN</b> </p>
-                              </div><!-- /.team-member-->
-                            </div><!-- /.col-md-4 --> 
+                        
 
                     </div><!-- /.row -->
 
                     <div class="row  justify-content-center " style="padding-top: 46px;">
-                        <div class="col-md-3">
+                      <div class="col-6 col-md-4">
+                        <div class="team-member"  style="width: 100%!important; height: auto; border-radius: 20px;">
+                          <figure  style="width: 100%!important; height: auto; border-radius: 20px;">
+                            <img  style="width: 100%!important; height: auto; border-radius: 20px;" src="./assets/img/person/4.jpg" alt="" class="img-responsive">
+                            <figcaption>
+                              
+                                <button type="button" class="btn btn-warning" data-toggle="modal"  data-target="#modal_4"> <b style="font-size:16px;">ข้อมูลเพิ่มเติม</b></button>
+                                
+                            </figcaption>
+                          </figure>
+                          <h4 class="text-center" style="color: #e25e26;"> <b>   ผศ.วิสันต์    ตั้งวงษ์เจริญ</b></h4>
+                          <p class="text-center">  <b>รองคณบดี </b></p>
+                          <h4 class="text-center" style="color: #e25e26;"> <b>Asst.Prof. Wisan   Tangwongcharoen </b> </h4>
+                          <p  class="text-center">  <b>VICE   DEAN</b> </p>
+                        </div><!-- /.team-member-->
+                      </div><!-- /.col-md-4 --> 
+
+                      <div class="col-6 col-md-4">
+                          <div class="team-member"  style="width: 100%!important; height: auto; border-radius: 20px;">
+                            <figure   style="width: 100%!important; height: auto; border-radius: 20px;">
+                              <img  style="width: 100%!important; height: auto; border-radius: 20px;" src="./assets/img/person/DSC_5232-683x1024.jpg" alt="" class="img-responsive">
+                              <figcaption>
+                                
+                                  <button type="button" class="btn btn-warning" data-toggle="modal"  data-target="#modal_5"> <b style="font-size:16px;">ข้อมูลเพิ่มเติม</b></button>
+                                  
+                              </figcaption>
+                            </figure>
+                            <h4 class="text-center" style="color: #e25e26;"> <b>  รศ.ดร.ตะวัน   สุขน้อย </b></h4>
+                            <p class="text-center">  <b>รองคณบดี </b></p>
+                            <h4 class="text-center" style="color: #e25e26;"> <b>Assoc.Prof.Dr. Tawan    Sooknoi </b> </h4>
+                            <p  class="text-center">  <b>VICE   DEAN</b> </p>
+                          </div><!-- /.team-member-->
+                        </div><!-- /.col-md-4 -->    
+                      
+                      
+                      <div class="col-6 col-md-4">
                             <div class="team-member"  style="width: 100%!important; height: auto; border-radius: 20px;">
                               <figure  style="width: 100%!important; height: auto; border-radius: 20px;">
                                 <img  style="width: 100%!important; height: auto; border-radius: 20px;" src="./assets/img/person/DSC_5027-683x1024.jpg" alt="" class="img-responsive">
@@ -566,8 +586,11 @@ figcaption button{
                               <p  class="text-center">  <b>VICE   DEAN</b> </p>
                             </div><!-- /.team-member-->
                           </div><!-- /.col-md-4 --> 
+                          
+                        </div>
 
-                          <div class="col-md-3">
+                          <div class="row  justify-content-center " style="padding-top: 46px;">
+                          <div class="col-6 col-md-4">
                             <div class="team-member"  style="width: 100%!important; height: auto; border-radius: 20px;">
                               <figure  style="width: 100%!important; height: auto; border-radius: 20px;">
                                 <img  style="width: 100%!important; height: auto; border-radius: 20px;" src="./assets/img/person/KMITL_S (19).jpg" alt="" class="img-responsive">
@@ -584,7 +607,7 @@ figcaption button{
                             </div><!-- /.team-member-->
                           </div><!-- /.col-md-4 --> 
 
-                          <div class="col-md-3">
+                          <div class="col-6 col-md-4">
                             <div class="team-member"  style="width: 100%!important; height: auto; border-radius: 20px;">
                               <figure  style="width: 100%!important; height: auto; border-radius: 20px;">
                                 <img  style="width: 100%!important; height: auto; border-radius: 20px;" src="./assets/img/person/KMITL_S (25).jpg" alt="" class="img-responsive">
@@ -601,7 +624,7 @@ figcaption button{
                             </div><!-- /.team-member-->
                           </div><!-- /.col-md-4 --> 
                       
-                          <div class="col-md-3">
+                          <div class="col-6 col-md-4">
                             <div class="team-member"  style="width: 100%!important; height: auto; border-radius: 20px;">
                               <figure   style="width: 100%!important; height: auto; border-radius: 20px;">
                                 <img  style="width: 100%!important; height: auto; border-radius: 20px;" src="./assets/img/person/DSC_5128.jpg" alt="" class="img-responsive">
@@ -618,51 +641,46 @@ figcaption button{
                             </div><!-- /.team-member-->
                           </div><!-- /.col-md-4 -->
                      
-                        
+                          <div class="col-6 col-md-4">
+                            <div class="team-member"  style="width: 100%!important; height: auto; border-radius: 20px;">
+                              <figure  style="width: 100%!important; height: auto; border-radius: 20px;">
+                                <img  style="width: 100%!important; height: auto; border-radius: 20px;" src="./assets/img/person/KMITL_S (16).jpg" alt="" class="img-responsive">
+                                <figcaption>
+                                  
+                                    <button type="button" class="btn btn-warning" data-toggle="modal"  data-target="#modal_16"> <b style="font-size:16px;">ข้อมูลเพิ่มเติม</b></button>
+                                    
+                                </figcaption>
+                              </figure>
+                              <h4 class="text-center" style="color: #e25e26;"> <b>ผศ.ดร.วรกฤต  วรนันทกิจ</b></h4>
+                              <p class="text-center">  <b> ผู้ช่วยคณบดี </b></p>
+                              <h4 class="text-center" style="color: #e25e26;"> <b>  Asst.Prof.Dr. Anurug   Poeam </b> </h4>
+                              <p  class="text-center">  <b>ASSISTANT   DEAN</b> </p>
+                            </div><!-- /.team-member-->
+                          </div><!-- /.col-md-4 --> 
                    
-
+                          <div class="col-6 col-md-4">
+                            <div class="team-member"  style="width: 100%!important; height: auto; border-radius: 20px;">
+                              <figure   style="width: 100%!important; height: auto; border-radius: 20px;">
+                                <img  style="width: 100%!important; height: auto; border-radius: 20px;" src="./assets/img/person/KMITL_S (6).jpg" alt="" class="img-responsive">
+                                <figcaption>
+                                  
+                                    <button type="button" class="btn btn-warning" data-toggle="modal"  data-target="#modal_17"> <b style="font-size:16px;">ข้อมูลเพิ่มเติม</b></button>
+                                    
+                                </figcaption>
+                              </figure>
+                              <h4 class="text-center" style="color: #e25e26;"> <b>ผศ.ดร.อาภาภรณ์  สกุลการะเวก</b></h4>
+                              <p class="text-center">  <b>ผู้ช่วยคณบดี </b></p>
+                              <h4 class="text-center" style="color: #e25e26;"> <b>Asst.Prof.Dr. Aparporn   Sakulkalavek </b> </h4>
+                              <p  class="text-center">  <b>ASSISTANT   DEAN</b></p>
+                            </div><!-- /.team-member-->
+                          </div><!-- /.col-md-4 -->
 
                     </div><!-- /.row -->
                    
                     <div class="row  justify-content-center " style="padding-top: 46px;">
                       
-                      <div class="col-md-3">
-                        <div class="team-member"  style="width: 100%!important; height: auto; border-radius: 20px;">
-                          <figure  style="width: 100%!important; height: auto; border-radius: 20px;">
-                            <img  style="width: 100%!important; height: auto; border-radius: 20px;" src="./assets/img/person/KMITL_S (16).jpg" alt="" class="img-responsive">
-                            <figcaption>
-                              
-                                <button type="button" class="btn btn-warning" data-toggle="modal"  data-target="#modal_16"> <b style="font-size:16px;">ข้อมูลเพิ่มเติม</b></button>
-                                
-                            </figcaption>
-                          </figure>
-                          <h4 class="text-center" style="color: #e25e26;"> <b>ผศ.ดร.วรกฤต  วรนันทกิจ</b></h4>
-                          <p class="text-center">  <b> ผู้ช่วยคณบดี </b></p>
-                          <h4 class="text-center" style="color: #e25e26;"> <b>  Asst.Prof.Dr. Anurug   Poeam </b> </h4>
-                          <p  class="text-center">  <b>ASSISTANT   DEAN</b> </p>
-                        </div><!-- /.team-member-->
-                      </div><!-- /.col-md-4 --> 
 
-                  <div class="col-md-3">
-                    <div class="team-member"  style="width: 100%!important; height: auto; border-radius: 20px;">
-                      <figure   style="width: 100%!important; height: auto; border-radius: 20px;">
-                        <img  style="width: 100%!important; height: auto; border-radius: 20px;" src="./assets/img/person/KMITL_S (6).jpg" alt="" class="img-responsive">
-                        <figcaption>
-                          
-                            <button type="button" class="btn btn-warning" data-toggle="modal"  data-target="#modal_17"> <b style="font-size:16px;">ข้อมูลเพิ่มเติม</b></button>
-                            
-                        </figcaption>
-                      </figure>
-                      <h4 class="text-center" style="color: #e25e26;"> <b>ผศ.ดร.อาภาภรณ์  สกุลการะเวก</b></h4>
-                      <p class="text-center">  <b>ผู้ช่วยคณบดี </b></p>
-                      <h4 class="text-center" style="color: #e25e26;"> <b>Asst.Prof.Dr. Aparporn   Sakulkalavek </b> </h4>
-                      <p  class="text-center">  <b>ASSISTANT   DEAN</b></p>
-                    </div><!-- /.team-member-->
-                  </div><!-- /.col-md-4 -->
-
-                      
-                      
-                      <div class="col-md-3">
+                      <div class="col-6 col-md-4">
                         <div class="team-member"  style="width: 100%!important; height: auto; border-radius: 20px;">
                           <figure   style="width: 100%!important; height: auto; border-radius: 20px;">
                             <img  style="width: 100%!important; height: auto; border-radius: 20px;" src="./assets/img/person/KMITL_S (12).jpg" alt="" class="img-responsive">
@@ -679,7 +697,7 @@ figcaption button{
                         </div><!-- /.team-member-->
                       </div><!-- /.col-md-4 -->
 
-                        <div class="col-md-3">
+                        <div class="col-6 col-md-4">
                           <div class="team-member"  style="width: 100%!important; height: auto; border-radius: 20px;">
                             <figure   style="width: 100%!important; height: auto; border-radius: 20px;">
                               <img  style="width: 100%!important; height: auto; border-radius: 20px;" src="./assets/img/person/DSC_5061.jpg" class="img-responsive">
@@ -697,7 +715,7 @@ figcaption button{
                         </div><!-- /.col-md-4 -->
                         
                         
-                        <div class="col-md-3">
+                        <div class="col-6 col-md-4">
                             <div class="team-member"  style="width: 100%!important; height: auto; border-radius: 20px;">
                               <figure  style="width: 100%!important; height: auto; border-radius: 20px;">
                                 <img  style="width: 100%!important; height: auto; border-radius: 20px;" src="./assets/img/person/noimg.jpg" alt="" class="img-responsive">
@@ -714,7 +732,7 @@ figcaption button{
                             </div><!-- /.team-member-->
                           </div><!-- /.col-md-4 -->    
                           
-                          <div class="col-md-3">
+                          <div class="col-6 col-md-4">
                               <div class="team-member"  style="width: 100%!important; height: auto; border-radius: 20px;">
                                 <figure  style="width: 100%!important; height: auto; border-radius: 20px;">
                                   <img  style="width: 100%!important; height: auto; border-radius: 20px;" src="./assets/img/person/drChaninชุดสูทผบห01.jpg" alt="" class="img-responsive">
@@ -731,7 +749,7 @@ figcaption button{
                               </div><!-- /.team-member-->
                             </div><!-- /.col-md-4 --> 
 
-                            <div class="col-md-3">
+                            <div class="col-6 col-md-4">
                               <div class="team-member"  style="width: 100%!important; height: auto; border-radius: 20px;">
                                 <figure   style="width: 100%!important; height: auto; border-radius: 20px;">
                                   <img  style="width: 100%!important; height: auto; border-radius: 20px;" src="./assets/img/person/5.jpg" alt="" class="img-responsive">
@@ -749,7 +767,7 @@ figcaption button{
                             </div><!-- /.col-md-4 --> 
       
       
-                            <div class="col-md-3">
+                            <div class="col-6 col-md-4">
                               <div class="team-member"  style="width: 100%!important; height: auto; border-radius: 20px;">
                                 <figure  style="width: 100%!important; height: auto; border-radius: 20px;">
                                   <img  style="width: 100%!important; height: auto; border-radius: 20px;" src="./assets/img/person/KMITL_S (30).jpg" alt="" class="img-responsive">
@@ -778,7 +796,7 @@ figcaption button{
                          
                         
                         
-                        <div class="col-md-3">
+                        <div class="col-6 col-md-4">
                             <div class="team-member"  style="width: 100%!important; height: auto; border-radius: 20px;">
                               <figure  style="width: 100%!important; height: auto; border-radius: 20px;">
                                 <img  style="width: 100%!important; height: auto; border-radius: 20px;" src="./assets/img/person/KMITL_S (21).jpg" alt="" class="img-responsive">
@@ -815,7 +833,7 @@ figcaption button{
                           
 
                             <div class="row justify-content-center">
-                                <div class = "col-md-3" ng-repeat = "personel_item in personel_list" data-toggle="modal">
+                                <div class = "col-6 col-md-4" ng-repeat = "personel_item in personel_list" data-toggle="modal">
                               <div class='card'  ng-click = "showDetail();" >
                                 <div class='front'>
                                   <img  class='contact' ng-if = "personel_item.picture == null" src="assets\img\image_placeholder.jpg">

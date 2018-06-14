@@ -19,7 +19,9 @@
          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
     <link rel="stylesheet" href="http://161.246.35.182:2001/assets/css/material-kit.css?v=2.0.0">
     <!-- Documentation extras -->
-
+       <link href="http://161.246.35.182:2001/assets/assets-for-demo/demo.css" rel="stylesheet" />
+       <link href="http://161.246.35.182:2001/assets/assets-for-demo/vertical-nav.css" rel="stylesheet" />
+       <link href="http://161.246.35.182:2001/assets/assets-for-demo/timeline.css" rel="stylesheet" />
 
     <!-- Pond css -->
     <link href="http://161.246.35.182:2001/css/app.css" rel="stylesheet" />
@@ -199,7 +201,9 @@ hr{
     overflow-x: scroll;
     background-color: #fffffff5;
 }}
-
+.form-control, .is-focused .form-control {
+    background-image: linear-gradient(to top, #ff9800 2px, rgba(156, 39, 176, 0) 2px), linear-gradient(to top, #d2d2d2 1px, rgba(210, 210, 210, 0) 1px);
+}
 </style>
 <body class="landing-page " ng-app="app" ng-controller="global" ng-init="showtranparent = true" > 
     <nav class="navbar fixed-top   navbar-expand-lg   bg-warning" >

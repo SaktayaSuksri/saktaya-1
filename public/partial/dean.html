@@ -54,9 +54,9 @@
                                                                                                     <div class="description">
                                                                                                         <h4 class="info-title">E-mail</h4>
                                                                                                         <p> 
-                                                                                                            <br> ittipol@live.com 
+                                                                                                            ittipol@live.com 
                                                                                                             <br> ittipol.ja@kmitl.ac.th
-                                                                                                            <br> 
+                                                                                                          
                                                                                                         </p>
                                                                                                     </div>
                                                     
@@ -75,24 +75,34 @@
                                                     เพื่อช่วยกันพัฒนาและปรับปรุงคณะฯ ของเรา ได้กับคณบดีโดยตรงที่นี่ ... 
                                                     จดหมายทุกฉบับจะถูกส่งตรงถึงคณบดี
                                                 <br>
-                                                <br>
+                                            
                                             </p>
 
                                             <p class="description"  style="padding:1em">
                                                     
-                                            ***ข้อมูลเกี่ยวกับ ชื่อ-สกุล, โทรศัพท์ และ E-mail ของท่าน จะมีประโยชน์สำหรับการติดต่อกลับเพื่อขอข้อมูลเพิ่มเติม 
-                                            หรือเพื่อแจ้งผลให้ท่านทราบ ถ้าหากท่านไม่ประสงค์จะให้ติดต่อกลับหรือไม่ต้องการเปิดเผย ก็ไม่จำเป็นต้องกรอกข้อมูลดังกล่าว
+                                           
                                         </p>
                                        
-                                        <div id="messages" class="hide" role="alert">
-                                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                <div id="messages_content"></div>
-                                              </div>
+        
 
                                               
                                             <form  class="container" style="    border: solid;
                                             border-color: #e85e2a;
                                             border-radius: 28px;" role="form" id="form123" method="post" action="/api/deanMailer" target="dummyframe">
+                                            <div class="form-group bmd-form-group">
+                                                <label for="topic" class="bmd-label-floating">หัวข้อ</label>
+                                                <input type="text" class="form-control" id="topic" name="topic">
+                                            </div>
+                                            <div class="form-group label-floating bmd-form-group">
+                                                <label class="form-control-label bmd-label-floating" for="message"> รายละเอียด</label>
+                                                <textarea class="form-control" rows="6" id="message" name="detail"></textarea>
+                                            </div>
+                                            
+                                            <p class="description"  style="padding:1em; color: #e85e2a">
+                                                    
+                                                ***ข้อมูลเกี่ยวกับ ชื่อ-สกุล, โทรศัพท์ และ E-mail ของท่าน จะมีประโยชน์สำหรับการติดต่อกลับเพื่อขอข้อมูลเพิ่มเติม 
+                                                หรือเพื่อแจ้งผลให้ท่านทราบ ถ้าหากท่านไม่ประสงค์จะให้ติดต่อกลับหรือไม่ต้องการเปิดเผย ก็ไม่จำเป็นต้องกรอกข้อมูลดังกล่าว
+                                            </p>
                                                 <div class="form-group bmd-form-group">
                                                     <label for="name" class="bmd-label-floating">ชื่อ-สกุล</label>
                                                     <input type="text" class="form-control" id="name" name="name">
@@ -106,14 +116,8 @@
                                                     <label for="phone" class="bmd-label-floating">โทรศัพท์</label>
                                                     <input type="text" class="form-control" id="phone" name="phone">
                                                 </div>
-                                                <div class="form-group bmd-form-group">
-                                                        <label for="topic" class="bmd-label-floating">หัวข้อ</label>
-                                                        <input type="text" class="form-control" id="topic" name="topic">
-                                                    </div>
-                                                <div class="form-group label-floating bmd-form-group">
-                                                    <label class="form-control-label bmd-label-floating" for="message"> รายละเอียด</label>
-                                                    <textarea class="form-control" rows="6" id="message" name="detail"></textarea>
-                                                </div>
+                                            
+                                                
                                                
                                                 <div class="submit text-center">
                                                     <input type="submit" id="submit" class="btn btn-warning btn-raised btn-round" style="font-size: 16px;" value="ส่งข้อความถึง คณบดี">

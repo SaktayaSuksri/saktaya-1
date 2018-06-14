@@ -16,6 +16,11 @@
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
     <link rel="stylesheet" href="../assets/css/material-kit.css?v=2.0.0">
+    
+    <link href="../assets/assets-for-demo/demo.css" rel="stylesheet" />
+    <link href="../assets/assets-for-demo/vertical-nav.css" rel="stylesheet" />
+    <link href="../assets/assets-for-demo/timeline.css" rel="stylesheet" />
+
 
 </head>
 
@@ -177,7 +182,7 @@ font-size: 18px !important;
 }
 a{
 font-family: "Athiti", sans-serif;
-font-size: 18px !important;
+font-size: 20px ;
 }
 .nav-pills .nav-item .nav-link {
 font-size: 18px!important;
@@ -195,7 +200,9 @@ background-color: #fffffff5;
 .navbar .dropdown.show .dropdown-menu, .navbar .dropdown .dropdown-menu {
     height: auto;
 }
-
+.form-control, .is-focused .form-control {
+    background-image: linear-gradient(to top, #ff9800 2px, rgba(156, 39, 176, 0) 2px), linear-gradient(to top, #d2d2d2 1px, rgba(210, 210, 210, 0) 1px);
+}
 </style>
  <body class="landing-page " ng-app="app" ng-controller="news_each" ng-init="showtranparent = true" > 
 <nav class="navbar fixed-top   navbar-expand-lg   bg-warning" >
