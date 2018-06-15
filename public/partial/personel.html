@@ -372,6 +372,14 @@ figcaption button{
 }
 }
 
+.card {
+    margin: 0px;
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    height: 290px;
+    opacity: 0.85;
+}
 </style>
 
     
@@ -414,8 +422,8 @@ figcaption button{
 
         
         <!-- <div style="height: 20vh; width: 100%;"></div> -->
-        
-        <div class="main main-raised" ng-controller="personelCtrl">
+        <div ng-controller="personelCtrl">
+        <div class="main main-raised" >
             <div class="">
                 <div class="  ">
         
@@ -839,23 +847,198 @@ figcaption button{
 
                         <div class="container" ng-show="step=='3'">
                           
-
-                            <div class="row justify-content-center">
-                                <div class = "col-md-3" ng-repeat = "personel_item in personel_list" data-toggle="modal">
-                              <div class='card'  ng-click = "showDetail();" >
+                            <h2> งานการเงิน </h2><hr>
+                            <div class="row ">
+                                <div class = "col-md-3" ng-repeat = "personel_item in personel_list"  style="margin-bottom: 27px !important;" ng-if="personel_item.divisionName === 'งานการเงิน'">
+                              <div class='card'  ng-click = "showDetail(personel_item);" >
                                 <div class='front'>
                                   <img  class='contact' ng-if = "personel_item.picture == null" src="assets\img\image_placeholder.jpg">
                                   <img class='contact' ng-if = "personel_item.picture != null"src="{{personel_item.picture}}">                                        
-                                  <span class='name'>{{personel_item.personelName}}</span>
+                                  <p><span class='name'>{{personel_item.personelName }}</span></p>
                                   <hr>
-                                  <span class='job container'>{{personel_item.position}}
+                                  <span class='job container'>{{personel_item.position }}
                               
                                   </span>
                                 
                                 </div>
                                 </div>
                                 </div>
-                        </div><br>
+                        </div>
+
+                        <h2> งานกิจการนักศึกษา </h2><hr>
+                            <div class="row ">
+                                <div class = "col-md-3" ng-repeat = "personel_item in personel_list"  style="margin-bottom: 27px !important;" ng-if="personel_item.divisionName === 'งานกิจการนักศึกษา'">
+                              <div class='card'  ng-click = "showDetail(personel_item);" >
+                                <div class='front'>
+                                  <img  class='contact' ng-if = "personel_item.picture == null" src="assets\img\image_placeholder.jpg">
+                                  <img class='contact' ng-if = "personel_item.picture != null"src="{{personel_item.picture}}">                                        
+                                  <p><span class='name'>{{personel_item.personelName }}</span></p>
+                                  <hr>
+                                  <span class='job container'>{{personel_item.position }}
+                              
+                                  </span>
+                                
+                                </div>
+                                </div>
+                                </div>
+                        </div>
+
+                        <h2> งานทรัพยากรบุคคล </h2><hr>
+                            <div class="row ">
+                                <div class = "col-md-3" ng-repeat = "personel_item in personel_list"  style="margin-bottom: 27px !important;" ng-if="personel_item.divisionName === 'งานทรัพยากรบุคคล'">
+                              <div class='card'  ng-click = "showDetail(personel_item);" >
+                                <div class='front'>
+                                  <img  class='contact' ng-if = "personel_item.picture == null" src="assets\img\image_placeholder.jpg">
+                                  <img class='contact' ng-if = "personel_item.picture != null"src="{{personel_item.picture}}">                                        
+                                  <p><span class='name'>{{personel_item.personelName }}</span></p>
+                                  <hr>
+                                  <span class='job container'>{{personel_item.position }}
+                              
+                                  </span>
+                                
+                                </div>
+                                </div>
+                                </div>
+                        </div>
+
+                        <h2> งานบริหารทั่วไป</h2><hr>
+                            <div class="row ">
+                                <div class = "col-md-3" ng-repeat = "personel_item in personel_list"  style="margin-bottom: 27px !important;" ng-if="personel_item.divisionName === 'งานบริหารทั่วไป'">
+                              <div class='card'  ng-click = "showDetail(personel_item);" >
+                                <div class='front'>
+                                  <img  class='contact' ng-if = "personel_item.picture == null" src="assets\img\image_placeholder.jpg">
+                                  <img class='contact' ng-if = "personel_item.picture != null"src="{{personel_item.picture}}">                                        
+                                  <p><span class='name'>{{personel_item.personelName }}</span></p>
+                                  <hr>
+                                  <span class='job container'>{{personel_item.position }}
+                              
+                                  </span>
+                                
+                                </div>
+                                </div>
+                                </div>
+                        </div>
+                        
+                        <h2> งานประกันคุณภาพนักศึกษา</h2><hr>
+                        <div class="row ">
+                            <div class = "col-md-3" ng-repeat = "personel_item in personel_list"  style="margin-bottom: 27px !important;" ng-if="personel_item.divisionName === 'งานประกันคุณภาพนักศึกษา'">
+                          <div class='card'  ng-click = "showDetail(personel_item);" >
+                            <div class='front'>
+                              <img  class='contact' ng-if = "personel_item.picture == null" src="assets\img\image_placeholder.jpg">
+                              <img class='contact' ng-if = "personel_item.picture != null"src="{{personel_item.picture}}">                                        
+                              <p><span class='name'>{{personel_item.personelName }}</span></p>
+                              <hr>
+                              <span class='job container'>{{personel_item.position }}
+                          
+                              </span>
+                            
+                            </div>
+                            </div>
+                            </div>
+                    </div>
+
+                    <h2>งานวิชาการ</h2><hr>
+                    <div class="row ">
+                        <div class = "col-md-3" ng-repeat = "personel_item in personel_list"  style="margin-bottom: 27px !important;" ng-if="personel_item.divisionName === 'งานวิชาการ'">
+                      <div class='card'  ng-click = "showDetail(personel_item);" >
+                        <div class='front'>
+                          <img  class='contact' ng-if = "personel_item.picture == null" src="assets\img\image_placeholder.jpg">
+                          <img class='contact' ng-if = "personel_item.picture != null"src="{{personel_item.picture}}">                                        
+                          <p><span class='name'>{{personel_item.personelName }}</span></p>
+                          <hr>
+                          <span class='job container'>{{personel_item.position }}
+                      
+                          </span>
+                        
+                        </div>
+                        </div>
+                        </div>
+                </div>
+
+                <h2>งานพัสดุ</h2><hr>
+                    <div class="row ">
+                        <div class = "col-md-3" ng-repeat = "personel_item in personel_list"  style="margin-bottom: 27px !important;" ng-if="personel_item.divisionName === 'งานพัสดุ'">
+                      <div class='card'  ng-click = "showDetail(personel_item);" >
+                        <div class='front'>
+                          <img  class='contact' ng-if = "personel_item.picture == null" src="assets\img\image_placeholder.jpg">
+                          <img class='contact' ng-if = "personel_item.picture != null"src="{{personel_item.picture}}">                                        
+                          <p><span class='name'>{{personel_item.personelName }}</span></p>
+                          <hr>
+                          <span class='job container'>{{personel_item.position }}
+                      
+                          </span>
+                        
+                        </div>
+                        </div>
+                        </div>
+                </div>
+
+                <h2>งานแผนงานและวิจัย</h2><hr>
+                <div class="row ">
+                    <div class = "col-md-3" ng-repeat = "personel_item in personel_list"  style="margin-bottom: 27px !important;" ng-if="personel_item.divisionName === 'งานแผนงานและวิจัย'">
+                  <div class='card'  ng-click = "showDetail(personel_item);" >
+                    <div class='front'>
+                      <img  class='contact' ng-if = "personel_item.picture == null" src="assets\img\image_placeholder.jpg">
+                      <img class='contact' ng-if = "personel_item.picture != null"src="{{personel_item.picture}}">                                        
+                      <p><span class='name'>{{personel_item.personelName }}</span></p>
+                      <hr>
+                      <span class='job container'>{{personel_item.position }}
+                  
+                      </span>
+                    
+                    </div>
+                    </div>
+                    </div>
+            </div>
+
+
+
+            <h2>เลขานุการ</h2><hr>
+            <div class="row ">
+                <div class = "col-md-3" ng-repeat = "personel_item in personel_list"  style="margin-bottom: 27px !important;" ng-if="personel_item.divisionName === 'เลขานุกาา'">
+              <div class='card'  ng-click = "showDetail(personel_item);" >
+                <div class='front'>
+                  <img  class='contact' ng-if = "personel_item.picture == null" src="assets\img\image_placeholder.jpg">
+                  <img class='contact' ng-if = "personel_item.picture != null"src="{{personel_item.picture}}">                                        
+                  <p><span class='name'>{{personel_item.personelName }}</span></p>
+                  <hr>
+                  <span class='job container'>{{personel_item.position }}
+              
+                  </span>
+                
+                </div>
+                </div>
+                </div>
+        </div>
+
+
+        <h2>ศูนย์เครื่องมือวิทยาศาสตร์</h2><hr>
+        <div class="row ">
+            <div class = "col-md-3" ng-repeat = "personel_item in personel_list"  style="margin-bottom: 27px !important;" ng-if="personel_item.divisionName === 'งานพัสดุ'">
+          <div class='card'  ng-click = "showDetail(personel_item)" >
+            <div class='front' ng-click = "showDetail(personel_item)">
+              <img  class='contact' ng-if = "personel_item.picture == null" src="assets\img\image_placeholder.jpg">
+              <img class='contact' ng-if = "personel_item.picture != null"src="{{personel_item.picture}}">                                        
+              <p><span class='name'>{{personel_item.personelName }}</span></p>
+              <hr>
+              <span class='job container'>{{personel_item.position }}
+          
+              </span>
+            
+            </div>
+            </div>
+            </div>
+    </div>
+
+    
+
+
+
+
+
+
+
+
                     </div>
                   </div>
 
@@ -1589,3 +1772,36 @@ figcaption button{
                                         </div>
                                       </div>
                                     </div>
+
+
+                                    <div class="modal fade bd-example-modal-lg"  id= "personel_modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-lg">
+                                          <div class="modal-content" style="    padding: 30px 20px;">
+                                
+                                            <div class="container">
+                                              <div class="row">
+                                
+                                                <div class="col-md-6">
+                                                    <img  style="width:250px!important; " src="{{personelDataItem.picture}}" alt="" class="img-responsive">
+                                                    
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <h4 style="    color: #e25e26;
+                                                    font-size: 32px;"> {{personelDataItem.personelName}}</h4>
+                                                    <h4> {{personelDataItem.position}}</h4> 
+                                                                                                    
+                                                   <hr>
+                                                   <p class="text-left"> 
+                                                     TEL. : {{personelDataItem.telNumber}} 	
+                                                    </p>
+                                                    <p class="text-left">  E-mail : {{personelDataItem.email}}
+                                                   </p>
+                                                </div>
+                                              </div>
+                                            </div>
+                                          
+                                              
+                                          </div>
+                                        </div>
+                                      </div>
+                                      </div>

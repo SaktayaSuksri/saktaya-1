@@ -31,6 +31,10 @@ router.get('/graduate/', function(req, res) {
     res.render('template_graduate.ejs'); 
 });
 
+router.get('/graduate_from/', function(req, res) {
+    
+    res.render('template_graduate_from.ejs'); 
+});
 
 
 router.get('/page/', function(req, res) {
@@ -59,6 +63,12 @@ router.get('/graduate', function(req, res) {
     res.render('template_graduate.ejs'); 
 });
 
+router.get('/graduate_from', function(req, res) {
+    
+
+    console.log("graduate_from")
+    res.render('template_graduate_from.ejs'); 
+});
 
 
 
