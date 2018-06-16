@@ -122,7 +122,7 @@ angular.module('app')
 
   }]);
 angular.module('app').controller('global', function($scope, $http, api_manage,$sce) {
-
+ 
   $scope.trustAsHtml = function(string) {
     //console.log("str = "+string)
         return $sce.trustAsHtml(string);
