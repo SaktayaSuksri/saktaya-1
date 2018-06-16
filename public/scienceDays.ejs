@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="theme-color" content="#f1642d">
+    <!-- Favicons -->
+    <!-- <link rel="apple-touch-icon" href="http://161.246.35.182:2001/assets/img/apple-icon.png">
+    <link rel="icon" href="http://161.246.35.182:2001/assets/img/favicon.png">-->
+    <title>
+        Science @KMITL
+    </title>
+    <!--     Fonts and icons     -->
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons"
+    />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="../assets/css/material-kit.css?v=2.0.0">
+
+    <!-- <link href="../assets/assets-for-demo/demo.css" rel="stylesheet" />
+    <link href="../assets/assets-for-demo/vertical-nav.css" rel="stylesheet" />
+    <link href="../assets/assets-for-demo/timeline.css" rel="stylesheet" /> -->
+
+
+</head>
+
+<style>
+	
+
+@import url("https://fonts.googleapis.com/css?family=Athiti");
+@font-face {
+font-family: "TH Sarabun New Regular";
+src: url("./assets/fonts/thsarabunnew.eot");
+src: url("./assets/fonts/thsarabunnew.eot") format("embedded-opentype"), url("./assets/fonts/thsarabunnew.woff") format("woff"), url("./assets/fonts/thsarabunnew.ttf") format("truetype"), url("../fonts/thsarabunnew.svg#THSarabunNewRegular") format("svg"); }
+
+/*!
+*  Font Awesome 4.7.0 by @davegandy - http://fontawesome.io - @fontawesome
+*  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
+*/
+/* FONT PATH
+* -------------------------- */
+@font-face {
+font-family: 'FontAwesome';
+src: url("./assets/fonts/fontawesome-webfont.eot?v=4.7.0");
+src: url("./assets/fonts/fontawesome-webfont.eot?#iefix&v=4.7.0") format("embedded-opentype"), url("./assets/fonts/fontawesome-webfont.woff2?v=4.7.0") format("woff2"), url("./assets/fonts/fontawesome-webfont.woff?v=4.7.0") format("woff"), url("./assets/fonts/fontawesome-webfont.ttf?v=4.7.0") format("truetype"), url("./assets/fonts/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular") format("svg");
+font-weight: bold;
+font-style: normal; }
+
+@media screen{
+body {
+font-family: "Athiti", sans-serif;
+font-size: 18px !important;
+
+/* line-height: 1em; */
+}
+
+
+h1,h2,h3,h4,h5,h6{
+font-family: "Athiti", sans-serif;
+font-weight: 600;
+}
+
+}
+
+
+
+.navbar .navbar-nav .nav-item .nav-link{
+    font-family: "Athiti", sans-serif;
+    font-size: 18px !important;
+}
+.title {
+    font-family: "Athiti", sans-serif;
+}
+.card .card-title{
+    font-family: "Athiti", sans-serif;
+}
+p{
+    font-family: "Athiti", sans-serif;
+    font-size: 16px !important;
+}
+.info-title{
+    font-family: "Athiti", sans-serif;
+}
+
+.dropdown-menu .dropdown-item, .dropdown-menu li>a{
+overflow: visible;
+}
+
+
+
+hr{
+
+border-top: 2px solid #ff9800a6;
+box-shadow: 0 2px 2px 0 #ffc64587, 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+}
+
+
+.bubble-six { top: 8vh; left: 75vw; width: 23px; height: 23px; opacity: 0.2; transform-origin: 80% 200%; animation: bubble-move 2s ease-in-out 0s infinite alternate; }
+.bubble-eight { top: 72vh; left: 85vw; width: 360px; height: 360px; opacity: 0.2; transform-origin: -100% 100%; animation: bubble-move 7s ease-in-out 0s infinite alternate; } 
+.bubble-seven { top: 33vh; left: 84vw; width: 120px; height: 120px; opacity: 0.2; transform-origin: 100% 90%; animation: bubble-move 6s ease-in-out 0s infinite alternate; }
+.bubble-two { top: 44vh; left: 6vw; width: 100px; height: 100px; opacity: 0.1; transform-origin: 60% 400%; animation: bubble-move 4s ease-in-out 0s infinite alternate; }
+@keyframes bubble-move { 0% { opacity: 0.6; transform: scale(1.0) rotate(-8deg) translate(-1px,-2px); } 70% { opacity: 0.6; transform: scale(1.04) rotate(10deg) translate(2px,1px); } 100% { opacity: 0.4; transform: scale(0.94) rotate(-18deg) translate(-3px,-1px); } }
+
+.angularjs-chat-bubble-white {
+
+position: absolute;
+display: inline-block;
+
+border-image: transparent;
+background: transparent url(http://161.246.35.182:2001/assets/img/85dad3324df40961c16639a9aecb7f4a.png);
+background-size: 100%;
+background-repeat: no-repeat;
+}
+
+.dropdown-item{
+font-family: "Athiti", sans-serif;
+font-size: 18px !important;
+}
+
+.card-description{
+font-family: "Athiti", sans-serif;
+font-size: 18px !important;
+}
+a{
+font-family: "Athiti", sans-serif;
+font-size: 20px ;
+}
+.nav-pills .nav-item .nav-link {
+font-size: 18px!important;
+font-weight: 600;
+color: #ffff;
+}
+
+/* fixbug navbar-collapse*/
+@media (max-width: 991px){
+.navbar-collapse {
+overflow-x: scroll;
+background-color: #fffffff5;
+}}
+
+.navbar .dropdown.show .dropdown-menu, .navbar .dropdown .dropdown-menu {
+    height: auto;
+}
+.form-control, .is-focused .form-control {
+    background-image: linear-gradient(to top, #ff9800 2px, rgba(156, 39, 176, 0) 2px), linear-gradient(to top, #d2d2d2 1px, rgba(210, 210, 210, 0) 1px);
+}
+
+.timeline {
+	    list-style: none;
+	    padding: 20px 0 20px;
+	    position: relative;
+	}
+
+	    .timeline:before {
+	        top: 0;
+	        bottom: 0;
+	        position: absolute;
+	        content: " ";
+	        width: 3px;
+	        background-color: #eeeeee;
+	        left: 50%;
+	        margin-left: -1.5px;
+	    }
+
+	    .timeline > li {
+	        margin-bottom: 20px;
+	        position: relative;
+	    }
+
+	        .timeline > li:before,
+	        .timeline > li:after {
+	            content: " ";
+	            display: table;
+	        }
+
+	        .timeline > li:after {
+	            clear: both;
+	        }
+
+	        .timeline > li:before,
+	        .timeline > li:after {
+	            content: " ";
+	            display: table;
+	        }
+
+	        .timeline > li:after {
+	            clear: both;
+	        }
+
+	        .timeline > li > .timeline-panel {
+	            width: 46%;
+	            float: left;
+	            border: 1px solid #d4d4d4;
+	            border-radius: 2px;
+	            padding: 20px;
+	            position: relative;
+	            -webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
+	            box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
+	        }
+
+	            .timeline > li > .timeline-panel:before {
+	                position: absolute;
+	                top: 26px;
+	                right: -15px;
+	                display: inline-block;
+	                border-top: 15px solid transparent;
+	                border-left: 15px solid #ccc;
+	                border-right: 0 solid #ccc;
+	                border-bottom: 15px solid transparent;
+	                content: " ";
+	            }
+
+	            .timeline > li > .timeline-panel:after {
+	                position: absolute;
+	                top: 27px;
+	                right: -14px;
+	                display: inline-block;
+	                border-top: 14px solid transparent;
+	                border-left: 14px solid #fff;
+	                border-right: 0 solid #fff;
+	                border-bottom: 14px solid transparent;
+	                content: " ";
+	            }
+
+	        .timeline > li > .timeline-badge {
+	            color: #fff;
+	            width: 50px;
+	            height: 50px;
+	            line-height: 50px;
+	            font-size: 1.4em;
+	            text-align: center;
+	            position: absolute;
+	            top: 16px;
+	            left: 50%;
+	            margin-left: -25px;
+	            background-color: #999999;
+	            z-index: 100;
+	            border-top-right-radius: 50%;
+	            border-top-left-radius: 50%;
+	            border-bottom-right-radius: 50%;
+	            border-bottom-left-radius: 50%;
+	        }
+
+	        .timeline > li.timeline-inverted > .timeline-panel {
+	            float: right;
+	        }
+
+	            .timeline > li.timeline-inverted > .timeline-panel:before {
+	                border-left-width: 0;
+	                border-right-width: 15px;
+	                left: -15px;
+	                right: auto;
+	            }
+
+	            .timeline > li.timeline-inverted > .timeline-panel:after {
+	                border-left-width: 0;
+	                border-right-width: 14px;
+	                left: -14px;
+	                right: auto;
+	            }
+
+	.timeline-badge.primary {
+	    background-color: #2e6da4 !important;
+	}
+
+	.timeline-badge.success {
+	    background-color: #3f903f !important;
+	}
+
+	.timeline-badge.warning {
+	    background-color: #f0ad4e !important;
+	}
+
+	.timeline-badge.danger {
+	    background-color: #d9534f !important;
+	}
+
+	.timeline-badge.info {
+	    background-color: #5bc0de !important;
+	}
+
+	.timeline-title {
+	    margin-top: 0;
+	    color: inherit;
+			font-weight: 600;
+	}
+
+	.timeline-body > p,
+	.timeline-body > ul {
+	    margin-bottom: 0;
+	}
+
+	    .timeline-body > p + p {
+	        margin-top: 5px;
+	    }
+
+	@media (max-width: 767px) {
+	    ul.timeline:before {
+	        left: 40px;
+	    }
+
+	    ul.timeline > li > .timeline-panel {
+	        width: calc(100% - 90px);
+	        width: -moz-calc(100% - 90px);
+	        width: -webkit-calc(100% - 90px);
+	    }
+
+	    ul.timeline > li > .timeline-badge {
+	        left: 15px;
+	        margin-left: 0;
+	        top: 16px;
+	    }
+
+	    ul.timeline > li > .timeline-panel {
+	        float: right;
+	    }
+
+	        ul.timeline > li > .timeline-panel:before {
+	            border-left-width: 0;
+	            border-right-width: 15px;
+	            left: -15px;
+	            right: auto;
+	        }
+
+	        ul.timeline > li > .timeline-panel:after {
+	            border-left-width: 0;
+	            border-right-width: 14px;
+	            left: -14px;
+	            right: auto;
+	        }
+	}
+	.page-content a {
+	    color: #ec431b !important;
+	}
+  
+    p {
+        font-size: 20px !important;
+    }
+    .table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td, .table>tbody>tr>td, .table>tfoot>tr>td {
+    padding: 12px 8px;
+    vertical-align: middle;
+    border-color: #ddd;
+    font-size: 20px !important;
+}
+.table>thead>tr>th{
+    padding: 12px 8px;
+    vertical-align: middle;
+    border-color: #ddd;
+    font-size: 21px !important;
+    font-weight: 600;
+}
+
+.timeline-title {
+    margin-top: 0;
+    color: inherit;
+    font-weight: 600;
+    font-size: 24px;
+    color: #f1642d;
+}
+	</style>
+
+
+<body class="landing-page " ng-app="app" ng-controller="" ng-init="showtranparent = true">
+    <nav class="navbar fixed-top   navbar-expand-lg   bg-warning">
+
+        <div class="container-fluid">
+
+            <div class="navbar-translate d-none d-sm-block" style=" width: 40%;">
+                <a href="http://161.246.35.182:2001/">
+                    <img class=" mr-0 mr-md-2 navbar-absolute-logo" src="http://161.246.35.182:2001/assets/img/26696144_1787994021264861_526769390_n.png"
+                        style="width: 100%; height: auto;">
+                </a>
+                <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon"></span>
+            </button> -->
+            </div>
+
+            <div class="navbar-translate d-block d-sm-none" style="max-width: 80%;">
+                <a href="http://161.246.35.182:2001/">
+                    <img class=" mr-0 mr-md-2 navbar-absolute-logo" src="http://161.246.35.182:2001/assets/img/26696144_1787994021264861_526769390_n.png"
+                        style="width: 100%; height: auto;">
+                </a>
+
+            </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse flex-md-column">
+                <ul class="justify-content-center navbar-nav ml-auto">
+                    <!-- <li class="nav-item" style="
+                    width: 18%;
+                    margin-left:  12px;
+                    margin-right: 4%;
+                ">   
+                <a href="./">
+            <img class=" mr-0 mr-md-2 navbar-absolute-logo" src="./assets/img/26696144_1787994021264861_526769390_n.png"  style="width: 100%; height: auto;">
+            </a>
+                </li> -->
+                    <li class="nav-item">
+                        <a href="http://161.246.35.182:2001/" class=" nav-link">
+                            <i class="material-icons">home</i> หน้าแรก
+                        </a>
+
+                    </li>
+
+                    <li class="dropdown nav-item">
+                        <a class="dropdown-toggle nav-link" data-toggle="dropdown">
+                            <i class="material-icons">view_day</i> หลักสูตร
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-with-icons">
+                            <a href="/page#/course-tee" class="dropdown-item">
+                                <i class="material-icons">school</i> ปริญญาตรี
+                            </a>
+                            <a href="/page#/course-tor" class="dropdown-item">
+                                <i class="material-icons">school</i> ปริญญาโท
+                            </a>
+                            <a href="/page#/course-aek" class="dropdown-item">
+                                <i class="material-icons">school</i> ปริญญาเอก
+                            </a>
+
+                        </div>
+                    </li>
+                    <li class="dropdown nav-item">
+                        <a class="dropdown-toggle nav-link" data-toggle="dropdown">
+                            <i class="material-icons">view_day</i> เกี่ยวกับคณะ
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-with-icons">
+                            <a href="/page#/history" class="dropdown-item">
+                                <i class="material-icons">info</i> ประวัติความเป็นมา
+                            </a>
+                            <a href="/page#/resolution" class="dropdown-item">
+                                <i class="material-icons">info</i> ปรัชญา-ปณิธาน-วิสัยทัศน์-พันธกิจ
+                            </a>
+                            <a href="/page#/structure" class="dropdown-item">
+                                <i class="material-icons">info</i> โครงสร้างองค์กร
+                            </a>
+                            <a href="/page#/yearly-report" class="dropdown-item">
+                                <i class="material-icons">info</i> รายงานประจำปี
+                            </a>
+                        </div>
+                    </li>
+
+                    <li class="dropdown nav-item">
+                        <a class="dropdown-toggle nav-link " data-toggle="dropdown">
+                            <i class="material-icons">view_day</i> ภาควิชา
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-with-icons">
+                            <!-- <a href="" class="dropdown-item">
+                                    <i class="material-icons">account_balance</i> ศูนย์เครื่องมือวิทยาศาสตร์
+                                </a> -->
+                            <a href="http://www.math.sci.kmitl.ac.th/" class="dropdown-item">
+                                <i class="material-icons">business</i> ภาควิชาคณิตศาสตร์
+                            </a>
+                            <a href="http://www.science.kmitl.ac.th/oldweb/links/department/bio/" class="dropdown-item">
+                                <i class="material-icons">business</i> ภาควิชาชีววิทยา
+                            </a>
+                            <a href="http://physics.kmitl.ac.th/" class="dropdown-item">
+                                <i class="material-icons">business</i> ภาควิชาฟิสิกส์
+                            </a>
+                            <a href="http://www.comsci.science.kmitl.ac.th/cs/" class="dropdown-item">
+                                <i class="material-icons">business</i> ภาควิชาวิทยาการคอมพิวเตอร์
+                            </a>
+                            <a href="http://www.science.kmitl.ac.th/oldweb/links/department/Webstat59/index.html" class="dropdown-item">
+                                <i class="material-icons">business</i> ภาควิชาสถิติ
+                            </a>
+                            <a href="http://www.science.kmitl.ac.th/oldweb/links/department/chem/" class="dropdown-item">
+                                <i class="material-icons">business</i> ภาควิชาเคมี
+                            </a>
+                        </div>
+                    </li>
+                    <!-- <li class="nav-item">
+                      <a class="nav-link active" href="#">ปริญญาตรี</a>
+                    </li> -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://161.246.35.182:2001/page#/personel">
+                            <i class="material-icons">view_day</i> บุคลากร</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://161.246.35.182:2001/page#/docs_container">
+                            <i class="material-icons">view_day</i> ฟอร์ม</a>
+                    </li>
+                    <!-- <li class="nav-item">
+                          <a class="nav-link active" href="http://www.science.kmitl.ac.th:8080/sic/index.php/CHome"> <i class="material-icons">link</i> ศูนย์เครื่องมือ</a>
+                        </li>
+                      <li class="nav-item">
+                        <a class="nav-link " href="http://alumni.kmitlsci.org/"> <i class="material-icons">link</i> ศิษย์เก่า</a>
+                      </li> -->
+
+                </ul>
+
+
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://161.246.35.182:2001/graduate">
+                            <i class="material-icons">link</i> บัณทิต</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="http://www.science.kmitl.ac.th:8080/sic/index.php/CHome">
+                            <i class="material-icons">link</i> ศูนย์เครื่องมือ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="http://alumni.kmitlsci.org/">
+                            <i class="material-icons">link</i> ศิษย์เก่า</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="">
+                            <i class="material-icons">link</i> เว็บไซต์เดิม</a>
+                    </li>
+
+                </ul>
+
+
+            </div>
+
+        </div>
+    </nav>
+
+
+
+
+    <div class="content">
+
+        <div style="height: 28vh; width: 100%;"></div>
+
+        <div class="main main-raised">
+            <div class="contact-content">
+                <div class="  cd-section">
+                    <div class="" style="    padding: 100px;">
+                        <br>
+                        <center>
+                        <h2> งานนิทรรศการวันวิทยาศาสตร์ และ งาน Open House คณะวิทยาศาสตร์ สจล. ปี 2561
+                            <br/>“วิทยาศาสตร์และนวัตกรรม นำสู่ไทยแลนด์ 4.0” </h2>
+                        <br/>
+                        <br/>
+                            </center>
+                        <p> &thinsp;&thinsp;&thinsp;&thinsp; ด้วยในวันที่ 18 สิงหาคม ของทุกปีเป็นวันวิทยาศาสตร์แห่งชาติ คณะวิทยาศาสตร์
+                            สจล. จึงได้จัดงานนิทรรศการวันวิทยาศาสตร์ ประจำปี 2561 หัวข้อเรื่อง “วิทยาศาสตร์และนวัตกรรม นำสู่ไทยแลนด์
+                            4.0” ระหว่างวันที่ 23 – 25 สิงหาคม 2561 ณ คณะวิทยาศาสตร์ สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง
+                            </br>&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;- เพื่อเป็นการเทิดพระเกียรติพระบาทสมเด็จพระจอมเกล้าเจ้าอยู่หัว
+                            รัชกาลที่ 4 ผู้ทรงเป็นพระบิดาแห่งวิทยาศาสตร์ไทย
+                            </br>&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;- เพื่อกระตุ้นให้นักเรียน
+                            นักศึกษา ได้ตระหนักถึงความสำคัญของวิทยาศาสตร์และเทคโนโลยีที่มีต่อการพัฒนาคุณภาพชีวิตและการพัฒนาประเทศ
+                            ได้เรียนรู้ คิดค้น สิ่งประดิษฐ์ นวัตกรรมใหม่ ๆ
+                            </br>&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;- เพื่อเผยแพร่หลักสูตรของคณะวิทยาศาสตร์
+                            สจล.
+                            <p>
+                                <br/>
+
+
+
+
+
+
+                                <br/>
+                                <h3>กิจกรรมภายในงาน</h3>
+                                <ul class="timeline">
+                                    <li>
+                                        <div class="timeline-badge success">
+                                            <i class="material-icons" style="    font-size: 31px; padding-top: 8px;">calendar_today</i>
+                                        </div>
+                                        <div class="timeline-panel">
+                                            <div class="timeline-heading">
+                                                <h4 class="timeline-title">วันที่ 23 สิงหาคม 2561</h4>
+                                                <!-- <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 11 hours ago via Twitter</small></p> -->
+                                            </div>
+                                            <div class="timeline-body">
+                                                <div class="row">
+                                                    <div class="span5">
+                                                        <table class="table table-striped table-condensed">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>กิจกรรม</th>
+                                                                    <th>ดาวน์โหลดใบสมัคร</th>
+
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>ตอบปัญหาความรู้ทั่วไป ทางวิทยาศาสตร์ (ภาษาอังกฤษ) ม ปลาย</td>
+                                                                    <td>
+                                                                        <a href="#">
+                                                                            <i class="material-icons" style="color: #b5b5b5;">cloud_download </i> เร็วๆ นี้ </a>
+                                                                    </td>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>โครงงานวิทยาศาสตร์ ประถม</td>
+                                                                    <td>
+                                                                        <a href="#">
+                                                                            <i class="material-icons" style="color: #b5b5b5;">cloud_download </i> เร็วๆ นี้ </a>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>โครงงานวิทยาศาสตร์ ม. ต้น</td>
+                                                                    <td>
+                                                                        <a href="#">
+                                                                            <i class="material-icons" style="color: #b5b5b5;">cloud_download </i> เร็วๆ นี้ </a>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>โครงงานวิทยาศาสตร์ ม. ปลาย</td>
+                                                                    <td>
+                                                                        <a href="#">
+                                                                            <i class="material-icons" style="color: #b5b5b5;">cloud_download </i> เร็วๆ นี้ </a>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>BASF Kid's Lab</td>
+                                                                    <td>-</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>นิทรรศการวิทยาศาสตร์และงานวิจัย Highlight</td>
+                                                                    <td>-</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Science Open House / กิจกรรมหลักสูตร</td>
+                                                                    <td>-</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>นิทรรศการ "โลกของพลาสติก"</td>
+                                                                    <td>-</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>ประกวดวาดภาพเขียนเชิงวิทยาศาสตร์ ม ต้น และ ม ปลาย</td>
+                                                                    <td>-</td>
+                                                                </tr>
+
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="timeline-inverted">
+                                        <div class="timeline-badge warning">
+                                            <i class="material-icons" style="    font-size: 31px; padding-top: 8px;">calendar_today</i>
+                                        </div>
+                                        <div class="timeline-panel">
+                                            <div class="timeline-heading">
+                                                <h4 class="timeline-title">วันที่ 24 สิงหาคม 2561</h4>
+                                            </div>
+                                            <div class="timeline-body">
+                                                <div class="row">
+                                                    <div class="span5">
+                                                        <table class="table table-striped table-condensed">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>กิจกรรม</th>
+                                                                    <th>ดาวน์โหลดใบสมัคร</th>
+
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>ตอบปัญหาความรู้ทั่วไป ทางวิทยาศาสตร์ (ภาษาไทย) ม ปลาย</td>
+                                                                    <td>
+                                                                        <a href="#">
+                                                                            <i class="material-icons" style="color: #b5b5b5;">cloud_download </i> เร็วๆ นี้ </a>
+                                                                    </td>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>ประกวดสิ่งประดิษฐ์ ม. ประถม</td>
+                                                                    <td>
+                                                                        <a href="#">
+                                                                            <i class="material-icons" style="color: #b5b5b5;">cloud_download </i> เร็วๆ นี้ </a>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>ประกวดสิ่งประดิษฐ์ ม. ต้น
+                                                                        <</td>
+                                                                            <td>
+                                                                                <a href="#">
+                                                                                    <i class="material-icons" style="color: #b5b5b5;">cloud_download </i> เร็วๆ นี้ </a>
+                                                                            </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>ประกวดสิ่งประดิษฐ์ ม. ปลาย</td>
+                                                                    <td>
+                                                                        <a href="#">
+                                                                            <i class="material-icons" style="color: #b5b5b5;">cloud_download </i> เร็วๆ นี้ </a>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>BASF Kid's Lab</td>
+                                                                    <td>-</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>นิทรรศการวิทยาศาสตร์และงานวิจัย Highlight</td>
+                                                                    <td>-</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Science Open House / กิจกรรมหลักสูตร</td>
+                                                                    <td>-</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>นิทรรศการ "โลกของพลาสติก"</td>
+                                                                    <td>-</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>ประกวดวาดภาพเขียนเชิงวิทยาศาสตร์ ม ต้น และ ม ปลาย</td>
+                                                                    <td>-</td>
+                                                                </tr>
+
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="timeline-badge danger">
+                                            <i class="material-icons" style="    font-size: 31px; padding-top: 8px;">calendar_today</i>
+                                        </div>
+                                        <div class="timeline-panel">
+                                            <div class="timeline-heading">
+                                                <h4 class="timeline-title">วันที่ 25 สิงหาคม 2561</h4>
+                                            </div>
+                                            <div class="timeline-body">
+                                                <div class="row">
+                                                    <div class="span5">
+                                                        <table class="table table-striped table-condensed">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>กิจกรรม</th>
+                                                                    <th>ดาวน์โหลดใบสมัคร</th>
+
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>ครอบครัวสุขสันต์ สนุกมหัศจรรย์ ตอบคำถาม วันวิทยาศาสตร์</td>
+                                                                    <td>
+                                                                        <a href="#">
+                                                                            <i class="material-icons" style="color: #b5b5b5;">cloud_download </i> เร็วๆ นี้ </a>
+                                                                    </td>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+
+
+
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row">
+                                                    <div class="span5">
+                                                        <table class="table table-striped table-condensed">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>กิจกรรม</th>
+
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+
+
+
+                                                                <tr>
+                                                                    <td>BASF Kid's Lab</td>
+
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>นิทรรศการวิทยาศาสตร์และงานวิจัย Highlight</td>
+
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Science Open House / กิจกรรมหลักสูตร</td>
+
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>นิทรรศการ "โลกของพลาสติก"</td>
+
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>ประกวดวาดภาพเขียนเชิงวิทยาศาสตร์ ม ต้น และ ม ปลาย</td>
+
+                                                                </tr>
+
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+
+                                <a href="http://www.science.kmitl.ac.th/wp-content/themes/personalTheme/images/news/แบบตอบรับ.pdf" style="font-size:30px;">
+                                เพื่ออำนวยความสะดวกในการให้บริการท่านสามารถ ดาวน์โหลดเอกสารแบบแจ้งความจำนงเข้าร่วมงานนิทรรศการวันวิทยาศาสตร์
+                                    ประจำปี 2561 [คลิกที่นี่]</a>
+                                <br/>
+                                <br/>
+                                <hr/>
+                                <h3>ติดตามความคืบหน้าของกิจกรรม ได้ที่ </h3>
+                                <br/>Website :
+                                <a href="http://www.science.kmitl.ac.th/sciencedays/"> http://www.science.kmitl.ac.th/sciencedays</a>
+                                <br/>facebook :
+                                <a href="https://www.facebook.com/Faculty-of-Science-KMITL-145367872869812/">
+                                Faculty of Science, KMITL</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+    <footer class="footer ">
+
+
+    </footer>
+    <!--   Core JS Files   -->
+
+    <script src="../assets/js/core/jquery.min.js"></script>
+    <script src="../assets/js/core/popper.min.js"></script>
+    <script src="../assets/js/bootstrap-material-design.js"></script>
+    <!--  Plugin for Date Time Picker and Full Calendar Plugin-->
+    <script src="../assets/js/plugins/moment.min.js"></script>
+    <!--	Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->
+    <script src="../assets/js/plugins/bootstrap-selectpicker.js"></script>
+    <!--	Plugin for Tags, full documentation here: http://xoxco.com/projects/code/tagsinput/  -->
+    <script src="../assets/js/plugins/bootstrap-tagsinput.js"></script>
+    <!--	Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput -->
+    <script src="../assets/js/plugins/jasny-bootstrap.min.js"></script>
+    <!--	Plugin for Small Gallery in Product Page -->
+    <script src="../assets/js/plugins/jquery.flexisel.js"></script>
+    <!--	Plugin for the Datepicker, full documentation here: https://github.com/Eonasdan/bootstrap-datetimepicker -->
+    <script src="../assets/js/plugins/bootstrap-datetimepicker.min.js"></script>
+    <!--	Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
+    <script src="../assets/js/plugins/nouislider.min.js"></script>
+    <!-- Material Kit Core initialisations of plugins and Bootstrap Material Design Library -->
+    <script src="../assets/js/material-kit.js?v=2.0.0"></script>
+    <!-- Fixed Sidebar Nav - js With initialisations For Demo Purpose, Don't Include it in your project -->
+    <script src="../assets/assets-for-demo/js/material-kit-demo.js"></script>
+    <!-- Plugins for presentation and navigation  -->
+    <script src="../assets/assets-for-demo/js/modernizr.js"></script>
+    <script src="../assets/assets-for-demo/js/vertical-nav.js"></script>
+    <!--  Google Maps Plugin    -->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+
+
+
+
+    <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.3.11/angular.min.js'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular-sanitize.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.min.js"></script>
+
+
+    <script src="../bower_components/angular-youtube-api-factory/dist/angular-youtube-api-factory.min.js"></script>
+
+    <script type="text/javascript" src="//cdn.quilljs.com/1.2.0/quill.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/ng-quill/2.2.1/ng-quill.min.js"></script>
+
+    <script src='http://textangular.com/dist/textAngular-rangy.min.js'></script>
+
+    <script src='http://textangular.com/dist/textAngular-sanitize.min.js'></script>
+
+    <script src='http://textangular.com/dist/textAngular.min.js'></script>
+
+    <script>
+        angular.module('app', ['ui.router', 'ngSanitize', 'textAngular'])
+
+
+        angular.module('app').controller('news_each', function ($sce, $scope, $filter, $q, $http) {
+            $scope.trustAsHtml = function (string) {
+                console.log("str = " + string)
+                return $sce.trustAsHtml(string);
+            };
+        });
+    </script>
+
+</body>
+
+</html>

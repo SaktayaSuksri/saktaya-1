@@ -44,7 +44,7 @@ angular.module('app').controller('global', function ($scope, $http, api_manage) 
 
 angular.module('app').controller('header_first', function ($scope, $http, api_manage) {
     // alert("global ctrl");
-    $('#start_modal').modal('show');
+  
     $scope.init = function () {
 
         //  quill_title  quill_detail      quill_title_yo  quill_detail_yo

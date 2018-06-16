@@ -36,6 +36,10 @@ router.get('/graduate_from/', function(req, res) {
     res.render('template_graduate_from.ejs'); 
 });
 
+router.get('/sciencedays/', function(req, res) {
+    
+    res.render('scienceDays.ejs'); 
+});
 
 router.get('/page/', function(req, res) {
     
