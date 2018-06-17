@@ -91,7 +91,7 @@ router.get('/form_each/:form_id', function(req, res) {
        'User-Agent':       'Super Agent/0.0.1',
        'Content-Type':     'application/x-www-form-urlencoded'
    },
-     uri: 'http://161.246.35.182:2001/api/getFormSourceById/',
+     uri: 'http://www.science.kmitl.ac.th/api/getFormSourceById/',
      form: formData,
      method: 'POST'
    }, function (err, res2, body1) {
@@ -118,7 +118,7 @@ router.get('/form_each/:form_id', function(req, res) {
                 'User-Agent':       'Super Agent/0.0.1',
                 'Content-Type':     'application/x-www-form-urlencoded'
             },
-              uri: 'http://161.246.35.182:2001/api/getFormById/',
+              uri: 'http://www.science.kmitl.ac.th/api/getFormById/',
               form: formData,
               method: 'POST'
             }, function (err, res2, body2) {
@@ -176,7 +176,7 @@ router.get('/news_each/:news_id', function(req, res) {
       'User-Agent':       'Super Agent/0.0.1',
       'Content-Type':     'application/x-www-form-urlencoded'
   },
-    uri: 'http://161.246.35.182:2001/api/getNewsfromID/',
+    uri: 'http://www.science.kmitl.ac.th/api/getNewsfromID/',
     form: formData,
     method: 'POST'
   }, function (err, res2, body) {

@@ -223,7 +223,7 @@
 				</div>
 				<div class="col-xs-12 col-sm-12 col-md-6 col-lg-4" style="margin-top:1rem">
 					<div class="card card-block h-100">
-						<img class="card-img-top d-xs-none d-sm-none d-md-block " src="http://www.science.kmitl.ac.th/oldweb/images/slideshow/December2017/01.jpg"
+						<img class="card-img-top d-xs-none d-sm-none d-md-block " src="http://161.246.35.182:8080/images/slideshow/December2017/01.jpg"
 						 alt="Card image cap">
 						<div class="card-body">
 							<h4 class="card-title">งานเลี้ยงส่งท้ายปีเก่าตอนรับปีใหม่ คณะวิทยาศาสตร์ </h4>
@@ -278,7 +278,7 @@
 				</div>
 				<div class="col-xs-12 col-sm-12 col-md-6 col-lg-4" style="margin-top:1rem">
 					<div class="card card-block h-100">
-						<img class="card-img-top d-xs-none d-sm-none d-md-block " src="http://www.science.kmitl.ac.th/oldweb/images/slideshow/December2017/%E0%B8%99.%E0%B8%AA.%20%E0%B8%8A%E0%B8%99%E0%B8%B4%E0%B8%A8%E0%B8%B2%20%20%E0%B8%99%E0%B8%A7%E0%B8%99%E0%B8%B4%E0%B8%A5.jpg"
+						<img class="card-img-top d-xs-none d-sm-none d-md-block " src="http://161.246.35.182:8080/images/slideshow/December2017/%E0%B8%99.%E0%B8%AA.%20%E0%B8%8A%E0%B8%99%E0%B8%B4%E0%B8%A8%E0%B8%B2%20%20%E0%B8%99%E0%B8%A7%E0%B8%99%E0%B8%B4%E0%B8%A5.jpg"
 						 alt="Card image cap">
 						<div class="card-body">
 							<h4 class="card-title">ทีมวิจัยของ รศ.ดร.นราธิป ได้รับรางวัล Best Poster Presentation Award</h4>
@@ -297,7 +297,7 @@
 			<div class="row h-100 align-items-stretch">
 				<div class="col-xs-12 col-sm-12 col-md-6 col-lg-4" style="margin-top:1rem">
 					<div class="card card-block h-100" style="height:100%">
-						<img class="card-img-top d-xs-none d-sm-none d-md-block" src="http://www.science.kmitl.ac.th/oldweb/images/slideshow/November2017/%E0%B8%99.%E0%B8%AA.%20%E0%B8%A7%E0%B8%B4%E0%B8%8A%E0%B8%8A%E0%B8%B8%E0%B8%94%E0%B8%B2%20%E0%B8%A0%E0%B8%B1%E0%B8%97%E0%B8%A3%E0%B8%81%E0%B8%B8%E0%B8%A5%E0%B8%8A%E0%B8%B1%E0%B8%A2.jpg"
+						<img class="card-img-top d-xs-none d-sm-none d-md-block" src="http://161.246.35.182:8080/images/slideshow/November2017/%E0%B8%99.%E0%B8%AA.%20%E0%B8%A7%E0%B8%B4%E0%B8%8A%E0%B8%8A%E0%B8%B8%E0%B8%94%E0%B8%B2%20%E0%B8%A0%E0%B8%B1%E0%B8%97%E0%B8%A3%E0%B8%81%E0%B8%B8%E0%B8%A5%E0%B8%8A%E0%B8%B1%E0%B8%A2.jpg"
 						 alt="Card image cap">
 						<div class="card-body">
 							<h4 class="card-title">นักศึกษาระดับบัณฑิตศึกษา ได้รับรางวัลชมเชย (งานวิจัยดีเด่น)</h4>
@@ -311,7 +311,7 @@
 				</div>
 				<div class="col-xs-12 col-sm-12 col-md-6 col-lg-4" style="margin-top:1rem">
 					<div class="card card-block h-100">
-						<img class="card-img-top d-xs-none d-sm-none d-md-block" src="http://www.science.kmitl.ac.th/oldweb/images/slideshow/December2017/%E0%B8%99%E0%B8%B2%E0%B8%A2%E0%B8%9B%E0%B8%90%E0%B8%A1%E0%B8%9E%E0%B8%87%E0%B8%A9%E0%B9%8C%20%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%AA%E0%B8%A1%E0%B8%AA%E0%B8%B4%E0%B8%87%E0%B8%AB%E0%B9%8C.jpg"
+						<img class="card-img-top d-xs-none d-sm-none d-md-block" src="http://161.246.35.182:8080/images/slideshow/December2017/%E0%B8%99%E0%B8%B2%E0%B8%A2%E0%B8%9B%E0%B8%90%E0%B8%A1%E0%B8%9E%E0%B8%87%E0%B8%A9%E0%B9%8C%20%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%AA%E0%B8%A1%E0%B8%AA%E0%B8%B4%E0%B8%87%E0%B8%AB%E0%B9%8C.jpg"
 						 alt="Card image cap">
 						<div class="card-body">
 							<h4 class="card-title">นักศึกษาระดับบัณฑิตศึกษา ได้รับรางวัลชนะเลิศอันดับที่ 1</h4>

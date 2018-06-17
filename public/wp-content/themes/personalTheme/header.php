@@ -40,13 +40,13 @@
             <div class="navbar-collapse collapse navbars">
                 <ul class="navbar-nav ml-auto">
                     <li>
-                        <a title="นักศึกษาปัจจุบัน" href="http://www.science.kmitl.ac.th/oldweb/main.php" class="nav-link">นักศึกษาปริญญาตรี</a>
+                        <a title="นักศึกษาปัจจุบัน" href="http://161.246.35.182:8080/main.php" class="nav-link">นักศึกษาปริญญาตรี</a>
                     </li>
                     <li>
-                        <a title="บัณฑิตศึกษา" href="http://www.science.kmitl.ac.th/oldweb/main.php" class="nav-link">บัณฑิตศึกษา</a>
+                        <a title="บัณฑิตศึกษา" href="http://161.246.35.182:8080/main.php" class="nav-link">บัณฑิตศึกษา</a>
                     </li>
                     <li>
-                        <a title="บุคลากร" href="http://www.science.kmitl.ac.th/oldweb/main.php" class="nav-link">บุคลากร</a>
+                        <a title="บุคลากร" href="http://161.246.35.182:8080/main.php" class="nav-link">บุคลากร</a>
                     </li>
 					          <li>
                         <a title="บุคลากร" href="http://alumni.kmitlsci.org" class="nav-link">ศิษย์เก่า</a>
@@ -90,10 +90,10 @@
                                 <div class="container">
                                     <div class="row">
                                         <div class="col-md-6 col-sm-6 col-xs-6">
-                                            <a class="nav-item nav-link" href="http://www.science.kmitl.ac.th/oldweb/main.php">ประวัติความเป็นมา</a>
-                                            <a class="nav-item nav-link" href="http://www.science.kmitl.ac.th/oldweb/main.php">ปรัชญา-ปณิธาน-วิสัยทัศน์-พันธกิจ</a>
-											<a class="nav-item nav-link" href="http://www.science.kmitl.ac.th/oldweb/main.php">โครงสร้างองค์กร</a>
-                                            <a class="nav-item nav-link" href="http://www.science.kmitl.ac.th/oldweb/main.php">รายงานประจำปี</a>
+                                            <a class="nav-item nav-link" href="http://161.246.35.182:8080/main.php">ประวัติความเป็นมา</a>
+                                            <a class="nav-item nav-link" href="http://161.246.35.182:8080/main.php">ปรัชญา-ปณิธาน-วิสัยทัศน์-พันธกิจ</a>
+											<a class="nav-item nav-link" href="http://161.246.35.182:8080/main.php">โครงสร้างองค์กร</a>
+                                            <a class="nav-item nav-link" href="http://161.246.35.182:8080/main.php">รายงานประจำปี</a>
                                         </div>
                                     </div>
                                 </div>
@@ -106,12 +106,12 @@
                                     <div class="row">
                                         <div class="col-md-6 col-sm-6 col-xs-6">
                     <a href="http://www.science.kmitl.ac.th:8080/sic/index.php/CHome"  class="nav-item nav-link">ศูนย์เครื่องมือวิทยาศาสตร์</a>
-										<a href="http://www.science.kmitl.ac.th/oldweb/links/department/chem/"  class="nav-item nav-link">ภาควิชาเคมี</a>
-										<a href="http://www.science.kmitl.ac.th/oldweb/links/department/bio/"  class="nav-item nav-link">ภาควิชาชีววิทยา</a>
+										<a href="http://161.246.35.182:8080/links/department/chem/"  class="nav-item nav-link">ภาควิชาเคมี</a>
+										<a href="http://161.246.35.182:8080/links/department/bio/"  class="nav-item nav-link">ภาควิชาชีววิทยา</a>
 										<a href="http://www.comsci.science.kmitl.ac.th/cs/"  class="nav-item nav-link">ภาควิชาวิทยาการคอมพิวเตอร์</a>
 										<a href="http://www.math.sci.kmitl.ac.th" class="nav-item nav-link">ภาควิชาคณิตศาสตร์</a>
 										<a href="http://physics.kmitl.ac.th/" class="nav-item nav-link">ภาควิชาฟิสิกส์</a>
-										<a href="http://www.science.kmitl.ac.th/oldweb/links/department/Webstat59/index.html"  class="nav-item nav-link">ภาควิชาสถิติ</a>
+										<a href="http://161.246.35.182:8080/links/department/Webstat59/index.html"  class="nav-item nav-link">ภาควิชาสถิติ</a>
 
                                         </div>
                                     </div>
@@ -125,7 +125,7 @@
 
                 <!-- <div class="btn-group" >
                     <a class="btn btn-warning btn-sm"> TH </a>
-                   <a href="http://www.science.kmitl.ac.th/oldweb/SC-Eng/index.php" class="btn btn-warning btn-sm">
+                   <a href="http://161.246.35.182:8080/SC-Eng/index.php" class="btn btn-warning btn-sm">
                     EN
                   </a>
                 </div> -->

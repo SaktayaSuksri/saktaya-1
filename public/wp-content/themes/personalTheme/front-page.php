@@ -234,7 +234,7 @@
 					</div>
 				</div>
 				<div class="carousel-item">
-					<a href="http://www.science.kmitl.ac.th/oldweb/Downloads/img-530152545.pdf">
+					<a href="http://161.246.35.182:8080/Downloads/img-530152545.pdf">
 						<img class="second-slide d-block img-fluid" style=" min-width: 100%; object-position: 50% 50%; object-fit: fill;" src="http://www.science.kmitl.ac.th/wp-content/themes/personalTheme/images/news/096.jpg"
 					 alt="0 slide">
 					 </a>
@@ -793,7 +793,7 @@
 				<div class="card-img-overlay d-flex" style="background:rgba(39, 39, 39, 0.664); color: white">
 					<div class="text-center my-auto mx-auto">
 						<h4 class="card-title">ภาควิชาเคมี</h4>
-						<a href="http://www.science.kmitl.ac.th/oldweb/links/department/chem/" class="btn btn-primary">เข้าสู่เว็บไซต์</a>
+						<a href="http://161.246.35.182:8080/links/department/chem/" class="btn btn-primary">เข้าสู่เว็บไซต์</a>
 					</div>
 				</div>
 			</div>
@@ -803,7 +803,7 @@
 				<div class="card-img-overlay d-flex" style="background:rgba(39, 39, 39, 0.664); color: white">
 					<div class="text-center my-auto mx-auto">
 						<h4 class="card-title">ภาควิชาชีววิทยา</h4>
-						<a href="http://www.science.kmitl.ac.th/oldweb/links/department/bio/" class="btn btn-primary">เข้าสู่เว็บไซต์</a>
+						<a href="http://161.246.35.182:8080/links/department/bio/" class="btn btn-primary">เข้าสู่เว็บไซต์</a>
 					</div>
 				</div>
 			</div>
@@ -846,7 +846,7 @@
 				<div class="card-img-overlay d-flex" style="background:rgba(39, 39, 39, 0.664); color: white">
 					<div class="text-center my-auto mx-auto">
 						<h4 class="card-title">ภาควิชาสถิติ</h4>
-						<a href="http://www.science.kmitl.ac.th/oldweb/links/department/Webstat59/index.html" class="btn btn-primary">เข้าสู่เว็บไซต์</a>
+						<a href="http://161.246.35.182:8080/links/department/Webstat59/index.html" class="btn btn-primary">เข้าสู่เว็บไซต์</a>
 					</div>
 				</div>
 			</div>
@@ -931,7 +931,7 @@
 		<div class="row">
 			<div class="col-md-4 offset-md-2">
 				<div class="team-img rounded-corner border thumbnail text-center" style="margin:1rem; padding-top:1rem;">
-					<img class="card-img " style=" object-fit:cover; width:10rem; height:14rem;" src="http://www.science.kmitl.ac.th/oldweb/images/aboutImg/executive2017/4.jpg">
+					<img class="card-img " style=" object-fit:cover; width:10rem; height:14rem;" src="http://161.246.35.182:8080/images/aboutImg/executive2017/4.jpg">
 					<div class="team-content">
 						<h5>ผศ.วิสันต์ ตั้งวงษ์เจริญ</h5>
 						<div class="border-team"></div>
