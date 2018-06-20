@@ -1183,6 +1183,8 @@ angular.module('app').controller('news', function ($scope, $sce, NgTableParams, 
     $scope.modal_update_news_data.detailFull = $scope.quill_detail;
     $scope.modal_update_news_data.topicShort = $scope.quill_title_yo;
     $scope.modal_update_news_data.detailShort = $scope.quill_detail_yo;
+    
+
     //$scope.modal_update_news_data.datetimePost = $scope.quill_datetimePost;
     //$scope.modal_update_news_data.datetimeExpire = $scope.quill_datetimeExpire;
 
@@ -1366,7 +1368,6 @@ angular.module('app').controller('news', function ($scope, $sce, NgTableParams, 
   }
 
   $scope.modal_update_news = function (item) {
-    
    
 
 
@@ -1380,7 +1381,12 @@ angular.module('app').controller('news', function ($scope, $sce, NgTableParams, 
     $scope.quill_detail_yo = $scope.modal_update_news_data.detailShort;
     $scope.quill_datetimePost = $scope.modal_update_news_data.datetimePost;
     $scope.quill_datetimeExpire =  $scope.modal_update_news_data.datetimeExpire;
+    
 
+    if ($scope.quill_datetimeExpire == null){
+      $scope.isDatetimeExpire = true;
+    }
+  
     console.log("$scope.modal_update_news_data   =  " + JSON.stringify($scope.modal_update_news_data));
     $('#modal_update_news').modal('show');
 

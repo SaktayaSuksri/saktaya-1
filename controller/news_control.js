@@ -32,6 +32,8 @@ module.exports = {
                 "author": news.author,
                 "isPinned": news.isPinned,
                 "resourceId": news.resourceId,
+                "targetTypeId": news.targetTypeId,
+                "departmentId": news.departmentId,
                 "tag": news.tag,
                 "datetimePost": news.datetimePost,
                 "datetimeExpire": news.datetimeExpire,

@@ -327,12 +327,8 @@ angular.module('app').controller('news', function ($sce, $scope, $filter, $q, $h
             isPosted: "false",
             isPreview: "true",
             targetTypeId: "0",
-            needSort: 'true'
-
-
-
-
-
+            needSort: 'true',
+         
         }
 
         //console.log(" before get_news  "+ JSON.stringify(dataObj));
@@ -348,6 +344,8 @@ angular.module('app').controller('news', function ($sce, $scope, $filter, $q, $h
                 else {
                     // ////console.log(" get_news  "+ JSON.stringify(data));
                     $scope.news_list_1 = [];
+                    console.log( $scope.news_list_1);
+                    
                     data.message.forEach(function (item) {
                         item.topicPicture = './assets/img/image_placeholder.jpg';
                         $scope.news_list_1.push(item)
