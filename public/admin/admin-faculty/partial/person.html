@@ -270,136 +270,143 @@
  <!-- ============================== End new personal =========================================== -->
 
  <!-- ====================================Edit edit personnal =============================================== -->
-   <div id="edit_personel_profile" class="modal fade" tabindex="-1" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-     <div class="modal-dialog modal-lg" role="document">
-       <div class="modal-content">
-         <!-- Modal Header -->
-         <div class="modal-header">
-           <h3 class="modal-title ">แก้ไขข้อมูลบุคคลากร</h3>
-           <button type="button" class="close" data-dismiss="modal">&times;</button>
-         </div>
-         <!-- Modal body -->
-         <div class="modal-body">
-           <div id="form-container" class="container">
-                 <div class="fileinput text-center fileinput-new" data-provides="fileinput">
-                     <div class="fileinput-new thumbnail">
-                         <img src="../../assets/img/image_placeholder.jpg" ng-hide="filepreview" style=" width: 100%;">
-                         <img ng-src="{{filepreview}}" ng-show="filepreview" style=" width: 100%;">
-                         <label class="btn btn-rose btn-round">
-                             Browse <input type="file" style="display: none !important;" filepreview="filepreview" fileinput="file">
-                         </label>
-                     </div>
-                   </div>
-               <div class="row">
-                   <label class="col-sm-2 label-on-left">ชื่อ - นามสกุล</label>
-                       <div class="col-sm-10">
-                         <div class="form-group label-floating is-empty">
-                             <label class="control-label"></label>
-                                 <input type="text" class="form-control" placeholder="ชื่อ - นามสกุล" ng-model = "edit_personel_name">
-                                   <span class="material-input"></span></div>
-                           </div>
-               </div>
+ <div id="edit_personel_profile" class="modal fade" tabindex="-1" aria-labelledby="myLargeModalLabel" aria-hidden="true" role="dialog">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h3 class="modal-title ">เพิ่มข้อมูลบุคคลากร</h3>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <!-- Modal body -->
+      <div class="modal-body">
+        <div id="form-container" class="container">
+              <div class="fileinput text-center fileinput-new" data-provides="fileinput">
+                  <div class="fileinput-new thumbnail">
+                      <img src="{{edit_pictureProfile}}" ng-hide="edit_pictureProfile" style=" width: 100%;">
+                      <img ng-src="{{edit_pictureProfile}}" ng-show="edit_pictureProfile" style=" width: 100%;">
+                      <label class="btn btn-rose btn-round">
+                          Browse <input type="file" style="display: none !important;" filepreview="edit_pictureProfile" fileinput="file">
+                      </label>
+                  </div>
+                </div>
+            <div class="row">
+                <label class="col-sm-2 label-on-left">ชื่อ - นามสกุล</label>
+                    <div class="col-sm-10">
+                      <div class="form-group label-floating is-empty">
+                          <label class="control-label"></label>
+                              <input type="text" class="form-control" placeholder="ชื่อ - นามสกุล" ng-model = "edit_personel_name">
+                                <span class="material-input"></span></div>
+                        </div>
+            </div>
 
-               <div class="row">
-                   <label class="col-sm-2 label-on-left">ข้อมูลการศึกษา</label>
-                       <div class="col-sm-10">
-                         <div class="form-group label-floating is-empty">
-                             <label class="control-label"></label>
-                                 <input type="text" class="form-control" placeholder="ข้อมูลการศึกษา" ng-model = "edit_education">
-                                   <span class="material-input"></span></div>
-                           </div>
-               </div>
-               <div class="row">
-                     <label class="col-sm-2 label-on-left">ตำแหน่งงาน</label>
-                         <div class="col-sm-10">
-                           <div class="form-group label-floating is-empty">
-                               <label class="control-label"></label>
-                               <input type="text" class="form-control" placeholder="ตำแหน่งงาน" ng-model = "edit_position">
-                               <span class="help-block">เช่น หัวหน้าภาควิชา รองหัวหน้าภาควิชา</span>
-                               <span class="material-input"></span></div>
-                             </div>
-               </div>
-               <div class="row">
-                   <label class="col-sm-2 label-on-left">ความเชี่ยวชาญ</label>
-                       <div class="col-sm-10">
-                         <div class="form-group label-floating is-empty">
-                             <label class="control-label"></label>
-                                 <input type="text" class="form-control" placeholder="ความเชี่ยวชาญ" ng-model = "edit_expertise">
-                                   <span class="material-input"></span></div>
-                           </div>
-               </div>
+            <div class="row">
+                <label class="col-sm-2 label-on-left">ข้อมูลการศึกษา</label>
+                    <div class="col-sm-10">
+                      <div class="form-group label-floating is-empty">
+                          <label class="control-label"></label>
+                              <input type="text" class="form-control" placeholder="ข้อมูลการศึกษา" ng-model = "edit_education">
+                                <span class="material-input"></span></div>
+                        </div>
+            </div>
+            <div class="row">
+                  <label class="col-sm-2 label-on-left">ตำแหน่งงาน</label>
+                      <div class="col-sm-10">
+                        <div class="form-group label-floating is-empty">
+                            <label class="control-label"></label>
+                            <input type="text" class="form-control" placeholder="ตำแหน่งงาน" ng-model = "edit_position">
+                            <span class="help-block">เช่น หัวหน้าภาควิชา รองหัวหน้าภาควิชา</span>
+                            <span class="material-input"></span></div>
+                          </div>
+            </div>
+            <div class="row">
+                <label class="col-sm-2 label-on-left">ความเชี่ยวชาญ</label>
+                    <div class="col-sm-10">
+                      <div class="form-group label-floating is-empty">
+                          <label class="control-label"></label>
+                              <input type="text" class="form-control" placeholder="ความเชี่ยวชาญ" ng-model = "edit_expertise">
+                                <span class="material-input"></span></div>
+                        </div>
+            </div>
 
-               <div class="row">
-                 <div class="form-group">
-                       <label for="exampleFormControlTextarea1">รายวิชาที่รับผิดชอบ</label>
-                       <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"  ng-model = "edit_subjects"></textarea>
-                 </div>
-               </div>
-               <div class="row">
-                 <label class="col-sm-2 label-on-left">ห้องพักอาจารย์</label>
-                     <div class="col-sm-10">
-                       <div class="form-group label-floating is-empty">
-                           <label class="control-label"></label>
-                               <input type="text" class="form-control" placeholder="ห้องพักอาจารย์" ng-model = "edit_office_room">
-                                 <span class="material-input"></span></div>
-                         </div>
-               </div>
-               <div class="row">
-                       <label class="col-md-2 label-on-left">E-mail</label>
-                             <div class="col-md-10">
-                                   <div class="form-group label-floating is-empty">
-                                         <label class="control-label"></label>
-                                         <input type="email" class="form-control" placeholder="science@kmitl.ac.th" ng-model = "edit_e_mail">
-                                       <span class="material-input"></span></div>
-                                     </div>
-               </div>
-               <div class="row">
-                       <label class="col-md-2 label-on-left">Home page/web site</label>
-                             <div class="col-md-10">
-                                   <div class="form-group label-floating is-empty">
-                                         <label class="control-label"></label>
-                                         <input type="text" class="form-control" placeholder="www.mywebsite.com" ng-model = "edit_home_page">
-                                       <span class="material-input"></span></div>
-                                     </div>
-               </div>
-               <div class="row">
-                       <label class="col-md-2 label-on-left">เบอร์โทร</label>
-                             <div class="col-md-10">
-                                   <div class="form-group label-floating is-empty">
-                                         <label class="control-label"></label>
-                                         <input type="tel" class="form-control" placeholder="0899999999"  ng-model = "edit_tel_num">
-                                       <span class="material-input"></span></div>
-                                     </div>
-               </div>
-               <div class="row">
-                       <label class="col-md-2 label-on-left">ตำแหน่ง</label>
-                             <div class="col-md-10">
-                                   <div class="form-group label-floating is-empty">
-                                         <label class="control-label"></label>
-                                         <input type="text" class="form-control" placeholder=""  ng-model = "edit_position_id">
-                                       <span class="material-input"></span></div>
-                                     </div>
-               </div>
-               <div class="row">
-                       <label class="col-md-2 label-on-left">ภาควิชา</label>
-                             <div class="col-md-10">
-                                   <div class="form-group label-floating is-empty">
-                                         <label class="control-label"></label>
-                                         <input type="text" class="form-control" placeholder="" ng-model = "edit_department_id">
-                                       <span class="material-input"></span></div>
-                                     </div>
-               </div>
+            <div class="row">
+              <div class="form-group">
+                    <label for="exampleFormControlTextarea1">รายวิชาที่รับผิดชอบ</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"  ng-model = "edit_subjects"></textarea>
+              </div>
+            </div>
+            <div class="row">
+              <label class="col-sm-2 label-on-left">ห้องพักอาจารย์</label>
+                  <div class="col-sm-10">
+                    <div class="form-group label-floating is-empty">
+                        <label class="control-label"></label>
+                            <input type="text" class="form-control" placeholder="ห้องพักอาจารย์" ng-model = "edit_office_room">
+                              <span class="material-input"></span></div>
+                      </div>
+            </div>
+            <div class="row">
+                    <label class="col-md-2 label-on-left">E-mail</label>
+                          <div class="col-md-10">
+                                <div class="form-group label-floating is-empty">
+                                      <label class="control-label"></label>
+                                      <input type="email" class="form-control" placeholder="science@kmitl.ac.th" ng-model = "edit_e_mail">
+                                    <span class="material-input"></span></div>
+                                  </div>
+            </div>
+            <div class="row">
+                    <label class="col-md-2 label-on-left">Home page/web site</label>
+                          <div class="col-md-10">
+                                <div class="form-group label-floating is-empty">
+                                      <label class="control-label"></label>
+                                      <input type="text" class="form-control" placeholder="www.mywebsite.com" ng-model = "edit_home_page">
+                                    <span class="material-input"></span></div>
+                                  </div>
+            </div>
+            <div class="row">
+                    <label class="col-md-2 label-on-left">เบอร์โทร</label>
+                          <div class="col-md-10">
+                                <div class="form-group label-floating is-empty">
+                                      <label class="control-label"></label>
+                                      <input type="tel" class="form-control" placeholder="0899999999"  ng-model = "edit_tel_num">
+                                    <span class="material-input"></span></div>
+                                  </div>
+            </div>
+            <div class="row">
+                    <label class="col-md-2 label-on-left">ตำแหน่ง</label>
+                          <div class="col-md-10">
+                            <select class="form-control" ng-model="edit_position_id">
+                              <option ng-repeat = "position in positionList" value="{{position._id}}"> {{position._id}} - {{position.positionName}}</option>
+                            </select>
+                          </div>
+            </div>
+            <div class="row">
+                    <label class="col-md-2 label-on-left">ภาควิชา</label>
+                          <div class="col-md-10">
+                            <select class="form-control" ng-model="edit_department_id">
+                              <option ng-repeat = "department in departmentList" value="{{department._id}}"> {{department._id}} - {{department.departmentName}}</option>
+                            </select>
+                          </div>
+            </div>
 
-               </div>
-               <div class="row">
-                 <button class="btn btn-primary" type="submit" ng-click = "edit_presonal_submit()">UPDATE</button>
-                 <button class="btn btn-simple" data-dismiss="modal">Cancle</button>
-               </div>
-             </form>
-           </div>
-         </div>
-       </div>
-       </div>
+            <div class="row">
+                    <label class="col-md-2 label-on-left">ส่วนงาน</label>
+                          <div class="col-md-10">
+                            <select class="form-control" ng-model="edit_division_id">
+                              <option ng-repeat = "dvidision in divisionList" value="{{dvidision._id}}"> {{dvidision._id}} - {{dvidision.divisionName}}</option>
+                            </select>
+                          </div>
+            </div>
+            <div class="row">
+              <button class="btn btn-primary" type="submit" ng-click = "edit_presonal_submit()">Save Profile</button>
+              <button class="btn btn-simple" data-dismiss="modal">Cancle</button>
+            </div>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+    </div>
 
   <!-- ============================== End edit personal =========================================== -->
 

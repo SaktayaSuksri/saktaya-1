@@ -113,7 +113,7 @@ module.exports = {
         }
         if (isPosted == "true") {
             queryFlag = true;
-            tmp.push({ "datetimeExpire": { $gte: today } })
+            tmp.push({ $or: [{ "datetimeExpire": { $gte: today } },{ "datetimeExpire": null}] })
         }
         if (isPinned !== "0") {
             queryFlag = true;

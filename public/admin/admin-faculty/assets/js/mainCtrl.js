@@ -792,6 +792,7 @@ angular.module('app').controller('link_management', function ($scope, NgTablePar
 });
 
 angular.module('app').controller('person', function ($scope, NgTableParams, $filter, $q, $http) {
+  
 
   let dataObj = {
     positionId: '0',
@@ -886,12 +887,16 @@ angular.module('app').controller('person', function ($scope, NgTableParams, $fil
     });
   }
 
+
+
+
+  $scope.getPositionsAll();
+  $scope.getDepartmentsAll();
+  $scope.getDivisionsAll();
   // New personel
   $scope.new_personel_profile = function () {
     $('#new_personel_profile').modal('show');
-    $scope.getPositionsAll();
-    $scope.getDepartmentsAll();
-    $scope.getDivisionsAll();
+    
   }
 
   $scope.create_new_presonal_submit = function (item) {
@@ -928,9 +933,35 @@ angular.module('app').controller('person', function ($scope, NgTableParams, $fil
     });
   }
 
+
+
+
+ 
+
   //edit personel
+
+
+
+
+    // $scope.edit_personel_id = "";
+    // $scope.edit_personel_name = "";
+    // $scope.edit_education ="";
+    // $scope.edit_position = "";
+    // $scope.edit_expertise = "";
+    // $scope.edit_subjects = "";
+    // $scope.edit_office_room = "";
+    // $scope.edit_e_mail = "";
+    // $scope.edit_home_page = "";
+    // $scope.edit_tel_num = "";
+    // $scope.edit_position_id = "";
+    // $scope.edit_department_id = "";
+    // $scope.edit_pictureProfile = "";
+    // $scope.edit_division_id = "";
+
   $scope.edit_personel_profile = function (person) {
+  
     $('#edit_personel_profile').modal('show');
+  
     console.log(person);
     $scope.edit_personel_id = person._id;
     $scope.edit_personel_name = person.personelName;
@@ -944,14 +975,17 @@ angular.module('app').controller('person', function ($scope, NgTableParams, $fil
     $scope.edit_tel_num = person.telNumber;
     $scope.edit_position_id = person.positionId;
     $scope.edit_department_id = person.departmentId;
+    $scope.edit_pictureProfile = person.picture;
+    $scope.edit_division_id = person.divisionId;
   }
+
   $scope.edit_presonal_submit = function () {
     let personelObj = {
       personelId: $scope.edit_personel_id,
       personelName: $scope.edit_personel_name,
-      position: $scope.edit_position,
-      picture: "",
       education: $scope.edit_education,
+      position: $scope.edit_position,
+      picture: $scope.edit_pictureProfile,
       expertise: $scope.edit_expertise,
       subjects: $scope.edit_subjects,
       officeRoom: $scope.edit_office_room,
@@ -959,7 +993,8 @@ angular.module('app').controller('person', function ($scope, NgTableParams, $fil
       homepage: $scope.edit_home_page,
       telNumber: $scope.edit_tel_num,
       positionId: $scope.edit_position_id,
-      departmentId: $scope.edit_department_id
+      departmentId: $scope.edit_department_id,
+      divisionId: $scope.edit_division_id
     };
     console.log(personelObj);
     let res = $http.post('/api/editPersonel/', personelObj);
