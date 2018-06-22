@@ -54,12 +54,6 @@ angular.module('app').config(function($stateProvider, $urlRouterProvider) {
       templateUrl: "./partial/yearly-report.html"
     })
 
-    .state('graduate', {
-      url: '/graduate',
-      templateUrl: "./partial/graduate.html"
-    })
-
-
     .state('news_container', {
       url: '/news_container',
       templateUrl: "./partial/news_container.html"
@@ -128,7 +122,7 @@ angular.module('app')
 
   }]);
 angular.module('app').controller('global', function($scope, $http, api_manage,$sce) {
-
+ 
   $scope.trustAsHtml = function(string) {
     //console.log("str = "+string)
         return $sce.trustAsHtml(string);
@@ -261,7 +255,7 @@ $scope.get_catagory = function(){
           
           $scope.news_list.forEach(function(item){
            
-            item.topicPicture  = 'http://161.246.35.182:2001/assets/img/image_placeholder.jpg';
+            item.topicPicture  = 'http://www.science.kmitl.ac.th/assets/img/image_placeholder.jpg';
             
                         
           });
@@ -348,6 +342,22 @@ angular.module('app').controller('youtube_box', function($scope, $filter, $q, $h
 
 //MrPondS created 21-03-2018
 angular.module('app').controller('personelCtrl', function($scope, $filter, $q, $http, youtubeFactory) {
+  
+  $scope.personelDataItem = null;
+  $scope.showDetail = function(personelData){
+    console.log("showDetail");
+    $scope.personelDataItem = personelData;
+    $('#personel_modal').modal('show')
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
   // alert("personelCtrl started");
   //get list of personel
   let dataObj = {
@@ -366,6 +376,7 @@ angular.module('app').controller('personelCtrl', function($scope, $filter, $q, $
       } else {
         //console.log(data);
         $scope.personel_list = data.message;
+        console.log($scope.personel_list);
         ////console.log('$scope.news_list  =  ' + JSON.stringify($scope.personel_list))
       }
     })
@@ -400,7 +411,7 @@ $scope.init = function(){
 
 
           tag:"0",
-          limit:8,
+          limit:0,
           isPinned :"0",
           isPosted:"false",
           isPreview:"true",

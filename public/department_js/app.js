@@ -198,7 +198,7 @@ $scope.get_news = function(){
         $scope.news_list = data.message
         $scope.news_list.forEach(function(item){
           
-           item.topicPicture  = 'http://161.246.35.182:2001/assets/img/image_placeholder.jpg';
+           item.topicPicture  = 'http://www.science.kmitl.ac.th/assets/img/image_placeholder.jpg';
            
                        
          });
@@ -267,7 +267,7 @@ $scope.get_news_slide = function(){
 
             $scope.news_list_slide.forEach(function(item){
               
-               item.topicPicture  = 'http://161.246.35.182:2001/assets/img/image_placeholder.jpg';
+               item.topicPicture  = 'http://www.science.kmitl.ac.th/assets/img/image_placeholder.jpg';
                
                            
              });

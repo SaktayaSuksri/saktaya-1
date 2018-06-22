@@ -1,0 +1,446 @@
+<?php 
+	get_header();
+	
+	//Template Name:About
+	?>
+
+<main role="main">
+
+	<div id="header-carousel" class="carousel slide" data-ride="carousel">
+		<ol class="carousel-indicators">
+			<li data-target="#header-carousel" data-slide-to="0" class="active"></li>
+			<li data-target="#header-carousel" data-slide-to="1"></li>
+			<li data-target="#header-carousel" data-slide-to="2"></li>
+		</ol>
+		<div class="carousel-inner">
+			<div class="carousel-item active">
+				<img class="first-slide d-block img-fluid" style="object-position: 50% 50%;
+			object-fit: scale-down" src="<?php echo get_template_directory_uri(); ?>/assets/images/carousel1.png" alt="First slide">
+				<div class="container">
+					<div class="carousel-caption" id="banner">
+						<h1>
+							ก้าวสู่ยุคใหม่ คณะวิทยาศาสตร์
+						</h1>
+						<p>
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="carousel-item">
+				<img class="second-slide d-block img-fluid" src="<?php echo get_template_directory_uri(); ?>/assets/images/carousel2_2.png"
+				 alt="Second slide">
+				<div class="container">
+					<div class="carousel-caption text-left">
+						<!-- <h1>
+							<span>มุ่งเป็นสถาบันแนวหน้าในเอเชีย ด้านวิทยาศาสตร์และเทคโนโลยี</span>
+						</h1>
+						<div class="carousel-text">
+							มุ่งมั่นให้การศึกษาและวิจัย เพื่อผลิตทรัพยากรมนุษย์ที่มีความรู้ทางด้านวิทยาศาสตร์และเทคโนโลยี ควบคู่จริยธรรม และรักษาไว้ซึ่งศิลปวัฒนธรรมอันดีของประเทศ
+						</div> -->
+					</div>
+				</div>
+			</div>
+			<div class="carousel-item">
+				<img class="third-slide d-block img-fluid" src="<?php echo get_template_directory_uri(); ?>/assets/images/carousel3_2.png"
+				 alt="Third slide">
+				<div class="container">
+					<div class="carousel-caption text-left">
+						<!-- <h1>
+							<span>ผลิตบัณฑิตที่มีคุณภาพเพื่อตอบสนองความต้องการของประเทศ</span>
+						</h1>
+						<div class="carousel-text">
+							สร้างบัณฑิตเพื่อตอบสนองต่อการพัฒนาด้านอุตสาหกรรมและ เศรษฐกิจของประเทศ โดยคำนึงถึงคุณภาพชีวิตและสิ่งแวดล้อมที่ดีเป็นสำคัญ
+						</div> -->
+					</div>
+				</div>
+			</div>
+		</div>
+		<a class="carousel-control-prev" href="#header-carousel" role="button" data-slide="prev">
+			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+			<span class="sr-only">Previous</span>
+		</a>
+		<a class="carousel-control-next" href="#header-carousel" role="button" data-slide="next">
+			<span class="carousel-control-next-icon" aria-hidden="true"></span>
+			<span class="sr-only">Next</span>
+		</a>
+	</div>
+
+	<div class="container content-row page-content">
+		<h2>ข่าวประชาสัมพันธ์</h2>
+		<div id="carousel" style="margin-top:0rem" class="carousel slide" data-ride="carousel">
+			<div class="carousel-inner">
+				<ol class="carousel-indicators">
+					<li data-target="#carousel" data-slide-to="1"></li>
+					<li data-target="#carousel" data-slide-to="2"></li>
+					<li data-target="#carousel" data-slide-to="3"></li>
+				</ol>
+				<div class="carousel-item active">
+					
+					<a href="https://www.facebook.com/photo.php?fbid=2039547966060478&set=pcb.2039548029393805&type=3&theater">
+					<img class="second-slide d-block img-fluid" style=" min-width: 100%; object-position: 50% 50%; object-fit: fill;" src="http://www.science.kmitl.ac.th/wp-content/uploads/2018/01/1IMAGE.jpg"
+					 alt="Second slide">
+					</a>
+					<div class="container d-none d-xs-none d-sm-none d-lg-block">
+						<div class="carousel-caption">
+						<h3> รางวัลครูผู้สอนดีเด่น ประจําปี 2561
+								</h3>
+								<div class=""><p>
+								ผศ.สิริลักษณ์ อนันต์สถิตย์สิน ภาควิชาวิทยาการคอมพิวเตอร์ คณะวิทยาศาสตร์ ได้รับรางวัลครูผู้สอนดีเด่น ประจําปี 2561 จากคณะครุศาสตร์อุตสาหกรรมและเทคโนโลยี สจล.</p></div>
+						</div>
+					</div>
+				</div>
+				<div class="carousel-item">
+					<a href= "https://web.facebook.com/photo.php?fbid=2039552746060000&set=pcb.2039557539392854&type=3&theater&_rdc=1&_rdr">
+						<img class="third-slide d-block img-fluid" style=" min-width: 100%; object-position: 50% 50%; object-fit: fill;" src="http://www.science.kmitl.ac.th/wp-content/uploads/2018/01/2IMAGE.jpg"
+					 alt="Third slide">
+					 </a>
+					<div class="container d-none d-xs-none d-sm-none d-lg-block " >
+						<div class="carousel-caption ">
+							<h3>
+								คณบดีและทีมผู้่บริหารพูดคุยความร่วมมือกับผู้บริหารโรงเรียนนานาชาติ PAN Asia International School</h3>
+								<p>
+								</p>
+							
+						</div>
+					</div>
+				</div>
+				<div class="carousel-item">
+					<img class="third-slide d-block img-fluid" style=" min-width: 100%; object-position: 50% 50%; object-fit: fill;" src="http://www.science.kmitl.ac.th/wp-content/uploads/2018/01/26696280_1636823866374135_2145996507_n.jpg"
+					 alt="Third slide">
+					<div class="container d-none d-xs-none d-sm-none d-lg-block " >
+						<div class="carousel-caption">
+							<h3>
+								ทีมผู้บริหารเข้าพบอธิการบดีเพื่อรับนโยบายและพรปีใหม่ </h3>
+							<p>
+								คณบดีคณะวิทยาศาสตร์ รศ.ดร.อิทธิพล แจ้งชัด นำทีมทีมผู้บริหารเข้าพบท่านอธิการบดี ศ.ดร.สุชัชวีร์ สุวรรณสวัสดิ์ เพื่อรับนโยบายและรับพรปีใหม่
+								ในวันที่ 4 มกราคม 2561</p>
+						</div>
+					</div>
+				</div>
+				<a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
+					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+					<span class="sr-only">Previous</span>
+				</a>
+				<a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
+					<span class="carousel-control-next-icon" aria-hidden="true"></span>
+					<span class="sr-only">Next</span>
+				</a>
+			</div>
+		</div>
+		<div class="row h-100 align-items-stretch">
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-4" style="margin-top:1rem">
+				<div class="card card-block h-100" style="height:100%">
+					<img class="card-img-top d-xs-none d-sm-none d-md-block" src="http://www.science.kmitl.ac.th/wp-content/uploads/2018/01/26172434_2024537597561515_3044296094001883648_o-1-1024x423.jpg"
+					 alt="Card image cap">
+					<div class="card-body">
+						<h4 class="card-title">ทีมผู้บริหาร เข้าพบทีมผู้บริหารคณะการบริหารและจัดการ เนื่องในเทศกาลปีใหม่</h4>
+						<p class="card-text">ทีมผู้บริหาร เข้าพบและพูดคุยความร่วมมือ พร้อมสวัสดีปีใหม่คณบดีและทีมบริหารคณะการบริหารและจัดการ เมื่อวันที่ 3 มกราคม
+							2561</p>
+
+					</div>
+					<div class="card-footer">
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-4" style="margin-top:1rem">
+				<div class="card card-block h-100">
+					<img class="card-img-top d-xs-none d-sm-none d-md-block" src="http://www.science.kmitl.ac.th/wp-content/uploads/2018/01/26733141_1636825629707292_579217441_o-e1515433278871-1024x443.jpg"
+					 alt="Card image cap">
+					<div class="card-body">
+						<h4 class="card-title">เจ้าหน้าที่สำนักงานคณบดี เข้าสวัสดีปีใหม่คณบดี</h4>
+						<p class="card-text">
+						</p>
+					</div>
+					<div class="card-footer">
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-4" style="margin-top:1rem">
+				<div class="card card-block h-100">
+					<img class="card-img-top d-xs-none d-sm-none d-md-block " src="http://161.246.35.182:8080/images/slideshow/December2017/01.jpg"
+					 alt="Card image cap">
+					<div class="card-body">
+						<h4 class="card-title">งานเลี้ยงส่งท้ายปีเก่าตอนรับปีใหม่ คณะวิทยาศาสตร์ </h4>
+						<p class="card-text">ในวันอังคารที่ 26 ธันวาคม 2560 theme"วิดยาฮาวายสไตล์"
+						</p>
+					</div>
+					<div class="card-footer">
+						<a href="https://www.facebook.com/media/set/?set=a.185686745504591.1073741835.145367872869812&type=1&l=cb8abeb65f" class="btn btn-primary">อ่านต่อ...</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row h-100 align-items-stretch">
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-4" style="margin-top:1rem">
+				<div class="card card-block h-100">
+					<img class="card-img-top d-xs-none d-sm-none d-md-block" src="http://161.246.35.182:8080/images/slideshow/December2017/%E0%B8%99%E0%B8%B2%E0%B8%A2%E0%B8%9B%E0%B8%90%E0%B8%A1%E0%B8%9E%E0%B8%87%E0%B8%A9%E0%B9%8C%20%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%AA%E0%B8%A1%E0%B8%AA%E0%B8%B4%E0%B8%87%E0%B8%AB%E0%B9%8C.jpg"
+					 alt="Card image cap">
+					<div class="card-body">
+						<h4 class="card-title">นักศึกษาระดับบัณฑิตศึกษา ได้รับรางวัลชนะเลิศอันดับที่ 1</h4>
+						<p class="card-text">นายปฐมพงษ์ ประสมสิงห์ นักศึกษาปริญญาโท สาขาวิชาวิทยาการคอมพิวเตอร์ ภาควิชาวิทยาการคอมพิวเตอร์ ได้รับรางวัลชนะเลิศ โล่ห์พระราชทาน...
+							2017 : IDT2017)
+						</p>
+					</div>
+					<div class="card-footer">
+						<a href="http://www.kmitl.ac.th/th/detail/2017-12-20-15-25-05" class="btn btn-primary">อ่านต่อ...</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-4" style="margin-top:1rem">
+				<div class="card card-block h-100">
+					<img class="card-img-top d-xs-none d-sm-none d-md-block " src="http://161.246.35.182:8080/images/slideshow/December2017/%E0%B8%99.%E0%B8%AA.%20%E0%B8%8A%E0%B8%99%E0%B8%B4%E0%B8%A8%E0%B8%B2%20%20%E0%B8%99%E0%B8%A7%E0%B8%99%E0%B8%B4%E0%B8%A5.jpg"
+					 alt="Card image cap">
+					<div class="card-body">
+						<h4 class="card-title">ทีมวิจัยของ รศ.ดร.นราธิป ได้รับรางวัล Best Poster Presentation Award</h4>
+						<p class="card-text">ทีมวิจัยของรองศาสตราจารย์ ดร.นราธิป วิทยากร ภาควิชาเคมี ได้รับรางวัล Best Poster Presentation Award...
+						</p>
+					</div>
+					<div class="card-footer">
+						<a href="http://www.kmitl.ac.th/th/detail/2017-12-18-08-12-20" class="btn btn-primary">อ่านต่อ...</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-4" style="margin-top:1rem">
+				<div class="card card-block h-100" style="height:100%">
+					<img class="card-img-top d-xs-none d-sm-none d-md-block" src="http://161.246.35.182:8080/images/slideshow/November2017/%E0%B8%99.%E0%B8%AA.%20%E0%B8%A7%E0%B8%B4%E0%B8%8A%E0%B8%8A%E0%B8%B8%E0%B8%94%E0%B8%B2%20%E0%B8%A0%E0%B8%B1%E0%B8%97%E0%B8%A3%E0%B8%81%E0%B8%B8%E0%B8%A5%E0%B8%8A%E0%B8%B1%E0%B8%A2.jpg"
+					 alt="Card image cap">
+					<div class="card-body">
+						<h4 class="card-title">นักศึกษาระดับบัณฑิตศึกษา ได้รับรางวัลชมเชย (งานวิจัยดีเด่น)</h4>
+						<p class="card-text">นางสาววิชชุดา ภัทรกุลชัย นักศึกษาระดับบัณฑิตศึกษา หลักสูตร วท.ม.เทคโนโลยีชีวภาพ ภาควิชาชีววิทยา ได้รับรางวัลชมเชย (งานวิจัยดีเด่น)
+							จากผลงานทางวิชาการเรื่อง..."</p>
+
+					</div>
+					<div class="card-footer">
+						<a href="http://www.kmitl.ac.th/th/detail/2017-11-28-08-34-17" class="btn btn-primary">อ่านต่อ...</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+
+	<div style="background:gold">
+	<br>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 col-md-offset-2 "> 
+					<h3 class="title">Let's Change @ Science KMITL - Episode 1: The Overture (โหมโรง) </h3>
+						<h5 >โดย พี่อ้อม รศ.ดร.อิทธิพล แจ้งชัด คณบดีคณะวิทยาศาสตร์ สจล.</h5>
+				</div>
+				<div class="col-md-6 col-md-offset-2 text-right">
+				<div class="embed-responsive embed-responsive-16by9"> 
+						<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/pyD5n4MRmog" allowfullscreen>
+						</iframe>
+					</div>
+						
+				</div>
+			</div>
+		</div>
+		</br>
+	</div>
+
+	<div id="page-break" style="background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url('<?php echo get_template_directory_uri(); ?>/assets/images/bangkok.jpg');">
+		<div class="container">
+			<h2>เพราะเราเชื่อว่า</h2>
+			<h1>การศึกษา วิจัย ด้านวิทยาศาสตร์และเทคโนโลยีเป็นรากฐานที่ดีของการพัฒนาประเทศ</h1>
+		</div>
+	</div>
+	<div class="container page-content" style "padding-top: 4rem">
+		<span style="text-align:center">
+			<h1>หลักสูตร</h1>
+			<h4>เราจัดสอนหลักสูตรในระดับอุดมศึกษาทั้งระดับปริญญาตรี ระดับปริญญาโท และระดับปริญญาเอก</h4>
+			<hr>
+		</span>
+		</br>
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+				<div class="card card-inverse text-center align-middle" style="margin-top:1rem; background: rgba(39, 39, 39, 0.664); border-color: #333;">
+					<img class="card-img" src="<?php echo get_template_directory_uri(); ?>/assets/images/undergrad.png" alt="Card image">
+					<div class="card-img-overlay d-flex" style="background:rgba(39, 39, 39, 0.664); color: white">
+						<div class="text-center my-auto mx-auto text-center">
+							<h4 class="card-title">ปริญญาตรี</h4>
+							<h5 class="card-text">จุดเริ่มต้นการพัฒนาความรู้และทักษะวิชาชีพ</h5>
+							<a href="http://www3.reg.kmitl.ac.th/curriculum/faculty05b.php" class="btn btn-primary">รายละเอียด</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+				<div class="card card-inverse text-center" style="margin-top:1rem; background: rgba(39, 39, 39, 0.664); border-color: #333;">
+					<img class="card-img" src="<?php echo get_template_directory_uri(); ?>/assets/images/grad.png" alt="Card image">
+					<div class="card-img-overlay d-flex" style="background:rgba(39, 39, 39, 0.664); color: white">
+						<div class="text-center my-auto mx-auto text-center">
+							<h4 class="card-title">ปริญญาโท</h4>
+							<h5 class="card-text">เพิ่มพูนทักษะการวิจัย ต่อยอดความรู้เฉพาะด้าน</h5>
+							<a href="http://www3.reg.kmitl.ac.th/curriculum/faculty05g.php" class="btn btn-primary">รายละเอียด</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+				<div class="card card-inverse text-center" style="margin-top:1rem; background: rgba(39, 39, 39, 0.664); border-color: #333;">
+					<img class="card-img" src="<?php echo get_template_directory_uri(); ?>/assets/images/phd.png" alt="Card image">
+					<div class="card-img-overlay d-flex" style="background:rgba(39, 39, 39, 0.664); color: white">
+						<div class="text-center my-auto mx-auto text-center">
+							<h4 class="card-title">ปริญญาเอก</h4>
+							<h5 class="card-text">สร้างความรู้ใหม่อย่างไร้ขีดจำกัด</h5>
+							<a href="http://www3.reg.kmitl.ac.th/curriculum/faculty05g.php" class="btn btn-primary">รายละเอียด</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+	<div class="container page-content" style "padding-top: 4rem">
+		<span style="text-align:center">
+			<h1>ภาควิชา</h1>
+			<hr>
+		</span>
+		<div class="card-deck">
+			<div class="card card-inverse text-center align-middle" style="margin-top:1rem; background: rgba(39, 39, 39, 0.664); border-color: #333;">
+				<img class="card-img" width="308px" height="180px" src="http://study.com/cimages/course-image/praxis-ii-chemistry-test_117894_large.jpg"
+				 alt="Card image">
+				<div class="card-img-overlay d-flex" style="background:rgba(39, 39, 39, 0.664); color: white">
+					<div class="text-center my-auto mx-auto">
+						<h4 class="card-title">ภาควิชาเคมี</h4>
+						<a href="http://161.246.35.182:8080/links/department/chem/" class="btn btn-primary">เข้าสู่เว็บไซต์</a>
+					</div>
+				</div>
+			</div>
+			<div class="card card-inverse text-center align-middle" style="margin-top:1rem; background: rgba(39, 39, 39, 0.664); border-color: #333;">
+				<img class="card-img" width="308px" height="180px" src="https://scienceofsingularity.files.wordpress.com/2014/04/58945-neural-cell-electricity.jpg"
+				 alt="Card image">
+				<div class="card-img-overlay d-flex" style="background:rgba(39, 39, 39, 0.664); color: white">
+					<div class="text-center my-auto mx-auto">
+						<h4 class="card-title">ภาควิชาชีววิทยา</h4>
+						<a href="http://161.246.35.182:8080/links/department/bio/" class="btn btn-primary">เข้าสู่เว็บไซต์</a>
+					</div>
+				</div>
+			</div>
+			<div class="card card-inverse text-center align-middle" style="margin-top:1rem; background: rgba(39, 39, 39, 0.664); border-color: #333;">
+				<img class="card-img" width="308px" height="180px" src="https://www.joshmatthews.net/cusec16/pictures/shutterstock_124758646-copy.jpg"
+				 alt="Card image">
+				<div class="card-img-overlay d-flex" style="background:rgba(39, 39, 39, 0.664); color: white">
+					<div class="text-center my-auto mx-auto">
+						<h4 class="card-title">ภาควิชาวิทยาการคอมพิวเตอร์</h4>
+						<a href="http://www.comsci.science.kmitl.ac.th/cs/" class="btn btn-primary">เข้าสู่เว็บไซต์</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		</br>
+		<div class="card-deck">
+			<div class="card card-inverse text-center align-middle" style="margin-top:1rem; background: rgba(39, 39, 39, 0.664); border-color: #333;">
+				<img class="card-img" width="308px" height="180px" src="https://www.dailywire.com/sites/default/files/styles/article_full/public/uploads/2017/08/math.jpg?itok=vlqwg76Q"
+				 alt="Card image">
+				<div class="card-img-overlay d-flex" style="background:rgba(39, 39, 39, 0.664); color: white">
+					<div class="text-center my-auto mx-auto">
+						<h4 class="card-title">ภาควิชาคณิตศาสตร์ประยุกต์</h4>
+						<a href="http://www.math.sci.kmitl.ac.th" class="btn btn-primary">เข้าสู่เว็บไซต์</a>
+					</div>
+				</div>
+			</div>
+			<div class="card card-inverse text-center align-middle" style="margin-top:1rem; background: rgba(39, 39, 39, 0.664); border-color: #333;">
+				<img class="card-img" width="308px" height="180px" src="https://www.phys.soton.ac.uk/sites/www.phys.soton.ac.uk/files/Light1.jpg"
+				 alt="Card image">
+				<div class="card-img-overlay d-flex" style="background:rgba(39, 39, 39, 0.664); color: white">
+					<div class="text-center my-auto mx-auto">
+						<h4 class="card-title">ภาควิชาฟิสิกส์ประยุกต์</h4>
+						<a href="http://physics.kmitl.ac.th/" class="btn btn-primary">เข้าสู่เว็บไซต์</a>
+					</div>
+				</div>
+			</div>
+			<div class="card card-inverse text-center align-middle" style="margin-top:1rem; background: rgba(39, 39, 39, 0.664); border-color: #333;">
+				<img class="card-img" width="308px" height="180px" src="http://www.diaglobal.org/en/~/media/americas/images/hero/1024x576/2017/17008-1024x576.jpg"
+				 alt="Card image">
+				<div class="card-img-overlay d-flex" style="background:rgba(39, 39, 39, 0.664); color: white">
+					<div class="text-center my-auto mx-auto">
+						<h4 class="card-title">ภาควิชาสถิติประยุกต์</h4>
+						<a href="http://161.246.35.182:8080/links/department/Webstat59/index.html" class="btn btn-primary">เข้าสู่เว็บไซต์</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="container page-content" id="personel-section" style "padding-top: 4rem">
+		<span style="text-align:center">
+			<h1>บุคลากร</h1>
+			<hr>
+		</span>
+		</br>
+		<div class="row">
+		<div class="col align-self-center">
+				<div class="team-img rounded-corner border thumbnail text-center" style="margin:1rem; padding-top:1rem;">
+					<img class="card-img " style=" object-fit:cover; width:10rem; height:14rem;" src="http://www.science.kmitl.ac.th/wp-content/uploads/2018/01/DSC_4805-683x1024.jpg">
+					<div class="team-content">
+						<h5>รศ.ดร.อิทธิพล แจ้งชัด</h5>
+						<div class="border-team"></div>
+						<p>คณบดีคณะวิทยาศาสตร์</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+				<div class="col-md-4">
+				<div class="team-img rounded-corner border thumbnail text-center" style="margin:1rem; padding-top:1rem;">
+					<img class="card-img " style=" object-fit:cover; width:10rem; height:14rem;" src="http://www.science.kmitl.ac.th/wp-content/uploads/2018/01/DSC_5027-683x1024.jpg">
+					<div class="team-content">
+						<h5>ผศ.ดร.อนุรักษ์ โพธิ์เอี่ยม</h5>
+						<div class="border-team"></div>
+						<p>รองคณบดีคณะวิทยาศาสตร์</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="team-img rounded-corner border thumbnail text-center" style="margin:1rem; padding-top:1rem;">
+					<img class="card-img " style=" object-fit:cover; width:10rem; height:14rem;" src="http://www.science.kmitl.ac.th/wp-content/uploads/2018/01/DSC_4928.jpg">
+					<div class="team-content">
+						<h5>ผศ.ดร.ปุณณมา ศิริพันธ์โนน</h5>
+						<div class="border-team"></div>
+						<p>รองคณบดีคณะวิทยาศาสตร์</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="team-img rounded-corner border thumbnail text-center" style="margin:1rem; padding-top:1rem;">
+					<img class="card-img " style=" object-fit:cover; width:12rem; height:14rem;" src="http://www.science.kmitl.ac.th/wp-content/uploads/2018/01/DSC_4856-683x1024.jpg">
+					<div class="team-content">
+						<h5>ดร.บุญญสิทธิ์ วรจันทร์</h5>
+						<div class="border-team"></div>
+						<p>รองคณบดีคณะวิทยาศาสตร์</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4 offset-md-2">
+				<div class="team-img rounded-corner border thumbnail text-center" style="margin:1rem; padding-top:1rem;">
+					<img class="card-img " style=" object-fit:cover; width:10rem; height:14rem;" src="http://161.246.35.182:8080/images/aboutImg/executive2017/4.jpg">
+					<div class="team-content">
+						<h5>ผศ.วิสันต์ ตั้งวงษ์เจริญ</h5>
+						<div class="border-team"></div>
+						<p>รองคณบดีคณะวิทยาศาสตร์</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4 ">
+				<div class="team-img rounded-corner border thumbnail text-center" style="margin:1rem; padding-top:1rem;">
+					<img class="card-img " style=" object-fit:cover; width:12rem; height:14rem;" src="http://www.science.kmitl.ac.th/wp-content/uploads/2018/01/DSC_5232-683x1024.jpg">
+					<div class="team-content">
+						<h5>รศ.ดร.ตะวัน สุขน้อย</h5>
+						<div class="border-team"></div>
+						<p>รองคณบดีคณะวิทยาศาสตร์</p>
+					</div>
+				</div>
+			</div>
+		
+		</div>
+	</div>
+</main>
+
+<?php 
+	get_footer();
+	?>
