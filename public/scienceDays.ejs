@@ -358,13 +358,39 @@ background-color: #fffffff5;
     font-size: 24px;
     color: #f1642d;
 }
+
+@media (max-width: 767px){
+ul.timeline > li > .timeline-panel {
+    
+    width: -webkit-calc(115% - 95px);
+}
+ul.timeline > li > .timeline-badge {
+    left: -12px;
+    margin-left: 0;
+    top: 16px;
+}
+h2{
+    font-size: 22px;
+}
+
+}
+
+.container-fluid {
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: 15px;
+    padding-left: 15px;
+    width: 100%;
+    overflow: hidden;
+}
 	</style>
 
 
 <body class="landing-page " ng-app="app" ng-controller="" ng-init="showtranparent = true">
     <nav class="navbar fixed-top   navbar-expand-lg   bg-warning">
 
-        <div class="container-fluid">
+        <div class="container-fluid" style=" overflow: hidden !important;">
 
             <div class="navbar-translate d-none d-sm-block" style=" width: 40%;">
                 <a href="http://www.science.kmitl.ac.th/">
@@ -530,7 +556,7 @@ background-color: #fffffff5;
         <div class="main main-raised">
             <div class="contact-content">
                 <div class="  cd-section">
-                    <div class="" style="    padding: 100px;">
+                    <div class="container-fluid">
                         <br>
                         <center>
                         <h2> งานนิทรรศการวันวิทยาศาสตร์ และ งาน Open House คณะวิทยาศาสตร์ สจล. ปี 2561
@@ -807,6 +833,12 @@ background-color: #fffffff5;
                                 <br/>facebook :
                                 <a href="https://www.facebook.com/Faculty-of-Science-KMITL-145367872869812/">
                                 Faculty of Science, KMITL</a>
+
+                                <br/>
+                                <br/>
+                                <br/>
+                                <br/>
+
 
 
 
