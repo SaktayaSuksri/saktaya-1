@@ -1,4 +1,5 @@
 var express = require('express');
+var resizebase64 = require('resize-base64');
 var router = express.Router();
 
 // DATABASE SETUP
@@ -201,7 +202,8 @@ router.post('/editNews/', function (request, response) {
                     news.topicFull = request.body.topicFull;
                     news.detailShort = request.body.detailShort;
                     news.detailFull = request.body.detailFull;
-                    news.topicPicture = request.body.topicPicture;
+                    //news.topicPicture =  resizebase64(request.body.topicPicture,120,120);
+                    news.topicPicture =  request.body.topicPicture
                     news.author = request.body.author;
                     news.isPinned = request.body.isPinned;
                     news.resourceId = request.body.resourceId;

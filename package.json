@@ -33,6 +33,7 @@
     "nodemailer": "^4.6.4",
     "passport-local": "^1.0.0",
     "request": "^2.83.0",
+    "resize-base64": "^1.0.12",
     "serve-favicon": "^2.4.5",
     "stylus": "^0.54.5",
     "textangular-uploadimage": "0.0.4"
