@@ -37,7 +37,19 @@ module.exports = {
     },
     updatePersonelByID: function (personelId, personel, callback) {
         var myquery = { "_id": personelId };
-        var newvalues = { $set: { "personelName": personel.personelName, "education": personel.education, "position": personel.position, "expertise": personel.expertise, "subjects": personel.subjects, "officeRoom": personel.officeRoom, "email": personel.email, "homepage": personel.homepage, "telNumber": personel.telNumber, "positionId": personel.positionId, "datetimeEdit": Date.now() } };
+        var newvalues = { $set: { 
+            "personelName": personel.personelName, 
+            "education": personel.education, 
+            "position": personel.position, 
+            "expertise": personel.expertise, 
+            "subjects": personel.subjects,
+             "officeRoom": personel.officeRoom, 
+             "email": personel.email, 
+             "homepage": personel.homepage, 
+             "telNumber": personel.telNumber, 
+             "positionId": personel.positionId, 
+             "picture": personel.picture,
+             "datetimeEdit": Date.now() } };
         Personel.updateOne(myquery, newvalues, function (error, updateResponse) {
             if (error) {
                 var alert = "Error in finding Personel with _id: " + personelId + "\nError: " + error.message;

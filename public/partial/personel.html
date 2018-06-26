@@ -1114,8 +1114,8 @@
 
           <div class="container" ng-show="step=='3'">
 
-            <h2> หัวหน้าบุคลากร </h2>
-            <hr>
+            
+          
             <div class="row ">
               <div class="col-md-3" ng-repeat="personel_item in personel_list" style="margin-bottom: 27px !important;" ng-if="personel_item.divisionName === 'หัวหน้าบุคลากร'">
                 <div class='card' ng-click="showDetail(personel_item);">
@@ -1326,7 +1326,7 @@
               </div>
             </div>
 
-            <h2>ส่วนงานวิจัย</h2>
+            <h2>งานวิจัยและนวัตกรรม</h2>
             <hr>
             <div class="row ">
               <div class="col-md-3" ng-repeat="personel_item in personel_list" style="margin-bottom: 27px !important;" ng-if="personel_item.divisionName === 'ส่วนงานวิจัย'">
@@ -1347,7 +1347,7 @@
               </div>
             </div>
 
-            <h2>งานนิเทศสัมพันธ์</h2>
+            <h2>งานวิเทศสัมพันธ์</h2>
             <hr>
             <div class="row ">
               <div class="col-md-3" ng-repeat="personel_item in personel_list" style="margin-bottom: 27px !important;" ng-if="personel_item.divisionName === 'งานนิเทศสัมพันธ์'">
@@ -1393,27 +1393,6 @@
             <hr>
             <div class="row ">
               <div class="col-md-3" ng-repeat="personel_item in personel_list" style="margin-bottom: 27px !important;" ng-if="personel_item.divisionName === 'งานอาคารสถานที่'">
-                <div class='card' ng-click="showDetail(personel_item)">
-                  <div class='front' ng-click="showDetail(personel_item)">
-                    <img class='contact' ng-if="personel_item.picture == null" src="assets\img\image_placeholder.jpg">
-                    <img class='contact' ng-if="personel_item.picture != null" src="{{personel_item.picture}}">
-                    <p>
-                      <span class='name'>{{personel_item.personelName }}</span>
-                    </p>
-                    <hr>
-                    <span class='job container'>{{personel_item.position }}
-
-                    </span>
-
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <h2>งานนิเทศสัมพันธ์</h2>
-            <hr>
-            <div class="row ">
-              <div class="col-md-3" ng-repeat="personel_item in personel_list" style="margin-bottom: 27px !important;" ng-if="personel_item.divisionName === 'งานนิเทศสัมพันธ์'">
                 <div class='card' ng-click="showDetail(personel_item)">
                   <div class='front' ng-click="showDetail(personel_item)">
                     <img class='contact' ng-if="personel_item.picture == null" src="assets\img\image_placeholder.jpg">

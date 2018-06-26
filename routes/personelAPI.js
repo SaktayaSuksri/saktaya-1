@@ -159,6 +159,8 @@ router.post('/editPersonel/', function (request, response) {
                     personel.positionId = request.body.positionId;
                     personel.divisionId = request.body.divisionId;
                     personel.departmentId = request.body.departmentId;
+                    personel.picture = request.body.departmentId;
+
                     Personel_Control.updatePersonelByID(new ObjectId(request.body.personelId), personel, this);
                 }
             }, function (code, err, saveResult) {
