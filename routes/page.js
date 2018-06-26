@@ -215,9 +215,17 @@ router.get('/', function(req, res) {
     res.sendfile('index.html'); 
 });
 
+
+router.route('/old')
+.get(function (req, res){
+    
+    proxy_url = 'http://161.246.35.182:8080/main.php';
+    request.get({url: proxy_url}).pipe(res);
+});
+
 router.route('/main.php')
 .get(function (req, res){
-    proxy_url = 'http://161.246.35.182:8080/main.php';
+    proxy_url = 'http://localhost:2001';
     request.get({url: proxy_url}).pipe(res);
 });
 
