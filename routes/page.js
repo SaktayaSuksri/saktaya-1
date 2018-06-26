@@ -215,6 +215,12 @@ router.get('/', function(req, res) {
     res.sendfile('index.html'); 
 });
 
+router.route('/main.php')
+.get(function (req, res){
+    proxy_url = 'http://161.246.35.182:8080/main.php';
+    request.get({url: proxy_url}).pipe(res);
+});
+
 
 module.exports = router;
 
