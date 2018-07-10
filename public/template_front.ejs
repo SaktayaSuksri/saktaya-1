@@ -24,6 +24,8 @@
     <link href="../assets/assets-for-demo/timeline.css" rel="stylesheet" />
     <!-- Pond css -->
     <link href="../css/app.css" rel="stylesheet" />
+    <link href="../css/flag-icon.css" rel="stylesheet" />
+    <link href="../css/flag-icon.min.css" rel="stylesheet" />
 </head>
 
 
@@ -186,7 +188,7 @@ hr{
     background-image: linear-gradient(to top, #ff9800 2px, rgba(156, 39, 176, 0) 2px), linear-gradient(to top, #d2d2d2 1px, rgba(210, 210, 210, 0) 1px);
 }
 </style>
-<body class="landing-page " ng-app="app" ng-controller="global" > 
+<body class="landing-page " ng-app="app" ng-controller="global"> 
       
     
     <nav class="navbar fixed-top   navbar-expand-lg   bg-warning" >
@@ -194,8 +196,8 @@ hr{
         <div class="container-fluid">
 
             <div class="navbar-translate d-none d-sm-block" style=" width: 40%;">
-                <a href="http://www.science.kmitl.ac.th/">
-                <img class=" mr-0 mr-md-2 navbar-absolute-logo" src="http://www.science.kmitl.ac.th/assets/img/26696144_1787994021264861_526769390_n.png"  style="width: 100%; height: auto;">
+                <a href="./">
+                <img class=" mr-0 mr-md-2 navbar-absolute-logo" src="./assets/img/26696144_1787994021264861_526769390_n.png"  style="width: 100%; height: auto;">
                 </a>
                 <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -205,8 +207,8 @@ hr{
             </div>
 
             <div class="navbar-translate d-block d-sm-none" style="max-width: 80%;">
-                    <a href="http://www.science.kmitl.ac.th/">
-                    <img class=" mr-0 mr-md-2 navbar-absolute-logo" src="http://www.science.kmitl.ac.th/assets/img/26696144_1787994021264861_526769390_n.png"  style="width: 100%; height: auto;">
+                    <a href="./">
+                    <img class=" mr-0 mr-md-2 navbar-absolute-logo" src="./assets/img/26696144_1787994021264861_526769390_n.png"  style="width: 100%; height: auto;">
                     </a>
                    
                 </div>
@@ -227,112 +229,135 @@ hr{
                 </a>
                     </li> -->
                     <li class="nav-item">
-                            <a href="http://www.science.kmitl.ac.th/" class=" nav-link" >
-                                <i class="material-icons">home</i> หน้าแรก
+                            <a href="./" class=" nav-link" >
+                                <i class="material-icons">home</i> {{ 'home' | translate }}
                             </a>
     
                         </li>
     
                     <li class="dropdown nav-item">
                         <a  class="dropdown-toggle nav-link" data-toggle="dropdown">
-                            <i class="material-icons">view_day</i> หลักสูตร
+                            <i class="material-icons">view_day</i> {{ 'course' | translate }}
                         </a>
                         <div class="dropdown-menu dropdown-menu-right dropdown-with-icons">
                             <a href="/page#/course-tee" class="dropdown-item">
-                                <i class="material-icons">school</i> ปริญญาตรี
+                                <i class="material-icons">school</i> {{ 'bachelor' | translate }}
                             </a>
                             <a href="/page#/course-tor" class="dropdown-item">
-                                    <i class="material-icons">school</i> ปริญญาโท
+                                    <i class="material-icons">school</i> {{ 'master' | translate }}
                                 </a>
                             <a href="/page#/course-aek"class="dropdown-item">
-                                <i class="material-icons">school</i> ปริญญาเอก
+                                <i class="material-icons">school</i> {{ 'PhD' | translate }}
                             </a>
     
                         </div>
                     </li>
                     <li class="dropdown nav-item">
                         <a  class="dropdown-toggle nav-link" data-toggle="dropdown">
-                            <i class="material-icons">view_day</i> เกี่ยวกับคณะ
+                            <i class="material-icons">view_day</i> {{ 'about' | translate }}
                         </a>
                         <div class="dropdown-menu dropdown-menu-right dropdown-with-icons">
                             <a href="/page#/history" class="dropdown-item">
-                                <i class="material-icons">info</i> ประวัติความเป็นมา
+                                <i class="material-icons">info</i>  {{ 'history' | translate }}
                             </a>
                             <a  href="/page#/resolution" class="dropdown-item">
-                                <i class="material-icons">info</i> ปรัชญา-ปณิธาน-วิสัยทัศน์-พันธกิจ
+                                <i class="material-icons">info</i> {{ 'philosophy' | translate }}
                             </a>
                             <a href="/page#/structure" class="dropdown-item">
-                                <i class="material-icons">info</i>  โครงสร้างองค์กร
+                                <i class="material-icons">info</i>   {{ 'structure' | translate }}
                             </a>
                             <a  href="/page#/yearly-report" class="dropdown-item">
-                                <i class="material-icons">info</i> รายงานประจำปี
+                                <i class="material-icons">info</i>  {{ 'annual_report' | translate }}
                             </a>
                         </div>
                     </li>
     
                     <li class="dropdown nav-item">
                         <a  class="dropdown-toggle nav-link " data-toggle="dropdown">
-                            <i class="material-icons">view_day</i> ภาควิชา
+                            <i class="material-icons">view_day</i>  {{ 'department' | translate }}
                         </a>
                         <div class="dropdown-menu dropdown-menu-right dropdown-with-icons">
                                 <!-- <a href="" class="dropdown-item">
                                         <i class="material-icons">account_balance</i> ศูนย์เครื่องมือวิทยาศาสตร์
                                     </a> -->
                             <a href="http://www.math.sci.kmitl.ac.th/" class="dropdown-item">
-                                <i class="material-icons">business</i> ภาควิชาคณิตศาสตร์
+                                <i class="material-icons">business</i>  {{ 'department_of_mathematics' | translate }}
                             </a>
                             <a href="http://161.246.35.182:8080/links/department/bio/" class="dropdown-item">
-                                <i class="material-icons">business</i> ภาควิชาชีววิทยา
+                                <i class="material-icons">business</i>  {{ 'department_of_biology' | translate }}
                             </a>
                             <a href="http://physics.kmitl.ac.th/" class="dropdown-item">
-                                <i class="material-icons">business</i>  ภาควิชาฟิสิกส์
+                                <i class="material-icons">business</i>   {{ 'department_of_physicsy' | translate }}
                             </a>
                             <a href="http://www.comsci.science.kmitl.ac.th/cs/" class="dropdown-item">
-                                <i class="material-icons">business</i> ภาควิชาวิทยาการคอมพิวเตอร์
+                                <i class="material-icons">business</i>  {{ 'department_of_computer_science' | translate }}
                             </a>
                             <a href="http://161.246.35.182:8080/links/department/Webstat59/index.html" class="dropdown-item">
-                                <i class="material-icons">business</i> ภาควิชาสถิติ
+                                <i class="material-icons">business</i>  {{ 'department_of_statistics' | translate }}
                             </a>
                             <a href="http://161.246.35.182:8080/links/department/chem/" class="dropdown-item">
-                                <i class="material-icons">business</i> ภาควิชาเคมี
+                                <i class="material-icons">business</i> {{ 'department_of_Chemistry' | translate }}
                             </a>
                         </div>
                     </li>
                         <!-- <li class="nav-item">
                           <a class="nav-link active" href="#">ปริญญาตรี</a>
                         </li> -->
+                   
                         <li class="nav-item">
-                            <a class="nav-link" href="http://www.science.kmitl.ac.th/page#/personel"> <i class="material-icons">view_day</i> บุคลากร</a>
+                          <a class="nav-link" href="/page#/personel"> <i class="material-icons">view_day</i>  {{ 'personnel' | translate }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="page#/docs_container"> <i class="material-icons">view_day</i>  {{ 'form' | translate }}</a>
+                              </li>
+                        <!-- <li class="nav-item">
+                            <a class="nav-link active" href="http://www.science.kmitl.ac.th:8080/sic/index.php/CHome"> <i class="material-icons">link</i> ศูนย์เครื่องมือ</a>
                           </li>
-                          <li class="nav-item">
-                              <a class="nav-link" href="http://www.science.kmitl.ac.th/page#/docs_container"> <i class="material-icons">view_day</i> ฟอร์ม</a>
-                                </li>
-                          <!-- <li class="nav-item">
-                              <a class="nav-link active" href="http://www.science.kmitl.ac.th:8080/sic/index.php/CHome"> <i class="material-icons">link</i> ศูนย์เครื่องมือ</a>
-                            </li>
-                          <li class="nav-item">
-                            <a class="nav-link " href="http://alumni.kmitlsci.org/"> <i class="material-icons">link</i> ศิษย์เก่า</a>
-                          </li> -->
-      
-                  </ul>
-
-                  
-                      <ul class="navbar-nav ml-auto">
-                  <li class="nav-item">
-                      <a class="nav-link" href="http://www.science.kmitl.ac.th/graduate"><i class="material-icons">link</i> บัณทิต</a>
-                  </li>
-                  <li class="nav-item">
-                      <a class="nav-link active" href="http://www.science.kmitl.ac.th:8080/sic/index.php/CHome"> <i class="material-icons">link</i> ศูนย์เครื่องมือ</a>
-                  </li>
-                  <li class="nav-item">
-                      <a class="nav-link " href="http://alumni.kmitlsci.org/"> <i class="material-icons">link</i> ศิษย์เก่า</a>
-                  </li>
-                  <li class="nav-item">
-                      <a class="nav-link " href="http://www.science.kmitl.ac.th:8080/main.php"> <i class="material-icons">link</i> เว็บไซต์เดิม</a>
-                  </li>
-                 
-                  </ul>
+                        <li class="nav-item">
+                          <a class="nav-link " href="http://alumni.kmitlsci.org/"> <i class="material-icons">link</i> ศิษย์เก่า</a>
+                        </li> -->
     
+                </ul>
+
+                
+                    <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="./graduate"><i class="material-icons">link</i>  {{ 'graduate_studies' | translate }}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="http://www.science.kmitl.ac.th:8080/sic/index.php/CHome"> <i class="material-icons">link</i>  {{ 'tool_center' | translate }}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="http://alumni.kmitlsci.org/"> <i class="material-icons">link</i> {{ 'alumni' | translate }}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="http://www.science.kmitl.ac.th:8080/main.php"> <i class="material-icons">link</i>  {{ 'old_site' | translate }}</a>
+                </li>
+
+              <li class="dropdown nav-item">
+                        <a  class="dropdown-toggle nav-link " data-toggle="dropdown">
+                                <i class="material-icons">language</i> ภาษา | Languages
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-with-icons">
+
+                            <a href="" class="dropdown-item" ng-click = "change_languages('th')">
+                                    <span class="flag-icon flag-icon-th"></span> &nbsp;&nbsp; ไทย
+                            </a>
+                            <a href="" class="dropdown-item" ng-click = "change_languages('en')">
+                                <span class="flag-icon flag-icon-gb"></span> &nbsp;&nbsp;English
+                            </a> 
+                            <!-- <a href="" class="dropdown-item">
+                                    <i class="material-icons">
+                                            g_translate
+                                            </i>&nbsp;Google Translate &nbsp;&nbsp;
+                                    <div id="google_translate_element"></div>
+                            </a> -->
+                  
+                        </div>
+                    </li>
+               
+                </ul>
+           
     
             </div>
     
@@ -397,7 +422,9 @@ hr{
 <script type="text/javascript" src="//cdn.quilljs.com/1.2.0/quill.js"></script>
 <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/ng-quill/2.2.1/ng-quill.min.js"></script>
 
-
+<!-- แปลภาษา ปอนด์ -->
+<script src="./bower_components/angular-translate/angular-translate.js"></script>
+<script src="./js/translateCtrl.js"></script>
 </body>
 
 </html>

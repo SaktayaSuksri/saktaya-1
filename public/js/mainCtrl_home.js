@@ -1,4 +1,4 @@
-angular.module('app', ['jtt_youtube', 'ui.router', "api_service", 'ngSanitize'])
+angular.module('app', ['jtt_youtube', 'ui.router', "api_service", 'ngSanitize','pascalprecht.translate'])
 
 
 angular.module('app').config(function ($stateProvider, $urlRouterProvider) {
@@ -37,9 +37,14 @@ angular.module('app')
 
 
     }]);
-angular.module('app').controller('global', function ($scope, $http, api_manage) {
-    // alert("global ctrl");
-
+angular.module('app').controller('global', function ($scope, $http, api_manage,$translate) {
+    document.querySelector("#loader").style.display = 'block';
+    
+    $translate.use(localStorage.getItem("languages"));
+    $scope.change_languages = function(lang){
+      localStorage.setItem("languages", lang);
+      $translate.use(lang);
+    }
 });
 
 angular.module('app').controller('header_first', function ($scope, $http, api_manage) {
@@ -324,7 +329,7 @@ angular.module('app').controller('news', function ($sce, $scope, $filter, $q, $h
             tag: "0",
             limit: 9,
             isPinned: "0",
-            isPosted: "false",
+            isPosted: "true",
             isPreview: "true",
             targetTypeId: "0",
             needSort: 'true',

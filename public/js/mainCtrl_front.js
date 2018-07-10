@@ -1,4 +1,4 @@
-angular.module('app', ['ui.bootstrap', 'jtt_youtube', 'ui.router', "api_service", 'ngSanitize'])
+angular.module('app', ['ui.bootstrap', 'jtt_youtube', 'ui.router', "api_service", 'ngSanitize','pascalprecht.translate'])
 
 
 angular.module('app').config(function($stateProvider, $urlRouterProvider) {
@@ -121,13 +121,18 @@ angular.module('app')
 
 
   }]);
-angular.module('app').controller('global', function($scope, $http, api_manage,$sce) {
- 
+angular.module('app').controller('global', function($scope, $http, api_manage,$translate) {
+  $translate.use(localStorage.getItem("languages"));
+  $scope.change_languages = function(lang){
+    localStorage.setItem("languages", lang);
+    $translate.use(lang);
+  }
   $scope.trustAsHtml = function(string) {
     //console.log("str = "+string)
         return $sce.trustAsHtml(string);
     };
 
+ 
 });
 
 angular.module('app').controller('docs_container', function($scope, $http, api_manage, global_service) {
@@ -409,7 +414,6 @@ $scope.init = function(){
 
 
 
-
           tag:"0",
           limit:0,
           isPinned :"0",
@@ -442,7 +446,7 @@ $scope.init = function(){
                  api_manage.get_img_news(item._id)
                       .success(function(data, status, headers, config) {
                         item.topicPicture = data;
-            
+                    
                         })
                     .error(function(data, status, headers, config) {
                         

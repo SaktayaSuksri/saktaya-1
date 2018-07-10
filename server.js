@@ -30,8 +30,12 @@ sessionStore.on('error', function(error) {
 
 var app = express();
 
-
-mongoose.connect(config.dbUrl, function(err){
+const option = {
+    socketTimeoutMS: 30000,
+    keepAlive: true,
+    reconnectTries: 30000
+};
+mongoose.connect(config.dbUrl,option, function(err){
 	if (err) {
     console.log("********************************!!! WARNING plzzz !!!*********************************");
     console.log("                          Can't connect to Database. naka e dok");
